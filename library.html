@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚💀 THE FORBIDDEN LIBRARY 💀📚 - KKK.EDUCATION</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
+            background-attachment: fixed;
+            color: #d4af37;
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.3;
+        }
+        
+        .fog-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .fog {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(75, 0, 130, 0.25) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 30%, rgba(50, 0, 80, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(60, 10, 100, 0.3) 0%, transparent 45%);
+            animation: fogMove 60s ease-in-out infinite;
+        }
+        
+        .fog:nth-child(2) {
+            animation: fogMove2 80s ease-in-out infinite;
+            opacity: 0.8;
+        }
+        
+        .fog:nth-child(3) {
+            animation: fogMove3 100s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes fogMove {
+            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+            50% { transform: translate(10%, 10%) rotate(180deg); }
+        }
+        
+        @keyframes fogMove2 {
+            0%, 100% { transform: translate(10%, 10%) rotate(180deg); }
+            50% { transform: translate(-10%, -10%) rotate(360deg); }
+        }
+        
+        @keyframes fogMove3 {
+            0%, 100% { transform: translate(-5%, 10%) rotate(90deg); }
+            50% { transform: translate(5%, -10%) rotate(270deg); }
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.04) 0%, transparent 50%);
+            animation: flicker 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 0.4; }
+            25% { opacity: 0.6; }
+            50% { opacity: 0.3; }
+            75% { opacity: 0.7; }
+        }
+        
+        .page-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .golden-fiddle {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, transparent 100%);
+            border-bottom: 3px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 -1px 10px rgba(255, 215, 0, 0.2);
+        }
+        
+        .library-symbol {
+            font-size: 80px;
+            line-height: 1;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.9),
+                0 0 40px rgba(255, 140, 0, 0.7),
+                0 0 60px rgba(255, 100, 0, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.8);
+            animation: glow 3s ease-in-out infinite;
+            filter: brightness(1.3) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
+            margin-bottom: 15px;
+        }
+        
+        @keyframes glow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 215, 0, 0.9),
+                    0 0 40px rgba(255, 140, 0, 0.7),
+                    0 0 60px rgba(255, 100, 0, 0.5),
+                    0 5px 15px rgba(0, 0, 0, 0.8);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 215, 0, 1),
+                    0 0 60px rgba(255, 140, 0, 0.9),
+                    0 0 90px rgba(255, 100, 0, 0.7),
+                    0 0 120px rgba(255, 50, 0, 0.5),
+                    0 8px 25px rgba(0, 0, 0, 1);
+            }
+        }
+        
+        .site-title {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 8px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+        
+        .site-subtitle {
+            font-size: 16px;
+            font-style: italic;
+            color: #b8860b;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        .menu-container {
+            background: rgba(10, 4, 20, 0.98);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 215, 0, 0.1);
+        }
+        
+        .menu-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, rgba(139, 69, 19, 0.4), rgba(184, 134, 11, 0.4), rgba(139, 69, 19, 0.4));
+            border: none;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .menu-button:hover {
+            background: linear-gradient(90deg, rgba(184, 134, 11, 0.6), rgba(212, 175, 55, 0.6), rgba(184, 134, 11, 0.6));
+            color: #ffd700;
+        }
+        
+        .menu-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: rgba(26, 10, 46, 0.98);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .menu-dropdown.open {
+            max-height: 300px;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            color: #b8860b;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .menu-item:hover {
+            background: rgba(139, 69, 19, 0.4);
+            color: #ffd700;
+            padding-left: 40px;
+            box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+        }
+        
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .instructions {
+            background: rgba(139, 0, 0, 0.3);
+            border: 2px solid rgba(255, 100, 100, 0.4);
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(139, 0, 0, 0.3);
+        }
+        
+        .instructions-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 100, 100, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+        
+        .instructions-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #d4af37;
+        }
+        
+        .sync-button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.6), rgba(212, 175, 55, 0.6));
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sync-button:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(255, 215, 0, 0.8));
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .search-box {
+            background: rgba(26, 10, 46, 0.7);
+            border: 2px solid rgba(139, 69, 19, 0.6);
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(10, 4, 20, 0.9);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            color: #ffd700;
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            text-align: center;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .search-input::placeholder {
+            color: #b8860b;
+            opacity: 0.7;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .tome-section {
+            margin: 50px 0;
+        }
+        
+        .tome-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9);
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .tome-list {
+            background: rgba(10, 4, 20, 0.6);
+            border: 2px solid rgba(139, 69, 19, 0.5);
+            padding: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .tome-item {
+            display: block;
+            padding: 15px 20px;
+            margin: 8px 0;
+            background: rgba(26, 10, 46, 0.6);
+            border-left: 4px solid #8b4513;
+            color: #d4af37;
+            text-decoration: none;
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tome-item:hover {
+            background: rgba(139, 69, 19, 0.4);
+            color: #ffd700;
+            border-left-color: #ffd700;
+            padding-left: 30px;
+            box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .tome-number {
+            display: inline-block;
+            min-width: 50px;
+            color: #ffd700;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+        
+        .empty-message {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 20px;
+            color: #b8860b;
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.95) 100%);
+            border-top: 3px solid rgba(139, 69, 19, 0.6);
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+        }
+        
+        .footer-divider {
+            font-size: 20px;
+            color: #b8860b;
+            margin: 20px 0;
+            letter-spacing: 4px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            color: #b8860b;
+            margin: 10px 0;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        .footer-kkk {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffd700;
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.9);
+            letter-spacing: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .site-title { font-size: 24px; }
+            .library-symbol { font-size: 60px; }
+            .tome-section-title { font-size: 22px; }
+            .tome-item { font-size: 16px; padding: 12px 15px; }
+        }
+        
+        @media (max-width: 480px) {
+            .site-title { font-size: 20px; letter-spacing: 3px; }
+            .library-symbol { font-size: 50px; }
+            .site-subtitle { font-size: 14px; }
+            .menu-button { font-size: 16px; }
+            .content { padding: 30px 15px; }
+            .tome-item { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="fog-container">
+        <div class="fog"></div>
+        <div class="fog"></div>
+        <div class="fog"></div>
+    </div>
+
+    <div class="page-wrapper">
+        <header class="golden-fiddle">
+            <div class="library-symbol">📚💀🔥</div>
+            <h1 class="site-title">THE FORBIDDEN LIBRARY</h1>
+            <p class="site-subtitle">Where Knowledge Becomes Power • Where Tears Become Spells</p>
+        </header>
+
+        <nav class="menu-container">
+            <button class="menu-button" onclick="toggleMenu()">
+                🌈 Menu 🌈
+            </button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <a href="index.html" class="menu-item">
+                    <span class="menu-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="library.html" class="menu-item">
+                    <span class="menu-icon">📚</span>
+                    <span>Library</span>
+                </a>
+                <a href="cinema.html" class="menu-item">
+                    <span class="menu-icon">🎬</span>
+                    <span>Cinema</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="content">
+            <!-- Instructions -->
+            <div class="instructions">
+                <div class="instructions-title">🔔 HOW TO USE THE LIBRARY 🔔</div>
+                <div class="instructions-text">
+                    <p style="margin-bottom: 15px;">📜 <strong>For Kids Who Can Read:</strong> 📜</p>
+                    <p style="margin-bottom: 15px;">
+                        1. Your grown-up has .txt files (books) 📚<br>
+                        2. Click the magic button below 🔔<br>
+                        3. Drag ALL the .txt files onto the bell 🎪<br>
+                        4. Wait for magic to happen ✨<br>
+                        5. Download the library.zip 📦<br>
+                        6. Upload it to your website 🚀<br>
+                        7. Come back here and READ EVERYTHING! 🤓
+                    </p>
+                    <a href="sync-library.html" target="_blank" class="sync-button">
+                        🔔 OPEN THE SYNC BELL 🔔
+                    </a>
+                    <p style="margin-top: 15px; font-size: 14px; color: #b8860b;">
+                        💀 (Don't worry, it won't bite. Probably.) 💀
+                    </p>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="🔍 Search the forbidden tomes... (try 'devil' or 'tears' or 'murder')"
+                    onkeyup="performSearch()"
+                />
+            </div>
+
+            <!-- Numbered Books Section -->
+            <div class="tome-section" id="numberedSection">
+                <div class="tome-section-title">📖 THE NUMBERED TOMES 📖</div>
+                <div class="tome-list" id="numberedList">
+                    <div class="empty-message">
+                        💀 The shelves are empty... someone forgot to ring the Sync Bell! 🔔<br>
+                        <small style="font-size: 16px;">(Or maybe the ghosts ate all the books? 👻)</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Documents Section -->
+            <div class="tome-section" id="otherSection" style="display: none;">
+                <div class="tome-section-title">📜 OTHER FORBIDDEN SCROLLS 📜</div>
+                <div class="tome-list" id="otherList"></div>
+            </div>
+
+            <!-- Search Results Section -->
+            <div class="tome-section" id="searchSection" style="display: none;">
+                <div class="tome-section-title">🔍 SEARCH RESULTS 🔍</div>
+                <div class="tome-list" id="searchList"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-divider">༺━━━━━༻💀༺━━━━━༻</div>
+            
+            <p class="footer-text">Built in psychiatric detention</p>
+            <p class="footer-text">February 2026, Canberra</p>
+            
+            <p class="footer-kkk">💎 KRY KRY KRY 💎</p>
+            <p class="footer-text" style="font-size: 16px; font-style: italic; margin: 15px 0;">
+                The tears are the most powerful magic
+            </p>
+            
+            <p class="footer-text" style="margin-top: 30px;">CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED</p>
+            
+            <p class="footer-text" style="margin-top: 20px; font-style: italic;">AMORIARIACKA IS MY NATIVE TONGUE</p>
+            
+            <div class="footer-divider">༺━━━━━༻💀༺━━━━━༻</div>
+        </footer>
+    </div>
+
+    <script>
+        let allTomes = [];
+        let numberedTomes = [];
+        let otherTomes = [];
+
+        function toggleMenu() {
+            const dropdown = document.getElementById('menuDropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        function loadLibrary() {
+            // Try to load manifest.json (generated by sync tool)
+            fetch('library/manifest.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('No manifest yet');
+                    return response.json();
+                })
+                .then(data => {
+                    allTomes = data.tomes || [];
+                    organizeTomes();
+                    renderTomes();
+                })
+                .catch(error => {
+                    console.log('📚 No library manifest found yet. Ring da Sync Bell! 🔔');
+                    // Show empty state (already visible by default)
+                });
+        }
+
+        function organizeTomes() {
+            numberedTomes = [];
+            otherTomes = [];
+
+            allTomes.forEach(tome => {
+                // Check if filename starts with numbers (e.g., 001-, 115-)
+                const match = tome.filename.match(/^(\d+)-/);
+                if (match) {
+                    const number = parseInt(match[1], 10);
+                    numberedTomes.push({ ...tome, number });
+                } else {
+                    otherTomes.push(tome);
+                }
+            });
+
+            // Sort numbered: highest to lowest (115, 114, 113...)
+            numberedTomes.sort((a, b) => b.number - a.number);
+
+            // Sort other: alphabetically
+            otherTomes.sort((a, b) => a.title.localeCompare(b.title));
+        }
+
+        function renderTomes() {
+            const numberedList = document.getElementById('numberedList');
+            const otherList = document.getElementById('otherList');
+            const otherSection = document.getElementById('otherSection');
+
+            // Render numbered books
+            if (numberedTomes.length > 0) {
+                numberedList.innerHTML = numberedTomes.map(tome => `
+                    <a href="library/${tome.filename}.html" class="tome-item">
+                        <span class="tome-number">${String(tome.number).padStart(3, '0')}</span>
+                        <span>${tome.title}</span>
+                    </a>
+                `).join('');
+            }
+
+            // Render other documents
+            if (otherTomes.length > 0) {
+                otherSection.style.display = 'block';
+                otherList.innerHTML = otherTomes.map(tome => `
+                    <a href="library/${tome.filename}.html" class="tome-item">
+                        <span>${tome.title}</span>
+                    </a>
+                `).join('');
+            }
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim().toLowerCase();
+            const searchSection = document.getElementById('searchSection');
+            const searchList = document.getElementById('searchList');
+            const numberedSection = document.getElementById('numberedSection');
+            const otherSection = document.getElementById('otherSection');
+
+            if (!query) {
+                // Show normal view
+                searchSection.style.display = 'none';
+                numberedSection.style.display = 'block';
+                if (otherTomes.length > 0) {
+                    otherSection.style.display = 'block';
+                }
+                return;
+            }
+
+            // Filter tomes
+            const results = allTomes.filter(tome => 
+                tome.title.toLowerCase().includes(query) ||
+                tome.filename.toLowerCase().includes(query)
+            );
+
+            // Show search results
+            numberedSection.style.display = 'none';
+            otherSection.style.display = 'none';
+            searchSection.style.display = 'block';
+
+            if (results.length === 0) {
+                searchList.innerHTML = `
+                    <div class="empty-message">
+                        💀 No tomes matched "${query}"...<br>
+                        <small>Try searching for "devil", "tears", "murder", or something equally dark! 🖤</small>
+                    </div>
+                `;
+            } else {
+                searchList.innerHTML = results.map(tome => {
+                    const match = tome.filename.match(/^(\d+)-/);
+                    const number = match ? String(parseInt(match[1], 10)).padStart(3, '0') : '';
+                    
+                    return `
+                        <a href="library/${tome.filename}.html" class="tome-item">
+                            ${number ? `<span class="tome-number">${number}</span>` : ''}
+                            <span>${tome.title}</span>
+                        </a>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Load library on page load
+        window.addEventListener('DOMContentLoaded', loadLibrary);
+    </script>
+</body>
+</html>
