@@ -305,11 +305,6 @@
             color: #90ee90;
         }
         
-        .file-item.skipped {
-            border-left-color: #888;
-            color: #999;
-        }
-        
         .download-button {
             display: inline-block;
             margin: 20px 0;
@@ -359,7 +354,7 @@
             <div class="instructions">
                 <h2>📜 HOW TO USE THE SYNC BELL 📜</h2>
                 <ol>
-                    <li>📚 Get ALL your .txt book files ready (in one folder is easiest!)</li>
+                    <li>📚 Get ALL your .txt book files ready (or just 1 if you're adding a new book!)</li>
                     <li>🎪 <strong>DRAG them ALL</strong> onto the bell below (or click "Select Files" on phone)</li>
                     <li>✨ Watch the MAGICKA happen (5-30 seconds depending on how many books)</li>
                     <li>📦 Download the library.zip file when it's ready</li>
@@ -368,9 +363,9 @@
                     <li>🎉 Go to library.html and see your beautiful tomb library!</li>
                 </ol>
                 <p style="margin-top: 20px; text-align: center; font-size: 16px; color: #ff69ff;">
-                    💀 <strong>DARK SECRET:</strong> The tool remembers what you synced last time!<br>
-                    If you sync again, it only regenerates files that CHANGED. 🧙‍♂️<br>
-                    (Unless you cleared your browser data, then it forgot everything. Oops! 👻)
+                    💀 <strong>PRO TIP:</strong> You can sync 1 file or 100 files - doesn't matter!<br>
+                    Every sync regenerates EVERYTHING you give it. Fresh and clean! 🧙‍♂️<br>
+                    (Just remember to drag ALL your books when you sync, or the library will only have what you dragged!) 👻
                 </p>
             </div>
 
@@ -412,17 +407,8 @@
         const fileList = document.getElementById('fileList');
         const downloadContainer = document.getElementById('downloadContainer');
 
-        let processedHashes = {};
-
-        // Load previously synced file hashes from localStorage
-        try {
-            const stored = localStorage.getItem('kkk-library-hashes');
-            if (stored) {
-                processedHashes = JSON.parse(stored);
-            }
-        } catch (e) {
-            console.log('No previous sync data found');
-        }
+        // No memory system - always regenerate everything!
+        // This keeps it simple and prevents bugs
 
         // Drag and drop handlers
         dropZone.addEventListener('click', () => fileInput.click());
@@ -452,17 +438,6 @@
             }
         });
 
-        // Simple hash function
-        function simpleHash(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                const char = str.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
-                hash = hash & hash;
-            }
-            return hash.toString(36);
-        }
-
         async function processFiles(files) {
             statusMessage.innerHTML = `🔔 RING RING! The bell awakens! 🔔<br>Processing ${files.length} file(s)...`;
             progressContainer.style.display = 'block';
@@ -474,32 +449,14 @@
             const libraryFolder = zip.folder('library');
             
             let processed = 0;
-            let regenerated = 0;
-            let skipped = 0;
 
             for (const file of files) {
                 const filename = file.name.replace('.txt', '');
                 const content = await readFile(file);
-                const hash = simpleHash(content);
                 
-                // Check if file changed
-                const previousHash = processedHashes[filename];
-                const isNew = !previousHash;
-                const isChanged = previousHash && previousHash !== hash;
-                
-                let status = '';
-                if (isNew) {
-                    status = '✨ NEW';
-                } else if (isChanged) {
-                    status = '🔄 UPDATED';
-                } else {
-                    status = '⏭️ UNCHANGED';
-                    skipped++;
-                }
-
                 const fileItem = document.createElement('div');
-                fileItem.className = 'file-item' + (isNew || isChanged ? ' processed' : ' skipped');
-                fileItem.textContent = `${status} - ${file.name}`;
+                fileItem.className = 'file-item processed';
+                fileItem.textContent = `✨ Processing - ${file.name}`;
                 fileList.appendChild(fileItem);
 
                 // Generate title from filename
@@ -519,13 +476,12 @@
                 }
                 tomes.push(tomeData);
 
-                // Generate HTML (only if new or changed)
-                if (isNew || isChanged) {
-                    const html = generateBookHTML(title, content);
-                    libraryFolder.file(`${filename}.html`, html);
-                    regenerated++;
-                    processedHashes[filename] = hash;
-                }
+                // Generate HTML (ALWAYS - no memory system)
+                const html = generateBookHTML(title, content);
+                libraryFolder.file(`${filename}.html`, html);
+
+                // Update status to show completion
+                fileItem.textContent = `✅ DONE - ${file.name}`;
 
                 processed++;
                 const percent = (processed / files.length) * 100;
@@ -536,13 +492,10 @@
             const manifest = { tomes: tomes };
             libraryFolder.file('manifest.json', JSON.stringify(manifest, null, 2));
 
-            // Save hashes to localStorage
-            localStorage.setItem('kkk-library-hashes', JSON.stringify(processedHashes));
-
             // Generate ZIP
             statusMessage.innerHTML = `
                 ⚡ MAGICKA COMPLETE! ⚡<br>
-                <small>Processed: ${processed} files | New/Updated: ${regenerated} | Skipped: ${skipped}</small>
+                <small>Processed: ${processed} files | Regenerated: ${processed} books into immortal HTML! 💎</small>
             `;
 
             const blob = await zip.generateAsync({ type: 'blob' });
