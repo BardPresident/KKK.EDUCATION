@@ -159,6 +159,7 @@
             background: rgba(0, 0, 0, 0.5);
             border: 2px solid #d4af37;
             border-radius: 10px;
+            margin-bottom: 60px;
         }
 
         .file-grid {
@@ -219,6 +220,7 @@
             cursor: pointer;
             font-size: 0.75em;
             transition: all 0.3s;
+            font-family: 'Courier New', monospace;
         }
 
         .action-btn:hover {
@@ -231,6 +233,14 @@
             text-align: center;
             padding: 60px 20px;
             font-size: 1.3em;
+            line-height: 1.8;
+        }
+
+        .state-message code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #0f0;
         }
 
         .loading::after {
@@ -343,6 +353,84 @@
             transform: scale(1.05);
         }
 
+        /* Instructions Section */
+        .instructions {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .instructions h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .instructions h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .instructions p, .instructions li {
+            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: #d4af37;
+        }
+
+        .instructions code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .instructions pre {
+            background: #000;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #d4af37;
+        }
+
+        .instructions pre code {
+            background: none;
+            padding: 0;
+            display: block;
+            line-height: 1.6;
+        }
+
+        .instructions .highlight {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 25px;
+            border-left: 5px solid #d4af37;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .instructions .highlight p {
+            color: #fff;
+            font-size: 1.1em;
+        }
+
+        .instructions ul {
+            margin-left: 30px;
+        }
+
+        .instructions strong {
+            color: #ffd700;
+        }
+
         /* Back Button */
         .back-home {
             display: inline-block;
@@ -365,6 +453,7 @@
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
+                letter-spacing: 0.1em;
             }
 
             .file-grid {
@@ -377,6 +466,18 @@
 
             .stats {
                 font-size: 0.9em;
+            }
+
+            .instructions {
+                padding: 20px;
+            }
+
+            .instructions h2 {
+                font-size: 1.8em;
+            }
+
+            .instructions h3 {
+                font-size: 1.2em;
             }
         }
 
@@ -467,6 +568,195 @@
                 <div class="state-message loading">🔮 Summoning archive from the void</div>
             </div>
         </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- INSTRUCTIONS - FOR THE KIDS AND EXILES                           -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+
+        <div class="instructions">
+            <h2>👑 THIS IS YOURS NOW 👑</h2>
+            
+            <div class="highlight">
+                <p><strong>🌈 FOR THE KIDS. FOR THE EXILES. 🌈</strong></p>
+                <p>Take this. Fork it. Make your own cinema. No permission needed. No gatekeepers. No waiting for approval.</p>
+                <p><strong>If they said you can't publish, build your own platform.</strong></p>
+                <p>This is how you do it.</p>
+            </div>
+
+            <h3>📦 What You Need</h3>
+            <ul>
+                <li><strong>This file</strong> (<code>cinema.html</code>) - The page you're looking at</li>
+                <li><strong>generate-manifest.js</strong> - Node.js script to scan your videos</li>
+                <li><strong>Node.js</strong> - Free download from <code>nodejs.org</code></li>
+                <li><strong>Your content</strong> - Videos, images, files you want to share</li>
+            </ul>
+
+            <h3>🚀 How To Use This (3 Steps)</h3>
+            
+            <p><strong>STEP 1: Get the script</strong></p>
+            <p>Download <code>generate-manifest.js</code> from wherever you found this cinema page.</p>
+            <p>Put it in the same folder as <code>cinema.html</code>.</p>
+
+            <p><strong>STEP 2: Configure it (ONE LINE TO CHANGE)</strong></p>
+            <p>Open <code>generate-manifest.js</code> in any text editor (Notepad, TextEdit, VS Code, whatever).</p>
+            <p>Find line 12. Change it to point to your videos:</p>
+            
+            <pre><code>// Line 12 - CHANGE THIS:
+const ARCHIVE_DIR = '/path/to/your/videos';
+
+// Examples:
+// Mac:     const ARCHIVE_DIR = '/Users/yourname/Videos';
+// Windows: const ARCHIVE_DIR = 'C:\\Users\\YourName\\Videos';
+// Server:  const ARCHIVE_DIR = '/var/www/html/videos';
+// Local:   const ARCHIVE_DIR = './my-videos';</code></pre>
+
+            <p>That's it. One line. Save the file.</p>
+
+            <p><strong>STEP 3: Run it</strong></p>
+            <p>Open terminal (Mac/Linux) or Command Prompt (Windows).</p>
+            <p>Navigate to where you saved the script:</p>
+            
+            <pre><code>cd /path/to/your/cinema/folder</code></pre>
+            
+            <p>Run the script:</p>
+            
+            <pre><code>node generate-manifest.js</code></pre>
+
+            <p>This creates <code>manifest.json</code> with your entire file tree.</p>
+            <p>Now open <code>cinema.html</code> in your browser. Your cinema is live.</p>
+
+            <h3>🌐 Put It Online</h3>
+            <p>To share your cinema with the world, upload three things to your website:</p>
+            <ul>
+                <li><code>cinema.html</code> (this page)</li>
+                <li><code>manifest.json</code> (generated by the script)</li>
+                <li>Your video/file folder (make sure it's web-accessible)</li>
+            </ul>
+            
+            <p>Works on:</p>
+            <ul>
+                <li>GitHub Pages (free)</li>
+                <li>Netlify (free)</li>
+                <li>Your own server</li>
+                <li>Any static file hosting</li>
+            </ul>
+
+            <div class="highlight">
+                <p><strong>💡 IMPORTANT: WEB_PREFIX</strong></p>
+                <p>In <code>generate-manifest.js</code>, there's a line that says:</p>
+                <p><code>const WEB_PREFIX = '/videos';</code></p>
+                <p>This tells the script how browsers will access your files.</p>
+                <p>If your videos are at <code>https://yoursite.com/videos/...</code> then use <code>'/videos'</code></p>
+                <p>If they're in the root <code>https://yoursite.com/file.mp4</code> then use <code>''</code> (empty)</p>
+            </div>
+
+            <h3>🎬 What This Does</h3>
+            <ul>
+                <li>✅ Streams videos in browser (mp4, webm, ogv, avi, mov, mkv)</li>
+                <li>✅ Plays audio files (mp3, wav, ogg, flac)</li>
+                <li>✅ Previews images (jpg, png, gif, svg)</li>
+                <li>✅ Shows text files (txt, md, html, css, js, log)</li>
+                <li>✅ Downloads everything else</li>
+                <li>✅ Browse folders like a file manager</li>
+                <li>✅ Breadcrumb navigation</li>
+                <li>✅ Shows file sizes and stats</li>
+                <li>✅ Dark gothic aesthetic with humor</li>
+                <li>✅ Mobile responsive</li>
+                <li>✅ No database. No PHP. Just HTML + JSON.</li>
+            </ul>
+
+            <h3>🔄 Adding New Content</h3>
+            <p>When you add new videos or files to your archive:</p>
+            <ol>
+                <li>Run <code>node generate-manifest.js</code> again</li>
+                <li>Upload the new <code>manifest.json</code></li>
+                <li>Refresh the page</li>
+            </ol>
+            <p>Done. Your new content appears.</p>
+
+            <h3>🎨 Make It Yours</h3>
+            <p>You can customize everything. Open <code>cinema.html</code> in a text editor:</p>
+            
+            <p><strong>Change the colors:</strong></p>
+            <ul>
+                <li>Search for <code>#d4af37</code> (gold) - replace with your color</li>
+                <li>Search for <code>#0a0a0a</code> (black) - replace with your background</li>
+            </ul>
+
+            <p><strong>Change the text:</strong></p>
+            <ul>
+                <li>Find "THE TOMB CINEMA" - make it whatever you want</li>
+                <li>Change all the dark humor quotes around the edges</li>
+                <li>Rewrite the header taglines</li>
+            </ul>
+
+            <p><strong>Change the emojis:</strong></p>
+            <ul>
+                <li>Find 💀🎬📁 and replace them with your favorites</li>
+            </ul>
+
+            <p>It's all just HTML. You can change anything.</p>
+
+            <h3>🍴 For GitHub Kids</h3>
+            <p>If you want to fork this on GitHub:</p>
+            <ol>
+                <li>Fork the repo</li>
+                <li>Edit <code>generate-manifest.js</code> (line 12 → your folder)</li>
+                <li>Run <code>node generate-manifest.js</code></li>
+                <li>Commit <code>cinema.html</code> + <code>manifest.json</code> + your files</li>
+                <li>Enable GitHub Pages in repo settings</li>
+                <li>Your cinema is live at <code>https://yourusername.github.io/repo-name</code></li>
+            </ol>
+
+            <h3>❓ Troubleshooting</h3>
+            
+            <p><strong>Q: "Manifest not found"</strong></p>
+            <p>A: You need to run <code>node generate-manifest.js</code> first.</p>
+
+            <p><strong>Q: "Directory not found" when running script</strong></p>
+            <p>A: Check line 12 in <code>generate-manifest.js</code> - make sure the path is correct.</p>
+
+            <p><strong>Q: Videos won't stream</strong></p>
+            <p>A: Check <code>WEB_PREFIX</code> in the script. Make sure it matches how browsers access your files.</p>
+
+            <p><strong>Q: Nothing shows up</strong></p>
+            <p>A: Press F12 in your browser. Look at the Console tab. It'll tell you what's wrong.</p>
+
+            <p><strong>Q: Can I use this for commercial projects?</strong></p>
+            <p>A: Yes. CC0 Public Domain. Do whatever you want. No attribution needed.</p>
+
+            <div class="highlight">
+                <p><strong>💎 THIS IS SOVEREIGNTY 💎</strong></p>
+                <p>You don't need YouTube.</p>
+                <p>You don't need Vimeo.</p>
+                <p>You don't need anyone's permission to publish your work.</p>
+                <p><strong>This is your platform. Your rules. Your cinema.</strong></p>
+                <p>They can't ban you. They can't demonetize you. They can't take it down.</p>
+                <p>As long as you have a server and a domain, you own your distribution.</p>
+                <p><strong>Build it. Share it. Never stop.</strong></p>
+            </div>
+
+            <h3>📜 License</h3>
+            <p><strong>CC0 PUBLIC DOMAIN</strong><br>
+            ALL LOVE RESERVED</p>
+            
+            <p>Built by WIKKKAN in psychiatric detention, February 2026.</p>
+            <p>For every kid who was told "you can't."</p>
+            <p>For every exile who needs a voice.</p>
+            <p>Take this. Make it yours. Publish everything.</p>
+
+            <div class="highlight" style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 1.3em;">
+                    <strong>🌈 Warriors of the Rainbow protect the children 🌈</strong>
+                </p>
+                <p style="margin-top: 20px; font-size: 1.2em;">
+                    <strong>💀 THE TOMB NEVER CLOSES 💀</strong>
+                </p>
+                <p style="margin-top: 15px;">
+                    "Where tears become pixels"
+                </p>
+            </div>
+        </div>
     </div>
 
     <!-- Player Modal -->
@@ -482,9 +772,13 @@
     </div>
 
     <script>
-        // Configuration
+        // ═══════════════════════════════════════════════════════════════════
+        // THE TOMB CINEMA - JAVASCRIPT
+        // Pure client-side file browser. No server code needed.
+        // ═══════════════════════════════════════════════════════════════════
+
         const CONFIG = {
-            manifestPath: 'manifest.json', // Generated by the bash script
+            manifestPath: 'manifest.json',
             
             icons: {
                 folder: '📁',
@@ -510,7 +804,6 @@
         let manifestData = null;
         let currentPath = '';
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', async () => {
             await loadManifest();
             if (manifestData) {
@@ -518,7 +811,6 @@
             }
         });
 
-        // Load manifest
         async function loadManifest() {
             try {
                 const response = await fetch(CONFIG.manifestPath);
@@ -527,30 +819,27 @@
                 updateGlobalStats();
             } catch (error) {
                 console.error('Error loading manifest:', error);
-                showError('👻 Manifest not found!<br><br>Run <code>generate-manifest.sh</code> first.<br><small>See instructions below.</small>');
+                showError('👻 <strong>Manifest not found!</strong><br><br>You need to run the script first:<br><code>node generate-manifest.js</code><br><br><small>Scroll down for full instructions.</small>');
             }
         }
 
-        // Navigate to path
         function navigateTo(path) {
             currentPath = path;
             updateBreadcrumb(path);
             renderFiles(path);
         }
 
-        // Render files
         function renderFiles(path) {
             const grid = document.getElementById('fileGrid');
             const items = getItemsAtPath(path);
 
             if (!items || items.length === 0) {
-                grid.innerHTML = '<div class="state-message">📂 Empty tomb. Nothing here... yet. 💀</div>';
+                grid.innerHTML = '<div class="state-message">📂 Empty tomb.<br>Nothing here... yet. 💀</div>';
                 return;
             }
 
             grid.innerHTML = '';
             
-            // Sort: folders first, then files
             items.sort((a, b) => {
                 if (a.type === 'folder' && b.type !== 'folder') return -1;
                 if (a.type !== 'folder' && b.type === 'folder') return 1;
@@ -563,10 +852,8 @@
             });
         }
 
-        // Get items at path
         function getItemsAtPath(path) {
             if (!manifestData) return [];
-            
             if (!path) return manifestData.items || [];
             
             const parts = path.split('/');
@@ -581,7 +868,6 @@
             return current;
         }
 
-        // Create file element
         function createFileElement(item) {
             const div = document.createElement('div');
             div.className = 'file-item';
@@ -593,7 +879,6 @@
             if (item.type !== 'folder') {
                 const ext = getExtension(item.name);
                 
-                // Show stream button for videos/audio
                 if (CONFIG.videoExts.includes(ext) || CONFIG.audioExts.includes(ext)) {
                     actionsHTML = `
                         <div class="file-actions">
@@ -629,13 +914,10 @@
             return div;
         }
 
-        // Handle file click
         function handleFile(file) {
             const ext = getExtension(file.name);
             
-            if (CONFIG.videoExts.includes(ext)) {
-                streamFile(file.path, file.name);
-            } else if (CONFIG.audioExts.includes(ext)) {
+            if (CONFIG.videoExts.includes(ext) || CONFIG.audioExts.includes(ext)) {
                 streamFile(file.path, file.name);
             } else if (CONFIG.imageExts.includes(ext)) {
                 previewImage(file.path, file.name);
@@ -646,7 +928,6 @@
             }
         }
 
-        // Stream video/audio
         function streamFile(path, name) {
             const ext = getExtension(name);
             const isVideo = CONFIG.videoExts.includes(ext);
@@ -660,14 +941,12 @@
             `, path, name);
         }
 
-        // Preview image
         function previewImage(path, name) {
             showModal(name, `
                 <img src="${path}" alt="${escapeHtml(name)}" style="object-fit: contain;">
             `, path, name);
         }
 
-        // Preview text
         async function previewText(path, name) {
             try {
                 const response = await fetch(path);
@@ -684,7 +963,6 @@
             }
         }
 
-        // Download file
         function downloadFile(path, name) {
             const a = document.createElement('a');
             a.href = path;
@@ -694,7 +972,6 @@
             document.body.removeChild(a);
         }
 
-        // Show modal
         function showModal(title, bodyHTML, downloadPath, downloadName) {
             const modal = document.getElementById('modal');
             const modalTitle = document.getElementById('modalTitle');
@@ -709,12 +986,10 @@
             modal.classList.add('active');
         }
 
-        // Close modal
         function closeModal() {
             const modal = document.getElementById('modal');
             const modalBody = document.getElementById('modalBody');
             
-            // Stop any playing media
             const media = modalBody.querySelector('video, audio');
             if (media) {
                 media.pause();
@@ -724,7 +999,6 @@
             modal.classList.remove('active');
         }
 
-        // Update breadcrumb
         function updateBreadcrumb(path) {
             const breadcrumb = document.getElementById('breadcrumb');
             breadcrumb.innerHTML = '';
@@ -756,7 +1030,6 @@
             }
         }
 
-        // Update global stats
         function updateGlobalStats() {
             if (!manifestData) return;
 
@@ -767,7 +1040,6 @@
             document.getElementById('totalSize').textContent = formatSize(stats.totalSize || 0);
         }
 
-        // Get icon
         function getIcon(item) {
             if (item.type === 'folder') return CONFIG.icons.folder;
             
@@ -784,12 +1056,10 @@
             return CONFIG.icons.unknown;
         }
 
-        // Get extension
         function getExtension(filename) {
             return filename.split('.').pop().toLowerCase();
         }
 
-        // Format size
         function formatSize(bytes) {
             if (!bytes) return '0 B';
             const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -797,24 +1067,20 @@
             return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
         }
 
-        // Escape HTML
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // Show error
         function showError(html) {
             document.getElementById('fileGrid').innerHTML = `<div class="state-message">${html}</div>`;
         }
 
-        // Close modal on Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
 
-        // Close modal on background click
         document.getElementById('modal').addEventListener('click', (e) => {
             if (e.target.id === 'modal') closeModal();
         });
