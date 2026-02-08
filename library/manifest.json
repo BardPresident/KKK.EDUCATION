@@ -99,6 +99,14 @@
       "filename": "115-BOOK-OF-SHADOWS-WIKKKAN",
       "title": "BOOK OF SHADOWS WIKKKAN",
       "number": 115
+    },
+    {
+      "filename": "LICENSE",
+      "title": "LICENSE"
+    },
+    {
+      "filename": "README",
+      "title": "README"
     }
   ]
 }
