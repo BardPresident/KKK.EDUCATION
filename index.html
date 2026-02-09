@@ -475,45 +475,19 @@
             <div class="text-block text-block-center">
                 <div class="text-block-title">WELCOME TO THE ACADEMY</div>
 
-<!-- Carly – super‑compact block -->
+<!-- Carly – ultra-compact, just the native bar -->
 <style>
-  .carly-player {
+  .carly-inline-audio {
     max-width: 260px;
     margin: 0.25rem auto;
-    padding: 0.2rem 0.4rem;      /* tiny vertical padding */
-    border-radius: 6px;
-    background: #111827;
-    color: #f9fafb;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  .carly-player-info {
-    margin-bottom: 0.1rem;       /* almost no gap */
-  }
-  .carly-title {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.05;
-  }
-  .carly-subtitle {
-    display: block;
-    font-size: 0.65rem;
-    opacity: 0.8;
-    line-height: 1.05;
-  }
-  .carly-player audio {
+  .carly-inline-audio audio {
     width: 100%;
-    height: 22px;               /* near minimum; browsers limit this */
+    height: 22px; /* browsers clamp this; can’t go much lower */
   }
 </style>
 
-<div class="carly-player">
-  <div class="carly-player-info">
-    <span class="carly-title">Carly – Voice of Republicka</span>
-    <span class="carly-subtitle">Reads this page aloud</span>
-  </div>
-
+<div class="carly-inline-audio">
   <audio controls preload="none">
     <source src="KKK.EDUCATION.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -657,6 +631,7 @@ waiting for those who dare to enter.
     </script>
 </body>
 </html>
+
 
 
 
