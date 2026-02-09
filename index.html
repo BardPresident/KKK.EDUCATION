@@ -475,24 +475,35 @@
             <div class="text-block text-block-center">
                 <div class="text-block-title">WELCOME TO THE ACADEMY</div>
 
-<!-- Carly – ultra-compact, just the native bar -->
+<!-- Carly – ultra-compact with intro line -->
 <style>
   .carly-inline-audio {
     max-width: 260px;
     margin: 0.25rem auto;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.8rem;
+    color: #f9fafb;
+  }
+  .carly-inline-audio span {
+    display: block;
+    margin-bottom: 0.15rem;
+    opacity: 0.9;
   }
   .carly-inline-audio audio {
     width: 100%;
-    height: 22px; /* browsers clamp this; can’t go much lower */
+    height: 22px;
   }
 </style>
 
 <div class="carly-inline-audio">
+  <span>Carly, the **voice** of Republicka, reads this page aloud.</span>
   <audio controls preload="none">
     <source src="KKK.EDUCATION.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </div>
+
 
 ΚΑΛΟΣ ΚΡΑΤΟΣ ΚΛΕΟΣ
 KALOS KRATOS KLEOS
@@ -631,6 +642,7 @@ waiting for those who dare to enter.
     </script>
 </body>
 </html>
+
 
 
 
