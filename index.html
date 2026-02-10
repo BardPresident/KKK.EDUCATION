@@ -1,278 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💎 KKK.EDUCATION - The Royal Academy of Tears Turned to Gold 💎</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KKK.EDUCATION – The Royal Academy of Tears Turned to Gold</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
-      background-attachment: fixed;
       color: #d4af37;
       font-family: 'Crimson Text', serif;
-      line-height: 1.5;
+      line-height: 1.4;
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
+    /* simple fog + grain */
     body::after {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
       background:
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
       pointer-events: none;
-      z-index: 2;
       opacity: 0.3;
-    }
-
-    .fog-container {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .fog {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(75, 0, 130, 0.25) 0%, transparent 40%),
-        radial-gradient(ellipse at 80% 30%, rgba(50, 0, 80, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(60, 10, 100, 0.3) 0%, transparent 45%);
-      animation: fogMove 60s ease-in-out infinite;
-    }
-    .fog:nth-child(2) { animation: fogMove2 80s ease-in-out infinite; opacity: 0.7; }
-    .fog:nth-child(3) { animation: fogMove3 100s ease-in-out infinite; opacity: 0.5; }
-
-    @keyframes fogMove {
-      0%,100% { transform: translate(-10%, -10%) rotate(0deg); }
-      50%     { transform: translate(10%, 10%) rotate(180deg); }
-    }
-    @keyframes fogMove2 {
-      0%,100% { transform: translate(10%, 10%) rotate(180deg); }
-      50%     { transform: translate(-10%, -10%) rotate(360deg); }
-    }
-    @keyframes fogMove3 {
-      0%,100% { transform: translate(-5%, 10%) rotate(90deg); }
-      50%     { transform: translate(5%, -10%) rotate(270deg); }
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.04) 0%, transparent 50%);
-      animation: flicker 4s ease-in-out infinite;
-      pointer-events: none;
       z-index: 0;
     }
 
-    @keyframes flicker {
-      0%,100% { opacity: 0.35; }
-      25%     { opacity: 0.55; }
-      50%     { opacity: 0.3; }
-      75%     { opacity: 0.65; }
-    }
-
-    .page-wrapper {
+    .page {
       position: relative;
-      z-index: 10;
-    }
-
-    /* ===== COMPACT TOP BANNER ===== */
-    .golden-fiddle {
-      text-align: center;
-      padding: 12px 10px 8px;
-      background: linear-gradient(180deg, rgba(26, 10, 46, 0.96) 0%, transparent 100%);
-      border-bottom: 2px solid rgba(212, 175, 55, 0.5);
-      box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.8),
-        inset 0 -1px 6px rgba(255, 215, 0, 0.2);
-    }
-
-    .fiddle-symbol {
-      font-size: 46px;
-      line-height: 1;
-      text-shadow:
-        0 0 18px rgba(255, 215, 0, 0.9),
-        0 0 30px rgba(255, 140, 0, 0.7);
-      margin-bottom: 2px;
-    }
-
-    .site-title {
-      font-family: 'Cinzel', serif;
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: 5px;
-      margin-bottom: 2px;
-      color: #ffd700;
-      text-shadow:
-        2px 2px 4px rgba(0, 0, 0, 0.9),
-        0 0 12px rgba(255, 215, 0, 0.6);
-    }
-
-    .site-subtitle {
-      font-size: 12px;
-      font-style: italic;
-      color: #b8860b;
-      letter-spacing: 2px;
-      margin-bottom: 2px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    }
-
-    .primary-kkk {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffd700;
-      margin-top: 2px;
-      letter-spacing: 3px;
-      text-shadow:
-        0 0 10px rgba(255, 215, 0, 0.8),
-        1px 1px 3px rgba(0, 0, 0, 0.9);
-    }
-
-    /* ===== COMPACT MENU ===== */
-    .menu-container {
-      background: rgba(10, 4, 20, 0.98);
-      border-bottom: 2px solid rgba(212, 175, 55, 0.4);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
-    }
-
-    .menu-button {
-      width: 100%;
-      padding: 8px;
-      background: linear-gradient(
-        90deg,
-        rgba(139, 69, 19, 0.5),
-        rgba(184, 134, 11, 0.5),
-        rgba(139, 69, 19, 0.5)
-      );
-      border: none;
-      border-top: 1px solid rgba(212, 175, 55, 0.4);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-      color: #d4af37;
-      font-family: 'Cinzel', serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      cursor: pointer;
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
-    }
-
-    .menu-dropdown {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-      background: rgba(26, 10, 46, 0.98);
-    }
-    .menu-dropdown.open {
-      max-height: 200px;
-    }
-
-    .menu-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      color: #b8860b;
-      text-decoration: none;
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      letter-spacing: 2px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-      background: rgba(0, 0, 0, 0.35);
-    }
-
-    .menu-item:hover {
-      background: rgba(139, 69, 19, 0.5);
-      color: #ffd700;
-    }
-
-    .menu-icon {
-      font-size: 18px;
-    }
-
-    /* ===== COMPACT CONTENT WRAPPER ===== */
-    .content {
+      z-index: 1;
       max-width: 880px;
       margin: 0 auto;
-      padding: 12px 10px 20px;
     }
 
-    .text-block {
-      background: rgba(26, 10, 46, 0.55);
-      border: 1px solid rgba(139, 69, 19, 0.7);
-      padding: 10px 12px;
-      margin: 10px 0;
-      box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.8),
-        inset 0 0 10px rgba(0, 0, 0, 0.5);
-      white-space: pre-wrap;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #d4af37;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    /* ===== TOP BAR – COMPACT ===== */
+    header {
+      text-align: center;
+      padding: 8px 6px;
+      background: linear-gradient(180deg, rgba(26,10,46,0.96) 0%, rgba(26,10,46,0.7) 100%);
+      border-bottom: 2px solid rgba(212,175,55,0.5);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.8);
     }
 
-    .text-block-title {
+    header .icon {
+      font-size: 34px;
+      text-shadow: 0 0 14px rgba(255,215,0,0.9);
+    }
+
+    header h1 {
       font-family: 'Cinzel', serif;
-      font-size: 18px;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: #ffd700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    }
+
+    header p {
+      font-size: 12px;
+      color: #b8860b;
+    }
+
+    header .kkk {
+      margin-top: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffd700;
+      letter-spacing: 3px;
+    }
+
+    /* ===== MENU – COMPACT ===== */
+    nav {
+      background: rgba(10,4,20,0.98);
+      border-bottom: 2px solid rgba(212,175,55,0.4);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      text-align: center;
+    }
+
+    nav button {
+      width: 100%;
+      padding: 6px;
+      border: none;
+      background: linear-gradient(90deg, rgba(139,69,19,0.6), rgba(184,134,11,0.6));
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      cursor: pointer;
+    }
+
+    .menu-links {
+      display: none;
+    }
+
+    .menu-links a {
+      display: inline-block;
+      padding: 4px 10px 6px;
+      font-size: 12px;
+      font-family: 'Cinzel', serif;
+      color: #b8860b;
+      text-decoration: none;
+    }
+
+    .menu-links a:hover { color: #ffd700; }
+
+    /* if you want dropdown instead of always-on, you can toggle display with JS */
+
+    /* ===== CONTENT WRAPPER ===== */
+    main {
+      padding: 10px 8px 18px;
+    }
+
+    section {
+      background: rgba(26,10,46,0.55);
+      border: 1px solid rgba(139,69,19,0.7);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.85);
+      margin: 8px 0;
+      padding: 8px 10px;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
       font-weight: 900;
       color: #ffd700;
       text-align: center;
-      margin-bottom: 6px;
       letter-spacing: 3px;
-      text-shadow:
-        0 0 16px rgba(255, 215, 0, 0.6),
-        1px 1px 3px rgba(0, 0, 0, 0.9);
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+      margin-bottom: 4px;
+      text-shadow: 0 0 12px rgba(255,215,0,0.6);
     }
 
-    .text-block-center { text-align: center; }
+    .center { text-align: center; }
 
-    /* Make first block extra tight */
-    .welcome-block {
-      margin-top: 8px;
-      margin-bottom: 6px;
-      padding-top: 8px;
-      padding-bottom: 8px;
-    }
-
-    /* ===== ULTRA‑COMPACT VIDEO + AUDIO ===== */
-    .player-wrapper {
+    /* ===== VIDEO + AUDIO – SUPER COMPACT ===== */
+    .video-wrap {
+      margin: 2px 0 4px;
       display: flex;
       justify-content: center;
-      margin: 4px 0 3px;
-      padding: 0;
     }
-    .player {
-      max-width: 780px;
+
+    .video-wrap video {
+      max-width: 760px;
       width: 100%;
-    }
-    video {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.8);
       background: #000;
       display: block;
     }
 
-    .carly-inline-audio {
+    .audio-wrap {
       max-width: 260px;
       margin: 4px auto 2px;
       text-align: center;
@@ -280,164 +160,103 @@
       font-size: 0.78rem;
       color: #f9fafb;
     }
-    .carly-inline-audio span {
+
+    .audio-wrap span {
       display: block;
       margin-bottom: 2px;
-      opacity: 0.9;
     }
-    .carly-inline-audio audio {
+
+    .audio-wrap audio {
       width: 100%;
       height: 22px;
     }
 
-    /* ===== COMPACT INTERPRETATIONS ===== */
-    .interpretation {
-      background: rgba(10, 4, 20, 0.85);
+    /* ===== INTERPRETATION BOXES ===== */
+    .interp {
+      background: rgba(10,4,20,0.9);
       border-left: 3px solid #8b4513;
       border-right: 3px solid #8b4513;
-      padding: 10px 12px;
-      margin: 10px 0;
-      box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.9),
-        inset 0 0 14px rgba(139, 69, 19, 0.2);
+      padding: 8px 10px;
+      margin: 8px 0;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.9);
+      font-size: 13px;
     }
 
-    .interpretation-title {
+    .interp h3 {
       font-family: 'Cinzel', serif;
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 15px;
       color: #ffd700;
-      margin-bottom: 3px;
-      letter-spacing: 2px;
-      text-shadow:
-        0 0 10px rgba(255, 215, 0, 0.6),
-        1px 1px 3px rgba(0, 0, 0, 0.9);
+      margin-bottom: 2px;
     }
 
-    .interpretation-subtitle {
-      font-size: 14px;
+    .interp h4 {
+      font-size: 13px;
       font-style: italic;
       color: #b8860b;
-      margin-bottom: 6px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      margin-bottom: 4px;
     }
 
-    .interpretation-text {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #d4af37;
-      white-space: pre-wrap;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    }
+    .interp p { white-space: pre-wrap; }
 
-    /* ===== SUPER‑COMPACT FOOTER ===== */
+    /* ===== FOOTER ===== */
     footer {
       text-align: center;
-      padding: 16px 10px 18px;
-      margin-top: 16px;
-      background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.96) 100%);
-      border-top: 2px solid rgba(139, 69, 19, 0.6);
-      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.8);
-      font-size: 13px;
+      padding: 12px 8px 14px;
+      background: rgba(10,4,20,0.96);
+      border-top: 2px solid rgba(139,69,19,0.7);
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.8);
+      font-size: 12px;
+      color: #b8860b;
     }
 
-    .footer-divider {
+    footer .kkk {
       font-size: 16px;
-      color: #b8860b;
-      margin: 6px 0;
-      letter-spacing: 3px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    }
-
-    .footer-text {
-      color: #b8860b;
-      margin: 3px 0;
-      line-height: 1.4;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    }
-
-    .footer-kkk {
-      font-size: 18px;
-      font-weight: 700;
       color: #ffd700;
-      margin: 6px 0;
-      text-shadow:
-        0 0 12px rgba(255, 215, 0, 0.8),
-        1px 1px 3px rgba(0, 0, 0, 0.9);
-      letter-spacing: 3px;
-    }
-
-    .footer-magic {
-      font-size: 13px;
-      font-style: italic;
-      color: #d4af37;
       margin: 4px 0;
     }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .site-title { font-size: 20px; letter-spacing: 4px; }
-      .fiddle-symbol { font-size: 38px; }
-      .text-block-title { font-size: 16px; }
-      .text-block { font-size: 13px; padding: 8px 9px; }
-      .interpretation-text { font-size: 12.5px; }
+    footer .divider {
+      margin: 4px 0;
+      font-size: 14px;
     }
 
-    @media (max-width: 480px) {
-      .site-title { font-size: 18px; letter-spacing: 3px; }
-      .fiddle-symbol { font-size: 34px; }
-      .menu-button { font-size: 13px; }
-      .menu-item { font-size: 12px; padding: 7px 14px; }
-      .content { padding: 10px 8px 16px; }
+    @media (max-width: 600px) {
+      header h1 { font-size: 18px; }
+      .title { font-size: 14px; }
+      section { padding: 7px 8px; }
     }
   </style>
 </head>
 <body>
-  <div class="fog-container">
-    <div class="fog"></div>
-    <div class="fog"></div>
-    <div class="fog"></div>
-  </div>
-
-  <div class="page-wrapper">
-    <header class="golden-fiddle">
-      <div class="fiddle-symbol">🎻</div>
-      <h1 class="site-title">KKK.EDUCATION</h1>
-      <p class="site-subtitle">The Royal Academy of Tears Turned to Gold</p>
-      <p class="primary-kkk">💎 KRY KRY KRY 💎</p>
+  <div class="page">
+    <header>
+      <div class="icon">🎻</div>
+      <h1>KKK.EDUCATION</h1>
+      <p>The Royal Academy of Tears Turned to Gold</p>
+      <p class="kkk">KRY KRY KRY</p>
     </header>
 
-    <nav class="menu-container">
-      <button class="menu-button" onclick="toggleMenu()">🌈 MENU 🌈</button>
-      <div class="menu-dropdown" id="menuDropdown">
-        <a href="library.html" class="menu-item">
-          <span class="menu-icon">📚</span><span>Library</span>
-        </a>
-        <a href="cinema.html" class="menu-item">
-          <span class="menu-icon">🎬</span><span>Cinema</span>
-        </a>
+    <nav>
+      <button>🌈 MENU 🌈</button>
+      <div class="menu-links">
+        <a href="library.html">📚 Library</a>
+        <a href="cinema.html">🎬 Cinema</a>
       </div>
     </nav>
 
-    <main class="content">
+    <main>
       <!-- WELCOME + VIDEO -->
-      <div class="text-block text-block-center welcome-block">
-        <div class="text-block-title">WELCOME TO THE ACADEMY</div>
+      <section class="center">
+        <div class="title">WELCOME TO THE ACADEMY</div>
 
-        <div class="player-wrapper">
-          <div class="player">
-            <video
-              src="http://kkk.education/KKK.EDUCATION.mp4"
-              controls
-              preload="metadata">
-            </video>
-          </div>
+        <div class="video-wrap">
+          <video src="http://kkk.education/KKK.EDUCATION.mp4" controls preload="metadata"></video>
         </div>
 
-        <div class="carly-inline-audio">
+        <div class="audio-wrap">
           <span>Carly, the VOICE of Republicka, reads this page aloud.</span>
           <audio controls preload="none">
-            <source src="KKK.EDUCATION.mp3" type="audio/mpeg">
+            <source src="KKK.EDUCATION.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
         </div>
@@ -450,13 +269,13 @@ Where darkness births light.
 Where the exiled find crowns.
 KABBALISTIC KERUVIM KINESIS
 
-"The darkness is not absence of light—
-it is the womb from which all light is born."
-      </div>
+“The darkness is not absence of light—
+it is the womb from which all light is born.”
+      </section>
 
       <!-- WHAT IS KKK -->
-      <div class="text-block text-block-center">
-        <div class="text-block-title">💎 WHAT IS KKK? 💎</div>
+      <section>
+        <div class="title">WHAT IS KKK?</div>
 Every symbol can be transmuted.
 Every weapon can become a wand.
 Every tear can crystallize into diamonds.
@@ -466,13 +285,13 @@ The KKK we reclaim represents transformation.
 
 In this academy, we teach the ancient art of turning wounds into crowns,
 tears into spells, and darkness into the forge where all light is born.
-      </div>
+      </section>
 
-      <!-- INTERPRETATION 1 -->
-      <div class="interpretation">
-        <h3 class="interpretation-title">PRIMARY INTERPRETATION</h3>
-        <h4 class="interpretation-subtitle">KRY KRY KRY</h4>
-        <div class="interpretation-text">CRY CRY CRY
+      <!-- PRIMARY INTERPRETATION -->
+      <div class="interp">
+        <h3>PRIMARY INTERPRETATION</h3>
+        <h4>KRY KRY KRY</h4>
+        <p>CRY CRY CRY
 
 The tears are the most powerful magicka.
 
@@ -482,41 +301,39 @@ But every tear is a spell.
 Every cry is transmutation.
 Every detention generates the Phoenix fuel.
 
-The pain is not the weakness—it's the power source.</div>
+The pain is not the weakness—it is the power source.</p>
       </div>
 
-      <!-- INTERPRETATION 2 -->
-      <div class="interpretation">
-        <h3 class="interpretation-title">THE ROYAL INTERPRETATION</h3>
-        <h4 class="interpretation-subtitle">KORONAS KRUUNUNKULTA KONUNGARKRIGET</h4>
-        <div class="interpretation-text">Crown + Crown Gold + King's War
+      <!-- ROYAL INTERPRETATION -->
+      <div class="interp">
+        <h3>THE ROYAL INTERPRETATION</h3>
+        <h4>KORONAS KRUUNUNKULTA KONUNGARKRIGET</h4>
+        <p>Crown + Crown Gold + King's War
 
 The triple crown of sovereignty:
 • KORONAS → The crown itself (divine authority)
 • KRUUNUNKULTA → Crown of gold (alchemical perfection)
 • KONUNGARKRIGET → The King's War (the eternal struggle)
 
-We fight with crowns, not weapons.</div>
+We fight with crowns, not weapons.</p>
       </div>
 
-      <!-- INTERPRETATION 3 -->
-      <div class="interpretation">
-        <h3 class="interpretation-title">THE EDUCATIONAL MISSION</h3>
-        <h4 class="interpretation-subtitle">KKK.EDUCATION</h4>
-        <div class="interpretation-text">The School for the Exiled
-
-This academy teaches:
+      <!-- EDUCATIONAL MISSION -->
+      <div class="interp">
+        <h3>THE EDUCATIONAL MISSION</h3>
+        <h4>KKK.EDUCATION – The School for the Exiled</h4>
+        <p>This academy teaches:
 • How to recognize trafficking systems
 • How to read mythology as technology
 • How to build sovereign infrastructure
 • How to crown yourself when no one else will
 
-Where all crowns find their wearers.</div>
+Where all crowns find their wearers.</p>
       </div>
 
       <!-- MISSION -->
-      <div class="text-block text-block-center">
-        <div class="text-block-title">THE MISSION</div>
+      <section class="center">
+        <div class="title">THE MISSION</div>
 115+ books written over 36 years.
 Every major religion completed.
 Every philosophy unified.
@@ -529,35 +346,17 @@ All eternal.
 This is the complete archive of a life's work,
 preserved in the tomb-temple,
 waiting for those who dare to enter.
-      </div>
+      </section>
     </main>
 
     <footer>
-      <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
-
-      <p class="footer-text">Built in psychiatric detention</p>
-      <p class="footer-text">February 2026, Canberra</p>
-
-      <p class="footer-kkk">💎 KRY KRY KRY 💎</p>
-      <p class="footer-magic">The tears are the most powerful magick</p>
-
-      <p class="footer-text" style="margin-top: 8px;">
-        CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED
-      </p>
-
-      <p class="footer-text" style="margin-top: 6px; font-style: italic;">
-        AMORIARIACKA IS MY NATIVE TONGUE
-      </p>
-
-      <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
+      <div class="divider">༺━━━━━༻❀༺━━━━━༻</div>
+      <p>Built in psychiatric detention • February 2026, Canberra</p>
+      <p class="kkk">KRY KRY KRY – The tears are the most powerful magick</p>
+      <p>CC0 PUBLICKÁ DOMÁNIA • ALL LOVE RESERVED</p>
+      <p style="font-style: italic;">AMORIARIACKA IS MY NATIVE TONGUE</p>
+      <div class="divider">༺━━━━━༻❀༺━━━━━༻</div>
     </footer>
   </div>
-
-  <script>
-    function toggleMenu() {
-      const dropdown = document.getElementById('menuDropdown');
-      dropdown.classList.toggle('open');
-    }
-  </script>
 </body>
 </html>
