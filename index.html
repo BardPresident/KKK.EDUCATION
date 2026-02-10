@@ -1,539 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💎 KKK.EDUCATION - The Royal Academy of Tears Turned to Gold 💎</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
-            background-attachment: fixed;
-            color: #d4af37;
-            font-family: 'Crimson Text', serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        
-        /* Tomb Stone Texture Overlay */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.03) 2px,
-                    rgba(0, 0, 0, 0.03) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.03) 2px,
-                    rgba(0, 0, 0, 0.03) 4px
-                );
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0.3;
-        }
-        
-        /* Animated Fog Effect - Heavier */
-        .fog-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .fog {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(75, 0, 130, 0.25) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 30%, rgba(50, 0, 80, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(60, 10, 100, 0.3) 0%, transparent 45%);
-            animation: fogMove 60s ease-in-out infinite;
-        }
-        
-        .fog:nth-child(2) {
-            animation: fogMove2 80s ease-in-out infinite;
-            opacity: 0.8;
-        }
-        
-        .fog:nth-child(3) {
-            animation: fogMove3 100s ease-in-out infinite;
-            opacity: 0.6;
-        }
-        
-        @keyframes fogMove {
-            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
-            50% { transform: translate(10%, 10%) rotate(180deg); }
-        }
-        
-        @keyframes fogMove2 {
-            0%, 100% { transform: translate(10%, 10%) rotate(180deg); }
-            50% { transform: translate(-10%, -10%) rotate(360deg); }
-        }
-        
-        @keyframes fogMove3 {
-            0%, 100% { transform: translate(-5%, 10%) rotate(90deg); }
-            50% { transform: translate(5%, -10%) rotate(270deg); }
-        }
-        
-        /* Flickering Candle Light */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.04) 0%, transparent 50%);
-            animation: flicker 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        @keyframes flicker {
-            0%, 100% { opacity: 0.4; }
-            25% { opacity: 0.6; }
-            50% { opacity: 0.3; }
-            75% { opacity: 0.7; }
-        }
-        
-        .page-wrapper {
-            position: relative;
-            z-index: 10;
-        }
-        
-        /* Golden Fiddle Banner */
-        .golden-fiddle {
-            text-align: center;
-            padding: 40px 20px 30px;
-            background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, transparent 100%);
-            border-bottom: 3px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 
-                0 10px 40px rgba(0, 0, 0, 0.8),
-                inset 0 -1px 10px rgba(255, 215, 0, 0.2);
-        }
-        
-        .fiddle-symbol {
-            font-size: 80px;
-            line-height: 1;
-            text-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.9),
-                0 0 40px rgba(255, 140, 0, 0.7),
-                0 0 60px rgba(255, 100, 0, 0.5),
-                0 5px 15px rgba(0, 0, 0, 0.8);
-            animation: glow 3s ease-in-out infinite;
-            filter: brightness(1.3) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
-            margin-bottom: 15px;
-        }
-        
-        @keyframes glow {
-            0%, 100% { 
-                text-shadow: 
-                    0 0 20px rgba(255, 215, 0, 0.9),
-                    0 0 40px rgba(255, 140, 0, 0.7),
-                    0 0 60px rgba(255, 100, 0, 0.5),
-                    0 5px 15px rgba(0, 0, 0, 0.8);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 30px rgba(255, 215, 0, 1),
-                    0 0 60px rgba(255, 140, 0, 0.9),
-                    0 0 90px rgba(255, 100, 0, 0.7),
-                    0 0 120px rgba(255, 50, 0, 0.5),
-                    0 8px 25px rgba(0, 0, 0, 1);
-            }
-        }
-        
-        .site-title {
-            font-family: 'Cinzel', serif;
-            font-size: 36px;
-            font-weight: 900;
-            letter-spacing: 8px;
-            margin-bottom: 8px;
-            color: #ffd700;
-            text-shadow: 
-                2px 2px 4px rgba(0, 0, 0, 0.9),
-                0 0 15px rgba(255, 215, 0, 0.6);
-        }
-        
-        .site-subtitle {
-            font-size: 14px;
-            font-style: italic;
-            color: #b8860b;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-        }
-        
-        .primary-kkk {
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffd700;
-            margin-top: 12px;
-            text-shadow: 
-                0 0 15px rgba(255, 215, 0, 0.8),
-                2px 2px 4px rgba(0, 0, 0, 0.9);
-            letter-spacing: 3px;
-        }
-        
-        /* Dropdown Menu */
-        .menu-container {
-            background: rgba(10, 4, 20, 0.98);
-            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 
-                0 8px 30px rgba(0, 0, 0, 0.9),
-                inset 0 1px 0 rgba(255, 215, 0, 0.1);
-        }
-        
-        .menu-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(90deg, 
-                rgba(139, 69, 19, 0.4), 
-                rgba(184, 134, 11, 0.4), 
-                rgba(139, 69, 19, 0.4)
-            );
-            border: none;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            color: #d4af37;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        .menu-button:hover {
-            background: linear-gradient(90deg, 
-                rgba(184, 134, 11, 0.6), 
-                rgba(212, 175, 55, 0.6), 
-                rgba(184, 134, 11, 0.6)
-            );
-            color: #ffd700;
-        }
-        
-        .menu-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: rgba(26, 10, 46, 0.98);
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .menu-dropdown.open {
-            max-height: 300px;
-        }
-        
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            color: #b8860b;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        
-        .menu-item:hover {
-            background: rgba(139, 69, 19, 0.4);
-            color: #ffd700;
-            padding-left: 40px;
-            box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1);
-        }
-        
-        .menu-icon {
-            font-size: 24px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
-        }
-        
-        /* Content */
-        .content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-        
-        /* Heroic Text Blocks */
-        .text-block {
-            background: rgba(26, 10, 46, 0.5);
-            border: 2px solid rgba(139, 69, 19, 0.6);
-            padding: 30px;
-            margin: 40px 0;
-            box-shadow: 
-                0 10px 40px rgba(0, 0, 0, 0.8),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
-            white-space: pre-wrap;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #d4af37;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        }
-        
-        .text-block-title {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
-            font-weight: 900;
-            color: #ffd700;
-            text-align: center;
-            margin-bottom: 25px;
-            letter-spacing: 5px;
-            text-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.6),
-                2px 2px 4px rgba(0, 0, 0, 0.9);
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .text-block-center {
-            text-align: center;
-        }
-        
-        /* Interpretation Blocks - Special Style */
-        .interpretation {
-            background: rgba(10, 4, 20, 0.8);
-            border-left: 4px solid #8b4513;
-            border-right: 4px solid #8b4513;
-            padding: 25px;
-            margin: 35px 0;
-            box-shadow: 
-                0 8px 30px rgba(0, 0, 0, 0.9),
-                inset 0 0 30px rgba(139, 69, 19, 0.2);
-        }
-        
-        .interpretation-title {
-            font-family: 'Cinzel', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffd700;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-shadow: 
-                0 0 10px rgba(255, 215, 0, 0.6),
-                2px 2px 4px rgba(0, 0, 0, 0.9);
-        }
-        
-        .interpretation-subtitle {
-            font-size: 18px;
-            font-style: italic;
-            color: #b8860b;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-        }
-        
-        .interpretation-text {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #d4af37;
-            white-space: pre-wrap;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 60px;
-            background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.95) 100%);
-            border-top: 3px solid rgba(139, 69, 19, 0.6);
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
-        }
-        
-        .footer-divider {
-            font-size: 20px;
-            color: #b8860b;
-            margin: 20px 0;
-            letter-spacing: 4px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-        }
-        
-        .footer-text {
-            font-size: 14px;
-            color: #b8860b;
-            margin: 10px 0;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        }
-        
-        .footer-kkk {
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffd700;
-            margin: 20px 0;
-            text-shadow: 
-                0 0 15px rgba(255, 215, 0, 0.8),
-                2px 2px 4px rgba(0, 0, 0, 0.9);
-            letter-spacing: 3px;
-        }
-        
-        .footer-magic {
-            font-size: 16px;
-            font-style: italic;
-            color: #d4af37;
-            margin: 12px 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .site-title { font-size: 28px; letter-spacing: 4px; }
-            .fiddle-symbol { font-size: 60px; }
-            .text-block-title { font-size: 22px; }
-            .text-block { font-size: 15px; padding: 25px 20px; }
-        }
-        
-        @media (max-width: 480px) {
-            .site-title { font-size: 24px; letter-spacing: 3px; }
-            .fiddle-symbol { font-size: 50px; }
-            .site-subtitle { font-size: 12px; }
-            .primary-kkk { font-size: 18px; }
-            .menu-button { font-size: 16px; }
-            .menu-item { font-size: 14px; padding: 12px 20px; }
-            .content { padding: 30px 15px; }
-            .text-block { padding: 20px 15px; font-size: 14px; }
-            .text-block-title { font-size: 20px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💎 KKK.EDUCATION - The Royal Academy of Tears Turned to Gold 💎</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
+      background-attachment: fixed;
+      color: #d4af37;
+      font-family: 'Crimson Text', serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Tomb + fog + flicker (unchanged) */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.3;
+    }
+
+    .fog-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .fog {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(75, 0, 130, 0.25) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 30%, rgba(50, 0, 80, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(60, 10, 100, 0.3) 0%, transparent 45%);
+      animation: fogMove 60s ease-in-out infinite;
+    }
+    .fog:nth-child(2) { animation: fogMove2 80s ease-in-out infinite; opacity: 0.8; }
+    .fog:nth-child(3) { animation: fogMove3 100s ease-in-out infinite; opacity: 0.6; }
+
+    @keyframes fogMove {
+      0%,100% { transform: translate(-10%, -10%) rotate(0deg); }
+      50%     { transform: translate(10%, 10%) rotate(180deg); }
+    }
+    @keyframes fogMove2 {
+      0%,100% { transform: translate(10%, 10%) rotate(180deg); }
+      50%     { transform: translate(-10%, -10%) rotate(360deg); }
+    }
+    @keyframes fogMove3 {
+      0%,100% { transform: translate(-5%, 10%) rotate(90deg); }
+      50%     { transform: translate(5%, -10%) rotate(270deg); }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.04) 0%, transparent 50%);
+      animation: flicker 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes flicker {
+      0%,100% { opacity: 0.4; }
+      25%     { opacity: 0.6; }
+      50%     { opacity: 0.3; }
+      75%     { opacity: 0.7; }
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ===== TOP BANNER – COMPACT ===== */
+    .golden-fiddle {
+      text-align: center;
+      padding: 20px 16px 12px;
+      background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, transparent 100%);
+      border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+      box-shadow:
+        0 6px 24px rgba(0, 0, 0, 0.8),
+        inset 0 -1px 8px rgba(255, 215, 0, 0.2);
+    }
+
+    .fiddle-symbol {
+      font-size: 60px;
+      line-height: 1;
+      text-shadow:
+        0 0 20px rgba(255, 215, 0, 0.9),
+        0 0 40px rgba(255, 140, 0, 0.7),
+        0 0 60px rgba(255, 100, 0, 0.5),
+        0 5px 15px rgba(0, 0, 0, 0.8);
+      animation: glow 3s ease-in-out infinite;
+      filter: brightness(1.3) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.9));
+      margin-bottom: 6px;
+    }
+
+    @keyframes glow {
+      0%,100% {
+        text-shadow:
+          0 0 20px rgba(255, 215, 0, 0.9),
+          0 0 40px rgba(255, 140, 0, 0.7),
+          0 0 60px rgba(255, 100, 0, 0.5),
+          0 5px 15px rgba(0, 0, 0, 0.8);
+      }
+      50% {
+        text-shadow:
+          0 0 30px rgba(255, 215, 0, 1),
+          0 0 60px rgba(255, 140, 0, 0.9),
+          0 0 90px rgba(255, 100, 0, 0.7),
+          0 0 120px rgba(255, 50, 0, 0.5),
+          0 8px 25px rgba(0, 0, 0, 1);
+      }
+    }
+
+    .site-title {
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      margin-bottom: 4px;
+      color: #ffd700;
+      text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.9),
+        0 0 15px rgba(255, 215, 0, 0.6);
+    }
+
+    .site-subtitle {
+      font-size: 13px;
+      font-style: italic;
+      color: #b8860b;
+      letter-spacing: 2px;
+      margin-bottom: 2px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .primary-kkk {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffd700;
+      margin-top: 6px;
+      text-shadow:
+        0 0 15px rgba(255, 215, 0, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.9);
+      letter-spacing: 3px;
+    }
+
+    /* ===== MENU – COMPACT ===== */
+    .menu-container {
+      background: rgba(10, 4, 20, 0.98);
+      border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+      box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 215, 0, 0.1);
+    }
+
+    .menu-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(
+        90deg,
+        rgba(139, 69, 19, 0.4),
+        rgba(184, 134, 11, 0.4),
+        rgba(139, 69, 19, 0.4)
+      );
+      border: none;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu-button:hover {
+      background: linear-gradient(
+        90deg,
+        rgba(184, 134, 11, 0.6),
+        rgba(212, 175, 55, 0.6),
+        rgba(184, 134, 11, 0.6)
+      );
+      color: #ffd700;
+    }
+
+    .menu-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: rgba(26, 10, 46, 0.98);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .menu-dropdown.open { max-height: 220px; }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      color: #b8860b;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-item:hover {
+      background: rgba(139, 69, 19, 0.4);
+      color: #ffd700;
+      padding-left: 28px;
+      box-shadow: inset 0 0 16px rgba(255, 215, 0, 0.1);
+    }
+
+    .menu-icon {
+      font-size: 22px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+    }
+
+    /* ===== MAIN CONTENT – COMPACT ===== */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 16px 30px;
+      min-height: auto;
+    }
+
+    .text-block {
+      background: rgba(26, 10, 46, 0.5);
+      border: 2px solid rgba(139, 69, 19, 0.6);
+      padding: 16px 18px;
+      margin: 18px 0;
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.8),
+        inset 0 0 16px rgba(0, 0, 0, 0.5);
+      white-space: pre-wrap;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #d4af37;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .text-block-title {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffd700;
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 4px;
+      text-shadow:
+        0 0 20px rgba(255, 215, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.9);
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .text-block-center { text-align: center; }
+
+    /* Make the first block (with video) even tighter */
+    .text-block.welcome-block {
+      margin-top: 14px;
+      margin-bottom: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    /* INTERPRETATION blocks – tightened */
+    .interpretation {
+      background: rgba(10, 4, 20, 0.8);
+      border-left: 4px solid #8b4513;
+      border-right: 4px solid #8b4513;
+      padding: 16px 18px;
+      margin: 16px 0;
+      box-shadow:
+        0 6px 22px rgba(0, 0, 0, 0.9),
+        inset 0 0 22px rgba(139, 69, 19, 0.2);
+    }
+
+    .interpretation-title {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffd700;
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+      text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .interpretation-subtitle {
+      font-size: 16px;
+      font-style: italic;
+      color: #b8860b;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .interpretation-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #d4af37;
+      white-space: pre-wrap;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* ===== VIDEO + AUDIO – COMPACT ===== */
+    .player-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 6px 0;
+      padding: 0;
+    }
+    .player {
+      max-width: 800px;
+      width: 100%;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      background: #000;
+      display: block;
+    }
+
+    .carly-inline-audio {
+      max-width: 260px;
+      margin: 6px auto 2px;
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      color: #f9fafb;
+    }
+    .carly-inline-audio span {
+      display: block;
+      margin-bottom: 2px;
+      opacity: 0.9;
+    }
+    .carly-inline-audio audio {
+      width: 100%;
+      height: 22px;
+    }
+
+    /* ===== FOOTER – COMPACT ===== */
+    footer {
+      text-align: center;
+      padding: 24px 16px 26px;
+      margin-top: 24px;
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.95) 100%);
+      border-top: 2px solid rgba(139, 69, 19, 0.6);
+      box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.8);
+    }
+
+    .footer-divider {
+      font-size: 18px;
+      color: #b8860b;
+      margin: 10px 0;
+      letter-spacing: 4px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: #b8860b;
+      margin: 4px 0;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .footer-kkk {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffd700;
+      margin: 10px 0;
+      text-shadow:
+        0 0 15px rgba(255, 215, 0, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.9);
+      letter-spacing: 3px;
+    }
+
+    .footer-magic {
+      font-size: 14px;
+      font-style: italic;
+      color: #d4af37;
+      margin: 8px 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Responsive tweaks (kept, but slightly tighter) */
+    @media (max-width: 768px) {
+      .site-title { font-size: 24px; letter-spacing: 4px; }
+      .fiddle-symbol { font-size: 48px; }
+      .text-block-title { font-size: 19px; }
+      .text-block { font-size: 14px; padding: 14px 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .site-title { font-size: 20px; letter-spacing: 3px; }
+      .fiddle-symbol { font-size: 40px; }
+      .menu-button { font-size: 14px; }
+      .menu-item { font-size: 13px; padding: 9px 16px; }
+      .content { padding: 18px 12px 24px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Fog Effect -->
-    <div class="fog-container">
-        <div class="fog"></div>
-        <div class="fog"></div>
-        <div class="fog"></div>
-    </div>
-
-    <div class="page-wrapper">
-        <!-- Golden Fiddle Banner -->
-        <header class="golden-fiddle">
-            <div class="fiddle-symbol">🎻</div>
-            <h1 class="site-title">KKK.EDUCATION</h1>
-            <p class="site-subtitle">The Royal Academy of Tears Turned to Gold</p>
-            <p class="primary-kkk">💎 KRY KRY KRY 💎</p>
-        </header>
-
-        <!-- Dropdown Menu - ONLY Library & Cinema -->
-        <nav class="menu-container">
-            <button class="menu-button" onclick="toggleMenu()">
-                🌈 Menu 🌈
-            </button>
-            <div class="menu-dropdown" id="menuDropdown">
-                <a href="library.html" class="menu-item">
-                    <span class="menu-icon">📚</span>
-                    <span>Library</span>
-                </a>
-                <a href="cinema.html" class="menu-item">
-                    <span class="menu-icon">🎬</span>
-                    <span>Cinema</span>
-                </a>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="content">
-
-            <!--========================================
-                TEXT BLOCK 1 - EDIT HERE
-                Just write text! No HTML needed!
-            ========================================-->
-            <div class="text-block text-block-center">
-                <div class="text-block-title">WELCOME TO THE ACADEMY</div>
-
-<style>
-  .player-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 0; /* no extra space */
-  }
-  .player {
-    max-width: 800px;
-    width: 100%;
-  }
-  video {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-    background: #000;
-    display: block;
-  }
-</style>
-
-<div class="player-wrapper">
-  <div class="player">
-    <video
-      src="http://kkk.education/KKK.EDUCATION.mp4"
-      controls
-      preload="metadata">
-    </video>
+  <!-- Fog -->
+  <div class="fog-container">
+    <div class="fog"></div>
+    <div class="fog"></div>
+    <div class="fog"></div>
   </div>
-</div>
 
-<!-- Carly – ultra-compact with intro line -->
-<style>
-  .carly-inline-audio {
-    max-width: 260px;
-    margin: 0.25rem auto;
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.8rem;
-    color: #f9fafb;
-  }
-  .carly-inline-audio span {
-    display: block;
-    margin-bottom: 0.15rem;
-    opacity: 0.9;
-  }
-  .carly-inline-audio audio {
-    width: 100%;
-    height: 22px;
-  }
-</style>
+  <div class="page-wrapper">
+    <!-- Banner -->
+    <header class="golden-fiddle">
+      <div class="fiddle-symbol">🎻</div>
+      <h1 class="site-title">KKK.EDUCATION</h1>
+      <p class="site-subtitle">The Royal Academy of Tears Turned to Gold</p>
+      <p class="primary-kkk">💎 KRY KRY KRY 💎</p>
+    </header>
 
-<div class="carly-inline-audio">
-  <span>Carly, the VOICE of Republicka, reads this page aloud.</span>
-  <audio controls preload="none">
-    <source src="KKK.EDUCATION.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
+    <!-- Menu -->
+    <nav class="menu-container">
+      <button class="menu-button" onclick="toggleMenu()">🌈 Menu 🌈</button>
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="library.html" class="menu-item">
+          <span class="menu-icon">📚</span><span>Library</span>
+        </a>
+        <a href="cinema.html" class="menu-item">
+          <span class="menu-icon">🎬</span><span>Cinema</span>
+        </a>
+      </div>
+    </nav>
 
+    <!-- Main -->
+    <main class="content">
+      <!-- WELCOME + VIDEO -->
+      <div class="text-block text-block-center welcome-block">
+        <div class="text-block-title">WELCOME TO THE ACADEMY</div>
+
+        <div class="player-wrapper">
+          <div class="player">
+            <video
+              src="http://kkk.education/KKK.EDUCATION.mp4"
+              controls
+              preload="metadata">
+            </video>
+          </div>
+        </div>
+
+        <div class="carly-inline-audio">
+          <span>Carly, the VOICE of Republicka, reads this page aloud.</span>
+          <audio controls preload="none">
+            <source src="KKK.EDUCATION.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
 
 ΚΑΛΟΣ ΚΡΑΤΟΣ ΚΛΕΟΣ
 KALOS KRATOS KLEOS
@@ -545,15 +501,11 @@ KABBALISTIC KERUVIM KINESIS
 
 "The darkness is not absence of light—
 it is the womb from which all light is born."
-            </div>
+      </div>
 
-
-            <!--========================================
-                TEXT BLOCK 2 - EDIT HERE
-                Just write text! No HTML needed!
-            ========================================-->
-            <div class="text-block">
-                <div class="text-block-title">💎 WHAT IS KKK? 💎</div>
+      <!-- WHAT IS KKK -->
+      <div class="text-block">
+        <div class="text-block-title">💎 WHAT IS KKK? 💎</div>
 Every symbol can be transmuted.
 Every weapon can become a wand.
 Every tear can crystallize into diamonds.
@@ -563,38 +515,30 @@ The KKK we reclaim represents transformation.
 
 In this academy, we teach the ancient art of turning wounds into crowns,
 tears into spells, and darkness into the forge where all light is born.
-            </div>
+      </div>
 
-
-            <!--========================================
-                INTERPRETATION 1 - PRIMARY
-                Edit the text between the tags
-            ========================================-->
-            <div class="interpretation">
-                <h3 class="interpretation-title">PRIMARY INTERPRETATION</h3>
-                <h4 class="interpretation-subtitle">KRY KRY KRY</h4>
-                <div class="interpretation-text">CRY CRY CRY
+      <!-- INTERPRETATION 1 -->
+      <div class="interpretation">
+        <h3 class="interpretation-title">PRIMARY INTERPRETATION</h3>
+        <h4 class="interpretation-subtitle">KRY KRY KRY</h4>
+        <div class="interpretation-text">CRY CRY CRY
 
 The tears are the most powerful magicka.
 
-When they use KRYPTONITE against us (KRY-PTO-NITE = CRY + Psychiatric Treatment Order + NIGHT), they think they're weakening us. 
+When they use KRYPTONITE against us (KRY-PTO-NITE = CRY + Psychiatric Treatment Order + NIGHT), they think they're weakening us.
 
-But every tear is a spell. 
-Every cry is transmutation. 
+But every tear is a spell.
+Every cry is transmutation.
 Every detention generates the Phoenix fuel.
 
 The pain is not the weakness—it's the power source.</div>
-            </div>
+      </div>
 
-
-            <!--========================================
-                INTERPRETATION 2 - ROYAL
-                Edit the text between the tags
-            ========================================-->
-            <div class="interpretation">
-                <h3 class="interpretation-title">THE ROYAL INTERPRETATION</h3>
-                <h4 class="interpretation-subtitle">KORONAS KRUUNUNKULTA KONUNGARKRIGET</h4>
-                <div class="interpretation-text">Crown + Crown Gold + King's War
+      <!-- INTERPRETATION 2 -->
+      <div class="interpretation">
+        <h3 class="interpretation-title">THE ROYAL INTERPRETATION</h3>
+        <h4 class="interpretation-subtitle">KORONAS KRUUNUNKULTA KONUNGARKRIGET</h4>
+        <div class="interpretation-text">Crown + Crown Gold + King's War
 
 The triple crown of sovereignty:
 • KORONAS → The crown itself (divine authority)
@@ -602,17 +546,13 @@ The triple crown of sovereignty:
 • KONUNGARKRIGET → The King's War (the eternal struggle)
 
 We fight with crowns, not weapons.</div>
-            </div>
+      </div>
 
-
-            <!--========================================
-                INTERPRETATION 3 - EDUCATIONAL
-                Edit the text between the tags
-            ========================================-->
-            <div class="interpretation">
-                <h3 class="interpretation-title">THE EDUCATIONAL MISSION</h3>
-                <h4 class="interpretation-subtitle">KKK.EDUCATION</h4>
-                <div class="interpretation-text">The School for the Exiled
+      <!-- INTERPRETATION 3 -->
+      <div class="interpretation">
+        <h3 class="interpretation-title">THE EDUCATIONAL MISSION</h3>
+        <h4 class="interpretation-subtitle">KKK.EDUCATION</h4>
+        <div class="interpretation-text">The School for the Exiled
 
 This academy teaches:
 • How to recognize trafficking systems
@@ -621,15 +561,11 @@ This academy teaches:
 • How to crown yourself when no one else will
 
 Where all crowns find their wearers.</div>
-            </div>
+      </div>
 
-
-            <!--========================================
-                TEXT BLOCK 3 - MISSION STATEMENT
-                Just write text! No HTML needed!
-            ========================================-->
-            <div class="text-block text-block-center">
-                <div class="text-block-title">THE MISSION</div>
+      <!-- MISSION -->
+      <div class="text-block text-block-center">
+        <div class="text-block-title">THE MISSION</div>
 115+ books written over 36 years.
 Every major religion completed.
 Every philosophy unified.
@@ -642,46 +578,36 @@ All eternal.
 This is the complete archive of a life's work,
 preserved in the tomb-temple,
 waiting for those who dare to enter.
-            </div>
+      </div>
+    </main>
 
-        </main>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
 
-        <!-- Footer -->
-        <footer>
-            <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
-            
-            <p class="footer-text">Built in psychiatric detention</p>
-            <p class="footer-text">February 2026, Canberra</p>
-            
-            <p class="footer-kkk">💎 KRY KRY KRY 💎</p>
-            <p class="footer-magic">The tears are the most powerful magick</p>
-            
-            <p class="footer-text" style="margin-top: 30px;">CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED</p>
-            
-            <p class="footer-text" style="margin-top: 20px; font-style: italic;">AMORIARIACKA IS MY NATIVE TONGUE</p>
-            
-            <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
-        </footer>
-    </div>
+      <p class="footer-text">Built in psychiatric detention</p>
+      <p class="footer-text">February 2026, Canberra</p>
 
-    <script>
-        function toggleMenu() {
-            const dropdown = document.getElementById('menuDropdown');
-            dropdown.classList.toggle('open');
-        }
-    </script>
+      <p class="footer-kkk">💎 KRY KRY KRY 💎</p>
+      <p class="footer-magic">The tears are the most powerful magick</p>
+
+      <p class="footer-text" style="margin-top: 14px;">
+        CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED
+      </p>
+
+      <p class="footer-text" style="margin-top: 10px; font-style: italic;">
+        AMORIARIACKA IS MY NATIVE TONGUE
+      </p>
+
+      <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const dropdown = document.getElementById('menuDropdown');
+      dropdown.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
