@@ -19,12 +19,11 @@
       background-attachment: fixed;
       color: #d4af37;
       font-family: 'Crimson Text', serif;
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
       min-height: 100vh;
     }
 
-    /* Tomb + fog + flicker (unchanged) */
     body::after {
       content: '';
       position: fixed;
@@ -55,8 +54,8 @@
         radial-gradient(ellipse at 50% 80%, rgba(60, 10, 100, 0.3) 0%, transparent 45%);
       animation: fogMove 60s ease-in-out infinite;
     }
-    .fog:nth-child(2) { animation: fogMove2 80s ease-in-out infinite; opacity: 0.8; }
-    .fog:nth-child(3) { animation: fogMove3 100s ease-in-out infinite; opacity: 0.6; }
+    .fog:nth-child(2) { animation: fogMove2 80s ease-in-out infinite; opacity: 0.7; }
+    .fog:nth-child(3) { animation: fogMove3 100s ease-in-out infinite; opacity: 0.5; }
 
     @keyframes fogMove {
       0%,100% { transform: translate(-10%, -10%) rotate(0deg); }
@@ -82,10 +81,10 @@
     }
 
     @keyframes flicker {
-      0%,100% { opacity: 0.4; }
-      25%     { opacity: 0.6; }
+      0%,100% { opacity: 0.35; }
+      25%     { opacity: 0.55; }
       50%     { opacity: 0.3; }
-      75%     { opacity: 0.7; }
+      75%     { opacity: 0.65; }
     }
 
     .page-wrapper {
@@ -93,276 +92,192 @@
       z-index: 10;
     }
 
-    /* ===== TOP BANNER – COMPACT ===== */
+    /* ===== COMPACT TOP BANNER ===== */
     .golden-fiddle {
       text-align: center;
-      padding: 20px 16px 12px;
-      background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, transparent 100%);
-      border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+      padding: 12px 10px 8px;
+      background: linear-gradient(180deg, rgba(26, 10, 46, 0.96) 0%, transparent 100%);
+      border-bottom: 2px solid rgba(212, 175, 55, 0.5);
       box-shadow:
-        0 6px 24px rgba(0, 0, 0, 0.8),
-        inset 0 -1px 8px rgba(255, 215, 0, 0.2);
+        0 4px 16px rgba(0, 0, 0, 0.8),
+        inset 0 -1px 6px rgba(255, 215, 0, 0.2);
     }
 
     .fiddle-symbol {
-      font-size: 60px;
+      font-size: 46px;
       line-height: 1;
       text-shadow:
-        0 0 20px rgba(255, 215, 0, 0.9),
-        0 0 40px rgba(255, 140, 0, 0.7),
-        0 0 60px rgba(255, 100, 0, 0.5),
-        0 5px 15px rgba(0, 0, 0, 0.8);
-      animation: glow 3s ease-in-out infinite;
-      filter: brightness(1.3) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.9));
-      margin-bottom: 6px;
-    }
-
-    @keyframes glow {
-      0%,100% {
-        text-shadow:
-          0 0 20px rgba(255, 215, 0, 0.9),
-          0 0 40px rgba(255, 140, 0, 0.7),
-          0 0 60px rgba(255, 100, 0, 0.5),
-          0 5px 15px rgba(0, 0, 0, 0.8);
-      }
-      50% {
-        text-shadow:
-          0 0 30px rgba(255, 215, 0, 1),
-          0 0 60px rgba(255, 140, 0, 0.9),
-          0 0 90px rgba(255, 100, 0, 0.7),
-          0 0 120px rgba(255, 50, 0, 0.5),
-          0 8px 25px rgba(0, 0, 0, 1);
-      }
+        0 0 18px rgba(255, 215, 0, 0.9),
+        0 0 30px rgba(255, 140, 0, 0.7);
+      margin-bottom: 2px;
     }
 
     .site-title {
       font-family: 'Cinzel', serif;
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 900;
-      letter-spacing: 6px;
-      margin-bottom: 4px;
+      letter-spacing: 5px;
+      margin-bottom: 2px;
       color: #ffd700;
       text-shadow:
         2px 2px 4px rgba(0, 0, 0, 0.9),
-        0 0 15px rgba(255, 215, 0, 0.6);
+        0 0 12px rgba(255, 215, 0, 0.6);
     }
 
     .site-subtitle {
-      font-size: 13px;
+      font-size: 12px;
       font-style: italic;
       color: #b8860b;
       letter-spacing: 2px;
       margin-bottom: 2px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .primary-kkk {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
       color: #ffd700;
-      margin-top: 6px;
-      text-shadow:
-        0 0 15px rgba(255, 215, 0, 0.8),
-        2px 2px 4px rgba(0, 0, 0, 0.9);
+      margin-top: 2px;
       letter-spacing: 3px;
+      text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.8),
+        1px 1px 3px rgba(0, 0, 0, 0.9);
     }
 
-    /* ===== MENU – COMPACT ===== */
+    /* ===== COMPACT MENU ===== */
     .menu-container {
       background: rgba(10, 4, 20, 0.98);
       border-bottom: 2px solid rgba(212, 175, 55, 0.4);
-      box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.9),
-        inset 0 1px 0 rgba(255, 215, 0, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
     }
 
     .menu-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       background: linear-gradient(
         90deg,
-        rgba(139, 69, 19, 0.4),
-        rgba(184, 134, 11, 0.4),
-        rgba(139, 69, 19, 0.4)
+        rgba(139, 69, 19, 0.5),
+        rgba(184, 134, 11, 0.5),
+        rgba(139, 69, 19, 0.5)
       );
       border: none;
-      border-top: 1px solid rgba(212, 175, 55, 0.3);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
       color: #d4af37;
       font-family: 'Cinzel', serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 3px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    .menu-button:hover {
-      background: linear-gradient(
-        90deg,
-        rgba(184, 134, 11, 0.6),
-        rgba(212, 175, 55, 0.6),
-        rgba(184, 134, 11, 0.6)
-      );
-      color: #ffd700;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
     }
 
     .menu-dropdown {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
+      transition: max-height 0.25s ease;
       background: rgba(26, 10, 46, 0.98);
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
     }
-    .menu-dropdown.open { max-height: 220px; }
+    .menu-dropdown.open {
+      max-height: 200px;
+    }
 
     .menu-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
+      gap: 6px;
+      padding: 8px 18px;
       color: #b8860b;
       text-decoration: none;
       font-family: 'Cinzel', serif;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
       letter-spacing: 2px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-      transition: all 0.3s ease;
-      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(0, 0, 0, 0.35);
     }
 
     .menu-item:hover {
-      background: rgba(139, 69, 19, 0.4);
+      background: rgba(139, 69, 19, 0.5);
       color: #ffd700;
-      padding-left: 28px;
-      box-shadow: inset 0 0 16px rgba(255, 215, 0, 0.1);
     }
 
     .menu-icon {
-      font-size: 22px;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+      font-size: 18px;
     }
 
-    /* ===== MAIN CONTENT – COMPACT ===== */
+    /* ===== COMPACT CONTENT WRAPPER ===== */
     .content {
-      max-width: 900px;
+      max-width: 880px;
       margin: 0 auto;
-      padding: 20px 16px 30px;
-      min-height: auto;
+      padding: 12px 10px 20px;
     }
 
     .text-block {
-      background: rgba(26, 10, 46, 0.5);
-      border: 2px solid rgba(139, 69, 19, 0.6);
-      padding: 16px 18px;
-      margin: 18px 0;
+      background: rgba(26, 10, 46, 0.55);
+      border: 1px solid rgba(139, 69, 19, 0.7);
+      padding: 10px 12px;
+      margin: 10px 0;
       box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.8),
-        inset 0 0 16px rgba(0, 0, 0, 0.5);
+        0 4px 16px rgba(0, 0, 0, 0.8),
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
       white-space: pre-wrap;
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 14px;
+      line-height: 1.6;
       color: #d4af37;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .text-block-title {
       font-family: 'Cinzel', serif;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 900;
       color: #ffd700;
       text-align: center;
-      margin-bottom: 10px;
-      letter-spacing: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 3px;
       text-shadow:
-        0 0 20px rgba(255, 215, 0, 0.6),
-        2px 2px 4px rgba(0, 0, 0, 0.9);
-      padding-bottom: 8px;
-      border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        0 0 16px rgba(255, 215, 0, 0.6),
+        1px 1px 3px rgba(0, 0, 0, 0.9);
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
     }
 
     .text-block-center { text-align: center; }
 
-    /* Make the first block (with video) even tighter */
-    .text-block.welcome-block {
-      margin-top: 14px;
-      margin-bottom: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
+    /* Make first block extra tight */
+    .welcome-block {
+      margin-top: 8px;
+      margin-bottom: 6px;
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
 
-    /* INTERPRETATION blocks – tightened */
-    .interpretation {
-      background: rgba(10, 4, 20, 0.8);
-      border-left: 4px solid #8b4513;
-      border-right: 4px solid #8b4513;
-      padding: 16px 18px;
-      margin: 16px 0;
-      box-shadow:
-        0 6px 22px rgba(0, 0, 0, 0.9),
-        inset 0 0 22px rgba(139, 69, 19, 0.2);
-    }
-
-    .interpretation-title {
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #ffd700;
-      margin-bottom: 4px;
-      letter-spacing: 2px;
-      text-shadow:
-        0 0 10px rgba(255, 215, 0, 0.6),
-        2px 2px 4px rgba(0, 0, 0, 0.9);
-    }
-
-    .interpretation-subtitle {
-      font-size: 16px;
-      font-style: italic;
-      color: #b8860b;
-      margin-bottom: 8px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    }
-
-    .interpretation-text {
-      font-size: 14px;
-      line-height: 1.65;
-      color: #d4af37;
-      white-space: pre-wrap;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    }
-
-    /* ===== VIDEO + AUDIO – COMPACT ===== */
+    /* ===== ULTRA‑COMPACT VIDEO + AUDIO ===== */
     .player-wrapper {
       display: flex;
       justify-content: center;
-      margin: 6px 0;
+      margin: 4px 0 3px;
       padding: 0;
     }
     .player {
-      max-width: 800px;
+      max-width: 780px;
       width: 100%;
     }
     video {
       width: 100%;
       height: auto;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
       background: #000;
       display: block;
     }
 
     .carly-inline-audio {
       max-width: 260px;
-      margin: 6px auto 2px;
+      margin: 4px auto 2px;
       text-align: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #f9fafb;
     }
     .carly-inline-audio span {
@@ -375,70 +290,109 @@
       height: 22px;
     }
 
-    /* ===== FOOTER – COMPACT ===== */
+    /* ===== COMPACT INTERPRETATIONS ===== */
+    .interpretation {
+      background: rgba(10, 4, 20, 0.85);
+      border-left: 3px solid #8b4513;
+      border-right: 3px solid #8b4513;
+      padding: 10px 12px;
+      margin: 10px 0;
+      box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.9),
+        inset 0 0 14px rgba(139, 69, 19, 0.2);
+    }
+
+    .interpretation-title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffd700;
+      margin-bottom: 3px;
+      letter-spacing: 2px;
+      text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.6),
+        1px 1px 3px rgba(0, 0, 0, 0.9);
+    }
+
+    .interpretation-subtitle {
+      font-size: 14px;
+      font-style: italic;
+      color: #b8860b;
+      margin-bottom: 6px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .interpretation-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #d4af37;
+      white-space: pre-wrap;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* ===== SUPER‑COMPACT FOOTER ===== */
     footer {
       text-align: center;
-      padding: 24px 16px 26px;
-      margin-top: 24px;
-      background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.95) 100%);
+      padding: 16px 10px 18px;
+      margin-top: 16px;
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.96) 100%);
       border-top: 2px solid rgba(139, 69, 19, 0.6);
-      box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.8);
+      font-size: 13px;
     }
 
     .footer-divider {
-      font-size: 18px;
+      font-size: 16px;
       color: #b8860b;
-      margin: 10px 0;
-      letter-spacing: 4px;
+      margin: 6px 0;
+      letter-spacing: 3px;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
 
     .footer-text {
-      font-size: 13px;
       color: #b8860b;
-      margin: 4px 0;
-      line-height: 1.5;
+      margin: 3px 0;
+      line-height: 1.4;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .footer-kkk {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: #ffd700;
-      margin: 10px 0;
+      margin: 6px 0;
       text-shadow:
-        0 0 15px rgba(255, 215, 0, 0.8),
-        2px 2px 4px rgba(0, 0, 0, 0.9);
+        0 0 12px rgba(255, 215, 0, 0.8),
+        1px 1px 3px rgba(0, 0, 0, 0.9);
       letter-spacing: 3px;
     }
 
     .footer-magic {
-      font-size: 14px;
+      font-size: 13px;
       font-style: italic;
       color: #d4af37;
-      margin: 8px 0;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      margin: 4px 0;
     }
 
-    /* Responsive tweaks (kept, but slightly tighter) */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .site-title { font-size: 24px; letter-spacing: 4px; }
-      .fiddle-symbol { font-size: 48px; }
-      .text-block-title { font-size: 19px; }
-      .text-block { font-size: 14px; padding: 14px 14px; }
+      .site-title { font-size: 20px; letter-spacing: 4px; }
+      .fiddle-symbol { font-size: 38px; }
+      .text-block-title { font-size: 16px; }
+      .text-block { font-size: 13px; padding: 8px 9px; }
+      .interpretation-text { font-size: 12.5px; }
     }
 
     @media (max-width: 480px) {
-      .site-title { font-size: 20px; letter-spacing: 3px; }
-      .fiddle-symbol { font-size: 40px; }
-      .menu-button { font-size: 14px; }
-      .menu-item { font-size: 13px; padding: 9px 16px; }
-      .content { padding: 18px 12px 24px; }
+      .site-title { font-size: 18px; letter-spacing: 3px; }
+      .fiddle-symbol { font-size: 34px; }
+      .menu-button { font-size: 13px; }
+      .menu-item { font-size: 12px; padding: 7px 14px; }
+      .content { padding: 10px 8px 16px; }
     }
   </style>
 </head>
 <body>
-  <!-- Fog -->
   <div class="fog-container">
     <div class="fog"></div>
     <div class="fog"></div>
@@ -446,7 +400,6 @@
   </div>
 
   <div class="page-wrapper">
-    <!-- Banner -->
     <header class="golden-fiddle">
       <div class="fiddle-symbol">🎻</div>
       <h1 class="site-title">KKK.EDUCATION</h1>
@@ -454,9 +407,8 @@
       <p class="primary-kkk">💎 KRY KRY KRY 💎</p>
     </header>
 
-    <!-- Menu -->
     <nav class="menu-container">
-      <button class="menu-button" onclick="toggleMenu()">🌈 Menu 🌈</button>
+      <button class="menu-button" onclick="toggleMenu()">🌈 MENU 🌈</button>
       <div class="menu-dropdown" id="menuDropdown">
         <a href="library.html" class="menu-item">
           <span class="menu-icon">📚</span><span>Library</span>
@@ -467,7 +419,6 @@
       </div>
     </nav>
 
-    <!-- Main -->
     <main class="content">
       <!-- WELCOME + VIDEO -->
       <div class="text-block text-block-center welcome-block">
@@ -504,7 +455,7 @@ it is the womb from which all light is born."
       </div>
 
       <!-- WHAT IS KKK -->
-      <div class="text-block">
+      <div class="text-block text-block-center">
         <div class="text-block-title">💎 WHAT IS KKK? 💎</div>
 Every symbol can be transmuted.
 Every weapon can become a wand.
@@ -581,7 +532,6 @@ waiting for those who dare to enter.
       </div>
     </main>
 
-    <!-- Footer -->
     <footer>
       <div class="footer-divider">༺━━━━━༻❀༺━━━━━༻</div>
 
@@ -591,11 +541,11 @@ waiting for those who dare to enter.
       <p class="footer-kkk">💎 KRY KRY KRY 💎</p>
       <p class="footer-magic">The tears are the most powerful magick</p>
 
-      <p class="footer-text" style="margin-top: 14px;">
+      <p class="footer-text" style="margin-top: 8px;">
         CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED
       </p>
 
-      <p class="footer-text" style="margin-top: 10px; font-style: italic;">
+      <p class="footer-text" style="margin-top: 6px; font-style: italic;">
         AMORIARIACKA IS MY NATIVE TONGUE
       </p>
 
