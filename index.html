@@ -71,6 +71,7 @@
       letter-spacing: 3px;
     }
 
+    /* MENU */
     nav {
       background: rgba(10,4,20,0.98);
       border-bottom: 2px solid rgba(212,175,55,0.4);
@@ -91,16 +92,23 @@
     }
 
     .menu-links {
-      display: none; /* keep compact: links inline only if you want them visible */
+      display: none;
+      background: rgba(26,10,46,0.98);
+      border-top: 1px solid rgba(212,175,55,0.4);
+    }
+
+    .menu-links.open {
+      display: block;
     }
 
     .menu-links a {
-      display: inline-block;
-      padding: 4px 10px 6px;
+      display: block;
+      padding: 8px 12px;
       font-size: 12px;
       font-family: 'Cinzel', serif;
       color: #b8860b;
       text-decoration: none;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
     }
 
     .menu-links a:hover { color: #ffd700; }
@@ -115,7 +123,7 @@
       box-shadow: 0 3px 12px rgba(0,0,0,0.85);
       margin: 8px 0;
       padding: 8px 10px;
-      white-space: pre-wrap; /* keep your line breaks */
+      white-space: pre-wrap;
     }
 
     .title {
@@ -174,7 +182,7 @@
       margin: 8px 0;
       box-shadow: 0 3px 14px rgba(0,0,0,0.9);
       font-size: 13px;
-      white-space: pre-wrap; /* preserve your breaks here too */
+      white-space: pre-wrap;
     }
 
     .interp h3 {
@@ -199,7 +207,7 @@
       box-shadow: 0 -3px 12px rgba(0,0,0,0.8);
       font-size: 12px;
       color: #b8860b;
-      white-space: pre-wrap; /* keep footer lines too */
+      white-space: pre-wrap;
     }
 
     footer .kkk {
@@ -230,8 +238,8 @@
     </header>
 
     <nav>
-      <button>🌈 MENU 🌈</button>
-      <div class="menu-links">
+      <button id="menuToggle">🌈 MENU 🌈</button>
+      <div class="menu-links" id="menuLinks">
         <a href="library.html">📚 Library</a>
         <a href="cinema.html">🎬 Cinema</a>
       </div>
@@ -362,6 +370,14 @@ AMORIARIACKA IS MY NATIVE TONGUE
 ༺━━━━━༻❀༺━━━━━༻
     </footer>
   </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuLinks = document.getElementById('menuLinks');
+
+    menuToggle.addEventListener('click', () => {
+      menuLinks.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
-
