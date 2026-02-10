@@ -481,15 +481,10 @@
   <meta charset="UTF-8">
   <title>KKK.EDUCATION – Ivory's Siren Call</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #050312;
+    .player-wrapper {
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 1.5rem 0; /* small space before + after */
     }
     .player {
       max-width: 800px;
@@ -506,9 +501,21 @@
   </style>
 </head>
 <body>
-  <div class="player">
-    <video src="http://kkk.education/KKK.EDUCATION.mp4" controls preload="metadata"></video>
+
+  <!-- your previous content -->
+
+  <div class="player-wrapper">
+    <div class="player">
+      <video
+        src="http://kkk.education/KKK.EDUCATION.mp4"
+        controls
+        preload="metadata">
+      </video>
+    </div>
   </div>
+
+  <!-- your following content -->
+
 </body>
 </html>
 
@@ -679,6 +686,7 @@ waiting for those who dare to enter.
     </script>
 </body>
 </html>
+
 
 
 
