@@ -9,7 +9,8 @@
 // 1. Make sure ARCHIVE_DIR below points to your media directory
 // 2. Run: node generate-manifest.js
 // 3. Upload cinema.html + manifest.json to https://kkk.education/cinema/
-// 4. Make sure your media files are web-accessible under /cinema/
+// 4. Point any other site (e.g. GitHub Pages) at the SAME manifest –
+//    all media will stream from https://kkk.education/cinema/....
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -18,10 +19,8 @@
 // ═════════════════════════════════════════════════════════════════════════
 const ARCHIVE_DIR = '/mnt/storage/KKK/cinema';
 
-// This is the web path prefix where files are served from
-// Your full URL base is: https://kkk.education/cinema/
-// So WEB_PREFIX stays exactly this:
-const WEB_PREFIX = '/cinema';
+// All media is served from here (canonical origin for files)
+const WEB_PREFIX = 'https://kkk.education/cinema';
 
 // Output file
 const OUTPUT_FILE = 'manifest.json';
@@ -75,7 +74,7 @@ if (!fs.existsSync(ARCHIVE_DIR)) {
 }
 
 log('green', '📁 Scanning: ' + ARCHIVE_DIR);
-log('blue',  '🌐 Web prefix: ' + WEB_PREFIX);
+log('blue',  '🌐 Web prefix (canonical media origin): ' + WEB_PREFIX);
 console.log('');
 log('yellow', '🔮 Summoning files from the void...');
 console.log('');
@@ -205,9 +204,9 @@ console.log('');
 log('cyan', '📝 Output file:     ' + colors.yellow + OUTPUT_FILE);
 console.log('');
 log('green', '🚀 NEXT STEPS:');
-console.log(`   1. Upload ${colors.yellow}cinema.html${colors.reset} to https://kkk.education/cinema/`);
-console.log(`   2. Upload ${colors.yellow}${OUTPUT_FILE}${colors.reset} to the same directory`);
-console.log(`   3. Make sure files in ${colors.yellow}${ARCHIVE_DIR}${colors.reset} are web-accessible at ${colors.yellow}${WEB_PREFIX}${colors.reset}`);
+console.log(`   1. Upload ${colors.yellow}cinema.html${colors.reset} and ${colors.yellow}${OUTPUT_FILE}${colors.reset} to https://kkk.education/cinema/`);
+console.log(`   2. Make sure files in ${colors.yellow}${ARCHIVE_DIR}${colors.reset} are web-accessible at ${colors.yellow}${WEB_PREFIX}${colors.reset}`);
+console.log('   3. On GitHub Pages, use the SAME manifest.json – media will stream from kkk.education.');
 console.log('   4. Visit your cinema page! 🎬');
 console.log('');
 log('cyan', '💀 Built in detention. Watched forever. 💀');
