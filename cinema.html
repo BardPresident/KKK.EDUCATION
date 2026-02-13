@@ -1035,7 +1035,7 @@ const ARCHIVE_DIR = '/path/to/your/videos';
 
             const stats = manifestData.stats || {};
             document.getElementById('folderCount').textContent = stats.folders || 0;
-            document.getElementById('videoCount').textContent = stats.videos || 0;
+            document.getElementById('videoCount').textContent = stats.productions || 0;
             document.getElementById('totalCount').textContent = stats.total || 0;
             document.getElementById('totalSize').textContent = formatSize(stats.totalSize || 0);
         }
