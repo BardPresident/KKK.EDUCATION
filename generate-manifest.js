@@ -2,33 +2,26 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // 🎬 TOMB CINEMA MANIFEST GENERATOR 🎬
-// 
-// Scans your video archive and creates manifest.json for cinema.html
+//
+// Scans your archive and creates manifest.json for cinema.html
 //
 // HOW TO USE:
-// 1. Edit ARCHIVE_DIR below (line 12) - point it to your videos
+// 1. Make sure ARCHIVE_DIR below points to your media directory
 // 2. Run: node generate-manifest.js
-// 3. Upload cinema.html + manifest.json to your website
-// 4. Done!
+// 3. Upload cinema.html + manifest.json to https://kkk.education/cinema/
+// 4. Make sure your media files are web-accessible under /cinema/
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 // ═════════════════════════════════════════════════════════════════════════
-// 👇 CHANGE THIS TO YOUR VIDEO FOLDER 👇
+// 👇 CHANGE THIS TO YOUR MEDIA FOLDER ON THE SERVER 👇
 // ═════════════════════════════════════════════════════════════════════════
-const ARCHIVE_DIR = '/path/to/your/videos';
+const ARCHIVE_DIR = '/mnt/storage/KKK/cinema';
 
-// Examples:
-// const ARCHIVE_DIR = '/home/user/Videos';
-// const ARCHIVE_DIR = 'C:\\Users\\YourName\\Videos';
-// const ARCHIVE_DIR = './my-videos';
-// const ARCHIVE_DIR = '/var/www/html/videos';
-// ═════════════════════════════════════════════════════════════════════════
-
-// Web path prefix (how browsers will access files)
-// If files are at https://yoursite.com/videos/... then use '/videos'
-// If files are in same directory as cinema.html, use ''
-const WEB_PREFIX = '/videos';
+// This is the web path prefix where files are served from
+// Your full URL base is: https://kkk.education/cinema/
+// So WEB_PREFIX stays exactly this:
+const WEB_PREFIX = '/cinema';
 
 // Output file
 const OUTPUT_FILE = 'manifest.json';
@@ -40,13 +33,14 @@ const OUTPUT_FILE = 'manifest.json';
 const fs = require('fs');
 const path = require('path');
 
-// Video extensions to count
+// Video and audio extensions to count as productions
 const VIDEO_EXTS = ['mp4', 'mpeg4', 'ogv', 'webm', 'avi', 'mov', 'mkv', 'm4v'];
+const AUDIO_EXTS = ['mp3', 'wav', 'ogg', 'flac', 'm4a', 'aac'];
 
 // Stats
 let stats = {
     folders: 0,
-    videos: 0,
+    productions: 0, // videos + audio
     total: 0,
     totalSize: 0
 };
@@ -76,18 +70,12 @@ console.log('');
 // Check if directory exists
 if (!fs.existsSync(ARCHIVE_DIR)) {
     log('red', '❌ ERROR: Directory not found: ' + ARCHIVE_DIR);
-    log('yellow', '💡 Edit line 12 of this script and set ARCHIVE_DIR to your video directory');
-    process.exit(1);
-}
-
-if (ARCHIVE_DIR === '/path/to/your/videos') {
-    log('red', '❌ ERROR: You need to configure ARCHIVE_DIR first!');
-    log('yellow', '💡 Edit line 12 of this script and set ARCHIVE_DIR to your video directory');
+    log('yellow', '💡 Edit this script and set ARCHIVE_DIR to your media directory');
     process.exit(1);
 }
 
 log('green', '📁 Scanning: ' + ARCHIVE_DIR);
-log('blue', '🌐 Web prefix: ' + WEB_PREFIX);
+log('blue',  '🌐 Web prefix: ' + WEB_PREFIX);
 console.log('');
 log('yellow', '🔮 Summoning files from the void...');
 console.log('');
@@ -95,9 +83,9 @@ console.log('');
 // Process directory recursively
 function processDir(dirPath, relativePath = '', indent = '') {
     const items = [];
-    
+
     log('cyan', `${indent}📂 ${relativePath || 'Root'}`);
-    
+
     let entries;
     try {
         entries = fs.readdirSync(dirPath);
@@ -105,63 +93,65 @@ function processDir(dirPath, relativePath = '', indent = '') {
         log('red', `${indent}  ❌ Cannot read directory: ${error.message}`);
         return items;
     }
-    
+
     // Sort entries: folders first, then files
     const folders = [];
     const files = [];
-    
+
     entries.forEach(entry => {
         const fullPath = path.join(dirPath, entry);
         let stat;
-        
+
         try {
             stat = fs.statSync(fullPath);
         } catch (error) {
             return; // Skip files we can't access
         }
-        
+
         if (stat.isDirectory()) {
             folders.push({ name: entry, stat });
         } else if (stat.isFile()) {
             files.push({ name: entry, stat });
         }
     });
-    
+
     // Process folders
     folders.sort((a, b) => a.name.localeCompare(b.name));
-    folders.forEach(({ name, stat }) => {
+    folders.forEach(({ name }) => {
         const fullPath = path.join(dirPath, name);
         const newRelative = relativePath ? `${relativePath}/${name}` : name;
-        
+
         stats.folders++;
-        
+
         const children = processDir(fullPath, newRelative, indent + '  ');
-        
+
         items.push({
             name,
             type: 'folder',
             children
         });
     });
-    
+
     // Process files
     files.sort((a, b) => a.name.localeCompare(b.name));
     files.forEach(({ name, stat }) => {
         const fullPath = path.join(dirPath, name);
-        const webPath = WEB_PREFIX ? `${WEB_PREFIX}/${relativePath ? relativePath + '/' : ''}${name}` : `${relativePath ? relativePath + '/' : ''}${name}`;
+        const relPathPart = relativePath ? `${relativePath}/` : '';
+        const webPath = `${WEB_PREFIX}/${relPathPart}${name}`;
         const size = stat.size;
         const ext = path.extname(name).substring(1).toLowerCase();
-        
+
         stats.total++;
         stats.totalSize += size;
-        
-        if (VIDEO_EXTS.includes(ext)) {
-            stats.videos++;
-            log('blue', `${indent}  🎬 ${name}`);
+
+        if (VIDEO_EXTS.includes(ext) || AUDIO_EXTS.includes(ext)) {
+            stats.productions++;
+            const icon = VIDEO_EXTS.includes(ext) ? '🎬' : '🎵';
+            log('blue', `${indent}  ${icon} ${name}`);
         } else {
             console.log(`${indent}  📄 ${name}`);
         }
-        
+
         items.push({
             name,
             type: 'file',
@@ -169,7 +159,7 @@ function processDir(dirPath, relativePath = '', indent = '') {
             size
         });
     });
-    
+
     return items;
 }
 
@@ -183,7 +173,7 @@ const manifest = {
     webPrefix: WEB_PREFIX,
     stats: {
         folders: stats.folders,
-        videos: stats.videos,
+        productions: stats.productions,
         total: stats.total,
         totalSize: stats.totalSize
     },
@@ -208,17 +198,17 @@ log('green', '╚═════════════════════
 console.log('');
 log('cyan', '📊 ARCHIVE STATS:');
 console.log(`   📁 Folders:        ${colors.yellow}${stats.folders}${colors.reset}`);
-console.log(`   🎬 Videos:         ${colors.yellow}${stats.videos}${colors.reset}`);
+console.log(`   🎬 Productions:    ${colors.yellow}${stats.productions}${colors.reset}`);
 console.log(`   📦 Total Files:    ${colors.yellow}${stats.total}${colors.reset}`);
 console.log(`   💾 Archive Size:   ${colors.yellow}${sizeGB} GB${colors.reset}`);
 console.log('');
 log('cyan', '📝 Output file:     ' + colors.yellow + OUTPUT_FILE);
 console.log('');
 log('green', '🚀 NEXT STEPS:');
-console.log(`   1. Upload ${colors.yellow}cinema.html${colors.reset} to your website`);
+console.log(`   1. Upload ${colors.yellow}cinema.html${colors.reset} to https://kkk.education/cinema/`);
 console.log(`   2. Upload ${colors.yellow}${OUTPUT_FILE}${colors.reset} to the same directory`);
 console.log(`   3. Make sure files in ${colors.yellow}${ARCHIVE_DIR}${colors.reset} are web-accessible at ${colors.yellow}${WEB_PREFIX}${colors.reset}`);
-console.log(`   4. Visit your cinema page! 🎬`);
+console.log('   4. Visit your cinema page! 🎬');
 console.log('');
 log('cyan', '💀 Built in detention. Watched forever. 💀');
 console.log('');
