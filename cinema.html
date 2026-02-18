@@ -5,531 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💀 THE TOMB CINEMA 💀</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0a0a0a;
-            color: #d4af37;
-            font-family: 'Courier New', monospace;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Dark Humor Border Quotes */
-        .quotes-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            font-size: 0.85em;
-            opacity: 0.6;
-        }
-
-        .quote {
-            position: absolute;
-            padding: 10px;
-            text-align: center;
-            font-style: italic;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; color: #d4af37; font-family: 'Courier New', monospace; min-height: 100vh; overflow-x: hidden; }
+        .quotes-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; font-size: 0.85em; opacity: 0.6; }
+        .quote { position: absolute; padding: 10px; text-align: center; font-style: italic; }
         .quote-top-left { top: 20px; left: 20px; }
         .quote-top-right { top: 20px; right: 20px; text-align: right; }
         .quote-bottom-left { bottom: 20px; left: 20px; }
         .quote-bottom-right { bottom: 20px; right: 20px; text-align: right; }
         .quote-left { top: 50%; left: 20px; transform: translateY(-50%) rotate(-90deg); transform-origin: left center; }
         .quote-right { top: 50%; right: 20px; transform: translateY(-50%) rotate(90deg); transform-origin: right center; }
-
-        /* Main Content */
-        .main-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            border: 3px solid #d4af37;
-            border-radius: 15px;
-            background: rgba(212, 175, 55, 0.05);
-            margin-bottom: 40px;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-        }
-
-        .header h1 {
-            font-size: 3em;
-            letter-spacing: 0.2em;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-            margin-bottom: 20px;
-            animation: pulse 3s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.8); }
-            50% { text-shadow: 0 0 50px rgba(212, 175, 55, 1); }
-        }
-
-        .header .subtitle {
-            font-size: 1.3em;
-            margin: 10px 0;
-            color: #fff;
-        }
-
-        .header .tagline {
-            font-size: 0.95em;
-            opacity: 0.8;
-            font-style: italic;
-            margin-top: 15px;
-        }
-
-        /* Stats Bar */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid #d4af37;
-            border-radius: 10px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #d4af37;
-        }
-
-        .stat-label {
-            font-size: 0.9em;
-            opacity: 0.7;
-            margin-top: 5px;
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 20px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid #d4af37;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            overflow-x: auto;
-        }
-
-        .breadcrumb-item {
-            color: #d4af37;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-
-        .breadcrumb-item:hover {
-            background: rgba(212, 175, 55, 0.3);
-        }
-
-        .breadcrumb-separator {
-            color: #666;
-        }
-
-        /* File Manager */
-        .file-manager {
-            min-height: 400px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid #d4af37;
-            border-radius: 10px;
-            margin-bottom: 60px;
-        }
-
-        .file-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        /* File Item */
-        .file-item {
-            background: rgba(212, 175, 55, 0.05);
-            border: 2px solid #d4af37;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .file-item:hover {
-            background: rgba(212, 175, 55, 0.15);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        .file-icon {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-        }
-
-        .file-name {
-            font-size: 0.85em;
-            word-break: break-word;
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
-
-        .file-size {
-            font-size: 0.7em;
-            opacity: 0.5;
-        }
-
-        .file-actions {
-            display: flex;
-            gap: 5px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .action-btn {
-            padding: 5px 10px;
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.75em;
-            transition: all 0.3s;
-            font-family: 'Courier New', monospace;
-        }
-
-        .action-btn:hover {
-            background: rgba(212, 175, 55, 0.4);
-            transform: scale(1.05);
-        }
-
-        /* Loading/Empty/Error States */
-        .state-message {
-            text-align: center;
-            padding: 60px 20px;
-            font-size: 1.3em;
-            line-height: 1.8;
-        }
-
-        .state-message code {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 2px 8px;
-            border-radius: 4px;
-            color: #0f0;
-        }
-
-        .loading::after {
-            content: '...';
-            animation: dots 1.5s infinite;
-        }
-
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
-        }
-
-        /* Video Player Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            max-width: 1200px;
-            width: 100%;
-            background: #111;
-            border: 3px solid #d4af37;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.5);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #d4af37;
-        }
-
-        .modal-title {
-            font-size: 1.3em;
-            max-width: 80%;
-            word-break: break-word;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: #d4af37;
-            font-size: 2.5em;
-            cursor: pointer;
-            padding: 0;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            transition: all 0.3s;
-        }
-
-        .close-btn:hover {
-            transform: rotate(90deg) scale(1.2);
-            text-shadow: 0 0 30px rgba(212, 175, 55, 1);
-        }
-
-        video, audio, img {
-            width: 100%;
-            max-height: 70vh;
-            border-radius: 8px;
-            background: #000;
-        }
-
-        .preview-text {
-            background: #000;
-            color: #0f0;
-            padding: 20px;
-            border-radius: 8px;
-            max-height: 500px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-
-        .download-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: rgba(212, 175, 55, 0.2);
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s;
-            font-size: 1em;
-        }
-
-        .download-btn:hover {
-            background: rgba(212, 175, 55, 0.5);
-            transform: scale(1.05);
-        }
-
-        /* Instructions Section */
-        .instructions {
-            margin-top: 60px;
-            padding: 40px;
-            background: rgba(212, 175, 55, 0.05);
-            border: 3px solid #d4af37;
-            border-radius: 15px;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
-        }
-
-        .instructions h2 {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #d4af37;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-        }
-
-        .instructions h3 {
-            font-size: 1.5em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #ffd700;
-        }
-
-        .instructions p, .instructions li {
-            line-height: 1.8;
-            margin-bottom: 10px;
-            font-size: 1em;
-            color: #d4af37;
-        }
-
-        .instructions code {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 3px 8px;
-            border-radius: 4px;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-        }
-
-        .instructions pre {
-            background: #000;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 15px 0;
-            border: 1px solid #d4af37;
-        }
-
-        .instructions pre code {
-            background: none;
-            padding: 0;
-            display: block;
-            line-height: 1.6;
-        }
-
-        .instructions .highlight {
-            background: rgba(212, 175, 55, 0.2);
-            padding: 25px;
-            border-left: 5px solid #d4af37;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-
-        .instructions .highlight p {
-            color: #fff;
-            font-size: 1.1em;
-        }
-
-        .instructions ul {
-            margin-left: 30px;
-        }
-
-        .instructions strong {
-            color: #ffd700;
-        }
-
-        /* Back Button */
-        .back-home {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 12px 25px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-        .back-home:hover {
-            background: rgba(212, 175, 55, 0.3);
-            transform: translateX(-5px);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-                letter-spacing: 0.1em;
-            }
-
-            .file-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-
-            .quotes-container {
-                display: none;
-            }
-
-            .stats {
-                font-size: 0.9em;
-            }
-
-            .instructions {
-                padding: 20px;
-            }
-
-            .instructions h2 {
-                font-size: 1.8em;
-            }
-
-            .instructions h3 {
-                font-size: 1.2em;
-            }
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ffd700;
-        }
+        .main-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; padding: 40px 20px; border: 3px solid #d4af37; border-radius: 15px; background: rgba(212,175,55,0.05); margin-bottom: 40px; box-shadow: 0 0 40px rgba(212,175,55,0.3); }
+        .header h1 { font-size: 3em; letter-spacing: 0.2em; text-shadow: 0 0 30px rgba(212,175,55,0.8); margin-bottom: 20px; animation: pulse 3s infinite; }
+        @keyframes pulse { 0%,100%{text-shadow:0 0 30px rgba(212,175,55,0.8)} 50%{text-shadow:0 0 50px rgba(212,175,55,1)} }
+        .header .subtitle { font-size: 1.3em; margin: 10px 0; color: #fff; }
+        .header .tagline { font-size: 0.95em; opacity: 0.8; font-style: italic; margin-top: 15px; }
+        .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 30px 0; padding: 20px; background: rgba(212,175,55,0.1); border: 2px solid #d4af37; border-radius: 10px; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2em; font-weight: bold; color: #d4af37; }
+        .stat-label { font-size: 0.9em; opacity: 0.7; margin-top: 5px; }
+        .breadcrumb { display: flex; align-items: center; gap: 10px; padding: 15px 20px; background: rgba(212,175,55,0.1); border: 2px solid #d4af37; border-radius: 8px; margin-bottom: 20px; flex-wrap: wrap; overflow-x: auto; }
+        .breadcrumb-item { color: #d4af37; cursor: pointer; padding: 5px 10px; border-radius: 4px; transition: all 0.3s; white-space: nowrap; }
+        .breadcrumb-item:hover { background: rgba(212,175,55,0.3); }
+        .breadcrumb-separator { color: #666; }
+        .file-manager { min-height: 400px; padding: 20px; background: rgba(0,0,0,0.5); border: 2px solid #d4af37; border-radius: 10px; margin-bottom: 60px; }
+        .file-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
+        .file-item { background: rgba(212,175,55,0.05); border: 2px solid #d4af37; border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; }
+        .file-item:hover { background: rgba(212,175,55,0.15); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212,175,55,0.4); }
+        .file-icon { font-size: 3.5em; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.5)); }
+        .file-name { font-size: 0.85em; word-break: break-word; line-height: 1.3; margin-bottom: 8px; }
+        .file-size { font-size: 0.7em; opacity: 0.5; }
+        .file-actions { display: flex; gap: 5px; justify-content: center; margin-top: 10px; }
+        .action-btn { padding: 5px 10px; background: rgba(212,175,55,0.2); border: 1px solid #d4af37; color: #d4af37; border-radius: 4px; cursor: pointer; font-size: 0.75em; transition: all 0.3s; font-family: 'Courier New', monospace; }
+        .action-btn:hover { background: rgba(212,175,55,0.4); transform: scale(1.05); }
+        .state-message { text-align: center; padding: 60px 20px; font-size: 1.3em; line-height: 1.8; }
+        .state-message code { background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 4px; color: #0f0; }
+        .loading::after { content: '...'; animation: dots 1.5s infinite; }
+        @keyframes dots { 0%,20%{content:'.'} 40%{content:'..'} 60%,100%{content:'...'} }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
+        .modal.active { display: flex; }
+        .modal-content { max-width: 1200px; width: 100%; background: #111; border: 3px solid #d4af37; border-radius: 10px; padding: 20px; box-shadow: 0 0 60px rgba(212,175,55,0.5); max-height: 90vh; display: flex; flex-direction: column; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #d4af37; flex-shrink: 0; }
+        .modal-title { font-size: 1.3em; max-width: 80%; word-break: break-word; }
+        .close-btn { background: none; border: none; color: #d4af37; font-size: 2.5em; cursor: pointer; padding: 0; width: 50px; height: 50px; line-height: 50px; transition: all 0.3s; flex-shrink: 0; }
+        .close-btn:hover { transform: rotate(90deg) scale(1.2); text-shadow: 0 0 30px rgba(212,175,55,1); }
+        .modal-body-scroll { overflow-y: auto; flex: 1; }
+        video, audio, img { width: 100%; max-height: 70vh; border-radius: 8px; background: #000; }
+        .preview-text { background: #000; color: #d4af37; padding: 30px 40px; border-radius: 8px; font-family: 'Courier New', monospace; white-space: pre-wrap; word-break: break-word; font-size: 1em; line-height: 1.8; }
+        .download-btn { display: inline-block; margin-top: 15px; padding: 12px 25px; background: rgba(212,175,55,0.2); border: 2px solid #d4af37; color: #d4af37; text-decoration: none; border-radius: 6px; transition: all 0.3s; font-size: 1em; flex-shrink: 0; }
+        .download-btn:hover { background: rgba(212,175,55,0.5); transform: scale(1.05); }
+        .instructions { margin-top: 60px; padding: 40px; background: rgba(212,175,55,0.05); border: 3px solid #d4af37; border-radius: 15px; box-shadow: 0 0 40px rgba(212,175,55,0.2); }
+        .instructions h2 { font-size: 2.5em; text-align: center; margin-bottom: 30px; color: #d4af37; text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+        .instructions h3 { font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; color: #ffd700; }
+        .instructions p, .instructions li { line-height: 1.8; margin-bottom: 10px; font-size: 1em; color: #d4af37; }
+        .instructions code { background: rgba(0,0,0,0.5); padding: 3px 8px; border-radius: 4px; color: #0f0; font-family: 'Courier New', monospace; font-size: 0.95em; }
+        .instructions pre { background: #000; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 15px 0; border: 1px solid #d4af37; }
+        .instructions pre code { background: none; padding: 0; display: block; line-height: 1.6; }
+        .instructions .highlight { background: rgba(212,175,55,0.2); padding: 25px; border-left: 5px solid #d4af37; margin: 25px 0; border-radius: 4px; }
+        .instructions .highlight p { color: #fff; font-size: 1.1em; }
+        .instructions ul { margin-left: 30px; }
+        .instructions strong { color: #ffd700; }
+        .back-home { display: inline-block; margin-bottom: 20px; padding: 12px 25px; background: none; border: 2px solid rgba(255,255,255,0.4); color: #ffffff; text-decoration: none; border-radius: 6px; transition: all 0.3s; font-family: 'Courier New', monospace; }
+        .back-home:hover { background: rgba(255,255,255,0.1); color: #ffd700; border-color: #ffd700; transform: translateX(-5px); }
+        @media(max-width:768px) { .header h1{font-size:2em;letter-spacing:0.1em} .file-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))} .quotes-container{display:none} .stats{font-size:0.9em} .instructions{padding:20px} .instructions h2{font-size:1.8em} .instructions h3{font-size:1.2em} }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ffd700; }
     </style>
 </head>
 <body>
-    <!-- Dark Humor Quotes Around Border -->
+
     <div class="quotes-container">
-        <div class="quote quote-top-left">
-            👻 "Built in psychiatric detention"<br>
-            "Watched from freedom" 💀
-        </div>
-        <div class="quote quote-top-right">
-            🏛️ "The system said NO"<br>
-            "We built it anyway" ⚡
-        </div>
-        <div class="quote quote-bottom-left">
-            💎 "Tears turned to pixels"<br>
-            "KRY KRY KRY" 😭
-        </div>
-        <div class="quote quote-bottom-right">
-            🔥 "Zero censorship"<br>
-            "All love reserved" 🤍
-        </div>
-        <div class="quote quote-left">
-            📹 "1,500+ reasons they tried to stop us" 🚫
-        </div>
-        <div class="quote quote-right">
-            👑 "For the kids. For the exiles." 🌈
-        </div>
+        <div class="quote quote-top-left">👻 "Built in psychiatric detention"<br>"Watched from freedom" 💀</div>
+        <div class="quote quote-top-right">🏛️ "The system said NO"<br>"We built it anyway" ⚡</div>
+        <div class="quote quote-bottom-left">💎 "Tears turned to pixels"<br>"KRY KRY KRY" 😭</div>
+        <div class="quote quote-bottom-right">🔥 "Zero censorship"<br>"All love reserved" 🤍</div>
+        <div class="quote quote-left">📹 "1,500+ reasons they tried to stop us" 🚫</div>
+        <div class="quote quote-right">👑 "For the kids. For the exiles." 🌈</div>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-        <a href="index.html" class="back-home">← Back to Home</a>
+        <a href="index.html" class="back-home">← HOME</a>
 
         <div class="header">
             <h1>💀 THE TOMB CINEMA 💀</h1>
@@ -541,22 +99,10 @@
         </div>
 
         <div class="stats" id="stats">
-            <div class="stat">
-                <div class="stat-value">📁 <span id="folderCount">0</span></div>
-                <div class="stat-label">Forbidden Folders</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">🎬 <span id="videoCount">0</span></div>
-                <div class="stat-label">Productions</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">📦 <span id="totalCount">0</span></div>
-                <div class="stat-label">Total Files</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">💾 <span id="totalSize">0 GB</span></div>
-                <div class="stat-label">Archive Size</div>
-            </div>
+            <div class="stat"><div class="stat-value">📁 <span id="folderCount">0</span></div><div class="stat-label">Forbidden Folders</div></div>
+            <div class="stat"><div class="stat-value">🎬 <span id="videoCount">0</span></div><div class="stat-label">Productions</div></div>
+            <div class="stat"><div class="stat-value">📦 <span id="totalCount">0</span></div><div class="stat-label">Total Files</div></div>
+            <div class="stat"><div class="stat-value">💾 <span id="totalSize">0 GB</span></div><div class="stat-label">Archive Size</div></div>
         </div>
 
         <div class="breadcrumb" id="breadcrumb">
@@ -569,38 +115,28 @@
             </div>
         </div>
 
-        <!-- ═══════════════════════════════════════════════════════════════ -->
-        <!-- INSTRUCTIONS - FOR THE KIDS AND EXILES                           -->
-        <!-- ═══════════════════════════════════════════════════════════════ -->
-
+        <!-- INSTRUCTIONS -->
         <div class="instructions">
             <h2>👑 THIS IS YOURS NOW 👑</h2>
-            
             <div class="highlight">
                 <p><strong>🌈 FOR THE KIDS. FOR THE EXILES. 🌈</strong></p>
                 <p>Take this. Fork it. Make your own cinema. No permission needed. No gatekeepers. No waiting for approval.</p>
                 <p><strong>If they said you can't publish, build your own platform.</strong></p>
                 <p>This is how you do it.</p>
             </div>
-
             <h3>📦 What You Need</h3>
             <ul>
-                <li><strong>This file</strong> (<code>cinema.html</code>) - The page you're looking at</li>
-                <li><strong>generate-manifest.js</strong> - Node.js script to scan your videos</li>
-                <li><strong>Node.js</strong> - Free download from <code>nodejs.org</code></li>
-                <li><strong>Your content</strong> - Videos, images, files you want to share</li>
+                <li><strong>This file</strong> (<code>cinema.html</code>) — The page you're looking at</li>
+                <li><strong><a href="generate-manifest.js" download style="color:#ffd700;">generate-manifest.js</a></strong> — Node.js script to scan your videos</li>
+                <li><strong>Node.js</strong> — Free download from <code>nodejs.org</code></li>
+                <li><strong>Your content</strong> — Videos, images, files you want to share</li>
             </ul>
-
             <h3>🚀 How To Use This (3 Steps)</h3>
-            
             <p><strong>STEP 1: Get the script</strong></p>
-            <p>Download <code>generate-manifest.js</code> from wherever you found this cinema page.</p>
+            <p><a href="generate-manifest.js" download style="color:#ffd700;font-weight:bold;">⬇ Download generate-manifest.js</a> — it's in the root directory alongside this page.</p>
             <p>Put it in the same folder as <code>cinema.html</code>.</p>
-
             <p><strong>STEP 2: Configure it (ONE LINE TO CHANGE)</strong></p>
-            <p>Open <code>generate-manifest.js</code> in any text editor (Notepad, TextEdit, VS Code, whatever).</p>
-            <p>Find line 12. Change it to point to your videos:</p>
-            
+            <p>Open <code>generate-manifest.js</code> in any text editor. Find line 12. Change it to point to your videos:</p>
             <pre><code>// Line 12 - CHANGE THIS:
 const ARCHIVE_DIR = '/path/to/your/videos';
 
@@ -609,154 +145,50 @@ const ARCHIVE_DIR = '/path/to/your/videos';
 // Windows: const ARCHIVE_DIR = 'C:\\Users\\YourName\\Videos';
 // Server:  const ARCHIVE_DIR = '/var/www/html/videos';
 // Local:   const ARCHIVE_DIR = './my-videos';</code></pre>
-
-            <p>That's it. One line. Save the file.</p>
-
             <p><strong>STEP 3: Run it</strong></p>
-            <p>Open terminal (Mac/Linux) or Command Prompt (Windows).</p>
-            <p>Navigate to where you saved the script:</p>
-            
-            <pre><code>cd /path/to/your/cinema/folder</code></pre>
-            
-            <p>Run the script:</p>
-            
-            <pre><code>node generate-manifest.js</code></pre>
-
-            <p>This creates <code>manifest.json</code> with your entire file tree.</p>
-            <p>Now open <code>cinema.html</code> in your browser. Your cinema is live.</p>
-
+            <pre><code>cd /path/to/your/cinema/folder
+node generate-manifest.js</code></pre>
+            <p>This creates <code>manifest.json</code>. Open <code>cinema.html</code> in your browser. Your cinema is live.</p>
             <h3>🌐 Put It Online</h3>
-            <p>To share your cinema with the world, upload three things to your website:</p>
             <ul>
                 <li><code>cinema.html</code> (this page)</li>
                 <li><code>manifest.json</code> (generated by the script)</li>
                 <li>Your video/file folder (make sure it's web-accessible)</li>
             </ul>
-            
-            <p>Works on:</p>
-            <ul>
-                <li>GitHub Pages (free)</li>
-                <li>Netlify (free)</li>
-                <li>Your own server</li>
-                <li>Any static file hosting</li>
-            </ul>
-
             <div class="highlight">
                 <p><strong>💡 IMPORTANT: WEB_PREFIX</strong></p>
-                <p>In <code>generate-manifest.js</code>, there's a line that says:</p>
-                <p><code>const WEB_PREFIX = '/videos';</code></p>
-                <p>This tells the script how browsers will access your files.</p>
-                <p>If your videos are at <code>https://yoursite.com/videos/...</code> then use <code>'/videos'</code></p>
-                <p>If they're in the root <code>https://yoursite.com/file.mp4</code> then use <code>''</code> (empty)</p>
+                <p>In <code>generate-manifest.js</code>, there's a line: <code>const WEB_PREFIX = '/videos';</code></p>
+                <p>This tells the script how browsers will access your files. Match it to your URL structure.</p>
             </div>
-
             <h3>🎬 What This Does</h3>
             <ul>
                 <li>✅ Streams videos in browser (mp4, webm, ogv, avi, mov, mkv)</li>
                 <li>✅ Plays audio files (mp3, wav, ogg, flac)</li>
                 <li>✅ Previews images (jpg, png, gif, svg)</li>
-                <li>✅ Shows text files (txt, md, html, css, js, log)</li>
+                <li>✅ Shows <strong>complete text files</strong> (txt, md, html, css, js, log) — full content, no truncation</li>
                 <li>✅ Downloads everything else</li>
                 <li>✅ Browse folders like a file manager</li>
-                <li>✅ Breadcrumb navigation</li>
-                <li>✅ Shows file sizes and stats</li>
-                <li>✅ Dark gothic aesthetic with humor</li>
-                <li>✅ Mobile responsive</li>
                 <li>✅ No database. No PHP. Just HTML + JSON.</li>
             </ul>
-
-            <h3>🔄 Adding New Content</h3>
-            <p>When you add new videos or files to your archive:</p>
-            <ol>
-                <li>Run <code>node generate-manifest.js</code> again</li>
-                <li>Upload the new <code>manifest.json</code></li>
-                <li>Refresh the page</li>
-            </ol>
-            <p>Done. Your new content appears.</p>
-
-            <h3>🎨 Make It Yours</h3>
-            <p>You can customize everything. Open <code>cinema.html</code> in a text editor:</p>
-            
-            <p><strong>Change the colors:</strong></p>
-            <ul>
-                <li>Search for <code>#d4af37</code> (gold) - replace with your color</li>
-                <li>Search for <code>#0a0a0a</code> (black) - replace with your background</li>
-            </ul>
-
-            <p><strong>Change the text:</strong></p>
-            <ul>
-                <li>Find "THE TOMB CINEMA" - make it whatever you want</li>
-                <li>Change all the dark humor quotes around the edges</li>
-                <li>Rewrite the header taglines</li>
-            </ul>
-
-            <p><strong>Change the emojis:</strong></p>
-            <ul>
-                <li>Find 💀🎬📁 and replace them with your favorites</li>
-            </ul>
-
-            <p>It's all just HTML. You can change anything.</p>
-
-            <h3>🍴 For GitHub Kids</h3>
-            <p>If you want to fork this on GitHub:</p>
-            <ol>
-                <li>Fork the repo</li>
-                <li>Edit <code>generate-manifest.js</code> (line 12 → your folder)</li>
-                <li>Run <code>node generate-manifest.js</code></li>
-                <li>Commit <code>cinema.html</code> + <code>manifest.json</code> + your files</li>
-                <li>Enable GitHub Pages in repo settings</li>
-                <li>Your cinema is live at <code>https://yourusername.github.io/repo-name</code></li>
-            </ol>
-
-            <h3>❓ Troubleshooting</h3>
-            
-            <p><strong>Q: "Manifest not found"</strong></p>
-            <p>A: You need to run <code>node generate-manifest.js</code> first.</p>
-
-            <p><strong>Q: "Directory not found" when running script</strong></p>
-            <p>A: Check line 12 in <code>generate-manifest.js</code> - make sure the path is correct.</p>
-
-            <p><strong>Q: Videos won't stream</strong></p>
-            <p>A: Check <code>WEB_PREFIX</code> in the script. Make sure it matches how browsers access your files.</p>
-
-            <p><strong>Q: Nothing shows up</strong></p>
-            <p>A: Press F12 in your browser. Look at the Console tab. It'll tell you what's wrong.</p>
-
-            <p><strong>Q: Can I use this for commercial projects?</strong></p>
-            <p>A: Yes. CC0 Public Domain. Do whatever you want. No attribution needed.</p>
-
-            <div class="highlight">
-                <p><strong>💎 THIS IS SOVEREIGNTY 💎</strong></p>
-                <p>You don't need YouTube.</p>
-                <p>You don't need Vimeo.</p>
-                <p>You don't need anyone's permission to publish your work.</p>
-                <p><strong>This is your platform. Your rules. Your cinema.</strong></p>
-                <p>They can't ban you. They can't demonetize you. They can't take it down.</p>
-                <p>As long as you have a server and a domain, you own your distribution.</p>
-                <p><strong>Build it. Share it. Never stop.</strong></p>
+            <div class="highlight" style="text-align:center;margin-top:40px;">
+                <p style="font-size:1.3em;"><strong>🌈 Warriors of the Rainbow protect the children 🌈</strong></p>
+                <p style="margin-top:20px;font-size:1.2em;"><strong>💀 THE TOMB NEVER CLOSES 💀</strong></p>
+                <p style="margin-top:15px;">"Where tears become pixels"</p>
             </div>
-
             <h3>📜 License</h3>
-            <p><strong>CC0 PUBLIC DOMAIN</strong><br>
-            ALL LOVE RESERVED</p>
-            
-            <p>Built by WIKKKAN in psychiatric detention, February 2026.</p>
-            <p>For every kid who was told "you can't."</p>
-            <p>For every exile who needs a voice.</p>
-            <p>Take this. Make it yours. Publish everything.</p>
-
-            <div class="highlight" style="text-align: center; margin-top: 40px;">
-                <p style="font-size: 1.3em;">
-                    <strong>🌈 Warriors of the Rainbow protect the children 🌈</strong>
-                </p>
-                <p style="margin-top: 20px; font-size: 1.2em;">
-                    <strong>💀 THE TOMB NEVER CLOSES 💀</strong>
-                </p>
-                <p style="margin-top: 15px;">
-                    "Where tears become pixels"
-                </p>
-            </div>
+            <p><strong>CC0 PUBLIC DOMAIN — ALL LOVE RESERVED</strong></p>
+            <p>Built by WIKKKAN in psychiatric detention, February 2026.<br>For every kid who was told "you can't." For every exile who needs a voice.</p>
         </div>
+
+        <!-- SAVE THIS CINEMA -->
+        <div style="text-align:center;margin-top:50px;padding:30px;border:2px solid rgba(212,175,55,0.4);border-radius:10px;background:rgba(212,175,55,0.05);box-shadow:0 0 30px rgba(212,175,55,0.1);">
+            <div style="font-family:'Courier New',monospace;font-size:1em;letter-spacing:0.2em;color:#ffd700;margin-bottom:12px;">📦 SAVE THIS CINEMA</div>
+            <p style="font-size:0.95em;color:#b8860b;margin-bottom:18px;line-height:1.7;">Save this page and open it anywhere.<br>It will always stream content from the live server — works online or offline.</p>
+            <button onclick="window.open('https://kkk.education/cinema.html','_blank')" style="padding:10px 24px;background:rgba(212,175,55,0.1);border:2px solid #d4af37;color:#d4af37;font-family:'Courier New',monospace;font-size:0.85em;cursor:pointer;margin:5px;border-radius:6px;">🌐 OPEN LIVE VERSION</button>
+            <button onclick="saveThisPage()" style="padding:10px 24px;background:rgba(212,175,55,0.1);border:2px solid #d4af37;color:#d4af37;font-family:'Courier New',monospace;font-size:0.85em;cursor:pointer;margin:5px;border-radius:6px;">💾 SAVE THIS FILE</button>
+            <p id="saveStatus" style="margin-top:14px;font-size:0.85em;color:#b8860b;min-height:18px;"></p>
+        </div>
+
     </div>
 
     <!-- Player Modal -->
@@ -766,60 +198,46 @@ const ARCHIVE_DIR = '/path/to/your/videos';
                 <div class="modal-title" id="modalTitle"></div>
                 <button class="close-btn" onclick="closeModal()">×</button>
             </div>
-            <div id="modalBody"></div>
+            <div class="modal-body-scroll" id="modalBody"></div>
             <a href="#" class="download-btn" id="downloadLink" download>⬇ Download This File</a>
         </div>
     </div>
 
     <script>
-        // ═══════════════════════════════════════════════════════════════════
-        // THE TOMB CINEMA - JAVASCRIPT
-        // Pure client-side file browser. No server code needed.
-        // ═══════════════════════════════════════════════════════════════════
-
         const CONFIG = {
             manifestPath: 'manifest.json',
-            
-            icons: {
-                folder: '📁',
-                video: '🎬',
-                image: '🖼️',
-                audio: '🎵',
-                text: '📄',
-                pdf: '📕',
-                archive: '📦',
-                code: '💻',
-                unknown: '👻'
-            },
-            
-            videoExts: ['mp4', 'mpeg4', 'ogv', 'webm', 'avi', 'mov', 'mkv', 'm4v'],
-            imageExts: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'bmp', 'ico'],
-            audioExts: ['mp3', 'wav', 'ogg', 'flac', 'm4a', 'aac'],
-            textExts: ['txt', 'md', 'log', 'html', 'css', 'js', 'json', 'xml', 'csv'],
-            pdfExts: ['pdf'],
-            archiveExts: ['zip', 'rar', '7z', 'tar', 'gz'],
-            codeExts: ['py', 'php', 'sh', 'c', 'cpp', 'java', 'go', 'rs']
+            icons: { folder:'📁', video:'🎬', image:'🖼️', audio:'🎵', text:'📄', pdf:'📕', archive:'📦', code:'💻', unknown:'👻' },
+            videoExts:   ['mp4','mpeg4','ogv','webm','avi','mov','mkv','m4v'],
+            imageExts:   ['jpg','jpeg','png','gif','webp','svg','bmp','ico'],
+            audioExts:   ['mp3','wav','ogg','flac','m4a','aac'],
+            textExts:    ['txt','md','log','html','css','js','json','xml','csv'],
+            pdfExts:     ['pdf'],
+            archiveExts: ['zip','rar','7z','tar','gz'],
+            codeExts:    ['py','php','sh','c','cpp','java','go','rs']
         };
 
         let manifestData = null;
-        let currentPath = '';
+        let currentPath  = '';
 
         document.addEventListener('DOMContentLoaded', async () => {
             await loadManifest();
-            if (manifestData) {
-                navigateTo('');
-            }
+            if (manifestData) navigateTo('');
         });
 
         async function loadManifest() {
+            // Use embedded manifest if present (offline saved copy), else fetch live
+            if (window.EMBEDDED_MANIFEST) {
+                manifestData = window.EMBEDDED_MANIFEST;
+                updateGlobalStats();
+                return;
+            }
             try {
                 const response = await fetch(CONFIG.manifestPath);
                 if (!response.ok) throw new Error('Manifest not found');
                 manifestData = await response.json();
                 updateGlobalStats();
             } catch (error) {
-                console.error('Error loading manifest:', error);
-                showError('👻 <strong>Manifest not found!</strong><br><br>You need to run the script first:<br><code>node generate-manifest.js</code><br><br><small>Scroll down for full instructions.</small>');
+                showError('👻 <strong>Manifest not found!</strong><br><br>Run <code>node generate-manifest.js</code> first.<br><br><small>Scroll down for full instructions.</small>');
             }
         }
 
@@ -830,201 +248,139 @@ const ARCHIVE_DIR = '/path/to/your/videos';
         }
 
         function renderFiles(path) {
-            const grid = document.getElementById('fileGrid');
+            const grid  = document.getElementById('fileGrid');
             const items = getItemsAtPath(path);
-
             if (!items || items.length === 0) {
                 grid.innerHTML = '<div class="state-message">📂 Empty tomb.<br>Nothing here... yet. 💀</div>';
                 return;
             }
-
             grid.innerHTML = '';
-            
-            items.sort((a, b) => {
-                if (a.type === 'folder' && b.type !== 'folder') return -1;
-                if (a.type !== 'folder' && b.type === 'folder') return 1;
+            items.sort((a,b) => {
+                if (a.type==='folder' && b.type!=='folder') return -1;
+                if (a.type!=='folder' && b.type==='folder') return 1;
                 return a.name.localeCompare(b.name);
             });
-
-            items.forEach(item => {
-                const el = createFileElement(item);
-                grid.appendChild(el);
-            });
+            items.forEach(item => grid.appendChild(createFileElement(item)));
         }
 
         function getItemsAtPath(path) {
             if (!manifestData) return [];
             if (!path) return manifestData.items || [];
-            
             const parts = path.split('/');
             let current = manifestData.items || [];
-            
             for (const part of parts) {
-                const folder = current.find(item => item.type === 'folder' && item.name === part);
+                const folder = current.find(i => i.type==='folder' && i.name===part);
                 if (!folder || !folder.children) return [];
                 current = folder.children;
             }
-            
             return current;
         }
 
         function createFileElement(item) {
             const div = document.createElement('div');
             div.className = 'file-item';
-            
             const icon = getIcon(item);
             const size = item.size ? formatSize(item.size) : '';
-            
             let actionsHTML = '';
             if (item.type !== 'folder') {
                 const ext = getExtension(item.name);
-                
                 if (CONFIG.videoExts.includes(ext) || CONFIG.audioExts.includes(ext)) {
-                    actionsHTML = `
-                        <div class="file-actions">
-                            <button class="action-btn" onclick="event.stopPropagation(); streamFile('${escapeHtml(item.path)}', '${escapeHtml(item.name)}')">▶ Stream</button>
-                            <button class="action-btn" onclick="event.stopPropagation(); downloadFile('${escapeHtml(item.path)}', '${escapeHtml(item.name)}')">⬇ Get</button>
-                        </div>
-                    `;
+                    actionsHTML = `<div class="file-actions">
+                        <button class="action-btn" onclick="event.stopPropagation();streamFile('${escapeHtml(item.path)}','${escapeHtml(item.name)}')">▶ Stream</button>
+                        <button class="action-btn" onclick="event.stopPropagation();downloadFile('${escapeHtml(item.path)}','${escapeHtml(item.name)}')">⬇ Get</button>
+                    </div>`;
                 } else {
-                    actionsHTML = `
-                        <div class="file-actions">
-                            <button class="action-btn" onclick="event.stopPropagation(); downloadFile('${escapeHtml(item.path)}', '${escapeHtml(item.name)}')">⬇ Download</button>
-                        </div>
-                    `;
+                    actionsHTML = `<div class="file-actions">
+                        <button class="action-btn" onclick="event.stopPropagation();downloadFile('${escapeHtml(item.path)}','${escapeHtml(item.name)}')">⬇ Download</button>
+                    </div>`;
                 }
             }
-            
             div.innerHTML = `
                 <div class="file-icon">${icon}</div>
                 <div class="file-name">${escapeHtml(item.name)}</div>
                 ${size ? `<div class="file-size">${size}</div>` : ''}
                 ${actionsHTML}
             `;
-
             if (item.type === 'folder') {
-                div.onclick = () => {
-                    const newPath = currentPath ? `${currentPath}/${item.name}` : item.name;
-                    navigateTo(newPath);
-                };
+                div.onclick = () => navigateTo(currentPath ? `${currentPath}/${item.name}` : item.name);
             } else {
                 div.onclick = () => handleFile(item);
             }
-            
             return div;
         }
 
         function handleFile(file) {
             const ext = getExtension(file.name);
-            
-            if (CONFIG.videoExts.includes(ext) || CONFIG.audioExts.includes(ext)) {
-                streamFile(file.path, file.name);
-            } else if (CONFIG.imageExts.includes(ext)) {
-                previewImage(file.path, file.name);
-            } else if (CONFIG.textExts.includes(ext)) {
-                previewText(file.path, file.name);
-            } else {
-                downloadFile(file.path, file.name);
-            }
+            if (CONFIG.videoExts.includes(ext) || CONFIG.audioExts.includes(ext)) streamFile(file.path, file.name);
+            else if (CONFIG.imageExts.includes(ext)) previewImage(file.path, file.name);
+            else if (CONFIG.textExts.includes(ext)) previewText(file.path, file.name);
+            else downloadFile(file.path, file.name);
         }
 
         function streamFile(path, name) {
-            const ext = getExtension(name);
+            const ext     = getExtension(name);
             const isVideo = CONFIG.videoExts.includes(ext);
-            const tag = isVideo ? 'video' : 'audio';
-            
-            showModal(name, `
-                <${tag} controls autoplay>
-                    <source src="${path}" type="${isVideo ? 'video' : 'audio'}/${ext}">
-                    Your browser doesn't support this format. 👻
-                </${tag}>
-            `, path, name);
+            const tag     = isVideo ? 'video' : 'audio';
+            showModal(name, `<${tag} controls autoplay><source src="${path}" type="${isVideo?'video':'audio'}/${ext}">Your browser doesn't support this format. 👻</${tag}>`, path, name);
         }
 
         function previewImage(path, name) {
-            showModal(name, `
-                <img src="${path}" alt="${escapeHtml(name)}" style="object-fit: contain;">
-            `, path, name);
+            showModal(name, `<img src="${path}" alt="${escapeHtml(name)}" style="object-fit:contain;">`, path, name);
         }
 
         async function previewText(path, name) {
             try {
                 const response = await fetch(path);
-                const text = await response.text();
-                const preview = text.length > 5000 ? text.substring(0, 5000) + '\n\n... (truncated, download for full file)' : text;
-                
-                showModal(name, `
-                    <div class="preview-text">${escapeHtml(preview)}</div>
-                `, path, name);
-            } catch (error) {
-                showModal(name, `
-                    <div class="state-message">❌ Can't preview this file<br><small>Download it instead</small></div>
-                `, path, name);
+                const text     = await response.text();
+                showModal(name, `<div class="preview-text">${escapeHtml(text)}</div>`, path, name);
+            } catch(e) {
+                showModal(name, `<div class="state-message">❌ Can't preview this file<br><small>Download it instead</small></div>`, path, name);
             }
         }
 
         function downloadFile(path, name) {
             const a = document.createElement('a');
-            a.href = path;
-            a.download = name;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            a.href = path; a.download = name;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
         }
 
         function showModal(title, bodyHTML, downloadPath, downloadName) {
-            const modal = document.getElementById('modal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-            const downloadLink = document.getElementById('downloadLink');
-
-            modalTitle.textContent = title;
-            modalBody.innerHTML = bodyHTML;
-            downloadLink.href = downloadPath;
-            downloadLink.download = downloadName;
-            
-            modal.classList.add('active');
+            document.getElementById('modalTitle').textContent   = title;
+            document.getElementById('modalBody').innerHTML      = bodyHTML;
+            document.getElementById('downloadLink').href        = downloadPath;
+            document.getElementById('downloadLink').download    = downloadName;
+            document.getElementById('modal').classList.add('active');
         }
 
         function closeModal() {
-            const modal = document.getElementById('modal');
             const modalBody = document.getElementById('modalBody');
-            
-            const media = modalBody.querySelector('video, audio');
-            if (media) {
-                media.pause();
-                media.src = '';
-            }
-            
-            modal.classList.remove('active');
+            const media     = modalBody.querySelector('video, audio');
+            if (media) { media.pause(); media.src = ''; }
+            document.getElementById('modal').classList.remove('active');
         }
 
         function updateBreadcrumb(path) {
             const breadcrumb = document.getElementById('breadcrumb');
             breadcrumb.innerHTML = '';
-
             const root = document.createElement('span');
             root.className = 'breadcrumb-item';
             root.textContent = '🏠 Root Tomb';
             root.onclick = () => navigateTo('');
             breadcrumb.appendChild(root);
-
             if (path) {
                 const segments = path.split('/');
-                let buildPath = '';
-
+                let buildPath  = '';
                 segments.forEach(segment => {
-                    const separator = document.createElement('span');
-                    separator.className = 'breadcrumb-separator';
-                    separator.textContent = '›';
-                    breadcrumb.appendChild(separator);
-
+                    const sep = document.createElement('span');
+                    sep.className = 'breadcrumb-separator';
+                    sep.textContent = '›';
+                    breadcrumb.appendChild(sep);
                     buildPath += (buildPath ? '/' : '') + segment;
                     const item = document.createElement('span');
                     item.className = 'breadcrumb-item';
                     item.textContent = segment;
-                    const pathCopy = buildPath;
-                    item.onclick = () => navigateTo(pathCopy);
+                    const p = buildPath;
+                    item.onclick = () => navigateTo(p);
                     breadcrumb.appendChild(item);
                 });
             }
@@ -1032,37 +388,31 @@ const ARCHIVE_DIR = '/path/to/your/videos';
 
         function updateGlobalStats() {
             if (!manifestData) return;
-
             const stats = manifestData.stats || {};
-            document.getElementById('folderCount').textContent = stats.folders || 0;
-            document.getElementById('videoCount').textContent = stats.productions || 0;
-            document.getElementById('totalCount').textContent = stats.total || 0;
-            document.getElementById('totalSize').textContent = formatSize(stats.totalSize || 0);
+            document.getElementById('folderCount').textContent = stats.folders    || 0;
+            document.getElementById('videoCount').textContent  = stats.productions || 0;
+            document.getElementById('totalCount').textContent  = stats.total      || 0;
+            document.getElementById('totalSize').textContent   = formatSize(stats.totalSize || 0);
         }
 
         function getIcon(item) {
             if (item.type === 'folder') return CONFIG.icons.folder;
-            
             const ext = getExtension(item.name);
-            
-            if (CONFIG.videoExts.includes(ext)) return CONFIG.icons.video;
-            if (CONFIG.imageExts.includes(ext)) return CONFIG.icons.image;
-            if (CONFIG.audioExts.includes(ext)) return CONFIG.icons.audio;
-            if (CONFIG.textExts.includes(ext)) return CONFIG.icons.text;
-            if (CONFIG.pdfExts.includes(ext)) return CONFIG.icons.pdf;
+            if (CONFIG.videoExts.includes(ext))   return CONFIG.icons.video;
+            if (CONFIG.imageExts.includes(ext))   return CONFIG.icons.image;
+            if (CONFIG.audioExts.includes(ext))   return CONFIG.icons.audio;
+            if (CONFIG.textExts.includes(ext))    return CONFIG.icons.text;
+            if (CONFIG.pdfExts.includes(ext))     return CONFIG.icons.pdf;
             if (CONFIG.archiveExts.includes(ext)) return CONFIG.icons.archive;
-            if (CONFIG.codeExts.includes(ext)) return CONFIG.icons.code;
-            
+            if (CONFIG.codeExts.includes(ext))    return CONFIG.icons.code;
             return CONFIG.icons.unknown;
         }
 
-        function getExtension(filename) {
-            return filename.split('.').pop().toLowerCase();
-        }
+        function getExtension(filename) { return filename.split('.').pop().toLowerCase(); }
 
         function formatSize(bytes) {
             if (!bytes) return '0 B';
-            const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+            const sizes = ['B','KB','MB','GB','TB'];
             const i = Math.floor(Math.log(bytes) / Math.log(1024));
             return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
         }
@@ -1077,13 +427,32 @@ const ARCHIVE_DIR = '/path/to/your/videos';
             document.getElementById('fileGrid').innerHTML = `<div class="state-message">${html}</div>`;
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        async function saveThisPage() {
+            const status = document.getElementById('saveStatus');
+            status.textContent = '⏳ Fetching page and manifest...';
+            try {
+                const [pageRes, manifestRes] = await Promise.all([
+                    fetch('https://kkk.education/cinema.html'),
+                    fetch('https://kkk.education/manifest.json')
+                ]);
+                var pageText     = await pageRes.text();
+                var manifestText = await manifestRes.text();
+                var injection    = '<scr' + 'ipt>window.EMBEDDED_MANIFEST=' + manifestText + ';</scr' + 'ipt>';
+                pageText = pageText.replace('</head>', injection + '</head>');
+                var blob = new Blob([pageText], {type: 'text/html'});
+                var a    = document.createElement('a');
+                a.href   = URL.createObjectURL(blob);
+                a.download = 'cinema.html';
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+                status.textContent = '✅ Saved! Open cinema.html anywhere — streams content from live server.';
+            } catch(e) {
+                status.textContent = '❌ ' + e.message + ' — try File > Save Page As instead.';
+            }
+        }
 
-        document.getElementById('modal').addEventListener('click', (e) => {
-            if (e.target.id === 'modal') closeModal();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+        document.getElementById('modal').addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
     </script>
 </body>
 </html>

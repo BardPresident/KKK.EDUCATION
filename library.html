@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
@@ -22,709 +18,556 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-        
         body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
-                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0.3;
+            content: ''; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px),
+                        repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+            pointer-events: none; z-index: 2; opacity: 0.3;
         }
-        
-        .fog-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
+        .fog-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:hidden; }
         .fog {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(75, 0, 130, 0.25) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 30%, rgba(50, 0, 80, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(60, 10, 100, 0.3) 0%, transparent 45%);
+            position:absolute; width:200%; height:200%;
+            background: radial-gradient(ellipse at 20% 50%,rgba(75,0,130,0.25) 0%,transparent 40%),
+                        radial-gradient(ellipse at 80% 30%,rgba(50,0,80,0.2) 0%,transparent 50%),
+                        radial-gradient(ellipse at 50% 80%,rgba(60,10,100,0.3) 0%,transparent 45%);
             animation: fogMove 60s ease-in-out infinite;
         }
-        
-        .fog:nth-child(2) {
-            animation: fogMove2 80s ease-in-out infinite;
-            opacity: 0.8;
-        }
-        
-        .fog:nth-child(3) {
-            animation: fogMove3 100s ease-in-out infinite;
-            opacity: 0.6;
-        }
-        
-        @keyframes fogMove {
-            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
-            50% { transform: translate(10%, 10%) rotate(180deg); }
-        }
-        
-        @keyframes fogMove2 {
-            0%, 100% { transform: translate(10%, 10%) rotate(180deg); }
-            50% { transform: translate(-10%, -10%) rotate(360deg); }
-        }
-        
-        @keyframes fogMove3 {
-            0%, 100% { transform: translate(-5%, 10%) rotate(90deg); }
-            50% { transform: translate(5%, -10%) rotate(270deg); }
-        }
-        
+        .fog:nth-child(2) { animation: fogMove2 80s ease-in-out infinite; opacity: 0.8; }
+        .fog:nth-child(3) { animation: fogMove3 100s ease-in-out infinite; opacity: 0.6; }
+        @keyframes fogMove  { 0%,100%{transform:translate(-10%,-10%) rotate(0deg)}   50%{transform:translate(10%,10%) rotate(180deg)} }
+        @keyframes fogMove2 { 0%,100%{transform:translate(10%,10%) rotate(180deg)}   50%{transform:translate(-10%,-10%) rotate(360deg)} }
+        @keyframes fogMove3 { 0%,100%{transform:translate(-5%,10%) rotate(90deg)}    50%{transform:translate(5%,-10%) rotate(270deg)} }
         body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.04) 0%, transparent 50%);
-            animation: flicker 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
+            content:''; position:fixed; top:0; left:0; width:100%; height:100%;
+            background: radial-gradient(circle at 50% 50%,rgba(255,140,0,0.04) 0%,transparent 50%);
+            animation: flicker 4s ease-in-out infinite; pointer-events:none; z-index:0;
         }
-        
-        @keyframes flicker {
-            0%, 100% { opacity: 0.4; }
-            25% { opacity: 0.6; }
-            50% { opacity: 0.3; }
-            75% { opacity: 0.7; }
-        }
-        
-        .page-wrapper {
-            position: relative;
-            z-index: 10;
-        }
-        
+        @keyframes flicker { 0%,100%{opacity:0.4} 25%{opacity:0.6} 50%{opacity:0.3} 75%{opacity:0.7} }
+
+        .page-wrapper { position:relative; z-index:10; }
+
+        /* ── HEADER ── */
         .golden-fiddle {
-            text-align: center;
-            padding: 40px 20px 30px;
-            background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, transparent 100%);
-            border-bottom: 3px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 -1px 10px rgba(255, 215, 0, 0.2);
+            text-align:center; padding:40px 20px 30px;
+            background: linear-gradient(180deg,rgba(26,10,46,0.95) 0%,transparent 100%);
+            border-bottom: 3px solid rgba(212,175,55,0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 -1px 10px rgba(255,215,0,0.2);
         }
-        
         .library-symbol {
-            font-size: 80px;
-            line-height: 1;
-            text-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.9),
-                0 0 40px rgba(255, 140, 0, 0.7),
-                0 0 60px rgba(255, 100, 0, 0.5),
-                0 5px 15px rgba(0, 0, 0, 0.8);
+            font-size:80px; line-height:1; margin-bottom:15px;
             animation: glow 3s ease-in-out infinite;
-            filter: brightness(1.3) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
-            margin-bottom: 15px;
+            filter: brightness(1.3) drop-shadow(0 8px 20px rgba(0,0,0,0.9));
         }
-        
         @keyframes glow {
-            0%, 100% { 
-                text-shadow: 
-                    0 0 20px rgba(255, 215, 0, 0.9),
-                    0 0 40px rgba(255, 140, 0, 0.7),
-                    0 0 60px rgba(255, 100, 0, 0.5),
-                    0 5px 15px rgba(0, 0, 0, 0.8);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 30px rgba(255, 215, 0, 1),
-                    0 0 60px rgba(255, 140, 0, 0.9),
-                    0 0 90px rgba(255, 100, 0, 0.7),
-                    0 0 120px rgba(255, 50, 0, 0.5),
-                    0 8px 25px rgba(0, 0, 0, 1);
-            }
+            0%,100%{ text-shadow: 0 0 20px rgba(255,215,0,0.9),0 0 40px rgba(255,140,0,0.7),0 5px 15px rgba(0,0,0,0.8); }
+            50%{ text-shadow: 0 0 30px rgba(255,215,0,1),0 0 60px rgba(255,140,0,0.9),0 0 90px rgba(255,100,0,0.7),0 8px 25px rgba(0,0,0,1); }
         }
-        
         .site-title {
-            font-family: 'Cinzel', serif;
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: 6px;
-            margin-bottom: 8px;
-            color: #ffd700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 215, 0, 0.6);
+            font-family:'Cinzel',serif; font-size:32px; font-weight:900; letter-spacing:6px; margin-bottom:8px;
+            color:#ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9),0 0 15px rgba(255,215,0,0.6);
         }
-        
-        .site-subtitle {
-            font-size: 16px;
-            font-style: italic;
-            color: #b8860b;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        .site-subtitle { font-size:16px; font-style:italic; color:#b8860b; letter-spacing:2px; }
+
+        /* ── INFO PANELS ── */
+        .panel {
+            padding: 26px 30px; margin: 22px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.3);
         }
-        
-        .menu-container {
-            background: rgba(10, 4, 20, 0.98);
-            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 215, 0, 0.1);
+        .panel-title {
+            font-family:'Cinzel',serif; font-size:21px; font-weight:900; letter-spacing:3px;
+            margin-bottom:16px; text-align:center;
         }
-        
-        .menu-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(90deg, rgba(139, 69, 19, 0.4), rgba(184, 134, 11, 0.4), rgba(139, 69, 19, 0.4));
-            border: none;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            color: #d4af37;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        .panel-gold   { background:rgba(80,50,0,0.35);    border:2px solid rgba(212,175,55,0.45); }
+        .panel-green  { background:rgba(0,80,0,0.35);     border:2px solid rgba(0,255,120,0.4);  }
+        .panel-blue   { background:rgba(0,50,120,0.35);   border:2px solid rgba(80,180,255,0.4); }
+        .panel-purple { background:rgba(100,0,120,0.35);  border:2px solid rgba(220,100,255,0.4);}
+        .panel-red    { background:rgba(100,0,0,0.35);    border:2px solid rgba(255,80,80,0.45); }
+        .panel-gold   .panel-title { color:#ffd700; text-shadow:0 0 15px rgba(255,215,0,0.6); }
+        .panel-green  .panel-title { color:#00ff88; text-shadow:0 0 15px rgba(0,255,136,0.6); }
+        .panel-blue   .panel-title { color:#69d9ff; text-shadow:0 0 15px rgba(100,200,255,0.6); }
+        .panel-purple .panel-title { color:#e066ff; text-shadow:0 0 15px rgba(200,100,255,0.6); }
+        .panel-red    .panel-title { color:#ff8888; text-shadow:0 0 15px rgba(255,100,100,0.6); }
+        .panel p, .panel li { font-size:16px; line-height:1.9; color:#d4af37; }
+        .panel strong { color:#ffd700; }
+        .panel ol, .panel ul { margin-left:24px; }
+        .panel ol li, .panel ul li { margin:6px 0; }
+        .panel code { background:rgba(0,0,0,0.4); padding:2px 6px; border-radius:3px; font-size:14px; color:#90ee90; }
+        .panel small { color:#b8860b; font-size:14px; }
+
+        .inset-box {
+            background: rgba(0,0,0,0.25);
+            border-left: 3px solid rgba(212,175,55,0.3);
+            padding:14px 18px; margin:14px 0;
         }
-        
-        .menu-button:hover {
-            background: linear-gradient(90deg, rgba(184, 134, 11, 0.6), rgba(212, 175, 55, 0.6), rgba(184, 134, 11, 0.6));
-            color: #ffd700;
-        }
-        
-        .menu-dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: rgba(26, 10, 46, 0.98);
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .menu-dropdown.open {
-            max-height: 300px;
-        }
-        
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            color: #b8860b;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        
-        .menu-item:hover {
-            background: rgba(139, 69, 19, 0.4);
-            color: #ffd700;
-            padding-left: 40px;
-            box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1);
-        }
-        
-        .menu-icon {
-            font-size: 24px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
-        }
-        
-        .content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-        
-        .instructions {
-            background: rgba(139, 0, 0, 0.3);
-            border: 2px solid rgba(255, 100, 100, 0.4);
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(139, 0, 0, 0.3);
-        }
-        
-        .instructions-title {
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            font-weight: 900;
-            color: #ff6b6b;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(255, 100, 100, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9);
-        }
-        
-        .instructions-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #d4af37;
-        }
-        
+        .inset-box-title { font-size:15px; font-weight:700; color:#ffd700; margin-bottom:8px; }
+
+        /* ── SYNC BUTTON ── */
         .sync-button {
-            display: inline-block;
-            margin: 20px 0;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, rgba(184, 134, 11, 0.6), rgba(212, 175, 55, 0.6));
-            border: 2px solid #ffd700;
-            color: #ffd700;
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-decoration: none;
-            cursor: pointer;
+            display:inline-block; margin:18px 0 6px;
+            padding:16px 44px;
+            background: linear-gradient(135deg,rgba(184,134,11,0.6),rgba(212,175,55,0.6));
+            border:2px solid #ffd700; color:#ffd700;
+            font-family:'Cinzel',serif; font-size:18px; font-weight:700; letter-spacing:3px;
+            text-decoration:none; cursor:pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
         }
-        
         .sync-button:hover {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(255, 215, 0, 0.8));
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg,rgba(212,175,55,0.8),rgba(255,215,0,0.8));
+            box-shadow: 0 0 30px rgba(255,215,0,0.6);
             transform: translateY(-2px);
         }
-        
+
+        /* ── SEARCH ── */
         .search-box {
-            background: rgba(26, 10, 46, 0.7);
-            border: 2px solid rgba(139, 69, 19, 0.6);
-            padding: 25px;
-            margin: 30px 0;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.5);
+            background:rgba(26,10,46,0.7); border:2px solid rgba(139,69,19,0.6);
+            padding:25px; margin:30px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.5);
         }
-        
         .search-input {
-            width: 100%;
-            padding: 15px;
-            background: rgba(10, 4, 20, 0.9);
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            color: #ffd700;
-            font-family: 'Crimson Text', serif;
-            font-size: 18px;
-            text-align: center;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+            width:100%; padding:15px;
+            background:rgba(10,4,20,0.9); border:2px solid rgba(212,175,55,0.4);
+            color:#ffd700; font-family:'Crimson Text',serif; font-size:18px; text-align:center;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
         }
-        
-        .search-input::placeholder {
-            color: #b8860b;
-            opacity: 0.7;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #ffd700;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-        
-        .tome-section {
-            margin: 50px 0;
-        }
-        
+        .search-input::placeholder { color:#b8860b; opacity:0.7; }
+        .search-input:focus { outline:none; border-color:#ffd700; box-shadow:inset 0 2px 10px rgba(0,0,0,0.8),0 0 20px rgba(255,215,0,0.3); }
+
+        /* ── BOOK LIST ── */
+        .tome-section { margin:50px 0; }
         .tome-section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
-            font-weight: 900;
-            color: #ffd700;
-            text-align: center;
-            margin-bottom: 30px;
-            letter-spacing: 5px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9);
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            font-family:'Cinzel',serif; font-size:28px; font-weight:900; color:#ffd700;
+            text-align:center; margin-bottom:30px; letter-spacing:5px;
+            text-shadow:0 0 20px rgba(255,215,0,0.6),2px 2px 4px rgba(0,0,0,0.9);
+            padding-bottom:15px; border-bottom:2px solid rgba(212,175,55,0.3);
         }
-        
         .tome-list {
-            background: rgba(10, 4, 20, 0.6);
-            border: 2px solid rgba(139, 69, 19, 0.5);
-            padding: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.4);
+            background:rgba(10,4,20,0.6); border:2px solid rgba(139,69,19,0.5); padding:20px;
+            box-shadow:0 8px 30px rgba(0,0,0,0.8),inset 0 0 30px rgba(0,0,0,0.4);
         }
-        
         .tome-item {
-            display: block;
-            padding: 15px 20px;
-            margin: 8px 0;
-            background: rgba(26, 10, 46, 0.6);
-            border-left: 4px solid #8b4513;
-            color: #d4af37;
-            text-decoration: none;
-            font-family: 'Crimson Text', serif;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            display:block; padding:15px 20px; margin:8px 0;
+            background:rgba(26,10,46,0.6); border-left:4px solid #8b4513;
+            color:#d4af37; text-decoration:none;
+            font-family:'Crimson Text',serif; font-size:18px;
+            transition:all 0.3s ease; box-shadow:0 2px 8px rgba(0,0,0,0.5);
         }
-        
         .tome-item:hover {
-            background: rgba(139, 69, 19, 0.4);
-            color: #ffd700;
-            border-left-color: #ffd700;
-            padding-left: 30px;
-            box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.7);
+            background:rgba(139,69,19,0.4); color:#ffd700; border-left-color:#ffd700;
+            padding-left:30px; box-shadow:inset 0 0 20px rgba(255,215,0,0.1),0 4px 15px rgba(0,0,0,0.7);
         }
-        
-        .tome-number {
-            display: inline-block;
-            min-width: 50px;
-            color: #ffd700;
-            font-weight: 700;
-            margin-right: 15px;
-        }
-        
-        .empty-message {
-            text-align: center;
-            padding: 60px 20px;
-            font-size: 20px;
-            color: #b8860b;
-            font-style: italic;
-        }
-        
+        .tome-number { display:inline-block; min-width:50px; color:#ffd700; font-weight:700; margin-right:15px; }
+        .empty-message { text-align:center; padding:60px 20px; font-size:20px; color:#b8860b; font-style:italic; }
+
+        /* ── FOOTER ── */
         footer {
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 60px;
-            background: linear-gradient(180deg, transparent 0%, rgba(10, 4, 20, 0.95) 100%);
-            border-top: 3px solid rgba(139, 69, 19, 0.6);
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+            text-align:center; padding:50px 20px; margin-top:60px;
+            background:linear-gradient(180deg,transparent 0%,rgba(10,4,20,0.95) 100%);
+            border-top:3px solid rgba(139,69,19,0.6);
+            box-shadow:0 -10px 40px rgba(0,0,0,0.8);
         }
-        
-        .footer-divider {
-            font-size: 20px;
-            color: #b8860b;
-            margin: 20px 0;
-            letter-spacing: 4px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        .footer-divider { font-size:20px; color:#b8860b; margin:20px 0; letter-spacing:4px; }
+        .footer-text { font-size:14px; color:#b8860b; margin:10px 0; line-height:1.6; }
+        .footer-kkk { font-size:24px; font-weight:700; color:#ffd700; margin:20px 0; text-shadow:0 0 15px rgba(255,215,0,0.8); letter-spacing:3px; }
+
+        @media(max-width:768px) {
+            .site-title{font-size:24px} .library-symbol{font-size:60px}
+            .tome-section-title{font-size:22px} .tome-item{font-size:16px;padding:12px 15px} .panel{padding:20px 16px}
         }
-        
-        .footer-text {
-            font-size: 14px;
-            color: #b8860b;
-            margin: 10px 0;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-        }
-        
-        .footer-kkk {
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffd700;
-            margin: 20px 0;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.9);
-            letter-spacing: 3px;
-        }
-        
-        @media (max-width: 768px) {
-            .site-title { font-size: 24px; }
-            .library-symbol { font-size: 60px; }
-            .tome-section-title { font-size: 22px; }
-            .tome-item { font-size: 16px; padding: 12px 15px; }
-        }
-        
-        @media (max-width: 480px) {
-            .site-title { font-size: 20px; letter-spacing: 3px; }
-            .library-symbol { font-size: 50px; }
-            .site-subtitle { font-size: 14px; }
-            .menu-button { font-size: 16px; }
-            .content { padding: 30px 15px; }
-            .tome-item { font-size: 15px; }
+        @media(max-width:480px) {
+            .site-title{font-size:20px;letter-spacing:3px} .library-symbol{font-size:50px}
+            .content{padding:30px 15px} .tome-item{font-size:15px}
         }
     </style>
 </head>
 <body>
     <div class="fog-container">
-        <div class="fog"></div>
-        <div class="fog"></div>
-        <div class="fog"></div>
+        <div class="fog"></div><div class="fog"></div><div class="fog"></div>
     </div>
 
     <div class="page-wrapper">
+
         <header class="golden-fiddle">
             <div class="library-symbol">📚💀🔥</div>
             <h1 class="site-title">THE FORBIDDEN LIBRARY</h1>
             <p class="site-subtitle">Where Knowledge Becomes Power • Where Tears Become Spells</p>
         </header>
 
-<nav style="text-align:center; margin: 1.5em 0;">
-  <a href="index.html"
-     style="
-       display:inline-block;
-       padding:0.7em 1.6em;
-       border-radius:999px;
-       background:linear-gradient(90deg,#ff7af5,#7af5ff);
-       color:#111;
-       text-decoration:none;
-       font-weight:700;
-       letter-spacing:0.08em;
-       font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-       box-shadow:0 4px 10px rgba(0,0,0,0.15);
-     ">
-    🏠 HOME
-  </a>
-</nav>
+        <nav style="text-align:center;margin:1.5em 0;">
+            <a href="https://kkk.education/index.html" style="display:inline-block;padding:0.7em 1.6em;border-radius:999px;background:none;border:2px solid rgba(255,255,255,0.4);color:#ffffff;text-decoration:none;font-weight:700;letter-spacing:0.08em;font-family:'Cinzel',serif;font-size:0.85em;">← HOME</a>
+        </nav>
 
-        <main class="content">
-            <!-- Instructions -->
-            <div class="instructions">
-                <div class="instructions-title">🔔 HOW TO USE THE LIBRARY 🔔</div>
-                <div class="instructions-text">
-                    <p style="margin-bottom: 20px; font-size: 18px; color: #ffd700;"><strong>✨ THIS TOOL IS FOR EVERYONE! ✨</strong></p>
-                    
-                    <div style="margin: 15px 0; padding: 15px; background: rgba(139, 0, 139, 0.2); border: 2px solid rgba(255, 100, 255, 0.3);">
-                        <p style="margin-bottom: 10px;"><strong>📚 FOR KIDS WHO WRITE STORIES:</strong></p>
-                        <p style="font-size: 15px; line-height: 1.7;">
-                            You can turn ANY .txt story into a beautiful HTML book! 📝<br>
-                            No website needed! No money needed! No permission needed!<br>
-                            Just click the Sync Bell, drag your stories, and get immortal books! 💎<br>
-                            <small style="color: #b8860b;">(Open them in any browser, share them anywhere!)</small>
-                        </p>
-                    </div>
-                    
-                    <div style="margin: 15px 0; padding: 15px; background: rgba(0, 100, 139, 0.2); border: 2px solid rgba(100, 200, 255, 0.3);">
-                        <p style="margin-bottom: 10px;"><strong>🌐 FOR WEBSITE OWNERS:</strong></p>
-                        <p style="font-size: 15px; line-height: 1.7;">
-                            Use the Sync Bell to build your entire library website! 🚀<br>
-                            Drag all your books, download library.zip, upload to your site!<br>
-                            This page will auto-load and organize everything! 📚<br>
-                            <small style="color: #b8860b;">(Perfect for publishing 115 books or 1,500 videos!)</small>
-                        </p>
-                    </div>
-                    
-                    <p style="margin: 20px 0; font-size: 16px;"><strong>⚡ THE STEPS:</strong></p>
-                    <p style="margin-bottom: 10px; font-size: 15px; line-height: 1.8;">
-                        1. Click the 🔔 SYNC BELL button below<br>
-                        2. Drag your .txt files (stories, books, whatever!)<br>
-                        3. Download library.zip<br>
-                        4. Extract it<br>
-                        5. <strong>Open the .html files in your browser</strong> (no server needed!)<br>
-                        6. OR upload library/ folder to your website (for public sharing)<br>
-                        7. READ EVERYTHING! 🤓
+        <main class="content" style="max-width:1000px;margin:0 auto;padding:40px 20px;min-height:100vh;">
+
+            <!-- ══════════════════════════════════════════
+                 PANEL 1 — WHAT IS THIS LIBRARY?
+            ══════════════════════════════════════════ -->
+            <div class="panel panel-gold">
+                <div class="panel-title">📚 WHAT IS THIS LIBRARY? 📚</div>
+                <p style="margin-bottom:14px;">
+                    This is the complete written archive of <strong>WIKKKAN</strong> — philosopher, filmmaker, and author
+                    who has spent 36 years building an entire civilisational framework from scratch.
+                    These are not academic texts published by gatekeepers. These are raw, real, revolutionary documents
+                    written in poverty, in hospitals, in psychiatric detention, and in love.
+                </p>
+                <p style="margin-bottom:14px;">
+                    This is a <strong>living library</strong> — books are added continuously. The current count is shown automatically in the list below as more are added.
+                    They span philosophy, child sovereignty, governance theory, emergent systems, poetry, fiction, and more.
+                    Every single one is released under <strong>CC0 — public domain — zero rights reserved</strong>.
+                    They belong to everyone. They always will.
+                </p>
+                <p>
+                    Scroll down to read any book instantly in your browser.
+                    Or read the sections below to learn how to download them all, share them everywhere,
+                    or use this same system to publish your own words. 👇
+                </p>
+            </div>
+
+            <!-- ══════════════════════════════════════════
+                 PANEL 2 — THE SYNC BELL EXPLAINED
+            ══════════════════════════════════════════ -->
+            <div class="panel panel-green">
+                <div class="panel-title">🔔 WHAT IS THE SYNC BELL? 🔔</div>
+                <p style="margin-bottom:14px;">
+                    The <strong>Sync Bell</strong> (<code>sync-library.html</code>) is a tool that lives right next to this page.
+                    It runs entirely in your browser — no server required, no installation, no account, no cost.
+                    It does the exact same job as the PHP-powered Sync Bell on REPUBLICKA.LIFE,
+                    except it works in <strong>pure HTML, anywhere, for anyone</strong>.
+                </p>
+                <p style="margin-bottom:14px;">
+                    The Sync Bell has <strong>two modes</strong>:
+                </p>
+
+                <div class="inset-box">
+                    <div class="inset-box-title">⚡ MODE 1 — AUTO GENERATE (for this website's full book collection):</div>
+                    <p>
+                        One button. The bell reads the site's <code>manifest.json</code>, finds every <code>.txt</code>
+                        file in the <code>cinema/BOOKS/</code> folder, fetches them all, converts each one into a
+                        beautiful dark-gold HTML book page with full navigation and styling, then packages
+                        everything into a <code>library.zip</code> you can download in seconds.
+                        The zip contains every book as its own standalone HTML file, plus a <code>manifest.json</code>
+                        index that this library page reads to display the full list automatically.
                     </p>
-                    <a href="sync-library.html" target="_blank" class="sync-button">
-                        🔔 OPEN THE SYNC BELL 🔔
-                    </a>
-                    <p style="margin-top: 15px; font-size: 14px; color: #b8860b;">
-                        💀 (Even if you don't have a website, you can make beautiful books! This is personal sovereignty! 👻✨)
+                </div>
+
+                <div class="inset-box">
+                    <div class="inset-box-title">✍️ MODE 2 — DRAG YOUR OWN FILES (for anyone who wants to publish):</div>
+                    <p>
+                        Below the auto-generate button, there is a drag zone.
+                        Drop any <code>.txt</code> files onto it — your stories, poems, journals, manifestos, anything.
+                        The bell converts every one to the same beautiful HTML format and downloads them as a zip.
+                        Works 100% offline. No internet needed. You become a publisher instantly.
                     </p>
+                </div>
+
+                <div style="text-align:center;margin-top:20px;">
+                    <a href="sync-library.html" target="_blank" class="sync-button">🔔 OPEN THE SYNC BELL 🔔</a>
+                    <br>
+                    <small>Opens in a new tab — runs entirely in your browser — free forever</small>
                 </div>
             </div>
 
-            <!-- Search -->
+            <!-- ══════════════════════════════════════════
+                 PANEL 3 — HOW TO DOWNLOAD THE COMPLETE BOOK COLLECTION
+            ══════════════════════════════════════════ -->
+            <div class="panel panel-blue">
+                <div class="panel-title">📦 HOW TO DOWNLOAD ALL THE BOOKS 📦</div>
+                <p style="margin-bottom:16px;">
+                    Want a permanent, beautiful, offline copy of every book in this library?
+                    Here is the exact process — takes about 60 seconds:
+                </p>
+                <ol>
+                    <li>Click <strong>🔔 OPEN THE SYNC BELL</strong> above — it opens in a new tab</li>
+                    <li>At the top of the Sync Bell, click the big green button: <strong>RING DA BELL — AUTO GENERATE</strong></li>
+                    <li>Wait ~20–60 seconds (depending on how many books there are) while the bell fetches and converts everything to HTML</li>
+                    <li>Click <strong>💎 DOWNLOAD LIBRARY.ZIP</strong> when the button appears</li>
+                    <li>Extract the zip on your computer — you get a <code>library/</code> folder full of HTML files</li>
+                    <li>Open any <code>.html</code> file inside it directly in your browser — <strong>works completely offline, forever</strong></li>
+                </ol>
+                <p style="margin-top:16px;">
+                    That's it. You now own every book in this library. No DRM. No expiry. No login. No tracking.
+                    <strong>CC0 — copy them, share them, translate them, print them, remix them, teach with them.</strong>
+                    Share on USB drives, torrents, Discord, email, anywhere you want. 🌍
+                </p>
+            </div>
+
+            <!-- ══════════════════════════════════════════
+                 PANEL 4 — KIDS / WRITERS: PUBLISH YOUR OWN
+            ══════════════════════════════════════════ -->
+            <div class="panel panel-purple">
+                <div class="panel-title">✍️ PUBLISH YOUR OWN WORDS — FOR FREE 🌟</div>
+                <p style="margin-bottom:16px;">
+                    The Sync Bell works for <strong>anyone who has something to say</strong>.
+                    Kids writing stories. Survivors documenting truth. Poets. Teachers. Rebels.
+                    You need zero money, zero website, zero permission from any gatekeeper.
+                    Your words become beautiful books in seconds.
+                </p>
+
+                <div class="inset-box">
+                    <div class="inset-box-title">📝 Step 1 — Write anything:</div>
+                    <p>Open Notepad (Windows), TextEdit (Mac), or any text editor. Write your story, poem, journal, manifesto — anything.
+                    Save it as a <code>.txt</code> file. You can name it <code>my-story.txt</code> or use a number prefix like
+                    <code>001-my-first-book.txt</code> — the Sync Bell will number and sort them automatically.</p>
+                </div>
+
+                <div class="inset-box">
+                    <div class="inset-box-title">🔔 Step 2 — Ring the bell:</div>
+                    <p>Open the Sync Bell. Ignore the green auto-sync button at the top (that's for this site's books).
+                    Scroll down to the <strong>drag zone</strong> and drop your <code>.txt</code> file onto it.
+                    You can drop 1 file or 100 files at once — the bell handles any amount.</p>
+                </div>
+
+                <div class="inset-box">
+                    <div class="inset-box-title">💎 Step 3 — Get your books:</div>
+                    <p>Download the <code>library.zip</code> that appears. Extract it.
+                    Open the <code>.html</code> files in any browser — they work completely offline, on any device, forever.
+                    Share them anywhere. Or upload the <code>library/</code> folder to a website and it becomes a public library.</p>
+                </div>
+
+                <p style="margin-top:14px;font-style:italic;color:#e0b0ff;">
+                    💀 This is how every kid becomes a publisher. Every story becomes immortal.
+                    Every word escapes the gatekeepers. Every human with a text file becomes an author.
+                    This is what the Sync Bell was built for. 🔔
+                </p>
+            </div>
+
+            <!-- ══════════════════════════════════════════
+                 PANEL 5 — FOR WEBSITE BUILDERS
+            ══════════════════════════════════════════ -->
+            <div class="panel panel-red">
+                <div class="panel-title">🌐 BUILD YOUR OWN LIBRARY WEBSITE 🌐</div>
+                <p style="margin-bottom:16px;">
+                    Want to run your own version of this entire system on your own domain?
+                    Every file is CC0 — take it, fork it, adapt it. Here is the complete setup:
+                </p>
+                <ol>
+                    <li>Copy <code>library.html</code> and <code>sync-library.html</code> to your website root</li>
+                    <li>Put your <code>.txt</code> books in a <code>BOOKS/</code> folder and make sure they appear in your root <code>manifest.json</code> <small>(the cinema manifest file)</small></li>
+                    <li>Visit <code>sync-library.html</code> on your <strong>live website</strong> and click <strong>RING DA BELL — AUTO GENERATE</strong></li>
+                    <li>Download <code>library.zip</code>, extract it, upload the <code>library/</code> folder to your site root</li>
+                    <li>Visit <code>library.html</code> — all your books appear automatically, numbered, sorted, and searchable</li>
+                    <li>Add new books any time: update your BOOKS folder, regenerate the cinema manifest, ring the bell again, re-upload</li>
+                </ol>
+                <p style="margin-top:14px;">
+                    Any visitor to your site can also ring the bell themselves at any time to get their own offline copy of all your books.
+                    The bell is always public. The books are always free. <strong>This is the architecture of sovereignty.</strong>
+                </p>
+                <p style="margin-top:12px;">
+                    <small>⚠️ Note: The auto-generate button requires a live website (<code>https://</code>) because browsers block
+                    fetches from <code>file://</code> URLs for security reasons. The drag-and-drop mode works everywhere including locally.</small>
+                </p>
+            </div>
+
+            <!-- ══════════════════════════════════════════
+                 SEARCH
+            ══════════════════════════════════════════ -->
             <div class="search-box">
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    class="search-input" 
-                    placeholder="🔍 Search the forbidden tomes... (try 'devil' or 'tears' or 'murder')"
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="🔍 Search the tomes by title..."
                     onkeyup="performSearch()"
                 />
             </div>
 
-            <!-- Numbered Books Section -->
+            <!-- ══════════════════════════════════════════
+                 BOOK LISTS
+            ══════════════════════════════════════════ -->
             <div class="tome-section" id="numberedSection">
-                <div class="tome-section-title">📖 THE NUMBERED TOMES 📖</div>
+                <div class="tome-section-title">📖 THE TOMES OF WIKKKAN (<span id="tomeCount">...</span>) 📖</div>
                 <div class="tome-list" id="numberedList">
                     <div class="empty-message">
-                        💀 The shelves are empty... someone forgot to ring the Sync Bell! 🔔<br>
-                        <small style="font-size: 16px;">(Or maybe the ghosts ate all the books? 👻)</small>
+                        💀 The shelves are empty... ring the Sync Bell to generate the library! 🔔<br>
+                        <small style="font-size:16px;">
+                            Open <strong>sync-library.html</strong> → click <strong>RING DA BELL — AUTO GENERATE</strong> →
+                            download <code>library.zip</code> → upload the <code>library/</code> folder to this site
+                        </small>
                     </div>
                 </div>
             </div>
 
-            <!-- Other Documents Section -->
-            <div class="tome-section" id="otherSection" style="display: none;">
+            <div class="tome-section" id="otherSection" style="display:none;">
                 <div class="tome-section-title">📜 OTHER FORBIDDEN SCROLLS 📜</div>
                 <div class="tome-list" id="otherList"></div>
             </div>
 
-            <!-- Search Results Section -->
-            <div class="tome-section" id="searchSection" style="display: none;">
+            <div class="tome-section" id="searchSection" style="display:none;">
                 <div class="tome-section-title">🔍 SEARCH RESULTS 🔍</div>
                 <div class="tome-list" id="searchList"></div>
             </div>
+
+            <!-- SAVE THIS PAGE -->
+            <div style="text-align:center;margin:40px 0 20px;padding:24px;border:1px solid rgba(212,175,55,0.4);background:rgba(212,175,55,0.05);">
+                <div style="font-family:'Cinzel',serif;font-size:0.85em;letter-spacing:0.3em;color:#ffd700;margin-bottom:10px;">📦 SAVE THIS LIBRARY</div>
+                <p style="font-size:15px;color:#b8860b;margin-bottom:16px;line-height:1.7;">Save this page and open it anywhere.<br>It streams books from the live server — works online or offline.</p>
+                <button onclick="window.open('https://kkk.education/library.html','_blank')" style="padding:10px 24px;background:none;border:1px solid rgba(212,175,55,0.5);color:#b8860b;font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.2em;cursor:pointer;margin:4px;">🌐 OPEN LIVE VERSION</button>
+                <button onclick="saveThisPage()" style="padding:10px 24px;background:none;border:1px solid rgba(212,175,55,0.5);color:#b8860b;font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.2em;cursor:pointer;margin:4px;">💾 SAVE THIS FILE</button>
+                <p id="saveStatus" style="margin-top:12px;font-size:13px;color:#b8860b;min-height:18px;"></p>
+            </div>
+
         </main>
 
         <footer>
             <div class="footer-divider">༺━━━━━༻💀༺━━━━━༻</div>
-            
             <p class="footer-text">Built in psychiatric detention</p>
             <p class="footer-text">February 2026, Canberra</p>
-            
             <p class="footer-kkk">💎 KRY KRY KRY 💎</p>
-            <p class="footer-text" style="font-size: 16px; font-style: italic; margin: 15px 0;">
-                The tears are the most powerful magic
-            </p>
-            
-            <p class="footer-text" style="margin-top: 30px;">CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED</p>
-            
-            <p class="footer-text" style="margin-top: 20px; font-style: italic;">AMORIARIACKA IS MY NATIVE TONGUE</p>
-            
+            <p class="footer-text" style="font-size:16px;font-style:italic;margin:15px 0;">The tears are the most powerful magic</p>
+            <p class="footer-text" style="margin-top:30px;">CC0 PUBLICKÁ DOMÁNIA<br>ALL LOVE RESERVED</p>
+            <p class="footer-text" style="margin-top:20px;font-style:italic;">AMORIARIACKA IS MY NATIVE TONGUE</p>
             <div class="footer-divider">༺━━━━━༻💀༺━━━━━༻</div>
         </footer>
+
     </div>
 
     <script>
-        let allTomes = [];
-        let numberedTomes = [];
-        let otherTomes = [];
-
-        function toggleMenu() {
-            const dropdown = document.getElementById('menuDropdown');
-            dropdown.classList.toggle('open');
-        }
+        let allTomes = [], numberedTomes = [], otherTomes = [];
 
         function loadLibrary() {
-            // Try to load manifest.json (generated by sync tool)
+            // Check for embedded manifest first (offline toolkit mode)
+            if (window.EMBEDDED_LIBRARY_MANIFEST) {
+                allTomes = window.EMBEDDED_LIBRARY_MANIFEST.tomes || [];
+                if (!allTomes.length) { showError('Embedded manifest has no books. Ring the Sync Bell! 📚'); return; }
+                organizeTomes();
+                renderTomes();
+                return;
+            }
             fetch('library/manifest.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Manifest not found (HTTP ' + response.status + ')');
-                    return response.json();
+                .then(r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
                 })
                 .then(data => {
                     allTomes = data.tomes || [];
-                    if (allTomes.length === 0) {
-                        showError('Manifest loaded but contains no books! 📚');
-                        return;
-                    }
+                    if (!allTomes.length) { showError('Manifest loaded but contains no books. Ring the Sync Bell! 📚'); return; }
                     organizeTomes();
                     renderTomes();
                 })
-                .catch(error => {
-                    console.error('Library load error:', error);
+                .catch(err => {
                     showError(`
-                        <strong>Can't find library/manifest.json! 🔔</strong><br><br>
-                        
-                        <strong>Are you testing locally?</strong> (file:// in the URL bar?)<br>
-                        Local testing won't work because browsers block file:// fetches for security.<br><br>
-                        
-                        <strong>Solutions:</strong><br>
-                        1. Upload library.html + library/ folder to your actual website and test there! 🚀<br>
-                        2. Or run a local server (python3 -m http.server 8000)<br><br>
-                        
-                        <strong>Have you synced yet?</strong><br>
-                        If not, click the button above to open the Sync Bell! 🔔<br><br>
-                        
-                        <small style="color: #888;">Error: ${error.message}</small>
+                        <strong>📚 No library found yet — the shelves need filling!</strong><br><br>
+                        This page loads books from <code>library/manifest.json</code> which is generated by the Sync Bell.<br><br>
+                        <strong>To fill the library:</strong><br>
+                        1. Click <strong>🔔 OPEN THE SYNC BELL</strong> in the green panel above<br>
+                        2. Click the big green button: <strong>RING DA BELL — AUTO GENERATE</strong><br>
+                        3. Wait ~60 seconds while it fetches all the books<br>
+                        4. Download <code>library.zip</code><br>
+                        5. Extract it and upload the <code>library/</code> folder to this site<br>
+                        6. Reload this page — all books appear! 📚<br><br>
+                        <strong>Viewing this locally (file:// in the address bar)?</strong><br>
+                        The auto-generate button requires a live <code>https://</code> website because browsers block
+                        file:// fetches for security. Use the drag-and-drop mode in the Sync Bell instead — it works 100% locally.<br><br>
+                        <small style="color:#888;">Technical detail: ${err.message}</small>
                     `);
                 });
         }
 
         function showError(html) {
-            const numberedList = document.getElementById('numberedList');
-            numberedList.innerHTML = `
-                <div class="empty-message" style="text-align: left; font-size: 16px; line-height: 1.8;">
-                    ${html}
-                </div>
-            `;
+            document.getElementById('numberedList').innerHTML =
+                '<div class="empty-message" style="text-align:left;font-size:16px;line-height:1.9;">' + html + '</div>';
         }
 
         function organizeTomes() {
-            numberedTomes = [];
-            otherTomes = [];
-
-            allTomes.forEach(tome => {
-                // Check if filename starts with numbers (e.g., 001-, 115-)
-                const match = tome.filename.match(/^(\d+)-/);
-                if (match) {
-                    const number = parseInt(match[1], 10);
-                    numberedTomes.push({ ...tome, number });
-                } else {
-                    otherTomes.push(tome);
-                }
+            numberedTomes = []; otherTomes = [];
+            allTomes.forEach(t => {
+                const m = t.filename.match(/^(\d+)[-_]/);
+                if (m) numberedTomes.push({ ...t, number: parseInt(m[1], 10) });
+                else   otherTomes.push(t);
             });
-
-            // Sort numbered: highest to lowest (115, 114, 113...)
             numberedTomes.sort((a, b) => b.number - a.number);
-
-            // Sort other: alphabetically
             otherTomes.sort((a, b) => a.title.localeCompare(b.title));
         }
 
+        // If running from a local file (offline toolkit), point book links to live site
+        // If running on the live site, use relative paths as normal
+        const BOOK_PREFIX = (window.location.protocol === 'file:')
+            ? 'https://kkk.education/library/'
+            : 'library/';
+
         function renderTomes() {
-            const numberedList = document.getElementById('numberedList');
-            const otherList = document.getElementById('otherList');
-            const otherSection = document.getElementById('otherSection');
-
-            // Render numbered books
-            if (numberedTomes.length > 0) {
-                numberedList.innerHTML = numberedTomes.map(tome => `
-                    <a href="library/${tome.filename}.html" class="tome-item">
-                        <span class="tome-number">${String(tome.number).padStart(3, '0')}</span>
-                        <span>${tome.title}</span>
-                    </a>
-                `).join('');
+            const nl = document.getElementById('numberedList');
+            const ol = document.getElementById('otherList');
+            const os = document.getElementById('otherSection');
+            // Update live count in heading and search placeholder
+            const tc = document.getElementById('tomeCount');
+            if (tc) tc.textContent = allTomes.length;
+            const si = document.getElementById('searchInput');
+            if (si) si.placeholder = '🔍 Search ' + allTomes.length + ' tomes by title...';
+            if (numberedTomes.length) {
+                nl.innerHTML = numberedTomes.map(t =>
+                    `<a href="${BOOK_PREFIX}${t.filename}.html" class="tome-item">
+                        <span class="tome-number">${String(t.number).padStart(3,'0')}</span>
+                        <span>${t.title}</span>
+                    </a>`
+                ).join('');
             }
-
-            // Render other documents
-            if (otherTomes.length > 0) {
-                otherSection.style.display = 'block';
-                otherList.innerHTML = otherTomes.map(tome => `
-                    <a href="library/${tome.filename}.html" class="tome-item">
-                        <span>${tome.title}</span>
-                    </a>
-                `).join('');
+            if (otherTomes.length) {
+                os.style.display = 'block';
+                ol.innerHTML = otherTomes.map(t =>
+                    `<a href="${BOOK_PREFIX}${t.filename}.html" class="tome-item"><span>${t.title}</span></a>`
+                ).join('');
             }
         }
 
         function performSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const query = searchInput.value.trim().toLowerCase();
-            const searchSection = document.getElementById('searchSection');
-            const searchList = document.getElementById('searchList');
-            const numberedSection = document.getElementById('numberedSection');
-            const otherSection = document.getElementById('otherSection');
+            const q  = document.getElementById('searchInput').value.trim().toLowerCase();
+            const ss = document.getElementById('searchSection');
+            const sl = document.getElementById('searchList');
+            const ns = document.getElementById('numberedSection');
+            const os = document.getElementById('otherSection');
 
-            if (!query) {
-                // Show normal view
-                searchSection.style.display = 'none';
-                numberedSection.style.display = 'block';
-                if (otherTomes.length > 0) {
-                    otherSection.style.display = 'block';
-                }
+            if (!q) {
+                ss.style.display = 'none'; ns.style.display = 'block';
+                if (otherTomes.length) os.style.display = 'block';
                 return;
             }
-
-            // Filter tomes
-            const results = allTomes.filter(tome => 
-                tome.title.toLowerCase().includes(query) ||
-                tome.filename.toLowerCase().includes(query)
+            const results = allTomes.filter(t =>
+                t.title.toLowerCase().includes(q) || t.filename.toLowerCase().includes(q)
             );
+            ns.style.display = 'none'; os.style.display = 'none'; ss.style.display = 'block';
 
-            // Show search results
-            numberedSection.style.display = 'none';
-            otherSection.style.display = 'none';
-            searchSection.style.display = 'block';
-
-            if (results.length === 0) {
-                searchList.innerHTML = `
-                    <div class="empty-message">
-                        💀 No tomes matched "${query}"...<br>
-                        <small>Try searching for "devil", "tears", "murder", or something equally dark! 🖤</small>
-                    </div>
-                `;
+            if (!results.length) {
+                sl.innerHTML = `<div class="empty-message">💀 No tomes matched "${q}"...<br><small>Try another word! 🖤</small></div>`;
             } else {
-                searchList.innerHTML = results.map(tome => {
-                    const match = tome.filename.match(/^(\d+)-/);
-                    const number = match ? String(parseInt(match[1], 10)).padStart(3, '0') : '';
-                    
-                    return `
-                        <a href="library/${tome.filename}.html" class="tome-item">
-                            ${number ? `<span class="tome-number">${number}</span>` : ''}
-                            <span>${tome.title}</span>
-                        </a>
-                    `;
+                sl.innerHTML = results.map(t => {
+                    const m   = t.filename.match(/^(\d+)[-_]/);
+                    const num = m ? String(parseInt(m[1],10)).padStart(3,'0') : '';
+                    return `<a href="${BOOK_PREFIX}${t.filename}.html" class="tome-item">
+                        ${num ? `<span class="tome-number">${num}</span>` : ''}
+                        <span>${t.title}</span>
+                    </a>`;
                 }).join('');
             }
         }
 
-        // Load library on page load
+        async function saveThisPage() {
+            const status = document.getElementById('saveStatus');
+            status.textContent = '⏳ Fetching page and manifest...';
+            try {
+                const [pageRes, manifestRes] = await Promise.all([
+                    fetch('https://kkk.education/library.html'),
+                    fetch('https://kkk.education/library/manifest.json')
+                ]);
+                var pageText = await pageRes.text();
+                var manifestText = await manifestRes.text();
+                // Embed library manifest so saved file works offline
+                var injection = '<scr' + 'ipt>window.EMBEDDED_LIBRARY_MANIFEST=' + manifestText + ';</scr' + 'ipt>';
+                pageText = pageText.replace('</head>', injection + '</head>');
+                var blob = new Blob([pageText], {type: 'text/html'});
+                var a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'library.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+                status.textContent = '✅ Saved! Open library.html anywhere — books load from live server.';
+            } catch(e) {
+                status.textContent = '❌ ' + e.message + ' — try File > Save Page As instead.';
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', loadLibrary);
     </script>
 </body>
