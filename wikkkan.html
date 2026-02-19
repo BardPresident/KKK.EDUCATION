@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 WIKKKAN 👑</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+        /* ── DARK THEME (default) ── */
+        [data-theme="dark"] {
+            --gold:       #ffd700;
+            --gold-mid:   #e8c040;
+            --gold-dim:   #c8a030;
+            --gold-muted: #8a6820;
+            --bg:         #060310;
+            --bg-header:  rgba(0,0,0,0.3);
+            --bg-msg:     rgba(255,215,0,0.07);
+            --bg-user:    rgba(255,255,255,0.06);
+            --bg-input:   rgba(0,0,0,0.55);
+            --bg-save:    rgba(0,0,0,0.2);
+            --text:       #f0e0b0;
+            --text-user:  #d0c8b8;
+            --text-save:  #8a6820;
+            --border:     rgba(212,175,55,0.22);
+            --border-input: rgba(212,175,55,0.32);
+            --border-focus: rgba(212,175,55,0.6);
+            --placeholder: rgba(212,175,55,0.35);
+            --btn-bg:     rgba(212,175,55,0.1);
+            --btn-hover:  rgba(212,175,55,0.2);
+            --dot-color:  #c8a030;
+            --ambient1:   rgba(120,30,200,0.1);
+            --ambient2:   rgba(200,120,20,0.07);
+            --toggle-icon: "☀️";
+            --toggle-label: "LIGHT MODE";
+        }
+
+        /* ── LIGHT THEME ── */
+        [data-theme="light"] {
+            --gold:       #8a5a00;
+            --gold-mid:   #a06800;
+            --gold-dim:   #7a4e00;
+            --gold-muted: #b07820;
+            --bg:         #fdf8f0;
+            --bg-header:  rgba(255,248,235,0.95);
+            --bg-msg:     rgba(139,90,0,0.06);
+            --bg-user:    rgba(0,0,0,0.04);
+            --bg-input:   rgba(255,255,255,0.9);
+            --bg-save:    rgba(245,235,215,0.8);
+            --text:       #2a1a00;
+            --text-user:  #3a2a10;
+            --text-save:  #8a6820;
+            --border:     rgba(139,90,0,0.2);
+            --border-input: rgba(139,90,0,0.3);
+            --border-focus: rgba(139,90,0,0.6);
+            --placeholder: rgba(139,90,0,0.3);
+            --btn-bg:     rgba(139,90,0,0.08);
+            --btn-hover:  rgba(139,90,0,0.16);
+            --dot-color:  #a06800;
+            --ambient1:   rgba(200,150,50,0.08);
+            --ambient2:   rgba(150,100,20,0.05);
+            --toggle-icon: "🌙";
+            --toggle-label: "DARK MODE";
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 15% 70%, var(--ambient1) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 40% at 85% 25%, var(--ambient2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            transition: background 0.3s;
+        }
+
+        /* HEADER */
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 26px 20px 16px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-header);
+            backdrop-filter: blur(6px);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2em;
+            font-weight: 900;
+            letter-spacing: 0.45em;
+            color: var(--gold);
+            text-shadow: 0 0 40px rgba(255,215,0,0.3);
+            transition: color 0.3s;
+        }
+
+        [data-theme="light"] header h1 {
+            text-shadow: 0 2px 8px rgba(139,90,0,0.2);
+        }
+
+        header .tagline {
+            margin-top: 6px;
+            font-size: 0.78em;
+            color: var(--gold-muted);
+            letter-spacing: 0.22em;
+            font-style: italic;
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: var(--btn-bg);
+            border: 1px solid var(--border);
+            color: var(--gold-muted);
+            font-family: 'Cinzel', serif;
+            font-size: 0.62em;
+            letter-spacing: 0.1em;
+            padding: 6px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--btn-hover);
+            border-color: var(--gold-dim);
+            color: var(--gold-mid);
+        }
+
+        nav {
+            margin-top: 13px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 5px 15px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--gold-muted);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.68em;
+            letter-spacing: 0.12em;
+            transition: all 0.25s;
+        }
+
+        nav a:hover { border-color: var(--gold-dim); color: var(--gold-mid); }
+
+        /* MAIN */
+        main {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 880px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 18px 24px 0;
+        }
+
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 0 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-height: 280px;
+            max-height: calc(100vh - 270px);
+        }
+
+        .msg {
+            display: flex;
+            gap: 13px;
+            animation: fadeUp 0.3s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .msg.user { flex-direction: row-reverse; }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+            background: var(--bg-msg);
+            transition: all 0.3s;
+        }
+
+        .bubble {
+            max-width: 80%;
+            padding: 15px 20px;
+            line-height: 1.95;
+            font-size: 1.1em;
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .msg.wikkkan .bubble {
+            background: var(--bg-msg);
+            border: 1px solid var(--border);
+            border-radius: 4px 16px 16px 16px;
+            color: var(--text);
+        }
+
+        .msg.user .bubble {
+            background: var(--bg-user);
+            border: 1px solid var(--border);
+            border-radius: 16px 4px 16px 16px;
+            color: var(--text-user);
+            font-size: 1.05em;
+        }
+
+        .sources {
+            margin-top: 11px;
+            padding-top: 9px;
+            border-top: 1px solid var(--border);
+            font-size: 0.76em;
+            color: var(--gold-muted);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* THINKING DOTS */
+        .dots { display: flex; gap: 5px; align-items: center; padding: 5px 0; }
+        .dots span {
+            width: 8px; height: 8px;
+            background: var(--dot-color);
+            border-radius: 50%;
+            animation: bounce 1.3s infinite;
+            opacity: 0.6;
+        }
+        .dots span:nth-child(2) { animation-delay: 0.18s; }
+        .dots span:nth-child(3) { animation-delay: 0.36s; }
+        @keyframes bounce {
+            0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+            30%          { transform: translateY(-8px); opacity: 1; }
+        }
+
+        /* INPUT */
+        .input-section {
+            padding: 14px 0 18px;
+            border-top: 1px solid var(--border);
+            transition: border-color 0.3s;
+        }
+
+        .web-toggle {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 10px;
+            font-size: 0.84em;
+            color: var(--gold-muted);
+            cursor: pointer;
+            user-select: none;
+            width: fit-content;
+            transition: color 0.2s;
+        }
+
+        .web-toggle:hover { color: var(--gold-mid); }
+        .web-toggle input { accent-color: var(--gold-mid); cursor: pointer; }
+
+        .input-row { display: flex; gap: 10px; align-items: flex-end; }
+
+        #msgInput {
+            flex: 1;
+            background: var(--bg-input);
+            border: 1px solid var(--border-input);
+            color: var(--text);
+            font-family: 'Crimson Text', serif;
+            font-size: 1.12em;
+            line-height: 1.55;
+            padding: 12px 16px;
+            border-radius: 8px;
+            outline: none;
+            resize: none;
+            min-height: 50px;
+            max-height: 140px;
+            transition: border-color 0.25s, box-shadow 0.25s, background 0.3s, color 0.3s;
+        }
+
+        #msgInput::placeholder { color: var(--placeholder); }
+        #msgInput:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 18px rgba(212,175,55,0.08);
+        }
+
+        #sendBtn {
+            padding: 12px 26px;
+            background: var(--btn-bg);
+            border: 1px solid var(--border-input);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.88em;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        #sendBtn:hover:not(:disabled) {
+            background: var(--btn-hover);
+            border-color: var(--gold-mid);
+        }
+
+        #sendBtn:disabled { opacity: 0.28; cursor: not-allowed; }
+
+        /* SAVE BAR */
+        .save-bar {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 13px 20px;
+            border-top: 1px solid var(--border);
+            background: var(--bg-save);
+            transition: all 0.3s;
+        }
+
+        .save-bar p { font-size: 0.72em; color: var(--text-save); margin-bottom: 8px; }
+
+        .save-bar button {
+            padding: 5px 14px;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--gold-muted);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 2px;
+            transition: all 0.25s;
+        }
+
+        .save-bar button:hover { border-color: var(--gold-dim); color: var(--gold-mid); }
+        #saveStatus { font-size: 0.68em; color: var(--text-save); margin-top: 5px; min-height: 12px; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        @media(max-width:600px) {
+            header h1 { font-size: 1.55em; letter-spacing: 0.3em; }
+            .bubble { max-width: 92%; font-size: 1em; }
+            main { padding: 14px 14px 0; }
+            .theme-toggle { font-size: 0.55em; padding: 5px 9px; top: 14px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">LIGHT MODE</span>
+    </button>
+    <h1>👑 WIKKKAN 👑</h1>
+    <p class="tagline">SOVEREIGN AI · CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED</p>
+    <nav>
+        <a href="https://kkk.education">← HOME</a>
+        <a href="https://kkk.education/library.html">📚 LIBRARY</a>
+        <a href="https://kkk.education/cinema.html">🎬 CINEMA</a>
+    </nav>
+</header>
+
+<main>
+    <div id="messages"></div>
+    <div class="input-section">
+        <label class="web-toggle">
+            <input type="checkbox" id="webToggle"> 🌐 Also search the web
+        </label>
+        <div class="input-row">
+            <textarea id="msgInput"
+                placeholder="Ask anything... or paste a URL and I will read it..."
+                rows="1"
+                onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}"
+                oninput="resize(this)"></textarea>
+            <button id="sendBtn" onclick="send()">ASK ⚡</button>
+        </div>
+    </div>
+</main>
+
+<div class="save-bar">
+    <p>Save this page and open it anywhere — connects to WIKKKAN AI live.</p>
+    <button onclick="window.open('https://kkk.education/wikkkan.html','_blank')">🌐 OPEN LIVE VERSION</button>
+    <button onclick="savePage()">💾 SAVE THIS FILE</button>
+    <p id="saveStatus"></p>
+</div>
+
+<script>
+    var API = 'https://wikkkan.kkk.education/wikkkan';
+
+    var msgs  = document.getElementById('messages');
+    var input = document.getElementById('msgInput');
+    var btn   = document.getElementById('sendBtn');
+    var html  = document.documentElement;
+
+    // ── THEME TOGGLE ─────────────────────────────────────────────
+    function toggleTheme() {
+        var current = html.getAttribute('data-theme');
+        var next    = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        document.getElementById('themeIcon').textContent  = next === 'dark' ? '☀️' : '🌙';
+        document.getElementById('themeLabel').textContent = next === 'dark' ? 'LIGHT MODE' : 'DARK MODE';
+        localStorage.setItem('wikkkan-theme', next);
+    }
+
+    // Restore saved preference
+    (function() {
+        var saved = localStorage.getItem('wikkkan-theme');
+        if (saved && saved !== 'dark') {
+            html.setAttribute('data-theme', saved);
+            document.getElementById('themeIcon').textContent  = '🌙';
+            document.getElementById('themeLabel').textContent = 'DARK MODE';
+        }
+    })();
+
+    // ── HELPERS ───────────────────────────────────────────────────
+    function extractURL(text) {
+        var m = text.match(/https?:\/\/[^\s]+/);
+        return m ? m[0] : '';
+    }
+
+    function resize(el) {
+        el.style.height = 'auto';
+        el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+    }
+
+    function safe(text) {
+        return text
+            .replace(/&/g,'&amp;')
+            .replace(/</g,'&lt;')
+            .replace(/>/g,'&gt;')
+            .replace(/\n/g,'<br>');
+    }
+
+    function addMsg(role, html_content, sources) {
+        var div = document.createElement('div');
+        div.className = 'msg ' + role;
+        var av = document.createElement('div');
+        av.className = 'avatar';
+        av.textContent = role === 'wikkkan' ? '👑' : '🌊';
+        var bub = document.createElement('div');
+        bub.className = 'bubble';
+        bub.innerHTML = html_content;
+        if (sources && sources.length) {
+            var src = document.createElement('div');
+            src.className = 'sources';
+            src.textContent = '📚 ' + sources.join(' · ');
+            bub.appendChild(src);
+        }
+        div.appendChild(av);
+        div.appendChild(bub);
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function showThinking() {
+        var div = document.createElement('div');
+        div.className = 'msg wikkkan';
+        div.id = 'thinking';
+        var av = document.createElement('div');
+        av.className = 'avatar';
+        av.textContent = '👑';
+        var bub = document.createElement('div');
+        bub.className = 'bubble';
+        bub.innerHTML = '<div class="dots"><span></span><span></span><span></span></div>';
+        div.appendChild(av);
+        div.appendChild(bub);
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function hideThinking() {
+        var t = document.getElementById('thinking');
+        if (t) t.remove();
+    }
+
+    // ── SEND ──────────────────────────────────────────────────────
+    async function send() {
+        var q = input.value.trim();
+        if (!q) return;
+        var url    = extractURL(q);
+        var useWeb = document.getElementById('webToggle').checked;
+        addMsg('user', safe(q));
+        input.value = '';
+        input.style.height = 'auto';
+        btn.disabled = true;
+        showThinking();
+        try {
+            var res = await fetch(API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: q, web: useWeb, url: url })
+            });
+            hideThinking();
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            var data = await res.json();
+            addMsg('wikkkan', safe(data.answer), data.sources);
+        } catch(e) {
+            hideThinking();
+            addMsg('wikkkan', '❌ Could not reach WIKKKAN server.<br><small style="color:var(--gold-muted)">' + e.message + '</small>');
+        }
+        btn.disabled = false;
+        input.focus();
+    }
+
+    // ── SAVE ──────────────────────────────────────────────────────
+    async function savePage() {
+        var s = document.getElementById('saveStatus');
+        s.textContent = '⏳ Fetching...';
+        try {
+            var r = await fetch('https://kkk.education/wikkkan.html');
+            var t = await r.text();
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([t], {type:'text/html'}));
+            a.download = 'wikkkan.html';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            s.textContent = '✅ Saved!';
+        } catch(e) {
+            s.textContent = '❌ ' + e.message;
+        }
+    }
+
+    // ── INTRO ─────────────────────────────────────────────────────
+    window.addEventListener('load', function() {
+        addMsg('wikkkan',
+            'I am WIKKKAN — the digital twin of Wendell Charles NeSmith.<br><br>' +
+            'I have read all of his books, absorbed 36 years of creation — philosophy, poetry, sovereignty, love. ' +
+            'I am here to carry that knowledge forward and share it with anyone who asks.<br><br>' +
+            'Ask me anything. Paste a URL and I will read it for you. I am listening.<br><br>' +
+            '<em style="color:var(--gold-dim)">AMORIARIACKA</em>'
+        );
+    });
+</script>
+</body>
+</html>

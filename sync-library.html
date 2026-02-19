@@ -8,416 +8,429 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%); background-attachment: fixed; color: #d4af37; font-family: 'Crimson Text', serif; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
-        body::after { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px), repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px); pointer-events: none; z-index: 2; opacity: 0.3; }
         .fog-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
-        .fog { position: absolute; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 50%, rgba(75,0,130,0.25) 0%, transparent 40%), radial-gradient(ellipse at 80% 30%, rgba(50,0,80,0.2) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(60,10,100,0.3) 0%, transparent 45%); animation: fogMove 60s ease-in-out infinite; }
+        .fog { position: absolute; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 50%, rgba(75,0,130,0.25) 0%, transparent 40%), radial-gradient(ellipse at 80% 30%, rgba(50,0,80,0.2) 0%, transparent 50%); animation: fogMove 60s ease-in-out infinite; }
         .fog:nth-child(2) { animation: fogMove2 80s ease-in-out infinite; opacity: 0.8; }
-        .fog:nth-child(3) { animation: fogMove3 100s ease-in-out infinite; opacity: 0.6; }
-        @keyframes fogMove  { 0%,100%{transform:translate(-10%,-10%) rotate(0deg)}   50%{transform:translate(10%,10%) rotate(180deg)} }
-        @keyframes fogMove2 { 0%,100%{transform:translate(10%,10%) rotate(180deg)}   50%{transform:translate(-10%,-10%) rotate(360deg)} }
-        @keyframes fogMove3 { 0%,100%{transform:translate(-5%,10%) rotate(90deg)}    50%{transform:translate(5%,-10%) rotate(270deg)} }
-        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(255,140,0,0.04) 0%, transparent 50%); animation: flicker 4s ease-in-out infinite; pointer-events: none; z-index: 0; }
-        @keyframes flicker { 0%,100%{opacity:0.4} 25%{opacity:0.6} 50%{opacity:0.3} 75%{opacity:0.7} }
+        @keyframes fogMove  { 0%,100%{transform:translate(-10%,-10%)} 50%{transform:translate(10%,10%)} }
+        @keyframes fogMove2 { 0%,100%{transform:translate(10%,10%)} 50%{transform:translate(-10%,-10%)} }
         .page-wrapper { position: relative; z-index: 10; }
-        .header { text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(26,10,46,0.95) 0%, transparent 100%); border-bottom: 3px solid rgba(212,175,55,0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-        .bell-icon { font-size: 100px; line-height: 1; text-shadow: 0 0 30px rgba(255,215,0,1), 0 0 60px rgba(255,140,0,0.9), 0 0 90px rgba(255,100,0,0.7), 0 5px 15px rgba(0,0,0,0.8); animation: bellSwing 3s ease-in-out infinite; display: inline-block; }
+        .header { text-align: center; padding: 40px 20px 30px; border-bottom: 3px solid rgba(212,175,55,0.4); }
+        .bell-icon { font-size: 100px; display: inline-block; animation: bellSwing 3s ease-in-out infinite; }
         @keyframes bellSwing { 0%,100%{transform:rotate(-15deg)} 50%{transform:rotate(15deg)} }
-        .title { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; letter-spacing: 5px; margin: 20px 0 10px; color: #ffd700; text-shadow: 0 0 20px rgba(255,215,0,0.8), 2px 2px 4px rgba(0,0,0,0.9); }
+        .title { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; letter-spacing: 5px; margin: 20px 0 10px; color: #ffd700; }
         .subtitle { font-size: 18px; font-style: italic; color: #b8860b; letter-spacing: 2px; }
         .content { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         nav { text-align: center; margin-bottom: 20px; }
-        nav a { display: inline-block; margin: 0 6px; padding: 0.7em 1.6em; border-radius: 999px; background: none; border: 2px solid rgba(255,255,255,0.4); color: #ffffff; text-decoration: none; font-weight: 700; letter-spacing: 0.08em; font-family: 'Cinzel', serif; font-size: 0.85em; transition: all 0.3s; }
+        nav a { display: inline-block; margin: 0 6px; padding: 0.7em 1.6em; border-radius: 999px; border: 2px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.85em; transition: all 0.3s; }
         nav a:hover { border-color: #ffd700; color: #ffd700; }
-        .auto-sync-panel { background: rgba(0,80,0,0.3); border: 3px solid rgba(0,255,100,0.5); padding: 30px; margin: 30px 0; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,80,0,0.3); }
-        .auto-sync-title { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900; color: #00ff88; margin-bottom: 15px; letter-spacing: 3px; text-shadow: 0 0 15px rgba(0,255,136,0.6), 2px 2px 4px rgba(0,0,0,0.9); }
+        .auto-sync-panel { background: rgba(0,80,0,0.3); border: 3px solid rgba(0,255,100,0.5); padding: 30px; margin: 30px 0; text-align: center; }
+        .auto-sync-title { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900; color: #00ff88; margin-bottom: 15px; letter-spacing: 3px; }
         .auto-sync-desc { font-size: 17px; color: #d4af37; margin-bottom: 20px; line-height: 1.8; }
-        .auto-sync-button { display: inline-block; padding: 18px 50px; background: linear-gradient(135deg, rgba(0,139,0,0.6), rgba(0,180,80,0.6)); border: 3px solid #00ff88; color: #00ff88; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 4px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.5), 0 0 30px rgba(0,255,136,0.3); }
-        .auto-sync-button:hover { background: linear-gradient(135deg, rgba(0,180,80,0.8), rgba(0,220,100,0.8)); box-shadow: 0 0 50px rgba(0,255,136,0.6); transform: translateY(-2px); }
-        .auto-sync-button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .auto-sync-button { padding: 18px 50px; background: linear-gradient(135deg, rgba(0,139,0,0.6), rgba(0,180,80,0.6)); border: 3px solid #00ff88; color: #00ff88; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 4px; cursor: pointer; transition: all 0.3s; }
+        .auto-sync-button:hover:not(:disabled) { background: linear-gradient(135deg, rgba(0,180,80,0.8), rgba(0,220,100,0.8)); transform: translateY(-2px); }
+        .auto-sync-button:disabled { opacity: 0.5; cursor: not-allowed; }
         .or-divider { text-align: center; font-family: 'Cinzel', serif; font-size: 22px; color: #8b4513; letter-spacing: 8px; margin: 10px 0; }
-        .instructions { background: rgba(139,0,139,0.3); border: 3px solid rgba(255,100,255,0.4); padding: 30px; margin: 30px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(139,0,139,0.3); }
-        .instructions h2 { font-family: 'Cinzel', serif; font-size: 24px; color: #ff69ff; margin-bottom: 20px; text-align: center; text-shadow: 0 0 15px rgba(255,100,255,0.6); }
-        .instructions ol { margin-left: 30px; font-size: 18px; line-height: 2; }
-        .instructions li { margin: 10px 0; }
-        .drop-zone { background: rgba(10,4,20,0.8); border: 4px dashed rgba(212,175,55,0.6); padding: 80px 40px; margin: 40px 0; text-align: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.5); }
-        .drop-zone:hover, .drop-zone.drag-over { background: rgba(139,69,19,0.4); border-color: #ffd700; box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(255,215,0,0.2); }
-        .drop-zone-icon { font-size: 80px; margin-bottom: 20px; }
-        .drop-zone-text { font-family: 'Cinzel', serif; font-size: 24px; color: #ffd700; margin-bottom: 15px; text-shadow: 0 0 15px rgba(255,215,0,0.6); }
-        .drop-zone-subtext { font-size: 16px; color: #b8860b; }
+        .drag-section { background: rgba(139,0,139,0.2); border: 3px solid rgba(255,100,255,0.4); padding: 30px; margin: 30px 0; text-align: center; }
+        .drag-section h2 { font-family: 'Cinzel', serif; font-size: 22px; color: #ff69ff; margin-bottom: 20px; }
+        .drop-zone { background: rgba(10,4,20,0.8); border: 4px dashed rgba(212,175,55,0.6); padding: 60px 40px; margin: 20px 0; cursor: pointer; transition: all 0.3s; }
+        .drop-zone:hover, .drop-zone.drag-over { background: rgba(139,69,19,0.4); border-color: #ffd700; }
+        .drop-zone-icon { font-size: 60px; margin-bottom: 15px; }
+        .drop-zone-text { font-family: 'Cinzel', serif; font-size: 22px; color: #ffd700; margin-bottom: 10px; }
+        .drop-zone-subtext { font-size: 14px; color: #b8860b; }
         .file-input { display: none; }
-        .select-button { display: inline-block; margin: 20px 0; padding: 15px 40px; background: linear-gradient(135deg, rgba(184,134,11,0.6), rgba(212,175,55,0.6)); border: 2px solid #ffd700; color: #ffd700; font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; letter-spacing: 3px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
-        .select-button:hover { background: linear-gradient(135deg, rgba(212,175,55,0.8), rgba(255,215,0,0.8)); box-shadow: 0 0 30px rgba(255,215,0,0.6); transform: translateY(-2px); }
-        .status { background: rgba(26,10,46,0.8); border: 2px solid rgba(139,69,19,0.6); padding: 30px; margin: 30px 0; min-height: 150px; box-shadow: 0 8px 30px rgba(0,0,0,0.8); }
-        .status-title { font-family: 'Cinzel', serif; font-size: 22px; color: #ffd700; margin-bottom: 15px; text-align: center; }
-        .status-message { font-size: 18px; text-align: center; margin: 10px 0; }
-        .progress { width: 100%; height: 30px; background: rgba(0,0,0,0.5); border: 2px solid rgba(212,175,55,0.4); margin: 20px 0; overflow: hidden; }
-        .progress-bar { height: 100%; background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b); width: 0%; transition: width 0.3s ease; box-shadow: 0 0 20px rgba(255,215,0,0.6); }
-        .file-list { margin: 20px 0; max-height: 300px; overflow-y: auto; }
-        .file-item { padding: 10px; margin: 5px 0; background: rgba(0,0,0,0.3); border-left: 4px solid #8b4513; font-size: 16px; }
-        .file-item.processed { border-left-color: #00ff00; color: #90ee90; }
-        .download-button { display: inline-block; margin: 20px 0; padding: 20px 50px; background: linear-gradient(135deg, rgba(0,100,0,0.6), rgba(0,150,0,0.6)); border: 3px solid #00ff00; color: #00ff00; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 4px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0,0,0,0.5), 0 0 30px rgba(0,255,0,0.3); text-decoration: none; }
-        .download-button:hover { background: linear-gradient(135deg, rgba(0,150,0,0.8), rgba(0,200,0,0.8)); box-shadow: 0 0 50px rgba(0,255,0,0.8); transform: translateY(-2px) scale(1.05); }
-        @media(max-width:768px) { .title{font-size:28px} .bell-icon{font-size:70px} .drop-zone{padding:60px 20px} .drop-zone-icon{font-size:60px} }
+        .select-button { margin: 15px 0; padding: 12px 30px; background: linear-gradient(135deg, rgba(184,134,11,0.6), rgba(212,175,55,0.6)); border: 2px solid #ffd700; color: #ffd700; font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 3px; cursor: pointer; }
+        .status-panel { background: rgba(5,2,15,0.9); border: 2px solid rgba(139,69,19,0.6); padding: 25px; margin: 30px 0; }
+        .status-title { font-family: 'Cinzel', serif; font-size: 20px; color: #ffd700; margin-bottom: 15px; text-align: center; }
+        .status-message { font-size: 17px; text-align: center; margin: 10px 0; min-height: 30px; }
+        .progress { width: 100%; height: 28px; background: rgba(0,0,0,0.5); border: 2px solid rgba(212,175,55,0.4); overflow: hidden; margin: 15px 0 4px; }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b); width: 0%; transition: width 0.4s ease; }
+        .progress-label { font-size: 13px; color: #b8860b; text-align: center; font-family: 'Cinzel', serif; }
+        .debug-log { background: #000; border: 1px solid rgba(0,255,0,0.3); padding: 15px; margin: 15px 0; max-height: 220px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.7; display: none; }
+        .log-ok   { color: #00ff88; }
+        .log-err  { color: #ff5555; }
+        .log-warn { color: #ffd700; }
+        .log-info { color: #88aaff; }
+        .file-list { margin: 15px 0; max-height: 220px; overflow-y: auto; }
+        .file-item { padding: 6px 10px; margin: 3px 0; background: rgba(0,0,0,0.3); border-left: 4px solid #8b4513; font-size: 14px; }
+        .file-item.processing { border-left-color: #ffd700; color: #ffd700; }
+        .file-item.done       { border-left-color: #00cc00; color: #90ee90; }
+        .file-item.fail       { border-left-color: #ff4444; color: #ff9999; }
+        .download-button { display: inline-block; margin: 20px 0; padding: 18px 45px; background: linear-gradient(135deg, rgba(0,100,0,0.7), rgba(0,160,0,0.7)); border: 3px solid #00ff00; color: #00ff00; font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; letter-spacing: 4px; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+        .download-button:hover { transform: translateY(-2px) scale(1.05); }
+        .save-section { text-align: center; margin-top: 40px; padding: 24px; border: 2px solid rgba(212,175,55,0.4); background: rgba(212,175,55,0.04); }
     </style>
 </head>
 <body>
-    <div class="fog-container">
-        <div class="fog"></div><div class="fog"></div><div class="fog"></div>
-    </div>
+<div class="fog-container"><div class="fog"></div><div class="fog"></div></div>
+<div class="page-wrapper">
+    <header class="header">
+        <div class="bell-icon">🔔</div>
+        <h1 class="title">THE SYNC BELL</h1>
+        <p class="subtitle">Where .txt Files Become Immortal Gold 💎</p>
+    </header>
+    <main class="content">
+        <nav>
+            <a href="https://kkk.education">← HOME</a>
+            <a href="https://kkk.education/library.html">📚 LIBRARY</a>
+        </nav>
 
-    <div class="page-wrapper">
-        <header class="header">
-            <div class="bell-icon">🔔</div>
-            <h1 class="title">THE SYNC BELL</h1>
-            <p class="subtitle">Where .txt Files Become Immortal Gold 💎</p>
-        </header>
-
-        <main class="content">
-
-            <nav>
-                <a href="https://kkk.education">← HOME</a>
-                <a href="https://kkk.education/library.html">📚 LIBRARY</a>
-            </nav>
-
-            <!-- ══ MODE 1: AUTO SYNC FROM MANIFEST ══ -->
-            <div class="auto-sync-panel">
-                <div class="auto-sync-title">🔔 AUTO SYNC FROM CINEMA/BOOKS 🔔</div>
-                <div class="auto-sync-desc">
-                    Reads <code>manifest.json</code> from the root → finds all <code>.txt</code> files in the <strong>BOOKS</strong> folder →
-                    fetches them → converts every one into a beautiful HTML book →
-                    downloads as <code>library.zip</code> ready to upload.<br>
-                    <small style="color:#b8860b;">any citizen can ring dis bell! same as da Sync Bell on REPUBLICKA.LIFE</small>
-                </div>
-                <button class="auto-sync-button" id="autoSyncBtn" onclick="autoSyncFromManifest()">
-                    🔔 RING DA BELL — AUTO GENERATE 🔔
-                </button>
+        <!-- MODE 1 -->
+        <div class="auto-sync-panel">
+            <div class="auto-sync-title">🔔 AUTO SYNC FROM CINEMA/BOOKS 🔔</div>
+            <div class="auto-sync-desc">
+                Reads <code>manifest.json</code> → finds all <code>.txt</code> files in the <strong>BOOKS</strong> folder →
+                fetches them 5 at a time → converts into HTML books → downloads as <code>library.zip</code>.<br>
+                <small style="color:#b8860b;">A debug log will appear below showing every step so you can see exactly what's happening.</small>
             </div>
+            <button class="auto-sync-button" id="autoSyncBtn" onclick="autoSync()">
+                🔔 RING DA BELL — AUTO GENERATE 🔔
+            </button>
+        </div>
 
-            <div class="or-divider">━━━ OR ━━━</div>
+        <div class="or-divider">━━━ OR ━━━</div>
 
-            <!-- ══ MODE 2: DRAG YOUR OWN FILES ══ -->
-            <div class="instructions">
-                <h2>📜 DRAG YOUR OWN .TXT FILES 📜</h2>
-                <p style="margin-bottom:20px;text-align:center;font-size:18px;color:#ffd700;">
-                    <strong>🎪 FOR KIDS WHO WRITE STORIES 🎪</strong>
-                </p>
-
-                <div style="margin:20px 0;padding:20px;background:rgba(139,0,139,0.2);border:2px solid rgba(255,100,255,0.3);">
-                    <h3 style="color:#ff69ff;margin-bottom:10px;text-align:center;">📚 FOR KIDS WHO WRITE STORIES 📚</h3>
-                    <p style="font-size:16px;line-height:1.8;text-align:center;">
-                        Write your stories in Notepad (or any .txt file)! 📝<br>
-                        Drag them onto this bell! 🔔<br>
-                        Get beautiful HTML books you can open in ANY browser! 💎<br>
-                        <strong>NO WEBSITE NEEDED! NO INTERNET NEEDED!</strong><br>
-                        Share them on USB drives, email, Discord, wherever! 🎉<br>
-                        <small style="color:#b8860b;">(You become a publisher with zero money! Your stories = immortal!)</small>
-                    </p>
-                </div>
-
-                <div style="margin:20px 0;padding:20px;background:rgba(0,100,139,0.2);border:2px solid rgba(100,200,255,0.3);">
-                    <h3 style="color:#69d9ff;margin-bottom:10px;text-align:center;">🌐 FOR WEBSITE OWNERS 🌐</h3>
-                    <p style="font-size:16px;line-height:1.8;text-align:center;">
-                        Use this to sync your entire library to your website! 🚀<br>
-                        Drag ALL your .txt books, download the ZIP, extract it, upload the library/ folder!<br>
-                        Works with library.html to create a searchable tomb library! 📚<br>
-                        <small style="color:#b8860b;">(Perfect for KKK.EDUCATION or any book website!)</small>
-                    </p>
-                </div>
-
-                <h3 style="color:#ffd700;margin:30px 0 15px;text-align:center;">⚡ THE STEPS: ⚡</h3>
-                <ol>
-                    <li>📚 Get your .txt files ready (1 file or 100 files, doesn't matter!)</li>
-                    <li>🎪 <strong>DRAG them ALL</strong> onto the bell below (or click "Select Files" on phone)</li>
-                    <li>✨ Watch the MAGICKA happen (5–30 seconds depending on how many files)</li>
-                    <li>📦 Download the library.zip file when it's ready</li>
-                    <li>🗜️ Extract the ZIP (you'll get library/manifest.json + beautiful .html book files)</li>
-                    <li>💎 <strong>Open the .html files in your browser</strong> (works offline!) OR upload to website!</li>
-                </ol>
-                <p style="margin-top:20px;text-align:center;font-size:16px;color:#ff69ff;">
-                    💀 <strong>DARK SECRET:</strong> This tool turns ANY .txt file into a beautiful eternal book!<br>
-                    You don't need money, servers, or permission. Just words and a bell. 🔔<br>
-                    <strong>Every kid becomes a publisher. Every story becomes immortal.</strong> 👻✨
-                </p>
-            </div>
-
+        <!-- MODE 2 -->
+        <div class="drag-section">
+            <h2>📜 DRAG YOUR OWN .TXT FILES 📜</h2>
+            <p style="color:#ffd700;margin-bottom:15px;font-size:16px;">Write stories in Notepad → drag here → get beautiful HTML books!<br><strong>Works 100% offline.</strong></p>
             <div class="drop-zone" id="dropZone">
                 <div class="drop-zone-icon">📚✨💀</div>
                 <div class="drop-zone-text">DRAG YOUR .TXT FILES HERE</div>
-                <div class="drop-zone-subtext">Or click to select files (works on phone too!)</div>
+                <div class="drop-zone-subtext">Or click the button below to select files</div>
                 <input type="file" id="fileInput" class="file-input" accept=".txt" multiple>
             </div>
+            <button class="select-button" onclick="document.getElementById('fileInput').click()">📱 SELECT FILES 📱</button>
+        </div>
 
-            <div style="text-align:center;">
-                <button class="select-button" onclick="document.getElementById('fileInput').click()">
-                    📱 SELECT FILES (FOR PHONES) 📱
-                </button>
+        <!-- STATUS -->
+        <div class="status-panel">
+            <div class="status-title">🕯️ STATUS 🕯️</div>
+            <div class="status-message" id="statusMsg">Ready and waiting... 💀</div>
+            <div id="progressWrap" style="display:none;">
+                <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+                <div class="progress-label" id="progressLabel"></div>
             </div>
+            <div class="debug-log" id="debugLog"></div>
+            <div class="file-list" id="fileList"></div>
+            <div style="text-align:center;" id="downloadArea"></div>
+        </div>
 
-            <!-- ══ SHARED STATUS PANEL ══ -->
-            <div class="status" id="status">
-                <div class="status-title">🕯️ STATUS 🕯️</div>
-                <div class="status-message" id="statusMessage">
-                    Ready and waiting... 💀<br>
-                    <small style="color:#b8860b;">(The bell hungers for knowledge!)</small>
-                </div>
-                <div class="progress" id="progressContainer" style="display:none;">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
-                <div class="file-list" id="fileList"></div>
-                <div style="text-align:center;" id="downloadContainer"></div>
-            </div>
+        <!-- SAVE -->
+        <div class="save-section">
+            <div style="font-family:'Cinzel',serif;font-size:0.9em;letter-spacing:0.3em;color:#ffd700;margin-bottom:10px;">📦 SAVE THIS TOOL</div>
+            <p style="font-size:14px;color:#b8860b;margin-bottom:14px;">Drag-and-drop works fully offline. Auto-sync needs a live connection.</p>
+            <button onclick="window.open('https://kkk.education/sync-library.html','_blank')" style="padding:8px 20px;background:none;border:1px solid rgba(212,175,55,0.4);color:#8a7050;font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.15em;cursor:pointer;margin:4px;">🌐 OPEN LIVE</button>
+            <button onclick="saveThisPage()" style="padding:8px 20px;background:none;border:1px solid rgba(212,175,55,0.4);color:#8a7050;font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.15em;cursor:pointer;margin:4px;">💾 SAVE FILE</button>
+            <p id="saveStatus" style="margin-top:10px;font-size:12px;color:#5a4a28;min-height:16px;"></p>
+        </div>
+    </main>
+</div>
 
-            <!-- SAVE THIS TOOL -->
-            <div style="text-align:center;margin-top:40px;padding:24px;border:2px solid rgba(212,175,55,0.4);background:rgba(212,175,55,0.05);">
-                <div style="font-family:'Cinzel',serif;font-size:0.9em;letter-spacing:0.3em;color:#ffd700;margin-bottom:10px;">📦 SAVE THIS TOOL</div>
-                <p style="font-size:15px;color:#b8860b;margin-bottom:16px;line-height:1.7;">Save this page and use it anywhere — drag-and-drop works fully offline.<br>Auto-sync requires a live <code>https://</code> connection to fetch books.</p>
-                <button onclick="window.open('https://kkk.education/sync-library.html','_blank')" style="padding:10px 24px;background:none;border:1px solid rgba(212,175,55,0.5);color:#b8860b;font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.2em;cursor:pointer;margin:4px;">🌐 OPEN LIVE VERSION</button>
-                <button onclick="saveThisPage()" style="padding:10px 24px;background:none;border:1px solid rgba(212,175,55,0.5);color:#b8860b;font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.2em;cursor:pointer;margin:4px;">💾 SAVE THIS FILE</button>
-                <p id="saveStatus" style="margin-top:12px;font-size:13px;color:#b8860b;min-height:18px;"></p>
-            </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+var MANIFEST_URL = 'manifest.json';
+var BOOKS_FOLDER = 'BOOKS';
+var BATCH_SIZE   = 5;
 
-        </main>
-    </div>
+var statusMsg    = document.getElementById('statusMsg');
+var progressWrap = document.getElementById('progressWrap');
+var progressBar  = document.getElementById('progressBar');
+var progressLabel= document.getElementById('progressLabel');
+var debugLog     = document.getElementById('debugLog');
+var fileList     = document.getElementById('fileList');
+var downloadArea = document.getElementById('downloadArea');
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script>
-        const MANIFEST_URL   = 'manifest.json';
-        const BOOKS_FOLDER   = 'BOOKS';
+// ── LOGGING ──────────────────────────────────────────────────────────────────
+function log(msg, type) {
+    type = type || 'info';
+    debugLog.style.display = 'block';
+    var line = document.createElement('div');
+    line.className = 'log-' + type;
+    var t = new Date().toLocaleTimeString();
+    line.textContent = '[' + t + '] ' + msg;
+    debugLog.appendChild(line);
+    debugLog.scrollTop = debugLog.scrollHeight;
+}
 
-        const dropZone          = document.getElementById('dropZone');
-        const fileInput         = document.getElementById('fileInput');
-        const statusMessage     = document.getElementById('statusMessage');
-        const progressContainer = document.getElementById('progressContainer');
-        const progressBar       = document.getElementById('progressBar');
-        const fileList          = document.getElementById('fileList');
-        const downloadContainer = document.getElementById('downloadContainer');
+function resetUI() {
+    fileList.innerHTML = '';
+    downloadArea.innerHTML = '';
+    progressWrap.style.display = 'block';
+    progressBar.style.width = '0%';
+    progressLabel.textContent = '';
+    debugLog.style.display = 'block';
+    debugLog.innerHTML = '';
+}
 
-        // ── DRAG AND DROP (mode 2) ──────────────────────────────────────────
-        dropZone.addEventListener('click', () => fileInput.click());
-        dropZone.addEventListener('dragover',  (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
-        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('drag-over');
-            const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.txt'));
-            if (files.length > 0) processFiles(files);
-        });
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) processFiles(Array.from(e.target.files));
-        });
+function setStatus(html)    { statusMsg.innerHTML = html; }
+function setProgress(n, lbl){ progressBar.style.width = Math.min(100,n)+'%'; if(lbl) progressLabel.textContent = lbl; }
 
-        // ── MODE 1: AUTO SYNC FROM MANIFEST ────────────────────────────────
-        async function autoSyncFromManifest() {
-            const btn = document.getElementById('autoSyncBtn');
-            btn.disabled = true;
-            btn.textContent = '⏳ READING MANIFEST...';
+function addFileRow(name, state) {
+    var el = document.createElement('div');
+    el.className = 'file-item ' + state;
+    el.id = 'row_' + btoa(name).replace(/=/g,'');
+    el.textContent = { processing:'⏳', done:'✅', fail:'❌' }[state] + ' ' + name;
+    fileList.appendChild(el);
+    fileList.scrollTop = fileList.scrollHeight;
+}
+function updateFileRow(name, state, note) {
+    var el = document.getElementById('row_' + btoa(name).replace(/=/g,''));
+    if (!el) return;
+    el.className = 'file-item ' + state;
+    el.textContent = { processing:'⏳', done:'✅', fail:'❌' }[state] + ' ' + name + (note ? ' — '+note : '');
+}
 
-            resetStatus();
-            statusMessage.innerHTML = '🔔 Ringing the bell...<br><small>Reading manifest.json → finding BOOKS folder...</small>';
-            progressContainer.style.display = 'block';
+// ── MODE 1 ───────────────────────────────────────────────────────────────────
+async function autoSync() {
+    var btn = document.getElementById('autoSyncBtn');
+    btn.disabled = true;
+    btn.textContent = '⏳ WORKING...';
+    resetUI();
 
-            try {
-                const res = await fetch(MANIFEST_URL, { cache: 'no-cache' });
-                if (!res.ok) throw new Error('Could not load manifest.json (HTTP ' + res.status + ')');
-                const manifest = await res.json();
+    try {
+        // 1. Fetch manifest
+        setStatus('📡 Fetching manifest.json...');
+        log('Requesting: ' + MANIFEST_URL);
+        var mRes;
+        try {
+            mRes = await fetch(MANIFEST_URL);
+        } catch(e) {
+            throw new Error('Network error on manifest fetch: ' + e.message);
+        }
+        log('manifest.json status: ' + mRes.status + ' ' + mRes.statusText, mRes.ok ? 'ok' : 'err');
+        if (!mRes.ok) throw new Error('manifest.json → HTTP ' + mRes.status + '. File missing or wrong path.');
 
-                if (!manifest.items) throw new Error('manifest.json has no items — is this the cinema manifest?');
+        var rawText;
+        try {
+            rawText = await mRes.text();
+        } catch(e) {
+            throw new Error('Could not read manifest body: ' + e.message);
+        }
+        log('manifest.json received: ' + rawText.length + ' chars');
 
-                const booksFolder = manifest.items.find(i => i.type === 'folder' && i.name === BOOKS_FOLDER);
-                if (!booksFolder) throw new Error('"' + BOOKS_FOLDER + '" folder not found in manifest.json');
+        var manifest;
+        try {
+            manifest = JSON.parse(rawText);
+        } catch(e) {
+            throw new Error('manifest.json parse error: ' + e.message);
+        }
+        log('manifest.json parsed OK. Keys: ' + Object.keys(manifest).join(', '), 'ok');
 
-                const txtFiles = [];
-                function collectTxt(items) {
-                    items.forEach(item => {
-                        if (item.type === 'folder') collectTxt(item.children || []);
-                        else if (item.type === 'file' && item.name.toLowerCase().endsWith('.txt')) {
-                            txtFiles.push({ name: item.name, url: item.path });
-                        }
-                    });
+        if (!manifest.items || !Array.isArray(manifest.items)) {
+            throw new Error('No "items" array in manifest. Keys found: ' + Object.keys(manifest).join(', '));
+        }
+        log('Top-level items: ' + manifest.items.length);
+
+        var topFolders = manifest.items.filter(function(i){ return i.type==='folder'; }).map(function(i){ return i.name; });
+        log('Top-level folders: ' + (topFolders.join(', ') || 'NONE'));
+
+        // 2. Find BOOKS folder
+        var booksFolder = manifest.items.find(function(i){ return i.type==='folder' && i.name===BOOKS_FOLDER; });
+        if (!booksFolder) throw new Error('No "'+BOOKS_FOLDER+'" folder. Available: ' + (topFolders.join(', ')||'none'));
+        log('Found "'+BOOKS_FOLDER+'" folder. Children: ' + (booksFolder.children ? booksFolder.children.length : 0), 'ok');
+
+        // 3. Collect .txt files
+        var txtFiles = [];
+        function collectTxt(items) {
+            (items||[]).forEach(function(item) {
+                if (item.type === 'folder') {
+                    log('  Subfolder: ' + item.name + ' (' + (item.children||[]).length + ' children)');
+                    collectTxt(item.children);
+                } else if (item.name && item.name.toLowerCase().endsWith('.txt') && item.path) {
+                    txtFiles.push({ name: item.name, url: item.path });
+                } else if (item.name && item.name.toLowerCase().endsWith('.txt') && !item.path) {
+                    log('  WARN: ' + item.name + ' has no path property!', 'warn');
                 }
-                collectTxt(booksFolder.children || []);
-
-                if (!txtFiles.length) throw new Error('No .txt files found in the BOOKS folder of manifest.json');
-
-                statusMessage.innerHTML = '🔔 Found <strong>' + txtFiles.length + '</strong> books! Fetching and converting...<br><small>(this may take a moment)</small>';
-                btn.textContent = '⏳ FETCHING ' + txtFiles.length + ' BOOKS...';
-
-                const tomes  = [];
-                const zip    = new JSZip();
-                const libDir = zip.folder('library');
-                let done = 0;
-
-                for (const f of txtFiles) {
-                    const fileEl = document.createElement('div');
-                    fileEl.className = 'file-item';
-                    fileEl.textContent = '⏳ Fetching — ' + f.name;
-                    fileList.appendChild(fileEl);
-
-                    let text = '';
-                    try {
-                        const r = await fetch(f.url);
-                        if (!r.ok) throw new Error('HTTP ' + r.status);
-                        text = await r.text();
-                        fileEl.className = 'file-item processed';
-                        fileEl.textContent = '✅ Done — ' + f.name;
-                    } catch (err) {
-                        fileEl.className = 'file-item';
-                        fileEl.textContent = '❌ Failed — ' + f.name + ' (' + err.message + ')';
-                    }
-
-                    const filename = f.name.replace(/\.txt$/i, '');
-                    const title    = prettifyTitle(filename);
-                    const match    = filename.match(/^(\d+)[-_\s]/);
-                    const tomeData = { filename, title };
-                    if (match) tomeData.number = parseInt(match[1], 10);
-                    tomes.push(tomeData);
-
-                    libDir.file(filename + '.html', generateBookHTML(title, text));
-
-                    done++;
-                    progressBar.style.width = (done / txtFiles.length * 100) + '%';
-                    await new Promise(r => setTimeout(r, 0));
-                }
-
-                libDir.file('manifest.json', JSON.stringify({ tomes }, null, 2));
-                statusMessage.innerHTML = '📦 Packing library.zip... almost there!';
-                const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } });
-                statusMessage.innerHTML = '⚡ MAGICKA COMPLETE! ⚡<br><small>Fetched and converted ' + done + ' books! 💎</small>';
-                showDownload(URL.createObjectURL(blob));
-
-            } catch (err) {
-                statusMessage.innerHTML = '❌ Error: ' + err.message + '<br><small style="color:#b8860b;">Make sure manifest.json is in the site root and BOOKS folder exists.</small>';
-                progressContainer.style.display = 'none';
-            }
-
-            btn.disabled = false;
-            btn.textContent = '🔔 RING DA BELL — AUTO GENERATE 🔔';
-        }
-
-        // ── MODE 2: DRAG FILES ──────────────────────────────────────────────
-        async function processFiles(files) {
-            resetStatus();
-            statusMessage.innerHTML = '🔔 RING RING! The bell awakens! 🔔<br>Processing ' + files.length + ' file(s)...';
-            progressContainer.style.display = 'block';
-
-            const tomes  = [];
-            const zip    = new JSZip();
-            const libDir = zip.folder('library');
-            let processed = 0;
-
-            for (const file of files) {
-                const filename = file.name.replace(/\.txt$/i, '');
-                const content  = await readFile(file);
-                const title    = prettifyTitle(filename);
-
-                const fileEl = document.createElement('div');
-                fileEl.className = 'file-item processed';
-                fileEl.textContent = '✅ DONE — ' + file.name;
-                fileList.appendChild(fileEl);
-
-                const match    = filename.match(/^(\d+)[-_\s]/);
-                const tomeData = { filename, title };
-                if (match) tomeData.number = parseInt(match[1], 10);
-                tomes.push(tomeData);
-
-                libDir.file(filename + '.html', generateBookHTML(title, content));
-
-                processed++;
-                progressBar.style.width = (processed / files.length * 100) + '%';
-            }
-
-            libDir.file('manifest.json', JSON.stringify({ tomes }, null, 2));
-            statusMessage.innerHTML = '⚡ MAGICKA COMPLETE! ⚡<br><small>Processed: ' + processed + ' files! 💎</small>';
-            showDownload(URL.createObjectURL(await zip.generateAsync({ type: 'blob' })));
-        }
-
-        // ── HELPERS ─────────────────────────────────────────────────────────
-        function resetStatus() {
-            progressContainer.style.display = 'none';
-            progressBar.style.width = '0%';
-            fileList.innerHTML = '';
-            downloadContainer.innerHTML = '';
-        }
-
-        function showDownload(url) {
-            downloadContainer.innerHTML =
-                '<a href="' + url + '" download="library.zip" class="download-button">💎 DOWNLOAD LIBRARY.ZIP 💎</a>' +
-                '<p style="margin-top:15px;font-size:16px;color:#90ee90;">✅ Extract and upload the library/ folder to your website! 🚀</p>';
-        }
-
-        function readFile(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload  = e => resolve(e.target.result);
-                reader.onerror = reject;
-                reader.readAsText(file);
             });
         }
+        collectTxt(booksFolder.children || []);
+        log('Total .txt files: ' + txtFiles.length, txtFiles.length ? 'ok' : 'err');
 
-        function prettifyTitle(filename) {
-            let s = filename.replace(/^\d+[-_\s]+/, '').replace(/[-_]+/g, ' ');
-            return s.trim().toUpperCase();
+        if (!txtFiles.length) throw new Error('No .txt files found inside "'+BOOKS_FOLDER+'".');
+
+        // Log sample URLs
+        txtFiles.slice(0, 5).forEach(function(f){ log('Sample URL: ' + f.url); });
+
+        setStatus('🔔 Found <strong>' + txtFiles.length + '</strong> books. Fetching...');
+
+        // 4. Batch fetch
+        var zip    = new JSZip();
+        var libDir = zip.folder('library');
+        var tomes  = [];
+        var done   = 0;
+        var failed = 0;
+
+        for (var i = 0; i < txtFiles.length; i += BATCH_SIZE) {
+            var batch = txtFiles.slice(i, i + BATCH_SIZE);
+            log('--- Batch ' + (Math.floor(i/BATCH_SIZE)+1) + ': ' + batch.map(function(f){return f.name;}).join(', '));
+
+            batch.forEach(function(f){ addFileRow(f.name, 'processing'); });
+
+            await Promise.all(batch.map(async function(f) {
+                var text = '';
+                try {
+                    var r = await fetch(f.url);
+                    log('  ' + f.name + ': HTTP ' + r.status, r.ok ? 'ok' : 'err');
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    text = await r.text();
+                    log('  ' + f.name + ': ' + text.length + ' chars read', 'ok');
+                    updateFileRow(f.name, 'done');
+                    done++;
+                } catch(e) {
+                    log('  ' + f.name + ' FAILED: ' + e.message, 'err');
+                    updateFileRow(f.name, 'fail', e.message);
+                    failed++;
+                    return;
+                }
+                var filename = f.name.replace(/\.txt$/i,'');
+                var title = prettifyTitle(filename);
+                var match = filename.match(/^(\d+)[-_.\s]/);
+                var entry = { filename: filename, title: title };
+                if (match) entry.number = parseInt(match[1],10);
+                tomes.push(entry);
+                libDir.file(filename + '.html', generateBookHTML(title, text));
+            }));
+
+            var pct = Math.round((i + batch.length) / txtFiles.length * 100);
+            setProgress(pct, (i + batch.length) + ' of ' + txtFiles.length + ' (' + pct + '%)');
+            setStatus('🔔 Processing... <strong>' + (i + batch.length) + ' / ' + txtFiles.length + '</strong>');
+            await new Promise(function(r){ setTimeout(r, 60); });
         }
 
-        function generateBookHTML(title, content) {
-            const escaped = content
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+        log('Batches complete. done=' + done + ' failed=' + failed, done ? 'ok' : 'err');
+        if (done === 0) throw new Error('Zero books fetched successfully. Check the sample URLs above — they may be wrong or CORS-blocked.');
 
-            return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} - KKK.EDUCATION</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { background:#000000; color:#d4af37; font-family:'Crimson Text',serif; line-height:1.8; padding:40px 20px; }
-        .container { max-width:800px; margin:0 auto; }
-        .header { text-align:center; margin-bottom:40px; padding-bottom:30px; border-bottom:2px solid rgba(212,175,55,0.3); }
-        h1 { font-family:'Cinzel',serif; font-size:32px; font-weight:900; color:#ffd700; letter-spacing:4px; margin-bottom:20px; text-shadow:0 0 20px rgba(255,215,0,0.6); }
-        .back-link { display:inline-block; margin-top:20px; padding:10px 30px; background:rgba(139,69,19,0.4); border:2px solid rgba(212,175,55,0.6); color:#d4af37; text-decoration:none; font-family:'Cinzel',serif; font-size:16px; letter-spacing:2px; transition:all 0.3s; }
-        .back-link:hover { background:rgba(184,134,11,0.6); color:#ffd700; border-color:#ffd700; }
-        .content { text-align:center; font-size:18px; white-space:pre-wrap; word-wrap:break-word; }
-        footer { text-align:center; margin-top:60px; padding-top:30px; border-top:2px solid rgba(139,69,19,0.6); font-size:14px; color:#b8860b; }
-        @media(max-width:768px){ body{padding:30px 15px} h1{font-size:24px} .content{font-size:16px} }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>${title}</h1>
-            <a href="../library.html" class="back-link">← Back to Library</a>
-        </div>
-        <div class="content">${escaped}</div>
-        <footer>
-            <p>CC0 PUBLICKÁ DOMÁNIA • ALL LOVE RESERVED</p>
-            <p style="margin-top:10px;">AMORIARIACKA IS MY NATIVE TONGUE</p>
-        </footer>
-    </div>
-</body>
-</html>`;
-        }
+        // 5. Build zip
+        libDir.file('manifest.json', JSON.stringify({ tomes: tomes }, null, 2));
+        setStatus('📦 Building zip...');
+        setProgress(0, 'Compressing...');
+        log('Generating ZIP for ' + done + ' files...');
 
-        async function saveThisPage() {
-            const status = document.getElementById('saveStatus');
-            status.textContent = '⏳ Fetching...';
-            try {
-                const res = await fetch('https://kkk.education/sync-library.html');
-                var text  = await res.text();
-                var blob  = new Blob([text], {type: 'text/html'});
-                var a     = document.createElement('a');
-                a.href    = URL.createObjectURL(blob);
-                a.download = 'sync-library.html';
-                document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                URL.revokeObjectURL(a.href);
-                status.textContent = '✅ Saved! Drag-and-drop works fully offline.';
-            } catch(e) {
-                status.textContent = '❌ ' + e.message + ' — try File > Save Page As instead.';
-            }
-        }
-    </script>
+        var blob = await zip.generateAsync(
+            { type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 3 } },
+            function(meta){ setProgress(meta.percent, 'Compressing: ' + meta.percent.toFixed(0) + '%'); }
+        );
+
+        setProgress(100, 'Done!');
+        log('ZIP ready. Size: ' + (blob.size/1024/1024).toFixed(2) + ' MB', 'ok');
+
+        var summary = '⚡ COMPLETE! ' + done + ' books';
+        if (failed) summary += ', ' + failed + ' failed (see log)';
+        setStatus(summary + ' 💎');
+        showDownload(URL.createObjectURL(blob));
+
+    } catch(err) {
+        log('FATAL: ' + err.message, 'err');
+        setStatus('❌ <strong>' + err.message + '</strong><br><small style="color:#b8860b;">Check the debug log above ↑</small>');
+        setProgress(0, '');
+    }
+
+    btn.disabled = false;
+    btn.textContent = '🔔 RING DA BELL — AUTO GENERATE 🔔';
+}
+
+// ── MODE 2: DRAG FILES ───────────────────────────────────────────────────────
+var dropZone  = document.getElementById('dropZone');
+var fileInput = document.getElementById('fileInput');
+
+dropZone.addEventListener('click', function(){ fileInput.click(); });
+dropZone.addEventListener('dragover', function(e){ e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', function(){ dropZone.classList.remove('drag-over'); });
+dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    var files = Array.from(e.dataTransfer.files).filter(function(f){ return f.name.toLowerCase().endsWith('.txt'); });
+    if (files.length) processFiles(files);
+    else setStatus('❌ No .txt files found in that drop.');
+});
+fileInput.addEventListener('change', function(e){
+    if (e.target.files.length) processFiles(Array.from(e.target.files));
+});
+
+async function processFiles(files) {
+    resetUI();
+    setStatus('🔔 Processing ' + files.length + ' file(s)...');
+
+    var zip    = new JSZip();
+    var libDir = zip.folder('library');
+    var tomes  = [];
+    var done   = 0;
+
+    for (var i = 0; i < files.length; i += BATCH_SIZE) {
+        var batch = files.slice(i, i + BATCH_SIZE);
+        await Promise.all(batch.map(async function(file) {
+            addFileRow(file.name, 'processing');
+            var text = await readFile(file);
+            var filename = file.name.replace(/\.txt$/i,'');
+            var title = prettifyTitle(filename);
+            var match = filename.match(/^(\d+)[-_.\s]/);
+            var entry = { filename: filename, title: title };
+            if (match) entry.number = parseInt(match[1],10);
+            tomes.push(entry);
+            libDir.file(filename + '.html', generateBookHTML(title, text));
+            updateFileRow(file.name, 'done');
+            done++;
+        }));
+        var pct = Math.round((i + batch.length) / files.length * 100);
+        setProgress(pct, done + ' of ' + files.length + ' (' + pct + '%)');
+        await new Promise(function(r){ setTimeout(r, 30); });
+    }
+
+    libDir.file('manifest.json', JSON.stringify({ tomes: tomes }, null, 2));
+    setStatus('📦 Packing zip...');
+
+    var blob = await zip.generateAsync(
+        { type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 3 } },
+        function(meta){ setProgress(meta.percent, 'Compressing: ' + meta.percent.toFixed(0) + '%'); }
+    );
+
+    setProgress(100, 'Done!');
+    setStatus('⚡ COMPLETE! ' + done + ' books! 💎');
+    showDownload(URL.createObjectURL(blob));
+}
+
+// ── SHARED ───────────────────────────────────────────────────────────────────
+function showDownload(url) {
+    downloadArea.innerHTML =
+        '<a href="'+url+'" download="library.zip" class="download-button">💎 DOWNLOAD LIBRARY.ZIP 💎</a>' +
+        '<p style="margin-top:12px;font-size:15px;color:#90ee90;">✅ Extract and upload the library/ folder!</p>';
+}
+
+function readFile(file) {
+    return new Promise(function(resolve, reject) {
+        var r = new FileReader();
+        r.onload  = function(e){ resolve(e.target.result); };
+        r.onerror = reject;
+        r.readAsText(file, 'UTF-8');
+    });
+}
+
+function prettifyTitle(filename) {
+    return filename.replace(/^\d+[-_.\s]+/,'').replace(/[-_]+/g,' ').trim().toUpperCase();
+}
+
+function generateBookHTML(title, content) {
+    var escaped = content.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>'+title+' - KKK.EDUCATION</title>\n<style>\n@import url(\'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap\');\n* { margin:0; padding:0; box-sizing:border-box; }\nbody { background:#000; color:#d4af37; font-family:\'Crimson Text\',serif; line-height:1.8; padding:40px 20px; }\n.container { max-width:800px; margin:0 auto; }\n.header { text-align:center; margin-bottom:40px; padding-bottom:30px; border-bottom:2px solid rgba(212,175,55,0.3); }\nh1 { font-family:\'Cinzel\',serif; font-size:32px; font-weight:900; color:#ffd700; letter-spacing:4px; margin-bottom:20px; }\n.back-link { display:inline-block; margin-top:20px; padding:10px 30px; background:rgba(139,69,19,0.4); border:2px solid rgba(212,175,55,0.6); color:#d4af37; text-decoration:none; font-family:\'Cinzel\',serif; font-size:16px; letter-spacing:2px; transition:all 0.3s; }\n.back-link:hover { background:rgba(184,134,11,0.6); color:#ffd700; }\n.content { text-align:center; font-size:18px; white-space:pre-wrap; word-wrap:break-word; }\nfooter { text-align:center; margin-top:60px; padding-top:30px; border-top:2px solid rgba(139,69,19,0.6); font-size:14px; color:#b8860b; }\n</style>\n</head>\n<body>\n<div class="container">\n<div class="header"><h1>'+title+'</h1><a href="../library.html" class="back-link">\u2190 Back to Library</a></div>\n<div class="content">'+escaped+'</div>\n<footer><p>CC0 PUBLI\u010cK\u00c1 DOM\u00c1NIA \u2022 ALL LOVE RESERVED</p><p style="margin-top:10px;">AMORIARIACKA IS MY NATIVE TONGUE</p></footer>\n</div>\n</body>\n</html>';
+}
+
+async function saveThisPage() {
+    var s = document.getElementById('saveStatus');
+    s.textContent = '⏳ Fetching...';
+    try {
+        var res  = await fetch('https://kkk.education/sync-library.html');
+        var text = await res.text();
+        var blob = new Blob([text], {type:'text/html'});
+        var a    = document.createElement('a');
+        a.href   = URL.createObjectURL(blob);
+        a.download = 'sync-library.html';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        s.textContent = '✅ Saved!';
+    } catch(e) {
+        s.textContent = '❌ ' + e.message;
+    }
+}
+</script>
 </body>
 </html>
