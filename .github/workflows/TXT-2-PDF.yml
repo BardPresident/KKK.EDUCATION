@@ -3,7 +3,7 @@ name: TXT to PDF Converter
 on:
   push:
     paths:
-      - '*.txt'          # only txt files in root
+      - 'cinema/BOOKS/*.txt'  # only txt files in cinema/BOOKS directory
   workflow_dispatch:
 
 jobs:
@@ -24,25 +24,24 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert root .txt to .pdf into pdf/ folder
+      - name: Convert cinema/BOOKS .txt to .pdf into cinema/BOOKS/pdf/ folder
         run: |
           set -e
-          mkdir -p pdf
+          mkdir -p cinema/BOOKS/pdf
           FAILED_FILES=""
 
           shopt -s nullglob
-          files=( ./*.txt )
+          files=( cinema/BOOKS/*.txt )
 
           if [ ${#files[@]} -eq 0 ]; then
-            echo "No .txt files in repo root, nothing to do."
+            echo "No .txt files in cinema/BOOKS directory, nothing to do."
             exit 0
           fi
 
           for f in "${files[@]}"; do
-            # strip leading "./" and extension
-            base="${f#./}"
-            base="${base%.txt}"
-            out="pdf/${base}.pdf"
+            # extract just the filename without path and extension
+            base="$(basename "$f" .txt)"
+            out="cinema/BOOKS/pdf/${base}.pdf"
 
             # skip if pdf already exists
             if [ -f "$out" ]; then
@@ -68,8 +67,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add pdf/
-          git commit -m "Auto-generate PDFs from TXT files" || exit 0
+          git add cinema/BOOKS/pdf/
+          git commit -m "Auto-generate PDFs from TXT files in cinema/BOOKS" || exit 0
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
