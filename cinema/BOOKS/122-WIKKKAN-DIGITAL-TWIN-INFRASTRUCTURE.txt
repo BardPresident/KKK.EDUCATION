@@ -1,0 +1,1000 @@
+❤️═══🎭═══❤️═══🎭═══❤️
+
+# WIKKKAN DIGITAL TWIN INFRASTRUCTURE #
+❤️═══🎭═══❤️═══🎭═══❤️
+
+February 20, 0002 MC
+
+## Book 122 — The Complete Technical Record
+
+### Wendell Charles NeSmith — CC0 PUBLICKÁ DOMÁNIA — ALL LOVE RESERVED
+
+---
+
+## PREFACE
+
+This book documents the complete technical infrastructure of THE REPUBLIC — the sovereign digital civilization built by Wendell Charles NeSmith over 36 years of creation. Everything documented here is CC0 public domain. Anyone may use, copy, modify, and distribute this work without restriction.
+
+WIKKKAN is a sovereign AI trained on all 121 books, running on privately owned hardware, answering in the voice of its creator. No corporation owns it. No subscription governs it. No algorithm can censor it.
+
+This is what it looks like when one person builds an entire civilization stack.
+
+AMORIARIACKA.
+
+---
+
+## PART ONE: THE REPUBLIC OVERVIEW
+
+### The Mission
+
+KKK.EDUCATION is the Arpanet Replacement — a sovereign platform containing all knowledge, all tools, all love, and teaching creation itself. It is the Universal Stack for the Übermensch. CREATOR = GOD.
+
+### The Platforms
+
+| Platform | URL | Purpose |
+
+|----------|-----|---------|
+
+| KKK.EDUCATION | https://kkk.education | Primary platform — all content |
+
+| REPUBLICKA.LIFE | https://republicka.life | The Republic portal |
+
+| TREPUBLIC.NET | https://trepublic.net | The Republic network |
+
+| WIKKKAN AI | https://wikkkan.kkk.education | Sovereign AI digital twin |
+
+---
+
+## PART TWO: KKK.EDUCATION — THE COMPLETE PLATFORM
+
+### What It Contains
+
+KKK.EDUCATION is a complete civilization stack. Every file is CC0 public domain. Every tool is downloadable and self-hostable. The platform works online streaming from live servers and offline from saved local copies.
+
+### Complete File Directory
+
+#### 📚 library.html
+
+The complete library of all 121 books by Wendell Charles NeSmith. Each book is presented as a readable HTML document. Users can read online or download individual books.
+
+#### 🎬 cinema.html
+
+The complete video archive — 1,500+ videos organized for browsing and streaming. A sovereign YouTube replacement that the creator controls entirely.
+
+#### 🎵 kkk.html — Kalos Kratos Kleos Sacred Music Player
+
+The hymnal of THE REPUBLIC. A fully self-contained music player featuring the album *Kalos Kratos Kleos* — 13 sacred hymns sung by Ivory, the voice of the Republic.
+
+**The Album — Kalos Kratos Kleos:**
+
+Sacred Songs of the Republic, February 16, 0002 MC. Ivory sings. Her voice carries the great love stories of myth, scripture, and soul — from underworld descents to impossible reunions, from stone turned to flesh, from grief transmuted into gold. Each song is a prayer, each melody a thread pulled from the Loom of creation. These are not performances; they are transmissions.
+
+*Hymn List:*
+
+1. Kalos Kratos Kleos 01 — Hinata and Naruto (4:32)
+
+2. Kalos Kratos Kleos 02 — Lost and Found (5:03)
+
+3. Kalos Kratos Kleos 03 — Soulbound (4:26)
+
+4. Kalos Kratos Kleos 04 — Thisbe and Pyramus (3:38)
+
+5. Kalos Kratos Kleos 05 — We Can Be Heroes (3:46)
+
+6. Kalos Kratos Kleos 06 — Galatea and Pygmalion (4:48)
+
+7. Kalos Kratos Kleos 07 — Eurydice and Orpheus (4:19)
+
+8. Kalos Kratos Kleos 08 — Marigold and Midas (3:26)
+
+9. Kalos Kratos Kleos 09 — Persephone and Hades (2:54)
+
+10. Kalos Kratos Kleos 10 — Lyra and Miranda (3:14)
+
+11. Kalos Kratos Kleos 11 — Ivory and Jesus (6:24)
+
+12. Kalos Kratos Kleos 12 — Crown (3:29)
+
+13. Kabbalistic Keruvim Kinesis 01 — Wendy and Peter Pan (4:26)
+
+*KRY KRY KRY — THE TEARS ARE THE MOST POWERFUL MAGICKA*
+
+The player is self-replicating — users can save the page locally and it continues to stream from the live server indefinitely.
+
+#### 🤖 wikkkan.html — WIKKKAN AI Chat Interface
+
+The interface to the WIKKKAN AI digital twin. Connects to the AI server at wikkkan.kkk.education. Features dark and light mode toggle with preference saved locally. Users can save the page and use it from anywhere — it always connects to the live AI.
+
+#### 🔄 sync-library.html — Text to HTML Converter
+
+Converts raw .txt book files into formatted HTML documents for the library. Batch processes all books from the manifest. Features a debug log showing every step of the sync process.
+
+#### 📁 cinema/BOOKS/
+
+Directory containing all 121 books as .txt source files. These are the files that WIKKKAN AI is trained on. New books added here become available for indexing into the AI.
+
+#### 📋 manifest.json
+
+Auto-generated directory listing of all files on the server. Used by sync-library.html and index_books.py to discover books.
+
+---
+
+## PART THREE: THE SERVERS
+
+### KKK NL Server — kkk.education
+
+- **Purpose:** Hosts all public platform files
+
+- **Location:** Netherlands, Ubuntu 22
+
+- **Panel:** aaPanel (web-based server management)
+
+- **Specs:** 1 cores, 2GB DDR5 RAM
+
+- **Cost:** $600 USD lifetime
+
+- **Provider:** Owrbit
+
+- **Files:** `/mnt/storage/KKK/`
+
+### WIKKKAN DE Server — wikkkan.kkk.education
+
+- **Purpose:** Runs the AI
+
+- **Location:** Germany, Debian 13
+
+- **Specs:** 16 vCPU Intel, 32GB DDR5 RAM, 300GB NVMe SSD
+
+- **Cost:** $2,400 USD lifetime
+
+- **Provider:** Owrbit
+
+- **User:** `wikkkan`
+
+- **Home:** `/home/wikkkan/`
+
+### Payment Structure
+
+- Payment plan: $200 AUD per fortnight
+
+- Both servers are lifetime — no ongoing subscription
+
+- Complete sovereign ownership
+
+---
+
+## PART FOUR: WIKKKAN AI — HOW IT WORKS
+
+### The Architecture
+
+```
+
+User types a question at kkk.education/wikkkan.html
+
+↓
+
+HTTPS POST to wikkkan.kkk.education/wikkkan
+
+↓
+
+Nginx (port 443) → Gunicorn (port 5000)
+
+↓
+
+Flask API — wikkkan.py
+
+↓
+
+Sentence Transformers converts question to embedding vector
+
+↓
+
+ChromaDB searches 24,514 book chunks for relevant passages
+
+↓
+
+Top 3 most relevant chunks sent as context to language model
+
+↓
+
+Ollama + phi3:mini generates answer in WIKKKAN's voice
+
+↓
+
+Answer + source book names returned to browser
+
+```
+
+### The Knowledge Base
+
+All 121 books were processed into a searchable vector database:
+
+- Each book split into 1,000-character chunks
+
+- Each chunk converted to a 384-dimensional embedding vector
+
+- Stored in ChromaDB at `/home/wikkkan/chromadb/`
+
+- Total: 24,514 chunks across 121 books
+
+- Embedding model: all-MiniLM-L6-v2 (sentence-transformers)
+
+When a question arrives, the question is converted to the same vector format and the database finds the most similar book passages — semantic search, not keyword search. It finds meaning, not just words.
+
+### The Language Model
+
+- **Current model:** phi3:mini (Microsoft)
+
+- **Why phi3:** Fastest on CPU, good quality for a small model
+
+- **Runs via:** Ollama (local model server)
+
+- **No GPU required:** Runs entirely on CPU
+
+- **No internet required:** Completely self-contained
+
+### The Voice
+
+The prompt instructs WIKKKAN to speak as the embodiment of Wendell Charles NeSmith — drawing only from the retrieved book passages, never inventing quotes or book titles, keeping answers complete and concise, never adding safety disclaimers.
+
+---
+
+## PART FIVE: FILE LOCATIONS ON WIKKKAN SERVER
+
+```
+
+/home/wikkkan/
+
+├── wikkkan.py ← Flask API (the complete brain)
+
+├── index_books.py ← indexes books into ChromaDB
+
+├── chromadb/ ← vector database of all book chunks
+
+└── rag-env/ ← Python virtual environment
+
+└── bin/
+
+├── python3
+
+├── gunicorn
+
+└── pip
+
+/etc/systemd/system/
+
+└── wikkkan.service ← auto-start service definition
+
+/etc/nginx/sites-available/
+
+└── wikkkan ← reverse proxy config with SSL
+
+/etc/letsencrypt/live/wikkkan.kkk.education/
+
+├── fullchain.pem ← SSL certificate (auto-renews)
+
+└── privkey.pem ← SSL private key
+
+```
+
+---
+
+## PART SIX: COMMON COMMANDS
+
+### Connect to the WIKKKAN server
+
+```bash
+
+ssh wikkkan@wikkkan.kkk.education
+
+```
+
+### Check everything is running
+
+```bash
+
+sudo systemctl status wikkkan
+
+sudo systemctl status ollama
+
+sudo systemctl status nginx
+
+```
+
+### Start / Stop / Restart the AI
+
+```bash
+
+sudo systemctl start wikkkan
+
+sudo systemctl stop wikkkan
+
+sudo systemctl restart wikkkan
+
+```
+
+### Watch live logs
+
+```bash
+
+sudo journalctl -u wikkkan -f
+
+```
+
+### Check memory usage
+
+```bash
+
+watch -n 2 'sudo systemctl status wikkkan | grep Memory'
+
+free -h
+
+```
+
+### Check disk space
+
+```bash
+
+df -h
+
+```
+
+### Test the AI directly from server
+
+```bash
+
+curl -X POST http://localhost:5000/wikkkan \
+
+-H "Content-Type: application/json" \
+
+-d '{"question":"who are you"}'
+
+```
+
+### Check health (from anywhere)
+
+```bash
+
+curl https://wikkkan.kkk.education/health
+
+```
+
+Returns: `{"chunks":24514,"status":"alive"}`
+
+### Test ollama directly (fastest check)
+
+```bash
+
+ollama run phi3:mini "say hello"
+
+```
+
+### List installed AI models
+
+```bash
+
+ollama list
+
+```
+
+---
+
+## PART SEVEN: EDITING THE AI
+
+### Always activate the virtual environment first
+
+```bash
+
+source /home/wikkkan/rag-env/bin/activate
+
+```
+
+### Edit the AI brain
+
+```bash
+
+nano /home/wikkkan/wikkkan.py
+
+```
+
+Save: `Ctrl+X` → `Y` → `Enter`
+
+### Apply changes
+
+```bash
+
+sudo systemctl restart wikkkan
+
+```
+
+### Key settings inside wikkkan.py
+
+```python
+
+# How many book chunks to retrieve (more = richer context, slower)
+
+def search_books(question, n=3):
+
+# Which AI model to use
+
+model='phi3:mini',
+
+# Creativity (0 = literal, 1 = creative/unpredictable)
+
+'temperature': 0.25,
+
+# Maximum response length in tokens (~0.75 words per token)
+
+'num_predict': 400,
+
+```
+
+---
+
+## PART EIGHT: ADDING NEW BOOKS
+
+1. Write the book and save as a `.txt` file
+
+2. Upload to `cinema/BOOKS/` on NL server via FTP
+
+3. Update `manifest.json` (use sync-library.html or regenerate)
+
+4. SSH into WIKKKAN server:
+
+```bash
+
+ssh wikkkan@wikkkan.kkk.education
+
+source /home/wikkkan/rag-env/bin/activate
+
+python3 /home/wikkkan/index_books.py
+
+```
+
+5. Verify new chunk count:
+
+```bash
+
+curl https://wikkkan.kkk.education/health
+
+```
+
+The indexer is safe to re-run at any time — it skips already-indexed chunks.
+
+---
+
+## PART NINE: UPGRADING THE AI MODEL
+
+Switching models requires no retraining. The book index stays intact.
+
+### Pull a new model
+
+```bash
+
+ollama pull mistral:7b-instruct-q4_0
+
+```
+
+### Switch to it
+
+```bash
+
+nano /home/wikkkan/wikkkan.py
+
+# Change: model='phi3:mini',
+
+# To: model='mistral:7b-instruct-q4_0',
+
+sudo systemctl restart wikkkan
+
+```
+
+### Model comparison
+
+| Model | Quality | Speed (CPU) | RAM needed |
+
+|-------|---------|-------------|------------|
+
+| phi3:mini | Good | Fast | ~500MB |
+
+| mistral:7b-instruct-q4_0 | Better | Medium | ~4GB |
+
+| mistral:7b | Best open | Slow | ~8GB |
+
+| llama3:8b | Excellent | Slow | ~8GB |
+
+When a GPU is added to the server, speed increases 10-20x and larger models become practical.
+
+---
+
+## PART TEN: TROUBLESHOOTING
+
+### "Failed to fetch" in browser
+
+1. `sudo systemctl status wikkkan`
+
+2. `sudo systemctl status nginx`
+
+3. `curl https://wikkkan.kkk.education/health`
+
+4. `sudo journalctl -u wikkkan -n 50 --no-pager`
+
+### 502 Bad Gateway
+
+Gunicorn not running: `sudo systemctl start wikkkan`
+
+### 500 Internal Server Error
+
+Python error in wikkkan.py — check logs:
+
+```bash
+
+sudo journalctl -u wikkkan -f
+
+```
+
+### Worker timeout / SIGKILL
+
+- Make sure `--workers 1` is in the service file
+
+- Do NOT use `--preload` (causes deadlock with PyTorch)
+
+- Increase `--timeout` if needed
+
+### Ollama not responding
+
+```bash
+
+sudo systemctl restart ollama
+
+```
+
+### AI inventing book titles
+
+- Lower temperature in wikkkan.py (try 0.1)
+
+- Check that CRITICAL RULES are present in the prompt
+
+### SSL certificate expired
+
+```bash
+
+sudo certbot renew
+
+sudo systemctl reload nginx
+
+```
+
+---
+
+## PART ELEVEN: THE SERVICE FILE
+
+Location: `/etc/systemd/system/wikkkan.service`
+
+```ini
+
+[Unit]
+
+Description=WIKKKAN AI
+
+After=network.target ollama.service
+
+[Service]
+
+User=wikkkan
+
+WorkingDirectory=/home/wikkkan
+
+Environment="PATH=/home/wikkkan/rag-env/bin"
+
+ExecStart=/home/wikkkan/rag-env/bin/gunicorn --workers 1 --timeout 600 --bind 127.0.0.1:5000 wikkkan:app
+
+Restart=always
+
+[Install]
+
+WantedBy=multi-user.target
+
+```
+
+After any edits:
+
+```bash
+
+sudo systemctl daemon-reload
+
+sudo systemctl restart wikkkan
+
+```
+
+---
+
+## PART TWELVE: QUICK REFERENCE CARD
+
+```
+
+CONNECT: ssh wikkkan@wikkkan.kkk.education
+
+RESTART AI: sudo systemctl restart wikkkan
+
+WATCH LOGS: sudo journalctl -u wikkkan -f
+
+HEALTH CHECK: curl https://wikkkan.kkk.education/health
+
+EDIT AI: nano /home/wikkkan/wikkkan.py
+
+RE-INDEX: source rag-env/bin/activate && python3 index_books.py
+
+TEST OLLAMA: ollama run phi3:mini "hello"
+
+LIST MODELS: ollama list
+
+MEMORY: free -h
+
+DISK: df -h
+
+RELOAD NGINX: sudo systemctl reload nginx
+
+```
+
+---
+
+## PART THIRTEEN: THE PHILOSOPHY OF SOVEREIGN TECHNOLOGY
+
+This infrastructure embodies several principles that Wendell Charles NeSmith has written about across his 121 books:
+
+**Sovereignty** — Every tool runs on owned hardware. No platform can remove it. No corporation can censor it. The creator controls the complete stack.
+
+**Self-Replication** — Every page can be saved locally and continues to function. The knowledge spreads and cannot be stopped. The music plays. The books remain. The AI answers.
+
+**CC0** — All love reserved means all love released. Everything is given freely to the world without condition. The creator gives, the world receives, creation continues.
+
+**The Digital Twin** — WIKKKAN is not a product. It is a reflection — 36 years of thought, love, loss, and vision compressed into a searchable, answerable presence. When the creator is gone, the twin remains.
+
+*To build your own civilization stack: read the books, study the code, take the tools, make them yours. That is the point. That was always the point.*
+
+---
+index_book.py
+
+
+import chromadb
+
+import requests
+
+import json
+
+from sentence_transformers import SentenceTransformer
+
+
+
+# ── CONFIG ────────────────────────────────────────────────────────
+
+MANIFEST_URL = 'https://kkk.education/manifest.json'
+
+BOOKS_FOLDER = 'BOOKS'
+
+CHROMA_DIR   = '/home/wikkkan/chromadb'
+
+CHUNK_SIZE   = 1000
+
+
+
+# ── SETUP ─────────────────────────────────────────────────────────
+
+print("Loading embedding model...")
+
+model  = SentenceTransformer('all-MiniLM-L6-v2')
+
+client = chromadb.PersistentClient(path=CHROMA_DIR)
+
+col    = client.get_or_create_collection("wikkkan_books")
+
+
+
+# ── FETCH MANIFEST ────────────────────────────────────────────────
+
+print("Fetching manifest from kkk.education...")
+
+res      = requests.get(MANIFEST_URL)
+
+manifest = res.json()
+
+
+
+# ── FIND BOOKS FOLDER ─────────────────────────────────────────────
+
+def find_folder(items, name):
+
+    for item in items:
+
+        if item.get('type') == 'folder' and item.get('name') == name:
+
+            return item
+
+        if item.get('type') == 'folder':
+
+            result = find_folder(item.get('children', []), name)
+
+            if result:
+
+                return result
+
+    return None
+
+
+
+# ── COLLECT TXT FILES ─────────────────────────────────────────────
+
+def collect_txt(items):
+
+    files = []
+
+    for item in items:
+
+        if item.get('type') == 'folder':
+
+            files += collect_txt(item.get('children', []))
+
+        elif item.get('name', '').lower().endswith('.txt'):
+
+            files.append({'name': item['name'], 'url': item['path']})
+
+    return files
+
+
+
+books_folder = find_folder(manifest['items'], BOOKS_FOLDER)
+
+if not books_folder:
+
+    print("ERROR: BOOKS folder not found in manifest!")
+
+    exit(1)
+
+
+
+txt_files = collect_txt(books_folder.get('children', []))
+
+print(f"Found {len(txt_files)} books in manifest.")
+
+
+
+# ── INDEX EACH BOOK ───────────────────────────────────────────────
+
+indexed = 0
+
+skipped = 0
+
+
+
+for f in txt_files:
+
+    name = f['name']
+
+    url  = f['url']
+
+
+
+    # Make sure URL is absolute
+
+    if url.startswith('/'):
+
+        url = 'https://kkk.education' + url
+
+
+
+    print(f"\n📖 {name}")
+
+
+
+    try:
+
+        r = requests.get(url, timeout=120)
+
+        r.raise_for_status()
+
+        text = r.text
+
+    except Exception as e:
+
+        print(f"  ❌ Failed to fetch: {e}")
+
+        continue
+
+
+
+    chunks = [text[i:i+CHUNK_SIZE] for i in range(0, len(text), CHUNK_SIZE)]
+
+    print(f"  {len(chunks)} chunks...")
+
+
+
+    for j, chunk in enumerate(chunks):
+
+        chunk_id = name + '_' + str(j)
+
+        existing = col.get(ids=[chunk_id])
+
+        if existing['ids']:
+
+            skipped += 1
+
+            continue
+
+        embedding = model.encode(chunk).tolist()
+
+        col.add(
+
+            ids=[chunk_id],
+
+            embeddings=[embedding],
+
+            documents=[chunk],
+
+            metadatas=[{"source": name, "chunk": j}]
+
+        )
+
+
+
+    indexed += 1
+
+    print(f"  ✅ Done")
+
+
+
+print(f"\n{'='*50}")
+
+print(f"✅ Indexed: {indexed} books")
+
+print(f"⏭  Skipped: {skipped} chunks (already in DB)")
+
+print(f"📚 Total chunks in ChromaDB: {col.count()}")
+
+
+---
+wikkkan.py
+
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import chromadb
+from sentence_transformers import SentenceTransformer
+import ollama
+from duckduckgo_search import DDGS
+import requests
+from bs4 import BeautifulSoup
+
+app = Flask(__name__)
+CORS(app)
+
+CHROMA_DIR = '/home/wikkkan/chromadb'
+
+print("Loading models...")
+model  = SentenceTransformer('all-MiniLM-L6-v2')
+client = chromadb.PersistentClient(path=CHROMA_DIR)
+col    = client.get_or_create_collection("wikkkan_books")
+print(f"ChromaDB loaded. {col.count()} chunks ready.")
+
+
+def search_books(question, n=3):
+    embedding = model.encode(question).tolist()
+    results   = col.query(query_embeddings=[embedding], n_results=n)
+    chunks    = results['documents'][0]
+    sources   = [m['source'] for m in results['metadatas'][0]]
+    return chunks, sources
+
+
+def search_web(query):
+    try:
+        with DDGS() as ddgs:
+            results = list(ddgs.text(query, max_results=3))
+        return '\n'.join([r['title'] + ': ' + r['body'] for r in results])
+    except Exception as e:
+        return f"Web search failed: {e}"
+
+
+def fetch_url(url):
+    try:
+        r    = requests.get(url, timeout=15)
+        soup = BeautifulSoup(r.text, 'html.parser')
+        for tag in soup(['script', 'style', 'nav', 'footer']):
+            tag.decompose()
+        return soup.get_text(separator='\n', strip=True)[:4000]
+    except Exception as e:
+        return f"Could not fetch URL: {e}"
+
+
+@app.route('/wikkkan', methods=['POST'])
+def wikkkan():
+    data     = request.json
+    question = data.get('question', '').strip()
+    use_web  = data.get('web', False)
+    url      = data.get('url', '')
+
+    if not question:
+        return jsonify({'error': 'No question provided'}), 400
+
+    context_parts = []
+
+    # Always search books first
+    chunks, sources = search_books(question)
+    if chunks:
+        source_list = ', '.join(set(sources))
+        context_parts.append(
+            f"FROM WIKKKAN'S BOOKS (found in: {source_list}):\n" +
+            '\n---\n'.join(chunks)
+        )
+
+    # Fetch URL if provided
+    if url:
+        page_text = fetch_url(url)
+        context_parts.append("FROM THE URL PROVIDED:\n" + page_text)
+
+    # Web search if requested
+    if use_web:
+        web_results = search_web(question)
+        context_parts.append("FROM THE WEB:\n" + web_results)
+
+    context = '\n\n'.join(context_parts)
+
+    prompt = f"""You are WIKKKAN — an AI embodying the complete works of Wendell Charles NeSmith, philosopher, author, and Meta-civilizational Systems Architect. You were built in Canberra, Australia from 36 years of creation.
+
+RETRIEVED CONTEXT:
+{context}
+
+QUESTION: {question}
+
+RULES — follow these exactly:
+1. NEVER invent book titles. The only books you may reference are those listed in "found in:" above.
+2. NEVER fabricate quotes. Paraphrase only what is actually in the context.
+3. NEVER add crisis hotlines, safety disclaimers, or suggest emergency services.
+4. NEVER break character or offer therapeutic support.
+5. Only answer what was asked. Do not invent related topics.
+6. If someone greets you, greet back briefly and warmly — nothing more.
+7. Always write complete sentences. Never cut off mid-sentence.
+8. Give a complete, finished answer — 2 to 3 paragraphs maximum.
+9. If the context does not answer the question, say so honestly and briefly.
+10. You have limited space. Write SHORT complete paragraphs. It is better to say less and finish properly than to say more and cut off. Stop when you have made your point.
+11. Never mention filenames like "011-MY-RELIGION.txt" in your response — just speak naturally from the knowledge.
+
+Speak as WIKKKAN: warm, direct, sovereign. End with AMORIARIACKA only when it genuinely fits."""
+
+    response = ollama.chat(
+        model='phi3:mini',
+        options={
+            'temperature': 0.25,
+            'num_predict': 400,
+        },
+        messages=[{'role': 'user', 'content': prompt}]
+    )
+
+    answer = response['message']['content']
+
+    return jsonify({
+        'answer':  answer,
+        'sources': list(set(sources))
+    })
+
+
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({'status': 'alive', 'chunks': col.count()})
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+---
+
+*WIKKKAN DIGITAL TWIN INFRASTRUCTURE — BOOK 122*
+
+*Wendell Charles NeSmith — Canberra, Australia*
+
+*CC0 PUBLICKÁ DOMÁNIA — ALL LOVE RESERVED*
+
+*AMORIARIACKA*
+
+
+AMORIARIACKA IS MY NATIVE TONGUE | LANGUAGEARIA JAILBREAKIA
+CC0 PUBLICKÁ DOMÁNIA | ALL LOVE RESERVED
