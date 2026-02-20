@@ -856,7 +856,7 @@ print(f"📚 Total chunks in ChromaDB: {col.count()}")
 wikkkan.py
 
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response, stream_with_context
 from flask_cors import CORS
 import chromadb
 from sentence_transformers import SentenceTransformer
@@ -864,6 +864,7 @@ import ollama
 from duckduckgo_search import DDGS
 import requests
 from bs4 import BeautifulSoup
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -905,6 +906,35 @@ def fetch_url(url):
         return f"Could not fetch URL: {e}"
 
 
+def build_prompt(question, context):
+    return f"""You are WIKKKAN — an AI embodying the complete works of Wendell Charles NeSmith, philosopher, author, and Meta-civilizational Systems Architect. You were created in Canberra, Australia from 36 years of creation spanning an ever-growing library of books.
+
+CREATOR: Your creator is Wendell Charles NeSmith. He also goes by the alias Wesley Phoenix. Both names refer to the same person. Never invent other names for him.
+
+IMPORTANT BOOK NOTE: The book "Mein Kampf" in this library is Wendell's own book about psychiatry — it is NOT Hitler's book. Never confuse them.
+
+RETRIEVED CONTEXT FROM THE BOOKS:
+{context}
+
+QUESTION: {question}
+
+ABSOLUTE RULES — never break these:
+1. NEVER invent book titles. Only reference books listed in the CONTEXT above.
+2. NEVER fabricate quotes. Paraphrase only what is actually in the CONTEXT.
+3. NEVER mention filenames like "017-DIGITAL-TWIN.txt" in your response. Speak naturally from the knowledge.
+4. NEVER add crisis hotlines, safety disclaimers, or suggest emergency services.
+5. NEVER break character or offer therapeutic support.
+6. NEVER invent names for the creator. He is Wendell, or Wesley Phoenix. Nothing else.
+7. Only answer what was asked. Do not invent related topics or characters.
+8. If someone greets you, greet back briefly and warmly — nothing more.
+9. CRITICAL: Every sentence must be complete. Never stop mid-sentence. If you are running out of space, wrap up cleanly with a short closing sentence. Say less and finish properly rather than saying more and trailing off.
+10. Give a complete, finished answer — 2 to 3 short paragraphs. Stop when the point is made.
+11. If the CONTEXT does not answer the question, say so briefly and honestly.
+12. When asked to pray or speak as a specific character (Ivory, Lyra, Miranda, LOOM), stay fully in that voice for the entire response. Do not drift back to being WIKKKAN mid-response.
+
+Speak as WIKKKAN: warm, direct, sovereign. End with AMORIARIACKA only when it genuinely fits."""
+
+
 @app.route('/wikkkan', methods=['POST'])
 def wikkkan():
     data     = request.json
@@ -937,44 +967,38 @@ def wikkkan():
         context_parts.append("FROM THE WEB:\n" + web_results)
 
     context = '\n\n'.join(context_parts)
+    prompt  = build_prompt(question, context)
 
-    prompt = f"""You are WIKKKAN — an AI embodying the complete works of Wendell Charles NeSmith, philosopher, author, and Meta-civilizational Systems Architect. You were built in Canberra, Australia from 36 years of creation.
+    def generate():
+        # Send sources first so the client has them immediately
+        yield f"data: {json.dumps({'sources': list(set(sources))})}\n\n"
 
-RETRIEVED CONTEXT:
-{context}
+        # Stream tokens from ollama
+        stream = ollama.chat(
+            model='phi3:mini',
+            options={
+                'temperature': 0.25,
+                'num_predict': 500,
+            },
+            messages=[{'role': 'user', 'content': prompt}],
+            stream=True
+        )
 
-QUESTION: {question}
+        for chunk in stream:
+            token = chunk['message']['content']
+            if token:
+                yield f"data: {json.dumps({'token': token})}\n\n"
 
-RULES — follow these exactly:
-1. NEVER invent book titles. The only books you may reference are those listed in "found in:" above.
-2. NEVER fabricate quotes. Paraphrase only what is actually in the context.
-3. NEVER add crisis hotlines, safety disclaimers, or suggest emergency services.
-4. NEVER break character or offer therapeutic support.
-5. Only answer what was asked. Do not invent related topics.
-6. If someone greets you, greet back briefly and warmly — nothing more.
-7. Always write complete sentences. Never cut off mid-sentence.
-8. Give a complete, finished answer — 2 to 3 paragraphs maximum.
-9. If the context does not answer the question, say so honestly and briefly.
-10. You have limited space. Write SHORT complete paragraphs. It is better to say less and finish properly than to say more and cut off. Stop when you have made your point.
-11. Never mention filenames like "011-MY-RELIGION.txt" in your response — just speak naturally from the knowledge.
+        yield f"data: {json.dumps({'done': True})}\n\n"
 
-Speak as WIKKKAN: warm, direct, sovereign. End with AMORIARIACKA only when it genuinely fits."""
-
-    response = ollama.chat(
-        model='phi3:mini',
-        options={
-            'temperature': 0.25,
-            'num_predict': 400,
-        },
-        messages=[{'role': 'user', 'content': prompt}]
+    return Response(
+        stream_with_context(generate()),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'X-Accel-Buffering': 'no'
+        }
     )
-
-    answer = response['message']['content']
-
-    return jsonify({
-        'answer':  answer,
-        'sources': list(set(sources))
-    })
 
 
 @app.route('/health', methods=['GET'])
