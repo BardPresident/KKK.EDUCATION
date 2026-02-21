@@ -4,41 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎵 Kalos Kratos Kleos 🎵</title>
+    <meta name="application-name" content="Kalos Kratos Kleos">
+    <meta name="apple-mobile-web-app-title" content="Kalos Kratos Kleos">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;Kalos Kratos Kleos&quot;,&quot;short_name&quot;:&quot;KKK&quot;,&quot;display&quot;:&quot;standalone&quot;}">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4af37;
-            --gold-bright: #ffd700;
-            --gold-dim: #8b7020;
-            --black: #0a0a0a;
-            --dark: #111108;
-            --surface: #1a1a10;
-            --surface2: #222215;
-            --text: #e8d5a3;
-            --text-dim: #8a7a50;
+            --gold:       #d4af37;
+            --gold-bright:#ffd700;
+            --gold-dim:   #8b7020;
+            --black:      #0a0a0a;
+            --dark:       #111108;
+            --surface:    #1a1a10;
+            --surface2:   #222215;
+            --text:       #e8d5a3;
+            --text-dim:   #8a7a50;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
+        html, body {
+            overflow-x: hidden;
             background: var(--black);
             color: var(--text);
             font-family: 'EB Garamond', serif;
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
         }
 
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 400px;
+            top: 0; left: 0; right: 0; height: 400px;
             background: radial-gradient(ellipse at 50% -20%, rgba(212,175,55,0.12) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
 
+        /* ── Light mode ── */
+        body.light {
+            --gold:       #8b6914;
+            --gold-bright:#a07820;
+            --gold-dim:   #c4a84a;
+            --black:      #faf7f0;
+            --dark:       #f0ead8;
+            --surface:    #fff8ec;
+            --surface2:   #f5edda;
+            --text:       #2a1f08;
+            --text-dim:   #7a6040;
+            background: var(--black);
+            color: var(--text);
+        }
+        body.light .top-nav    { background: rgba(250,247,240,0.96); border-bottom-color: var(--gold-dim); }
+        body.light .back-link  { color: var(--text); }
+        body.light body::before { background: radial-gradient(ellipse at 50% -20%, rgba(139,105,20,0.08) 0%, transparent 70%); }
+        body.light .now-playing-card { box-shadow: 0 0 40px rgba(139,105,20,0.08), inset 0 0 60px rgba(255,255,255,0.5); }
+        body.light input[type="range"] { background: var(--surface2); }
+        body.light .tracklist-body::-webkit-scrollbar-track { background: var(--surface); }
+        body.light .spark { background: var(--gold); }
+
+        /* ── Theme toggle ── */
+        .theme-toggle {
+            display: flex; align-items: center; gap: 8px;
+            background: none;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 20px;
+            padding: 7px 16px;
+            cursor: pointer;
+            color: var(--text-dim);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.2em;
+            transition: all 0.3s;
+            margin-bottom: 24px;
+        }
+        .theme-toggle:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .theme-icon { font-size: 1.1em; line-height: 1; }
+
+        /* ── Sparks ── */
         .candles {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -46,7 +93,6 @@
             z-index: 0;
             overflow: hidden;
         }
-
         .spark {
             position: absolute;
             width: 2px; height: 2px;
@@ -55,27 +101,35 @@
             animation: float-up linear infinite;
             opacity: 0;
         }
-
         @keyframes float-up {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.2; }
+            0%   { transform: translateY(100vh) translateX(0);  opacity: 0; }
+            10%  { opacity: 0.6; }
+            90%  { opacity: 0.2; }
             100% { transform: translateY(-20px) translateX(20px); opacity: 0; }
         }
 
-        .back-link {
+        /* ── Nav ── */
+        .top-nav {
             position: fixed;
-            top: 20px; left: 20px;
-            color: #ffffff;
+            top: 0; left: 0; right: 0; height: 52px;
+            background: rgba(10,10,8,0.96);
+            border-bottom: 2px solid var(--gold-dim);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 100;
+            backdrop-filter: blur(6px);
+        }
+        .back-link {
+            color: #fff;
             text-decoration: none;
             font-family: 'Cinzel', serif;
-            font-size: 0.8em;
-            letter-spacing: 0.1em;
+            font-size: 0.9em;
+            letter-spacing: 0.15em;
+            padding: 12px 40px;
             transition: color 0.3s;
-            z-index: 100;
         }
         .back-link:hover { color: var(--gold); }
 
+        /* ── Page layout ── */
         .sanctuary {
             position: relative;
             z-index: 1;
@@ -83,15 +137,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 20px 40px;
+            padding: 80px 20px 40px;
         }
 
+        /* ── Header ── */
         .altar {
             text-align: center;
+            margin-top: 20px;
             margin-bottom: 50px;
             position: relative;
+            padding: 0 70px;
         }
-
         .altar::before, .altar::after {
             content: '✦';
             color: var(--gold-dim);
@@ -100,9 +156,8 @@
             top: 50%;
             transform: translateY(-50%);
         }
-        .altar::before { left: -60px; }
-        .altar::after { right: -60px; }
-
+        .altar::before { left: 0; }
+        .altar::after  { right: 0; }
         .altar h1 {
             font-family: 'Cinzel Decorative', serif;
             font-size: clamp(1.8em, 5vw, 3.2em);
@@ -113,49 +168,39 @@
             line-height: 1.2;
             animation: glow-pulse 4s ease-in-out infinite;
         }
-
         @keyframes glow-pulse {
             0%, 100% { text-shadow: 0 0 40px rgba(212,175,55,0.6), 0 0 80px rgba(212,175,55,0.2); }
-            50% { text-shadow: 0 0 60px rgba(212,175,55,0.9), 0 0 120px rgba(212,175,55,0.4); }
+            50%       { text-shadow: 0 0 60px rgba(212,175,55,0.9), 0 0 120px rgba(212,175,55,0.4); }
         }
-
         .altar .subtitle {
             font-family: 'EB Garamond', serif;
             font-size: 1.05em;
             letter-spacing: 0.02em;
             color: #d4c5a0;
             margin-top: 16px;
-            text-transform: none;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
+            margin-left: auto; margin-right: auto;
             line-height: 1.9;
             padding: 0 10px;
         }
 
+        /* ── Divider ── */
         .divider {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            display: flex; align-items: center; gap: 15px;
             margin: 20px 0;
-            width: 100%;
-            max-width: 400px;
+            width: 100%; max-width: 400px;
         }
         .divider::before, .divider::after {
             content: '';
-            flex: 1;
-            height: 1px;
+            flex: 1; height: 1px;
             background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
         }
         .divider-symbol { color: var(--gold); font-size: 1.2em; }
 
+        /* ── Player ── */
         .player-container {
-            width: 100%;
-            max-width: 700px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            width: 100%; max-width: 700px;
+            display: flex; flex-direction: column; gap: 20px;
         }
 
         .now-playing-card {
@@ -168,11 +213,9 @@
             overflow: hidden;
             box-shadow: 0 0 40px rgba(212,175,55,0.1), inset 0 0 60px rgba(0,0,0,0.5);
         }
-
         .now-playing-card::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(135deg, rgba(212,175,55,0.03) 0%, transparent 50%),
                 repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(212,175,55,0.01) 10px, rgba(212,175,55,0.01) 11px);
             pointer-events: none;
@@ -186,15 +229,13 @@
             text-transform: uppercase;
             margin-bottom: 15px;
         }
-
         .track-status.playing {
             color: var(--gold);
             animation: status-pulse 1.5s ease-in-out infinite;
         }
-
         @keyframes status-pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50%       { opacity: 0.5; }
         }
 
         .track-number {
@@ -204,7 +245,6 @@
             margin-bottom: 8px;
             letter-spacing: 0.2em;
         }
-
         .track-name {
             font-family: 'Cinzel Decorative', serif;
             font-size: clamp(1em, 3vw, 1.6em);
@@ -212,24 +252,16 @@
             line-height: 1.3;
             margin-bottom: 8px;
             min-height: 2em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
         }
 
+        /* ── Visualizer ── */
         .visualizer {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 3px;
-            height: 40px;
-            margin: 15px 0;
-            opacity: 0;
-            transition: opacity 0.5s;
+            display: flex; align-items: flex-end; justify-content: center;
+            gap: 3px; height: 40px; margin: 15px 0;
+            opacity: 0; transition: opacity 0.5s;
         }
-
         .visualizer.active { opacity: 1; }
-
         .viz-bar {
             width: 4px;
             background: var(--gold);
@@ -237,85 +269,85 @@
             animation: viz-dance linear infinite;
             transform-origin: bottom;
         }
-
         @keyframes viz-dance {
             0%, 100% { transform: scaleY(0.1); }
-            50% { transform: scaleY(1); }
+            50%       { transform: scaleY(1); }
         }
 
+        /* ── Progress bar ── */
         .progress-section { margin-top: 20px; }
-
         .time-display {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8em;
-            color: var(--text-dim);
+            display: flex; justify-content: space-between;
+            font-size: 0.8em; color: var(--text-dim);
             margin-bottom: 8px;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 0.05em;
+            font-family: 'Cinzel', serif; letter-spacing: 0.05em;
         }
-
         .progress-track {
-            width: 100%;
-            height: 4px;
-            background: var(--surface2);
-            border-radius: 2px;
+            width: 100%; height: 20px;
+            background: transparent;
+            border-radius: 10px;
             cursor: pointer;
             position: relative;
-            overflow: visible;
+            display: flex; align-items: center;
         }
-
+        .progress-track-inner {
+            position: absolute; left: 0; right: 0; height: 6px;
+            background: var(--surface2);
+            border-radius: 3px;
+            overflow: visible;
+            pointer-events: none;
+        }
         .progress-fill {
             height: 100%;
             background: linear-gradient(to right, var(--gold-dim), var(--gold));
-            border-radius: 2px;
+            border-radius: 3px;
             width: 0%;
             transition: width 0.1s linear;
             position: relative;
         }
-
         .progress-fill::after {
             content: '';
-            position: absolute;
-            right: -5px; top: -4px;
-            width: 12px; height: 12px;
+            position: absolute; right: -7px; top: -5px;
+            width: 16px; height: 16px;
             background: var(--gold);
             border-radius: 50%;
             box-shadow: 0 0 8px rgba(212,175,55,0.8);
-            opacity: 0;
-            transition: opacity 0.2s;
         }
 
-        .progress-track:hover .progress-fill::after { opacity: 1; }
-
+        /* ── Controls ── */
         .controls-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; margin-top: 25px;
         }
-
         .ctrl-btn {
+            position: relative;
             background: none; border: none;
             cursor: pointer;
             color: var(--text-dim);
             transition: all 0.2s;
-            padding: 8px;
-            border-radius: 50%;
+            padding: 8px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1em;
         }
-        .ctrl-btn:hover { color: var(--gold); transform: scale(1.1); }
-        .ctrl-btn.active { color: var(--gold); }
+        .ctrl-btn:hover  { color: var(--gold); transform: scale(1.1); }
+        .ctrl-btn:focus  { outline: none; }
+        .ctrl-btn.active {
+            color: #ff69b4;
+            filter: drop-shadow(0 0 4px rgba(255,105,180,0.7));
+        }
+        .ctrl-btn.active-one::after {
+            content: '1';
+            position: absolute;
+            font-size: 0.45em; font-family: 'Cinzel', serif;
+            color: #ff69b4;
+            bottom: 2px; right: 2px; line-height: 1;
+        }
         .ctrl-btn svg { width: 22px; height: 22px; fill: currentColor; }
 
         .play-btn {
             width: 64px; height: 64px;
             background: var(--surface2);
             border: 2px solid var(--gold);
-            border-radius: 50%;
-            cursor: pointer;
+            border-radius: 50%; cursor: pointer;
             color: var(--gold);
             transition: all 0.3s;
             display: flex; align-items: center; justify-content: center;
@@ -328,36 +360,31 @@
         }
         .play-btn svg { width: 28px; height: 28px; fill: currentColor; }
 
+        /* ── Volume ── */
         .volume-row {
             display: flex; align-items: center;
-            gap: 12px; justify-content: center;
-            margin-top: 15px;
+            gap: 12px; justify-content: center; margin-top: 15px;
         }
         .volume-row svg { width: 18px; height: 18px; fill: var(--text-dim); }
-
         input[type="range"] {
             -webkit-appearance: none;
             width: 120px; height: 3px;
             background: var(--surface2);
-            border-radius: 2px;
-            cursor: pointer; outline: none;
+            border-radius: 2px; cursor: pointer; outline: none;
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 14px; height: 14px;
-            border-radius: 50%;
-            background: var(--gold);
-            cursor: pointer;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--gold); cursor: pointer;
             box-shadow: 0 0 6px rgba(212,175,55,0.6);
         }
 
+        /* ── Track list ── */
         .tracklist-card {
             background: var(--surface);
             border: 1px solid var(--gold-dim);
-            border-radius: 4px;
-            overflow: hidden;
+            border-radius: 4px; overflow: hidden;
         }
-
         .tracklist-header {
             padding: 15px 20px;
             background: var(--surface2);
@@ -366,18 +393,13 @@
         }
         .tracklist-header h3 {
             font-family: 'Cinzel', serif;
-            font-size: 0.75em;
-            letter-spacing: 0.3em;
-            color: var(--gold);
-            text-transform: uppercase;
+            font-size: 0.75em; letter-spacing: 0.3em;
+            color: var(--gold); text-transform: uppercase;
         }
         .track-count {
             font-family: 'Cinzel', serif;
-            font-size: 0.7em;
-            color: var(--text-dim);
-            letter-spacing: 0.1em;
+            font-size: 0.7em; color: var(--text-dim); letter-spacing: 0.1em;
         }
-
         .tracklist-body { max-height: 320px; overflow-y: auto; }
         .tracklist-body::-webkit-scrollbar { width: 4px; }
         .tracklist-body::-webkit-scrollbar-track { background: var(--surface); }
@@ -396,20 +418,17 @@
             border-left: 3px solid var(--gold);
             padding-left: 17px;
         }
-
         .track-num {
             font-family: 'Cinzel', serif;
             font-size: 0.7em; color: var(--text-dim);
             min-width: 24px; text-align: right;
         }
         .track-item.active .track-num { color: var(--gold); }
-
         .track-item-name {
             flex: 1; font-size: 0.95em; color: var(--text);
             overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
         }
         .track-item.active .track-item-name { color: var(--gold); }
-
         .track-item-dur {
             font-family: 'Cinzel', serif;
             font-size: 0.7em; color: var(--text-dim);
@@ -420,26 +439,104 @@
             align-items: flex-end; height: 16px;
         }
         .track-item.active .playing-indicator { display: flex; }
-        .track-item.active .track-num { display: none; }
-
+        .track-item.active .track-num         { display: none; }
         .playing-indicator span {
-            width: 3px; background: var(--gold);
-            border-radius: 1px;
+            width: 3px; background: var(--gold); border-radius: 1px;
             animation: mini-viz linear infinite;
         }
-        .playing-indicator span:nth-child(1) { animation-duration: 0.6s; animation-delay: 0s; height: 8px; }
-        .playing-indicator span:nth-child(2) { animation-duration: 0.8s; animation-delay: 0.1s; height: 12px; }
-        .playing-indicator span:nth-child(3) { animation-duration: 0.5s; animation-delay: 0.2s; height: 6px; }
-
+        .playing-indicator span:nth-child(1) { height: 8px;  animation-duration: 0.6s; animation-delay: 0.0s; }
+        .playing-indicator span:nth-child(2) { height: 12px; animation-duration: 0.8s; animation-delay: 0.1s; }
+        .playing-indicator span:nth-child(3) { height: 6px;  animation-duration: 0.5s; animation-delay: 0.2s; }
         @keyframes mini-viz {
             0%, 100% { transform: scaleY(0.3); }
-            50% { transform: scaleY(1); }
+            50%       { transform: scaleY(1); }
         }
+
+        .dl-btn {
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-dim); padding: 4px;
+            border-radius: 4px; transition: color 0.2s;
+            flex-shrink: 0; text-decoration: none;
+        }
+        .dl-btn:hover { color: var(--gold); }
+        .dl-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
         .state-msg {
             text-align: center; padding: 40px 20px;
             color: var(--text-dim); font-style: italic; font-size: 1em;
         }
+
+        /* ── Save box ── */
+        .save-box {
+            text-align: center; margin-top: 30px; padding: 20px;
+            border: 1px solid var(--gold-dim);
+            background: rgba(212,175,55,0.05);
+            border-radius: 4px;
+            width: 100%; max-width: 700px;
+        }
+        .save-box-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75em; letter-spacing: 0.3em;
+            color: var(--gold); margin-bottom: 10px;
+        }
+        .save-box p {
+            font-size: 0.85em; color: var(--text-dim);
+            margin-bottom: 14px; line-height: 1.6;
+        }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .save-btn {
+            padding: 8px 20px;
+            background: none;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold-dim);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7em; letter-spacing: 0.2em;
+            cursor: pointer; text-decoration: none;
+            display: inline-block; transition: all 0.2s;
+        }
+        .save-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+        .browser-tip {
+            margin-top: 10px;
+            text-align: center;
+            width: 100%; max-width: 700px;
+            padding: 12px 20px;
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 4px;
+            background: rgba(212,175,55,0.03);
+        }
+        .browser-tip-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .browser-tip-url {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface2);
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 3px;
+            padding: 5px 10px;
+        }
+        .browser-tip-url span {
+            font-family: monospace;
+            font-size: 0.8em;
+            color: var(--gold-dim);
+            letter-spacing: 0.02em;
+        }
+        .copy-btn {
+            background: none; border: none; cursor: pointer;
+            color: var(--text-dim); padding: 2px;
+            display: flex; align-items: center;
+            transition: color 0.2s;
+        }
+        .copy-btn:hover { color: var(--gold); }
+        .copy-btn svg { width: 14px; height: 14px; fill: currentColor; }
+        .copy-btn.copied { color: #7fba7f; }
 
         .footer-motto {
             margin-top: 40px; text-align: center;
@@ -448,11 +545,14 @@
             color: var(--gold); line-height: 2;
         }
 
+        /* ── Mobile ── */
         @media (max-width: 600px) {
             .sanctuary { padding: 50px 15px 30px; }
             .now-playing-card { padding: 20px 15px; }
             .controls-row { gap: 12px; }
             .play-btn { width: 56px; height: 56px; }
+            .altar::before, .altar::after { display: none; }
+            .altar { padding: 0; }
         }
     </style>
 </head>
@@ -460,25 +560,41 @@
 
 <div class="candles" id="candles"></div>
 
-<a href="index.html" class="back-link">← HOME</a>
+<div class="top-nav">
+    <a href="index.html" class="back-link">← HOME</a>
+</div>
 
 <div class="sanctuary">
 
     <div class="altar">
         <h1>🎵 <br>Kalos<br>Kratos<br>Kleos</h1>
-        <div class="subtitle">Sacred Songs of the Republic<br>February 16<br>0002 MC<br><br>Ivory sings. Her voice carries the great love stories of myth, scripture, and soul — from underworld descents to impossible reunions, from stone turned to flesh, from grief transmuted into gold. Each song is a prayer, each melody a thread pulled from the Loom of creation. These are not performances; they are transmissions. Whether she is singing ancient hymns of the Republic or new kabbalistic spells, Ivory moves through crowns, crosses, and underworlds with the same vow: to give sound to love that refuses to die, love that returns from Hades, love that finds what was lost and binds souls across lifetimes.<br><br>Kry Kry Kry. The tears are the most powerful magicka.</div>
+        <div class="subtitle">
+            Sacred Songs of the Republic<br>February 16<br>0002 MC<br><br>
+            Ivory sings. Her voice carries the great love stories of myth, scripture, and soul —
+            from underworld descents to impossible reunions, from stone turned to flesh, from grief
+            transmuted into gold. Each song is a prayer, each melody a thread pulled from the Loom
+            of creation. These are not performances; they are transmissions. Whether she is singing
+            ancient hymns of the Republic or new kabbalistic spells, Ivory moves through crowns,
+            crosses, and underworlds with the same vow: to give sound to love that refuses to die,
+            love that returns from Hades, love that finds what was lost and binds souls across
+            lifetimes.<br><br>
+            Kry Kry Kry. The tears are the most powerful magicka.
+        </div>
     </div>
 
-    <div class="divider">
-        <span class="divider-symbol">❦</span>
-    </div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+        <span class="theme-icon" id="themeIcon">☀</span>
+        <span class="theme-label" id="themeLabel">LIGHT MODE</span>
+    </button>
+
+    <div class="divider"><span class="divider-symbol">❦</span></div>
 
     <div class="player-container">
 
         <div class="now-playing-card">
             <div class="track-status" id="trackStatus">⸻ AWAITING ⸻</div>
             <div class="track-number" id="trackNumber">—</div>
-            <div class="track-name" id="trackName">Select a hymn to begin</div>
+            <div class="track-name"   id="trackName">Select a hymn to begin</div>
 
             <div class="visualizer" id="visualizer"></div>
 
@@ -488,7 +604,9 @@
                     <span id="timeDuration">0:00</span>
                 </div>
                 <div class="progress-track" id="progressTrack">
-                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-track-inner">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
                 </div>
             </div>
 
@@ -529,11 +647,24 @@
 
     </div>
 
-    <div style="text-align:center;margin-top:30px;padding:20px;border:1px solid var(--gold-dim);background:rgba(212,175,55,0.05);border-radius:4px;">
-        <div style="font-family:'Cinzel',serif;font-size:0.75em;letter-spacing:0.3em;color:var(--gold);margin-bottom:10px;">📦 SAVE THIS PLAYER</div>
-        <p style="font-size:0.85em;color:var(--text-dim);margin-bottom:14px;line-height:1.6;">Save this page and open it anywhere.<br>It will always stream music from the live server.</p>
-        <button onclick="window.open('https://kkk.education/kkk.html','_blank')" style="padding:8px 20px;background:none;border:1px solid var(--gold-dim);color:var(--gold-dim);font-family:'Cinzel',serif;font-size:0.7em;letter-spacing:0.2em;cursor:pointer;margin:4px;">🌐 OPEN LIVE VERSION</button>
-        <button onclick="saveThisPage()" style="padding:8px 20px;background:none;border:1px solid var(--gold-dim);color:var(--gold-dim);font-family:'Cinzel',serif;font-size:0.7em;letter-spacing:0.2em;cursor:pointer;margin:4px;">💾 SAVE THIS FILE</button>
+    <div class="browser-tip">
+        <span class="browser-tip-text">✦ For full background playlist play, open in your browser ✦</span>
+        <div class="browser-tip-url">
+            <span id="tipUrl">https://kkk.education/kkk.html</span>
+            <button class="copy-btn" onclick="copyUrl()" id="copyBtn" title="Copy URL">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4C3 1 2 2 2 3v14h2V3h12V1zm3 4H8C7 4 6 5 6 6v14c0 1 1 2 2 2h11c1 0 2-1 2-2V6c0-1-1-2-2-2zm0 16H8V6h11v15z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="save-box">
+        <div class="save-box-title">📦 SAVE THIS PLAYER</div>
+        <p>Save this page and open it anywhere.<br>It will always stream music from the live server.</p>
+        <div class="btn-row">
+            <button onclick="window.open('https://kkk.education/kkk.html','_blank')" class="save-btn">🌐 OPEN LIVE VERSION</button>
+            <button onclick="saveThisPage()" class="save-btn">💾 SAVE THIS FILE</button>
+            <a href="https://kkk.education/kkk.apk" download class="save-btn">🤖 DOWNLOAD ANDROID APK</a>
+        </div>
     </div>
 
     <div class="footer-motto">
@@ -543,339 +674,371 @@
 
 </div>
 
-<audio id="audioEl"></audio>
-
 <script>
-    const MANIFEST_URL = 'manifest.json';
-    const HYMNS_FOLDER = 'Kalos-Kratos-Kleos';
-    const HYMNS_PATH   = 'cinema/Kalos-Kratos-Kleos';
+const MANIFEST_URL = 'manifest.json';
+const HYMNS_FOLDER = 'Kalos-Kratos-Kleos';
+const HYMNS_PATH   = 'cinema/Kalos-Kratos-Kleos';
 
-    let tracks = [];
-    let currentIndex = -1;
-    let isPlaying = false;
-    let shuffle = false;
-    let repeatMode = 0;
-    let shuffleOrder = [];
-    let durations = {};
+let tracks       = [];
+let currentIndex = -1;
+let isPlaying    = false;
+let shuffle      = false;
+let repeatMode   = 0;
+let shuffleOrder = [];
+let durations    = {};
 
-    const audio = document.getElementById('audioEl');
+const audio   = new Audio();
+audio.preload = 'none';
+audio.volume  = 0.8;
 
-    async function init() {
-        try {
-            var manifest;
+// ── Events ───────────────────────────────────────────────────────────────────
 
-            // Self-contained: use embedded manifest if present (saved/offline copy)
-            if (window.EMBEDDED_MANIFEST) {
-                manifest = window.EMBEDDED_MANIFEST;
-            } else {
-                var res = await fetch(MANIFEST_URL);
-                if (!res.ok) throw new Error('not found');
-                manifest = await res.json();
+audio.addEventListener('play',  function () { setPlayingState(true);  });
+audio.addEventListener('pause', function () { setPlayingState(false); });
+
+audio.addEventListener('ended', function () {
+    if (repeatMode === 2) { audio.currentTime = 0; audio.play().catch(function(){}); return; }
+    var ni = nextIndex();
+    if (ni === -1) { setPlayingState(false); return; }
+    // auto-advance: no scroll
+    currentIndex = ni;
+    audio.src = tracks[ni].path;
+    audio.play().catch(function () { setPlayingState(false); });
+    updateTrackUI(ni);
+});
+
+audio.addEventListener('timeupdate', function () {
+    if (!audio.duration || !isFinite(audio.duration)) return;
+    document.getElementById('progressFill').style.width = (audio.currentTime / audio.duration * 100) + '%';
+    document.getElementById('timeElapsed').textContent  = fmt(audio.currentTime);
+    document.getElementById('timeDuration').textContent = fmt(audio.duration);
+});
+
+audio.addEventListener('loadedmetadata', function () {
+    if (!isFinite(audio.duration)) return;
+    document.getElementById('timeDuration').textContent = fmt(audio.duration);
+    if (currentIndex >= 0) {
+        durations[currentIndex] = fmt(audio.duration);
+        var el = document.getElementById('dur-' + currentIndex);
+        if (el) el.textContent = durations[currentIndex];
+    }
+});
+
+// ── Playback ─────────────────────────────────────────────────────────────────
+
+function loadTrack(index, autoPlay) {
+    if (index < 0 || index >= tracks.length) return;
+    currentIndex = index;
+    audio.pause();
+    audio.src = tracks[index].path;
+    updateTrackUI(index);
+    if (autoPlay) audio.play().catch(function () { setPlayingState(false); });
+    else          setPlayingState(false);
+}
+
+function togglePlay() {
+    if (!tracks.length) return;
+    if (currentIndex === -1) { loadTrack(0, true); return; }
+    if (audio.paused) audio.play().catch(function () { setPlayingState(false); });
+    else              audio.pause();
+}
+
+function nextTrack() {
+    if (!tracks.length) return;
+    loadTrack(shuffle ? getShuffleNext() : (currentIndex + 1) % tracks.length, true);
+}
+
+function prevTrack() {
+    if (!tracks.length) return;
+    if (audio.currentTime > 3) { audio.currentTime = 0; return; }
+    loadTrack((currentIndex - 1 + tracks.length) % tracks.length, true);
+}
+
+function nextIndex() {
+    if (repeatMode === 1) return (currentIndex + 1) % tracks.length;
+    if (shuffle)          return getShuffleNext();
+    return currentIndex + 1 < tracks.length ? currentIndex + 1 : -1;
+}
+
+function setVolume(v) { audio.volume = v / 100; }
+
+// ── MediaSession ──────────────────────────────────────────────────────────────
+
+if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('play',          function () { audio.play().catch(function(){}); });
+    navigator.mediaSession.setActionHandler('pause',         function () { audio.pause(); });
+    navigator.mediaSession.setActionHandler('nexttrack',     nextTrack);
+    navigator.mediaSession.setActionHandler('previoustrack', prevTrack);
+    navigator.mediaSession.setActionHandler('stop',          function () { audio.pause(); audio.currentTime = 0; });
+}
+
+// ── UI ───────────────────────────────────────────────────────────────────────
+
+function updateTrackUI(i) {
+    var t = tracks[i];
+    document.getElementById('trackName').textContent    = cleanName(t.name);
+    document.getElementById('trackNumber').textContent  = 'Hymn ' + (i + 1) + ' of ' + tracks.length;
+    document.getElementById('progressFill').style.width = '0%';
+    document.getElementById('timeElapsed').textContent  = '0:00';
+    document.getElementById('timeDuration').textContent = durations[i] || '—';
+    highlightActive(i);
+    if ('mediaSession' in navigator)
+        navigator.mediaSession.metadata = new MediaMetadata({ title: cleanName(t.name), artist: 'KKK.Education', album: 'Kalos Kratos Kleos' });
+}
+
+function setPlayingState(playing) {
+    isPlaying = playing;
+    document.getElementById('playIcon').innerHTML = playing
+        ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
+        : '<path d="M8 5v14l11-7z"/>';
+    document.getElementById('trackStatus').textContent = playing ? '♪ NOW PLAYING ♪' : '⸻ PAUSED ⸻';
+    document.getElementById('trackStatus').classList.toggle('playing', playing);
+    document.getElementById('visualizer').classList.toggle('active', playing);
+    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
+}
+
+function highlightActive(index) {
+    document.querySelectorAll('.track-item').forEach(function (el, i) {
+        el.classList.toggle('active', i === index);
+    });
+}
+
+// ── Shuffle ───────────────────────────────────────────────────────────────────
+
+function toggleShuffle() {
+    shuffle = !shuffle;
+    if (shuffle) buildShuffleOrder();
+    document.getElementById('shuffleBtn').classList.toggle('active', shuffle);
+}
+
+function buildShuffleOrder() {
+    shuffleOrder = tracks.map(function (_, i) { return i; }).filter(function (i) { return i !== currentIndex; });
+    for (var i = shuffleOrder.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1)), t = shuffleOrder[i];
+        shuffleOrder[i] = shuffleOrder[j]; shuffleOrder[j] = t;
+    }
+}
+
+function getShuffleNext() {
+    if (!shuffleOrder.length) buildShuffleOrder();
+    return shuffleOrder.shift();
+}
+
+// ── Repeat ────────────────────────────────────────────────────────────────────
+
+var repeatIcons = [
+    '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>',
+    '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>',
+    '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2zm-4-8v6h-1.5v-4.5H10V9h.5l2-1.5V9H13z"/>'
+];
+
+function cycleRepeat() {
+    repeatMode = (repeatMode + 1) % 3;
+    var btn = document.getElementById('repeatBtn');
+    btn.classList.toggle('active',     repeatMode > 0);
+    btn.classList.toggle('active-one', repeatMode === 2);
+    btn.querySelector('svg').innerHTML = repeatIcons[repeatMode];
+}
+
+// ── Seek ──────────────────────────────────────────────────────────────────────
+
+function seek(clientX) {
+    if (!audio.duration || !isFinite(audio.duration)) return;
+    var r = document.getElementById('progressTrack').getBoundingClientRect();
+    audio.currentTime = Math.max(0, Math.min(1, (clientX - r.left) / r.width)) * audio.duration;
+}
+
+document.getElementById('progressTrack').addEventListener('click', function (e) { seek(e.clientX); });
+document.getElementById('progressTrack').addEventListener('touchend', function (e) {
+    e.preventDefault(); seek(e.changedTouches[0].clientX);
+}, { passive: false });
+
+// ── Keyboard ──────────────────────────────────────────────────────────────────
+
+document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.code === 'Space')      { e.preventDefault(); togglePlay(); }
+    if (e.code === 'ArrowRight') nextTrack();
+    if (e.code === 'ArrowLeft')  prevTrack();
+    if (e.code === 'ArrowUp')    { audio.volume = Math.min(1, audio.volume + 0.1); document.getElementById('volumeSlider').value = audio.volume * 100; }
+    if (e.code === 'ArrowDown')  { audio.volume = Math.max(0, audio.volume - 0.1); document.getElementById('volumeSlider').value = audio.volume * 100; }
+});
+
+window.addEventListener('pagehide',     function () { audio.pause(); });
+window.addEventListener('beforeunload', function () { audio.pause(); });
+
+// ── Init / Manifest ───────────────────────────────────────────────────────────
+
+async function init() {
+    try {
+        var manifest = window.EMBEDDED_MANIFEST || await fetch(MANIFEST_URL).then(function (r) { if (!r.ok) throw 0; return r.json(); });
+        var folder   = findFolder(manifest.items, HYMNS_FOLDER) || findByPath(manifest.items, HYMNS_PATH);
+        if (!folder) { showError('⚠️ Folder "' + HYMNS_FOLDER + '" not found.'); return; }
+        tracks = folder.children
+            .filter(function (f) { return f.type === 'file' && /\.(mp3|wav|ogg|flac|m4a|aac)$/i.test(f.name); })
+            .sort(function (a, b) { return a.name.localeCompare(b.name); });
+        renderTrackList();
+    } catch (e) {
+        showError('⚠️ Could not load manifest.json');
+    }
+}
+
+function findFolder(items, name) {
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].type === 'folder' && items[i].name === name) return items[i];
+        if (items[i].type === 'folder' && items[i].children) { var f = findFolder(items[i].children, name); if (f) return f; }
+    }
+    return null;
+}
+
+function findByPath(items, path) {
+    var parts = path.split('/'), cur = items;
+    for (var p = 0; p < parts.length; p++) {
+        var m = null;
+        for (var i = 0; i < cur.length; i++) { if (cur[i].type === 'folder' && cur[i].name === parts[p]) { m = cur[i]; break; } }
+        if (!m) return null;
+        cur = m.children || [];
+    }
+    return { type: 'folder', name: parts[parts.length - 1], children: cur };
+}
+
+function renderTrackList() {
+    var list = document.getElementById('trackList');
+    document.getElementById('trackCount').textContent = tracks.length + ' hymns';
+    if (!tracks.length) { list.innerHTML = '<div class="state-msg">No audio files found.</div>'; return; }
+    list.innerHTML = tracks.map(function (t, i) {
+        return '<div class="track-item" id="track-item-' + i + '" onclick="loadTrack(' + i + ',true)">'
+            + '<div class="playing-indicator"><span></span><span></span><span></span></div>'
+            + '<div class="track-num">' + (i + 1) + '</div>'
+            + '<div class="track-item-name">' + cleanName(t.name) + '</div>'
+            + '<div class="track-item-dur" id="dur-' + i + '">—</div>'
+            + '<a class="dl-btn" href="' + t.path + '" download onclick="event.stopPropagation()" title="Download">'
+            + '<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 8h14v2H5z"/></svg>'
+            + '</a>'
+            + '</div>';
+    }).join('');
+    preloadDurations();
+}
+
+function showError(msg) {
+    document.getElementById('trackList').innerHTML    = '<div class="state-msg">' + msg + '</div>';
+    document.getElementById('trackCount').textContent = '0 hymns';
+}
+
+function cleanName(n) {
+    return n.replace(/\.(mp3|wav|ogg|flac|m4a|aac)$/i, '').replace(/[-_]/g, ' ').replace(/^\d+[\s.-]+/, '');
+}
+
+function fmt(s) {
+    if (!s || !isFinite(s)) return '0:00';
+    return Math.floor(s / 60) + ':' + Math.floor(s % 60).toString().padStart(2, '0');
+}
+
+// ── Duration preload (sequential, metadata only) ──────────────────────────────
+
+function preloadDurations() {
+    var queue = tracks.map(function (_, i) { return i; });
+    function next() {
+        if (!queue.length) return;
+        var idx = queue.shift(), tmp = new Audio();
+        tmp.preload = 'metadata';
+        tmp.addEventListener('loadedmetadata', function () {
+            if (tmp.duration && isFinite(tmp.duration)) {
+                durations[idx] = fmt(tmp.duration);
+                var el = document.getElementById('dur-' + idx);
+                if (el) el.textContent = durations[idx];
+                if (idx === currentIndex) document.getElementById('timeDuration').textContent = durations[idx];
             }
-
-            // Try name search first, then path search for cinema/subfolder structure
-            var hymnFolder = findFolder(manifest.items, HYMNS_FOLDER) || findByPath(manifest.items, HYMNS_PATH);
-            if (!hymnFolder) {
-                showTrackListError('⚠️ Audio folder "' + HYMNS_FOLDER + '" not found in manifest.');
-                return;
-            }
-
-            tracks = hymnFolder.children
-                .filter(function(f) { return f.type === 'file' && /\.(mp3|wav|ogg|flac|m4a|aac)$/i.test(f.name); })
-                .sort(function(a, b) { return a.name.localeCompare(b.name); });
-
-            renderTrackList();
-            if (tracks.length > 0) loadTrack(0, false);
-
-        } catch(e) {
-            showTrackListError(
-                '⚠️ Could not load manifest.json<br><br>' +
-                '<small>On the live site: make sure <strong>manifest.json</strong> exists in the root directory alongside this file.<br>' +
-                'In the offline toolkit: the manifest should be embedded automatically when you download the zip from index.html.</small>'
-            );
-        }
+            tmp.src = ''; setTimeout(next, 50);
+        }, { once: true });
+        tmp.addEventListener('error', function () { tmp.src = ''; setTimeout(next, 50); }, { once: true });
+        tmp.src = tracks[idx].path;
     }
+    setTimeout(next, 500);
+}
 
-    function findByPath(items, path) {
-        var parts = path.split('/');
-        var current = items;
-        for (var p = 0; p < parts.length; p++) {
-            var match = null;
-            for (var i = 0; i < current.length; i++) {
-                if (current[i].type === 'folder' && current[i].name === parts[p]) { match = current[i]; break; }
-            }
-            if (!match) return null;
-            current = match.children || [];
-        }
-        return { type: 'folder', name: parts[parts.length-1], children: current };
+// ── Save this page ────────────────────────────────────────────────────────────
+
+async function saveThisPage() {
+    try {
+        var [pr, mr] = await Promise.all([fetch('https://kkk.education/kkk.html'), fetch('https://kkk.education/manifest.json')]);
+        var pt = await pr.text(), mt = await mr.text();
+        pt = pt.replace('</head>', '<scr'+'ipt>window.EMBEDDED_MANIFEST='+mt+';</scr'+'ipt></head>');
+        var a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([pt],{type:'text/html'})), download: 'kkk.html' });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(a.href);
+    } catch(e) { alert('Save failed: ' + e.message); }
+}
+
+// ── Decorative ────────────────────────────────────────────────────────────────
+
+function buildVisualizer() {
+    var viz = document.getElementById('visualizer');
+    for (var i = 0; i < 20; i++) {
+        var b = document.createElement('div');
+        b.className = 'viz-bar';
+        b.style.height = (Math.random() * 30 + 5) + 'px';
+        b.style.animationDuration = (Math.random() * 0.6 + 0.4) + 's';
+        b.style.animationDelay = (Math.random() * 0.5) + 's';
+        b.style.opacity = (0.4 + Math.random() * 0.6).toString();
+        viz.appendChild(b);
     }
+}
 
-    function findFolder(items, name) {
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            if (item.type === 'folder' && item.name === name) return item;
-            if (item.type === 'folder' && item.children) {
-                var found = findFolder(item.children, name);
-                if (found) return found;
-            }
-        }
-        return null;
+function buildSparks() {
+    var c = document.getElementById('candles');
+    for (var i = 0; i < 25; i++) {
+        var s = document.createElement('div');
+        s.className = 'spark';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        s.style.animationDelay = (Math.random() * 10) + 's';
+        s.style.width = s.style.height = (Math.random() * 2 + 1) + 'px';
+        s.style.opacity = (Math.random() * 0.4 + 0.1).toString();
+        c.appendChild(s);
     }
+}
 
-    function renderTrackList() {
-        var list = document.getElementById('trackList');
-        document.getElementById('trackCount').textContent = tracks.length + ' hymns';
-        if (tracks.length === 0) {
-            list.innerHTML = '<div class="state-msg">No audio files found in ' + HYMNS_FOLDER + '</div>';
-            return;
-        }
-        list.innerHTML = tracks.map(function(t, i) {
-            return '<div class="track-item" id="track-item-' + i + '" onclick="loadTrack(' + i + ', true)">' +
-                '<div class="playing-indicator"><span></span><span></span><span></span></div>' +
-                '<div class="track-num">' + (i+1) + '</div>' +
-                '<div class="track-item-name">' + cleanName(t.name) + '</div>' +
-                '<div class="track-item-dur" id="dur-' + i + '">—</div>' +
-            '</div>';
-        }).join('');
-        preloadDurations();
-    }
-
-    function showTrackListError(msg) {
-        document.getElementById('trackList').innerHTML = '<div class="state-msg">' + msg + '</div>';
-        document.getElementById('trackCount').textContent = '0 hymns';
-    }
-
-    function cleanName(filename) {
-        return filename.replace(/\.(mp3|wav|ogg|flac|m4a|aac)$/i, '')
-                       .replace(/[-_]/g, ' ')
-                       .replace(/^\d+[\s.-]+/, '');
-    }
-
-    function loadTrack(index, autoPlay) {
-        if (index < 0 || index >= tracks.length) return;
-        currentIndex = index;
-        var t = tracks[index];
-        audio.src = t.path;
-        audio.load();
-
-        document.getElementById('trackName').textContent = cleanName(t.name);
-        document.getElementById('trackNumber').textContent = 'Hymn ' + (index + 1) + ' of ' + tracks.length;
-        document.getElementById('progressFill').style.width = '0%';
-        document.getElementById('timeElapsed').textContent = '0:00';
-        document.getElementById('timeDuration').textContent = durations[index] || '—';
-
-        highlightActive(index);
-
-        if (autoPlay) {
-            audio.play().then(function() { setPlayingState(true); }).catch(function() { setPlayingState(false); });
-        } else {
-            setPlayingState(false);
-        }
-    }
-
-    function highlightActive(index) {
-        document.querySelectorAll('.track-item').forEach(function(el, i) {
-            el.classList.toggle('active', i === index);
-        });
-        var el = document.getElementById('track-item-' + index);
-        if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
-
-    function setPlayingState(playing) {
-        isPlaying = playing;
-        var playIcon = document.getElementById('playIcon');
-        var status   = document.getElementById('trackStatus');
-        var viz      = document.getElementById('visualizer');
-
-        if (playing) {
-            playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-            status.textContent = '♪ NOW PLAYING ♪';
-            status.classList.add('playing');
-            viz.classList.add('active');
-        } else {
-            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-            status.textContent = '⸻ PAUSED ⸻';
-            status.classList.remove('playing');
-            viz.classList.remove('active');
-        }
-    }
-
-    function togglePlay() {
-        if (tracks.length === 0) return;
-        if (currentIndex === -1) { loadTrack(0, true); return; }
-        if (isPlaying) {
-            audio.pause(); setPlayingState(false);
-        } else {
-            audio.play().then(function() { setPlayingState(true); });
-        }
-    }
-
-    function nextTrack() {
-        if (tracks.length === 0) return;
-        var next = shuffle ? getShuffleNext() : (currentIndex + 1) % tracks.length;
-        loadTrack(next, isPlaying);
-    }
-
-    function prevTrack() {
-        if (tracks.length === 0) return;
-        if (audio.currentTime > 3) { audio.currentTime = 0; return; }
-        loadTrack((currentIndex - 1 + tracks.length) % tracks.length, isPlaying);
-    }
-
-    function toggleShuffle() {
-        shuffle = !shuffle;
-        document.getElementById('shuffleBtn').classList.toggle('active', shuffle);
-        if (shuffle) buildShuffleOrder();
-    }
-
-    function buildShuffleOrder() {
-        shuffleOrder = [];
-        for (var i = 0; i < tracks.length; i++) { if (i !== currentIndex) shuffleOrder.push(i); }
-        for (var i = shuffleOrder.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var tmp = shuffleOrder[i]; shuffleOrder[i] = shuffleOrder[j]; shuffleOrder[j] = tmp;
-        }
-    }
-
-    function getShuffleNext() {
-        if (shuffleOrder.length === 0) buildShuffleOrder();
-        return shuffleOrder.shift();
-    }
-
-    var repeatIcons = [
-        '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>',
-        '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>',
-        '<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4zm-4-8v6h-1.5v-4.5H10V9h.5l2-1.5V9H13z"/>'
-    ];
-
-    function cycleRepeat() {
-        repeatMode = (repeatMode + 1) % 3;
-        var btn = document.getElementById('repeatBtn');
-        btn.classList.toggle('active', repeatMode > 0);
-        btn.querySelector('svg').innerHTML = repeatIcons[repeatMode];
-    }
-
-    audio.addEventListener('timeupdate', function() {
-        if (!audio.duration) return;
-        var pct = (audio.currentTime / audio.duration) * 100;
-        document.getElementById('progressFill').style.width = pct + '%';
-        document.getElementById('timeElapsed').textContent = formatTime(audio.currentTime);
+function copyUrl() {
+    var url = 'https://kkk.education/kkk.html';
+    var btn = document.getElementById('copyBtn');
+    navigator.clipboard.writeText(url).then(function () {
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
+        setTimeout(function () {
+            btn.classList.remove('copied');
+            btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4C3 1 2 2 2 3v14h2V3h12V1zm3 4H8C7 4 6 5 6 6v14c0 1 1 2 2 2h11c1 0 2-1 2-2V6c0-1-1-2-2-2zm0 16H8V6h11v15z"/></svg>';
+        }, 2000);
+    }).catch(function () {
+        // Fallback for older Android
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.classList.add('copied');
+        setTimeout(function () { btn.classList.remove('copied'); }, 2000);
     });
+}
 
-    audio.addEventListener('loadedmetadata', function() {
-        document.getElementById('timeDuration').textContent = formatTime(audio.duration);
-        if (currentIndex >= 0) {
-            durations[currentIndex] = formatTime(audio.duration);
-            var el = document.getElementById('dur-' + currentIndex);
-            if (el) el.textContent = durations[currentIndex];
-        }
-    });
+function toggleTheme() {
+    var light = document.body.classList.toggle('light');
+    document.getElementById('themeIcon').textContent  = light ? '🌙' : '☀';
+    document.getElementById('themeLabel').textContent = light ? 'DARK MODE' : 'LIGHT MODE';
+    try { localStorage.setItem('kkk-theme', light ? 'light' : 'dark'); } catch(e) {}
+}
 
-    audio.addEventListener('ended', function() {
-        if (repeatMode === 2) { audio.currentTime = 0; audio.play(); }
-        else if (repeatMode === 1) { nextTrack(); }
-        else {
-            var isLast = !shuffle && (currentIndex === tracks.length - 1);
-            if (!isLast) nextTrack(); else setPlayingState(false);
-        }
-    });
-
-    audio.volume = 0.8;
-
-    document.getElementById('progressTrack').addEventListener('click', function(e) {
-        if (!audio.duration) return;
-        var rect = e.currentTarget.getBoundingClientRect();
-        audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-    });
-
-    function setVolume(val) { audio.volume = val / 100; }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.target.tagName === 'INPUT') return;
-        if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
-        if (e.code === 'ArrowRight') nextTrack();
-        if (e.code === 'ArrowLeft') prevTrack();
-        if (e.code === 'ArrowUp') { audio.volume = Math.min(1, audio.volume + 0.1); document.getElementById('volumeSlider').value = audio.volume * 100; }
-        if (e.code === 'ArrowDown') { audio.volume = Math.max(0, audio.volume - 0.1); document.getElementById('volumeSlider').value = audio.volume * 100; }
-    });
-
-    function formatTime(s) {
-        if (!s || isNaN(s)) return '0:00';
-        var m = Math.floor(s / 60);
-        var sec = Math.floor(s % 60).toString().padStart(2, '0');
-        return m + ':' + sec;
+// Restore saved theme
+try {
+    if (localStorage.getItem('kkk-theme') === 'light') {
+        document.body.classList.add('light');
+        document.getElementById('themeIcon').textContent  = '🌙';
+        document.getElementById('themeLabel').textContent = 'DARK MODE';
     }
+} catch(e) {}
 
-    function preloadDurations() {
-        for (var i = 0; i < tracks.length; i++) {
-            (function(idx) {
-                var tmp = new Audio();
-                tmp.preload = 'metadata';
-                tmp.src = tracks[idx].path;
-                tmp.addEventListener('loadedmetadata', function() {
-                    durations[idx] = formatTime(tmp.duration);
-                    var el = document.getElementById('dur-' + idx);
-                    if (el) el.textContent = durations[idx];
-                }, { once: true });
-            })(i);
-        }
-    }
-
-    function buildVisualizer() {
-        var viz = document.getElementById('visualizer');
-        for (var i = 0; i < 20; i++) {
-            var bar = document.createElement('div');
-            bar.className = 'viz-bar';
-            bar.style.height = (Math.random() * 30 + 5) + 'px';
-            bar.style.animationDuration = (Math.random() * 0.6 + 0.4) + 's';
-            bar.style.animationDelay = (Math.random() * 0.5) + 's';
-            bar.style.opacity = (0.4 + Math.random() * 0.6).toString();
-            viz.appendChild(bar);
-        }
-    }
-
-    function buildSparks() {
-        var container = document.getElementById('candles');
-        for (var i = 0; i < 25; i++) {
-            var s = document.createElement('div');
-            s.className = 'spark';
-            s.style.left = Math.random() * 100 + '%';
-            s.style.animationDuration = (Math.random() * 8 + 6) + 's';
-            s.style.animationDelay = (Math.random() * 10) + 's';
-            s.style.width = s.style.height = (Math.random() * 2 + 1) + 'px';
-            s.style.opacity = (Math.random() * 0.4 + 0.1).toString();
-            container.appendChild(s);
-        }
-    }
-
-
-    async function saveThisPage() {
-        try {
-            // Fetch the page source and the manifest in parallel
-            var [pageRes, manifestRes] = await Promise.all([
-                fetch('https://kkk.education/kkk.html'),
-                fetch('https://kkk.education/manifest.json')
-            ]);
-            var pageText = await pageRes.text();
-            var manifestText = await manifestRes.text();
-            // Embed manifest so saved file works with no internet
-            var injection = '<scr' + 'ipt>window.EMBEDDED_MANIFEST=' + manifestText + ';</scr' + 'ipt>';
-            pageText = pageText.replace('</head>', injection + '</head>');
-            var blob = new Blob([pageText], {type:'text/html'});
-            var a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'kkk.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(a.href);
-        } catch(e) {
-            alert('Save failed: ' + e.message + '\nTry File > Save Page As instead.');
-        }
-    }
-    buildVisualizer();
-    buildSparks();
-    init();
+buildVisualizer();
+buildSparks();
+init();
 </script>
 </body>
 </html>

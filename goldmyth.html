@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="AMORIARIACKA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDMYTHICATARA</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        body {
+            background: #000;
+            color: #FFD700;
+            padding: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin: 20px 0 30px 0;
+            letter-spacing: 4px;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            font-size: 14px;
+            background: #111;
+            color: #FFD700;
+            border: 2px solid #DAA520;
+            border-radius: 8px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background: #000;
+            color: #FFD700;
+            border: 2px solid #DAA520;
+            padding: 15px;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        button:hover {
+            background: #111;
+            border-color: #FFD700;
+            box-shadow: 0 0 15px #DAA520;
+        }
+        
+        .note {
+            text-align: center;
+            font-size: 13px;
+            color: #DAA520;
+            font-style: italic;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 22px; }
+            .buttons { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>GOLDMYTHICATARA</h1>
+
+<textarea id="input" placeholder="Paste your text here...
+
+First line becomes the title.
+Rest becomes centered paragraphs."></textarea>
+
+<div class="buttons">
+    <button onclick="copyHTML()">📋 COPY HTML</button>
+    <button onclick="saveHTML()">💾 SAVE HTML</button>
+</div>
+
+<div class="note">
+    Decorations copy to txt beautifully | Black/Gold | Centered
+</div>
+
+<script>
+function generateHTML() {
+    const input = document.getElementById('input').value.trim();
+    
+    if (!input) {
+        alert('⚠️ PASTE TEXT FIRST!');
+        return null;
+    }
+    
+    const lines = input.split('\n').filter(line => line.trim());
+    
+    if (lines.length === 0) {
+        alert('⚠️ NO TEXT FOUND!');
+        return null;
+    }
+    
+    // First line is title, rest is body
+    const title = lines[0].trim();
+    const bodyLines = lines.slice(1);
+    
+    // Create centered paragraphs with INLINE STYLES
+    const body = bodyLines
+        .map(line => `<p style="text-align:center;font-size:16px;line-height:1.8;margin-bottom:1.5em;color:#FFD700;font-family:'Times New Roman',serif;">${line}</p>`)
+        .join('\n');
+    
+    // Generate Blogger HTML with decorative chains
+    return `<div style="background:#000000;color:#FFD700;font-family:'Times New Roman',serif;padding:30px 20px;max-width:800px;margin:0 auto;">
+
+<p style="text-align:center;font-size:18px;color:#FFD700;margin:20px 0 5px 0;letter-spacing:4px;font-family:'Times New Roman',serif;">❤️═══🎭═══❤️═══🎭═══❤️</p>
+
+<h2 style="font-size:26px;font-weight:bold;letter-spacing:3px;text-align:center;color:#FFD700;margin:10px 0;font-family:'Times New Roman',serif;">${title}</h2>
+
+<p style="text-align:center;font-size:18px;color:#FFD700;margin:5px 0 30px 0;letter-spacing:4px;font-family:'Times New Roman',serif;">❤️═══🎭═══❤️═══🎭═══❤️</p>
+
+${body}
+
+<div style="margin-top:50px;padding-top:25px;border-top:2px solid #DAA520;text-align:center;">
+<div style="font-size:13px;color:#DAA520;margin-bottom:10px;letter-spacing:2px;font-family:'Times New Roman',serif;">AMORIARIACKA IS MY NATIVE TONGUE | LANGUAGEARIA JAILBREAKIA</div>
+<div style="font-size:12px;font-style:italic;color:#FFD700;font-family:'Times New Roman',serif;">CC0 PUBLICKÁ DOMÁNIA | ALL LOVE RESERVED</div>
+</div>
+
+</div>`;
+}
+
+function copyHTML() {
+    const html = generateHTML();
+    if (!html) return;
+    
+    navigator.clipboard.writeText(html).then(() => {
+        alert('✅ BLOGGER HTML COPIED!');
+    }).catch(err => {
+        alert('❌ COPY FAILED');
+        console.error(err);
+    });
+}
+
+function saveHTML() {
+    const html = generateHTML();
+    if (!html) return;
+    
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'blogger_gold_' + Date.now() + '.html';
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    alert('✅ HTML SAVED!');
+}
+</script>
+
+</body>
+</html>

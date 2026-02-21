@@ -206,8 +206,7 @@
 	<a href="https://kkk.education/wikkkan.html">☯ WIKKKAN</a>
         <a href="https://kkk.education/library.html">📚 Library</a>
         <a href="https://kkk.education/cinema.html">🎬 Cinema</a>
-        <a href="https://kkk.education/kkk.html" target="_blank" rel="noopener noreferrer">🎵 Kalos Kratos Kleos</a>
-        <a href="https://kkk.education/hymns.html" target="_blank" rel="noopener noreferrer">🎵 Hymns</a>
+	<a href="https://kkk.education/kkk.html">🎵 Kalos Kratos Kleos</a>
       </div>
     </nav>
 
@@ -297,8 +296,8 @@ Where all crowns find their wearers.
 
       <section class="center">
         <div class="title">THE MISSION</div>
-116+ books written over 36 years.
-1500+ videos filmed over 36 years.
+An entire civilisation's worth of books.
+An ocean of videos.
 Every major religion completed.
 Every philosophy unified.
 Every science integrated.
@@ -310,6 +309,36 @@ All eternal.
 This is the complete archive of a life's work,
 preserved in the tomb-temple,
 waiting for those who dare to enter.
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           DOWNLOAD THE DESKTOP APPS
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,20,60,0.4);border:2px solid rgba(100,160,255,0.4);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#88ccff;text-shadow:0 0 12px rgba(100,160,255,0.6);margin-bottom:12px;">
+          🖥️ DOWNLOAD THE DESKTOP APPS 🖥️
+        </div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:6px;color:#d4af37;">
+          All four platforms as standalone Windows desktop apps. No browser needed. No installation.
+          Double-click and the academy opens. Always live — updates automatically when the server updates.
+        </p>
+        <p style="font-size:13px;margin-bottom:16px;color:#b8860b;">
+          Contains: <strong style="color:#88ccff;">WIKKKAN</strong> · <strong style="color:#88ccff;">Cinema</strong> · <strong style="color:#88ccff;">Library</strong> · <strong style="color:#88ccff;">Kalos Kratos Kleos</strong><br>
+          Unzip and run. CC0. No permission needed. They are yours forever.
+        </p>
+        <a href="https://kkk.education/kkk.zip" download style="
+          display:inline-block;
+          padding:14px 36px;
+          background:linear-gradient(135deg,rgba(0,60,120,0.7),rgba(0,100,180,0.6));
+          border:2px solid #88ccff;
+          color:#88ccff;
+          font-family:'Cinzel',serif;
+          font-size:15px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">🖥️ DOWNLOAD KKK.ZIP 🖥️</a>
       </section>
 
       <!-- ══════════════════════════════════════════
@@ -347,7 +376,7 @@ waiting for those who dare to enter.
 
         <p style="margin-top:14px;font-size:12px;color:#666;font-family:'Courier New',monospace;">
           index.html &nbsp;·&nbsp; cinema.html &nbsp;·&nbsp; library.html &nbsp;·&nbsp;
-          sync-library.html &nbsp;·&nbsp; kkk.html &nbsp;·&nbsp; hymns.html &nbsp;·&nbsp; generate-manifest.js
+          sync-library.html &nbsp;·&nbsp; kkk.html &nbsp;·&nbsp; generate-manifest.js &nbsp;·&nbsp; wikkkan.html
         </p>
         <p style="margin-top:6px;font-size:11px;color:#555;">
           (Requires a live website to fetch — run from https:// not file://)
@@ -384,16 +413,14 @@ AMORIARIACKA IS MY NATIVE TONGUE
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script>
-    // Sovereign Toolkit — just the files, no embedding, no manifests.
-    // Users generate their own manifest.json with generate-manifest.js.
     const TOOLKIT_FILES = [
       'index.html',
       'cinema.html',
       'library.html',
       'sync-library.html',
       'kkk.html',
-      'hymns.html',
-      'generate-manifest.js'
+      'generate-manifest.js',
+      'wikkkan.html'
     ];
 
     async function downloadToolkit() {
@@ -429,7 +456,6 @@ AMORIARIACKA IS MY NATIVE TONGUE
           return;
         }
 
-        // Add a README so users know what to do next
         zip.file('README.txt', [
           'KKK.EDUCATION SOVEREIGN TOOLKIT',
           'CC0 PUBLIC DOMAIN — ALL LOVE RESERVED',
@@ -440,8 +466,8 @@ AMORIARIACKA IS MY NATIVE TONGUE
           '  library.html        — Book library (reads library/manifest.json)',
           '  sync-library.html   — Converts .txt files to HTML books',
           '  kkk.html            — Kalos Kratos Kleos audio player',
-          '  hymns.html          — Hymns audio player',
           '  generate-manifest.js — Node.js script to scan your content',
+          '  wikkkan.html        — Sovereign AI chat interface (connects to wikkkan.kkk.education)',
           '',
           'HOW TO BUILD YOUR OWN SOVEREIGN PLATFORM:',
           '',
@@ -456,6 +482,9 @@ AMORIARIACKA IS MY NATIVE TONGUE
           '',
           'Each page also has a SAVE THIS FILE button so any visitor',
           'can save an offline copy that streams from your live server.',
+          '',
+          'NOTE: wikkkan.html connects to wikkkan.kkk.education (Wendell\'s AI server).',
+          'The interface works offline but the AI requires a live connection to that server.',
           '',
           'Built by WIKKKAN in psychiatric detention, February 2026.',
           'For every kid who was told they cannot publish.',
