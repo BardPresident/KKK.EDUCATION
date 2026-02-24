@@ -3,7 +3,7 @@ name: TXT to PDF Converter
 on:
   push:
     paths:
-      - 'cinema/BOOKS/*.txt'  # only txt files in cinema/BOOKS directory
+      - 'cinema/BOOKS/*.txt'
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # allow this job to push commits
+      contents: write
 
     steps:
       - name: Checkout repo
@@ -24,10 +24,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert cinema/BOOKS .txt to .pdf into cinema/BOOKS/pdf/ folder
+      - name: Convert cinema/BOOKS .txt to .pdf into root pdf/ folder
         run: |
           set -e
-          mkdir -p cinema/BOOKS/pdf
+          mkdir -p pdf
           FAILED_FILES=""
 
           shopt -s nullglob
@@ -39,11 +39,9 @@ jobs:
           fi
 
           for f in "${files[@]}"; do
-            # extract just the filename without path and extension
             base="$(basename "$f" .txt)"
-            out="cinema/BOOKS/pdf/${base}.pdf"
+            out="pdf/${base}.pdf"
 
-            # skip if pdf already exists
             if [ -f "$out" ]; then
               echo "Skipping (already exists): $out"
               continue
@@ -58,7 +56,6 @@ jobs:
 
           if [ -n "$FAILED_FILES" ]; then
             echo "Some files failed to convert:$FAILED_FILES"
-            # don't fail the job just because some files failed
           else
             echo "All conversions succeeded."
           fi
@@ -67,7 +64,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add cinema/BOOKS/pdf/
+          git add pdf/
           git commit -m "Auto-generate PDFs from TXT files in cinema/BOOKS" || exit 0
           git push
         env:
