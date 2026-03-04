@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📜 BOOKS — KKK.EDUCATION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold:    #ffd700;
+            --gold2:   #d4af37;
+            --gold3:   #b8860b;
+            --bg:      #08030f;
+            --bg2:     #110820;
+            --purple:  #2a0a4a;
+            --green:   #00ff88;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--gold2);
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── ATMOSPHERIC BG ── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(80,0,140,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 70%, rgba(40,0,80,0.15) 0%, transparent 55%),
+                radial-gradient(ellipse 100% 80% at 50% 100%, rgba(20,0,40,0.4) 0%, transparent 60%);
+        }
+
+        /* ── SCANLINES ── */
+        body::after {
+            content: '';
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent, transparent 3px,
+                rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
+            );
+            opacity: 0.5;
+        }
+
+        .wrap {
+            position: relative; z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        /* ── HEADER ── */
+        header {
+            text-align: center;
+            padding: 56px 0 40px;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+            margin-bottom: 48px;
+        }
+
+        .icon-stack {
+            font-size: 56px;
+            line-height: 1;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(255,215,0,0.5));
+            animation: breathe 4s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%,100% { filter: drop-shadow(0 0 12px rgba(255,215,0,0.4)); }
+            50%      { filter: drop-shadow(0 0 28px rgba(255,215,0,0.8)) drop-shadow(0 0 60px rgba(255,140,0,0.3)); }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(22px, 5vw, 36px);
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255,215,0,0.4), 2px 2px 0 rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--gold3);
+            letter-spacing: 2px;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+            color: rgba(212,175,55,0.5);
+            letter-spacing: 1px;
+        }
+        .breadcrumb a {
+            color: rgba(212,175,55,0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb span { color: rgba(212,175,55,0.3); }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px 20px;
+            background: rgba(255,215,0,0.04);
+            border: 1px solid rgba(212,175,55,0.15);
+            margin-bottom: 28px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+            color: var(--gold3);
+        }
+        .stats-bar .count { color: var(--gold); font-size: 15px; }
+        #searchInput {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(212,175,55,0.25);
+            color: var(--gold);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+            padding: 7px 14px;
+            width: 220px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        #searchInput::placeholder { color: rgba(212,175,55,0.3); }
+        #searchInput:focus {
+            border-color: rgba(212,175,55,0.6);
+            box-shadow: 0 0 12px rgba(255,215,0,0.15);
+        }
+
+        /* ── FILE LIST ── */
+        #fileList {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .file-row {
+            display: grid;
+            grid-template-columns: 52px 1fr auto;
+            align-items: center;
+            gap: 0 16px;
+            padding: 11px 18px;
+            background: rgba(255,255,255,0.018);
+            border-left: 3px solid rgba(139,69,19,0.4);
+            text-decoration: none;
+            color: var(--gold2);
+            font-family: 'Crimson Text', serif;
+            font-size: 17px;
+            transition: all 0.18s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .file-row::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, rgba(212,175,55,0.06) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.18s;
+        }
+        .file-row:hover {
+            background: rgba(139,69,19,0.18);
+            border-left-color: var(--gold);
+            color: var(--gold);
+            transform: translateX(4px);
+        }
+        .file-row:hover::before { opacity: 1; }
+
+        .file-num {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            color: var(--gold3);
+            text-align: right;
+            opacity: 0.7;
+        }
+        .file-row:hover .file-num { color: var(--gold); opacity: 1; }
+
+        .file-name { font-weight: 600; letter-spacing: 0.3px; }
+
+        .file-dl {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px;
+            color: rgba(212,175,55,0.35);
+            letter-spacing: 1px;
+            white-space: nowrap;
+            transition: color 0.18s;
+        }
+        .file-row:hover .file-dl { color: var(--green); }
+
+        /* ── LOADING / ERROR / EMPTY ── */
+        .state-msg {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--gold3);
+        }
+        .state-msg .big { font-size: 40px; display: block; margin-bottom: 14px; }
+        .state-msg code {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+            background: rgba(0,0,0,0.4);
+            padding: 2px 8px;
+            color: var(--green);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212,175,55,0.12);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            color: rgba(212,175,55,0.3);
+            letter-spacing: 2px;
+            line-height: 2;
+        }
+
+        @media (max-width: 600px) {
+            .file-row { grid-template-columns: 36px 1fr; }
+            .file-dl  { display: none; }
+            #searchInput { width: 160px; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <header>
+        <span class="icon-stack">📜</span>
+        <h1>BOOKS</h1>
+        <p class="subtitle">Raw source archive — all original texts</p>
+        <div class="breadcrumb">
+            <a href="https://kkk.education">kkk.education</a>
+            <span>/</span>
+            <a href="https://kkk.education/cinema/">cinema</a>
+            <span>/</span>
+            <span style="color:var(--gold2)">BOOKS</span>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <span>📁 <span class="count" id="countLabel">…</span> files</span>
+        <input type="text" id="searchInput" placeholder="filter files…" oninput="filterFiles()" />
+    </div>
+
+    <div id="fileList">
+        <div class="state-msg">
+            <span class="big">⏳</span>
+            Loading file list…
+        </div>
+    </div>
+
+    <footer>
+        CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED · KKK.EDUCATION
+    </footer>
+
+</div>
+
+<script>
+    const BASE = 'https://kkk.education/cinema/BOOKS/';
+    let allFiles = [];
+
+    function humanTitle(filename) {
+        // Turn "043-MY-GREAT-BOOK-2024.txt" → "MY GREAT BOOK 2024"
+        return filename
+            .replace(/\.txt$/i, '')
+            .replace(/^\d+[-_]/, '')
+            .replace(/[-_]/g, ' ');
+    }
+
+    function fileNumber(filename) {
+        const m = filename.match(/^(\d+)/);
+        return m ? m[1].padStart(3, '0') : '—';
+    }
+
+    function renderFiles(files) {
+        const list = document.getElementById('fileList');
+        if (!files.length) {
+            list.innerHTML = `<div class="state-msg"><span class="big">🔍</span>No files match that filter.</div>`;
+            return;
+        }
+        list.innerHTML = files.map(name => `
+            <a class="file-row" href="${BASE}${encodeURIComponent(name)}" download="${name}">
+                <span class="file-num">${fileNumber(name)}</span>
+                <span class="file-name">${humanTitle(name)}</span>
+                <span class="file-dl">↓ .TXT</span>
+            </a>
+        `).join('');
+    }
+
+    function filterFiles() {
+        const q = document.getElementById('searchInput').value.trim().toLowerCase();
+        const filtered = q ? allFiles.filter(f => f.toLowerCase().includes(q)) : allFiles;
+        document.getElementById('countLabel').textContent = filtered.length + (q ? ` / ${allFiles.length}` : '');
+        renderFiles(filtered);
+    }
+
+    async function loadFiles() {
+        const list = document.getElementById('fileList');
+        try {
+            const res = await fetch(BASE + 'list.php');
+            if (!res.ok) throw new Error('HTTP ' + res.status + ' from list.php');
+            const data = await res.json();
+            allFiles = data.filter(f => f.toLowerCase().endsWith('.txt')).sort();
+            document.getElementById('countLabel').textContent = allFiles.length;
+            renderFiles(allFiles);
+        } catch (err) {
+            list.innerHTML = `
+                <div class="state-msg">
+                    <span class="big">💀</span>
+                    Could not load file list.<br><br>
+                    Upload <code>list.php</code> to <code>cinema/BOOKS/</code><br>
+                    <small style="font-size:13px;color:rgba(212,175,55,0.4);margin-top:10px;display:block;">
+                        Error: ${err.message}
+                    </small>
+                </div>`;
+            document.getElementById('countLabel').textContent = '?';
+        }
+    }
+
+    loadFiles();
+</script>
+</body>
+</html>
