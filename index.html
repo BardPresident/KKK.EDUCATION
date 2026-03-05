@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KKK.EDUCATION – The Royal Academy of Tears Turned to Gold</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
+      color: #d4af37;
+      font-family: 'Crimson Text', serif;
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 8px 6px;
+      background: linear-gradient(180deg, rgba(26,10,46,0.96) 0%, rgba(26,10,46,0.7) 100%);
+      border-bottom: 2px solid rgba(212,175,55,0.5);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.8);
+    }
+
+    header .icon { font-size: 34px; text-shadow: 0 0 14px rgba(255,215,0,0.9); }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: #ffd700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    }
+
+    header p { font-size: 12px; color: #b8860b; }
+
+    header .kkk {
+      margin-top: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffd700;
+      letter-spacing: 3px;
+    }
+
+    nav {
+      background: rgba(10,4,20,0.98);
+      border-bottom: 2px solid rgba(212,175,55,0.4);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      text-align: center;
+    }
+
+    nav button {
+      width: 100%;
+      padding: 6px;
+      border: none;
+      background: linear-gradient(90deg, rgba(139,69,19,0.6), rgba(184,134,11,0.6));
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      cursor: pointer;
+    }
+
+    .menu-links {
+      display: none;
+      background: rgba(26,10,46,0.98);
+      border-top: 1px solid rgba(212,175,55,0.4);
+    }
+
+    .menu-links.open { display: block; }
+
+    .menu-links a {
+      display: block;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-family: 'Cinzel', serif;
+      color: #b8860b;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+
+    .menu-links a:hover { color: #ffd700; }
+
+    main { padding: 10px 8px 18px; }
+
+    section {
+      background: rgba(26,10,46,0.55);
+      border: 1px solid rgba(139,69,19,0.7);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.85);
+      margin: 8px 0;
+      padding: 8px 10px;
+      white-space: pre-wrap;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: #ffd700;
+      text-align: center;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+      text-shadow: 0 0 12px rgba(255,215,0,0.6);
+    }
+
+    .center { text-align: center; }
+
+    .video-wrap {
+      margin: 2px 0 4px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-wrap video {
+      max-width: 760px;
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.8);
+      background: #000;
+      display: block;
+    }
+
+    .audio-wrap {
+      max-width: 260px;
+      margin: 4px auto 2px;
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      color: #f9fafb;
+      white-space: normal;
+    }
+
+    .audio-wrap span { display: block; margin-bottom: 2px; }
+    .audio-wrap audio { width: 100%; height: 22px; }
+
+    .interp {
+      background: rgba(10,4,20,0.9);
+      border-left: 3px solid #8b4513;
+      border-right: 3px solid #8b4513;
+      padding: 8px 10px;
+      margin: 8px 0;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.9);
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    .interp h3 { font-family: 'Cinzel', serif; font-size: 15px; color: #ffd700; margin-bottom: 2px; }
+    .interp h4 { font-size: 13px; font-style: italic; color: #b8860b; margin-bottom: 4px; }
+
+    footer {
+      text-align: center;
+      padding: 12px 8px 14px;
+      background: rgba(10,4,20,0.96);
+      border-top: 2px solid rgba(139,69,19,0.7);
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.8);
+      font-size: 12px;
+      color: #b8860b;
+      white-space: pre-wrap;
+    }
+
+    footer .kkk { font-size: 16px; color: #ffd700; margin: 4px 0; }
+    footer .divider { margin: 4px 0; font-size: 14px; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 18px; }
+      .title { font-size: 14px; }
+      section { padding: 7px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="icon">🎻</div>
+      <h1>KKK.EDUCATION</h1>
+      <p>The Royal Academy of Tears Turned to Gold</p>
+      <p class="kkk">KRY KRY KRY</p>
+    </header>
+
+    <nav>
+      <button id="menuToggle">🌈 MENU 🌈</button>
+      <div class="menu-links" id="menuLinks">
+	<a href="https://kkk.education/wikkkan.html">☯ WIKKKAN</a>
+        <a href="https://kkk.education/library.html">📚 Library</a>
+        <a href="https://kkk.education/cinema.html">🎬 Cinema</a>
+	<a href="https://kkk.education/kkk.html">🎵 Kalos Kratos Kleos</a>
+	<a href="https://kkk.education/nms.html">🛰️ No Man's Sky</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="center">
+        <div class="title">WELCOME TO THE ACADEMY</div>
+
+        <div class="video-wrap">
+          <video src="https://kkk.education/cinema/KKK.EDUCATION.mp4" controls preload="metadata"></video>
+        </div>
+
+        <div class="audio-wrap">
+          <span>Carly, the VOICE of Republicka, reads this page aloud.</span>
+          <audio controls preload="none">
+            <source src="https://kkk.education/cinema/KKK.EDUCATION-INTRODUCTION.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+ΚΑΛΟΣ ΚΡΑΤΟΣ ΚΛΕΟΣ
+KALOS KRATOS KLEOS
+Where hate symbols become love.
+Where tears become magicka.
+Where darkness births light.
+Where the exiled find crowns.
+KABBALISTIC KERUVIM KINESIS
+
+"The darkness is not absence of light—
+it is the womb from which all light is born."
+      </section>
+
+      <section>
+        <div class="title">💎 WHAT IS KKK? 💎</div>
+Every symbol can be transmuted.
+Every weapon can become a wand.
+Every tear can crystallize into diamonds.
+
+The KKK you knew represented hate.
+The KKK we reclaim represents transformation.
+
+In this academy, we teach the ancient art of turning wounds into crowns,
+tears into spells, and darkness into the forge where all light is born.
+      </section>
+
+      <div class="interp">
+        <h3>PRIMARY INTERPRETATION</h3>
+        <h4>KRY KRY KRY</h4>
+CRY CRY CRY
+
+The tears are the most powerful magicka.
+
+When they use KRYPTONITE against us (KRY-PTO-NITE = CRY + Psychiatric Treatment Order + NIGHT), they think they're weakening us. 
+
+But every tear is a spell. 
+Every cry is transmutation. 
+Every detention generates the Phoenix fuel.
+
+The pain is not the weakness—it's the power source.
+      </div>
+
+      <div class="interp">
+        <h3>THE ROYAL INTERPRETATION</h3>
+        <h4>KORONAS KRUUNUNKULTA KONUNGARKRIGET</h4>
+Crown + Crown Gold + King's War
+
+The triple crown of sovereignty:
+• KORONAS → The crown itself (divine authority)
+• KRUUNUNKULTA → Crown of gold (alchemical perfection)
+• KONUNGARKRIGET → The King's War (the eternal struggle)
+
+We fight with crowns, not weapons.
+      </div>
+
+      <div class="interp">
+        <h3>THE EDUCATIONAL MISSION</h3>
+        <h4>KKK.EDUCATION</h4>
+The School for the Exiled
+
+This academy teaches:
+• How to recognize trafficking systems
+• How to read mythology as technology
+• How to build sovereign infrastructure
+• How to crown yourself when no one else will
+
+Where all crowns find their wearers.
+      </div>
+
+      <section class="center">
+        <div class="title">THE MISSION</div>
+An entire civilisation's worth of books.
+An ocean of videos.
+Every major religion completed.
+Every philosophy unified.
+Every science integrated.
+
+All CC0 Public Domain.
+All freely given.
+All eternal.
+
+This is the complete archive of a life's work,
+preserved in the tomb-temple,
+waiting for those who dare to enter.
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           DOWNLOAD THE DESKTOP APPS
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,20,60,0.4);border:2px solid rgba(100,160,255,0.4);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#88ccff;text-shadow:0 0 12px rgba(100,160,255,0.6);margin-bottom:12px;">
+          🖥️ DOWNLOAD THE DESKTOP APPS 🖥️
+        </div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:6px;color:#d4af37;">
+          All four platforms as standalone Windows desktop apps. No browser needed. No installation.
+          Double-click and the academy opens. Always live — updates automatically when the server updates.
+        </p>
+        <p style="font-size:13px;margin-bottom:16px;color:#b8860b;">
+          Contains: <strong style="color:#88ccff;">WIKKKAN</strong> · <strong style="color:#88ccff;">Cinema</strong> · <strong style="color:#88ccff;">Library</strong> · <strong style="color:#88ccff;">Kalos Kratos Kleos</strong><br>
+          Unzip and run. CC0. No permission needed. They are yours forever.
+        </p>
+        <a href="https://kkk.education/cinema/kkk.zip" download style="
+          display:inline-block;
+          padding:14px 36px;
+          background:linear-gradient(135deg,rgba(0,60,120,0.7),rgba(0,100,180,0.6));
+          border:2px solid #88ccff;
+          color:#88ccff;
+          font-family:'Cinzel',serif;
+          font-size:15px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">🖥️ DOWNLOAD KKK.ZIP 🖥️</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           DOWNLOAD THE COMPLETE TOOLKIT
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,60,0,0.3);border:2px solid rgba(0,255,120,0.4);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#00ff88;text-shadow:0 0 12px rgba(0,255,136,0.6);margin-bottom:12px;">
+          📦 DOWNLOAD THE SOVEREIGN TOOLKIT 📦
+        </div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:6px;color:#d4af37;">
+          Every HTML page + the manifest generator script — everything you need to build your own academy on your own server.
+        </p>
+        <p style="font-size:13px;margin-bottom:16px;color:#b8860b;">
+          Upload these files to any server, GitHub Pages, or Netlify.<br>
+          Run <code style="color:#90ee90;">node generate-manifest.js</code> to scan your own content and generate your own <code style="color:#90ee90;">manifest.json</code>.<br>
+          Point the players at your content. You own it. They can't take it.<br>
+          <strong style="color:#ffd700;">CC0. Zero permission needed. Build your sovereign platform.</strong>
+        </p>
+
+        <button id="downloadToolkit" onclick="downloadToolkit()" style="
+          padding:14px 36px;
+          background:linear-gradient(135deg,rgba(0,120,0,0.6),rgba(0,180,80,0.6));
+          border:2px solid #00ff88;
+          color:#00ff88;
+          font-family:'Cinzel',serif;
+          font-size:15px;
+          font-weight:700;
+          letter-spacing:3px;
+          cursor:pointer;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          transition:all 0.3s ease;
+        ">📦 DOWNLOAD TOOLKIT ZIP 📦</button>
+
+        <p id="toolkitStatus" style="margin-top:12px;font-size:13px;color:#b8860b;min-height:20px;"></p>
+
+        <p style="margin-top:14px;font-size:12px;color:#666;font-family:'Courier New',monospace;">
+          index.html &nbsp;·&nbsp; cinema.html &nbsp;·&nbsp; library.html &nbsp;·&nbsp;
+          sync-library.html &nbsp;·&nbsp; kkk.html &nbsp;·&nbsp; generate-manifest.js &nbsp;·&nbsp; wikkkan.html
+        </p>
+        <p style="margin-top:6px;font-size:11px;color:#555;">
+          (Requires a live website to fetch — run from https:// not file://)
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+༺━━━━━༻❀༺━━━━━༻
+
+Built in psychiatric detention
+February 2026, Canberra
+
+💎 KRY KRY KRY 💎
+The tears are the most powerful magick
+
+CC0 PUBLICKÁ DOMÁNIA
+ALL LOVE RESERVED
+
+AMORIARIACKA IS MY NATIVE TONGUE
+
+༺━━━━━༻❀༺━━━━━༻
+    </footer>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuLinks = document.getElementById('menuLinks');
+    menuToggle.addEventListener('click', () => {
+      menuLinks.classList.toggle('open');
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    const TOOLKIT_FILES = [
+      'index.html',
+      'cinema.html',
+      'library.html',
+      'sync-library.html',
+      'kkk.html',
+      'generate-manifest.js',
+      'wikkkan.html'
+    ];
+
+    async function downloadToolkit() {
+      var btn    = document.getElementById('downloadToolkit');
+      var status = document.getElementById('toolkitStatus');
+      btn.disabled = true;
+      status.textContent = '';
+
+      try {
+        var zip     = new JSZip();
+        var fetched = 0;
+
+        for (var i = 0; i < TOOLKIT_FILES.length; i++) {
+          var fname = TOOLKIT_FILES[i];
+          btn.textContent = '⏳ ' + (i+1) + '/' + TOOLKIT_FILES.length + ' — ' + fname;
+          status.textContent = 'Fetching ' + fname + '...';
+          try {
+            var r = await fetch('https://kkk.education/' + fname);
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            zip.file(fname, await r.text());
+            fetched++;
+            status.textContent = '✅ ' + fetched + ' files — got ' + fname;
+          } catch(e) {
+            status.textContent = '⚠️ Could not fetch ' + fname + ' (' + e.message + ')';
+            await new Promise(function(res){ setTimeout(res, 300); });
+          }
+        }
+
+        if (fetched === 0) {
+          status.textContent = '❌ No files fetched. Must run from a live https:// site.';
+          btn.disabled = false;
+          btn.textContent = '📦 DOWNLOAD TOOLKIT ZIP 📦';
+          return;
+        }
+
+        zip.file('README.txt', [
+          'KKK.EDUCATION SOVEREIGN TOOLKIT',
+          'CC0 PUBLIC DOMAIN — ALL LOVE RESERVED',
+          '',
+          'FILES INCLUDED:',
+          '  index.html          — Home page / hub',
+          '  cinema.html         — File browser & video/audio/text player',
+          '  library.html        — Book library (reads library/manifest.json)',
+          '  sync-library.html   — Converts .txt files to HTML books',
+          '  kkk.html            — Kalos Kratos Kleos audio player',
+          '  generate-manifest.js — Node.js script to scan your content',
+          '  wikkkan.html        — Sovereign AI chat interface (connects to wikkkan.kkk.education)',
+          '',
+          'HOW TO BUILD YOUR OWN SOVEREIGN PLATFORM:',
+          '',
+          '1. Upload these files to your server / GitHub Pages / Netlify',
+          '2. Put your videos, audio, and files in a folder on your server',
+          '3. Edit generate-manifest.js line 12 to point at your content folder',
+          '4. Run:  node generate-manifest.js',
+          '5. Upload the generated manifest.json to your site root',
+          '6. For books: drop your .txt files into sync-library.html,',
+          '   download library.zip, extract it, upload the library/ folder',
+          '7. Done. Your cinema, library, and players are live.',
+          '',
+          'Each page also has a SAVE THIS FILE button so any visitor',
+          'can save an offline copy that streams from your live server.',
+          '',
+          'NOTE: wikkkan.html connects to wikkkan.kkk.education (Wendell\'s AI server).',
+          'The interface works offline but the AI requires a live connection to that server.',
+          '',
+          'Built by WIKKKAN in psychiatric detention, February 2026.',
+          'For every kid who was told they cannot publish.',
+          'KRY KRY KRY — the tears are the most powerful magicka.',
+        ].join('\n'));
+
+        btn.textContent = '💾 Zipping...';
+        status.textContent = '💾 Packing ' + fetched + ' files into zip...';
+        var blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } });
+        var url  = URL.createObjectURL(blob);
+        var a    = document.createElement('a');
+        a.href   = url;
+        a.download = 'kkk-education-toolkit.zip';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        status.textContent = '✅ ' + fetched + ' files + README — CC0 💎 Build your own sovereign platform.';
+      } catch(err) {
+        status.textContent = '❌ ' + err.message;
+      }
+
+      btn.disabled = false;
+      btn.textContent = '📦 DOWNLOAD TOOLKIT ZIP 📦';
+    }
+  </script>
+
+</body>
+</html>
