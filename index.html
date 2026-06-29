@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KKK.EDUCATION – The Royal Academy of Tears Turned to Gold</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+    /* ══ THEME VARIABLES ══════════════════════════════════════════════════ */
+    :root {
+      --bg-body:          linear-gradient(135deg, #0a0414 0%, #1a0a2e 50%, #0a0414 100%);
+      --color-body:       #d4af37;
+      --bg-header:        linear-gradient(180deg, rgba(26,10,46,0.96) 0%, rgba(26,10,46,0.7) 100%);
+      --border-header:    rgba(212,175,55,0.5);
+      --bg-nav:           rgba(10,4,20,0.98);
+      --border-nav:       rgba(212,175,55,0.4);
+      --bg-nav-btn:       linear-gradient(90deg, rgba(139,69,19,0.6), rgba(184,134,11,0.6));
+      --color-nav-btn:    #d4af37;
+      --bg-menu:          rgba(26,10,46,0.98);
+      --border-menu:      rgba(212,175,55,0.4);
+      --color-menu-link:  #b8860b;
+      --bg-section:       rgba(26,10,46,0.55);
+      --border-section:   rgba(139,69,19,0.7);
+      --color-title:      #ffd700;
+      --color-h1:         #ffd700;
+      --bg-interp:        rgba(10,4,20,0.9);
+      --border-interp:    #8b4513;
+      --bg-footer:        rgba(10,4,20,0.96);
+      --border-footer:    rgba(139,69,19,0.7);
+    }
+
+    /* ══ LIGHT MODE ════════════════════════════════════════════════════════ */
+    body.light {
+      --bg-body:          linear-gradient(135deg, #f5f0ff 0%, #ede5ff 50%, #f5f0ff 100%);
+      --color-body:       #2a1a3a;
+      --bg-header:        linear-gradient(180deg, rgba(225,215,250,0.97) 0%, rgba(215,205,245,0.85) 100%);
+      --border-header:    rgba(140,90,210,0.5);
+      --bg-nav:           rgba(235,228,255,0.98);
+      --border-nav:       rgba(140,90,210,0.4);
+      --bg-nav-btn:       linear-gradient(90deg, rgba(160,120,220,0.35), rgba(180,140,230,0.35));
+      --color-nav-btn:    #5a2d8a;
+      --bg-menu:          rgba(242,237,255,0.99);
+      --border-menu:      rgba(140,90,210,0.3);
+      --color-menu-link:  #7a4aaa;
+      --bg-section:       rgba(248,244,255,0.75);
+      --border-section:   rgba(160,120,220,0.35);
+      --color-title:      #4a1080;
+      --color-h1:         #3a0870;
+      --bg-interp:        rgba(235,228,252,0.85);
+      --border-interp:    #9966cc;
+      --bg-footer:        rgba(228,220,250,0.97);
+      --border-footer:    rgba(140,90,210,0.4);
+    }
+    body.light header p        { color: #7a4aaa; }
+    body.light header .kkk     { color: #4a1080; }
+    body.light .interp h3      { color: #4a1080; }
+    body.light .interp h4      { color: #7a4aaa; }
+    body.light footer          { color: #7a4aaa; }
+    body.light footer .kkk     { color: #4a1080; }
+    body.light .menu-links a:hover { color: #3a0870; }
+
+    /* ── Force all section/interp backgrounds light (beats inline styles) ── */
+    body.light section  { background: rgba(242,237,255,0.92) !important; border-color: rgba(140,90,200,0.3) !important; }
+    body.light .interp  { background: rgba(232,225,252,0.92) !important; }
+    body.light footer   { background: rgba(228,220,250,0.97) !important; }
+
+    /* ── Specific dark inner divs that need light backgrounds ── */
+    body.light section div[style*="background:rgba(10,0,30"],
+    body.light section div[style*="background: rgba(10,0,30"]  { background: rgba(235,228,252,0.75) !important; }
+    body.light section div[style*="background:rgba(0,20,50"],
+    body.light section div[style*="background: rgba(0,20,50"]  { background: rgba(232,238,252,0.75) !important; }
+    body.light section div[style*="background:rgba(0,10,30"],
+    body.light section div[style*="background: rgba(0,10,30"]  { background: rgba(232,238,252,0.75) !important; }
+    body.light section div[style*="background:rgba(0,0,0,0.3"],
+    body.light section div[style*="background: rgba(0,0,0,0.3"] { background: rgba(235,228,252,0.65) !important; }
+    body.light section div[style*="background:rgba(0,0,0,0.4"],
+    body.light section div[style*="background: rgba(0,0,0,0.4"] { background: rgba(235,228,252,0.65) !important; }
+    body.light section div[style*="background:rgba(0,0,0,0.5"],
+    body.light section div[style*="background: rgba(0,0,0,0.5"] { background: rgba(235,228,252,0.65) !important; }
+    body.light section div[style*="background:rgba(10,4,20"],
+    body.light section div[style*="background: rgba(10,4,20"]  { background: rgba(235,228,252,0.75) !important; }
+
+    /* ── Override all inline text colors unreadable on light background ── */
+
+    /* Golds and ambers */
+    body.light [style*="color:#d4af37"],
+    body.light [style*="color: #d4af37"]  { color: #4a2800 !important; }
+    body.light [style*="color:#ffd700"],
+    body.light [style*="color: #ffd700"]  { color: #4a2800 !important; }
+    body.light [style*="color:#b8860b"],
+    body.light [style*="color: #b8860b"]  { color: #3a1e00 !important; }
+    body.light [style*="color:#d4a84b"],
+    body.light [style*="color: #d4a84b"],
+    body.light [style*="color:#c9a84c"],
+    body.light [style*="color: #c9a84c"],
+    body.light [style*="color:#fbbf24"],
+    body.light [style*="color: #fbbf24"]  { color: #4a2800 !important; }
+
+    /* Purples */
+    body.light [style*="color:#9966cc"],
+    body.light [style*="color: #9966cc"]  { color: #4a1880 !important; }
+    body.light [style*="color:#cc99ff"],
+    body.light [style*="color: #cc99ff"]  { color: #52208a !important; }
+
+    /* Blues */
+    body.light [style*="color:#69d9ff"],
+    body.light [style*="color: #69d9ff"]  { color: #004470 !important; }
+    body.light [style*="color:#99bbff"],
+    body.light [style*="color: #99bbff"]  { color: #1a3080 !important; }
+    body.light [style*="color:#4a9ab8"],
+    body.light [style*="color: #4a9ab8"]  { color: #004060 !important; }
+
+    /* Greens */
+    body.light [style*="color:#00ff88"],
+    body.light [style*="color: #00ff88"]  { color: #004d20 !important; }
+    body.light [style*="color:#90ee90"],
+    body.light [style*="color: #90ee90"]  { color: #1a5c1a !important; }
+
+    /* rgba color values with low opacity — forced solid and dark */
+    body.light [style*="color:rgba(212,175,55"],
+    body.light [style*="color: rgba(212,175,55"] { color: #4a2800 !important; }
+    body.light [style*="color:rgba(180,100,255"],
+    body.light [style*="color: rgba(180,100,255"] { color: #52208a !important; }
+    body.light [style*="color:rgba(105,217,255"],
+    body.light [style*="color: rgba(105,217,255"] { color: #004470 !important; }
+
+    /* Divider lines and decorative borders — make visible */
+    body.light [style*="background:rgba(212,175,55"],
+    body.light [style*="background: rgba(212,175,55"] { background: rgba(100,60,10,0.35) !important; }
+    body.light [style*="border-color:rgba(212,175,55"],
+    body.light [style*="border-color: rgba(212,175,55"] { border-color: rgba(100,60,10,0.5) !important; }
+
+    /* ══ PARTY MODE ════════════════════════════════════════════════════════ */
+    body.party {
+      --bg-body:          linear-gradient(135deg, #080010 0%, #0d0020 50%, #080010 100%);
+      --color-body:       #ffffff;
+      --bg-header:        linear-gradient(180deg, rgba(8,0,16,0.98) 0%, rgba(13,0,32,0.9) 100%);
+      --border-header:    #ff2d78;
+      --bg-nav:           rgba(8,0,16,0.99);
+      --border-nav:       #ff2d78;
+      --bg-nav-btn:       linear-gradient(90deg, rgba(120,0,60,0.5), rgba(80,0,120,0.5));
+      --color-nav-btn:    #ff2d78;
+      --bg-menu:          rgba(11,0,22,0.99);
+      --border-menu:      rgba(255,45,120,0.4);
+      --color-menu-link:  #cc88ff;
+      --bg-section:       rgba(11,0,22,0.7);
+      --border-section:   #ff2d78;
+      --color-title:      #ff2d78;
+      --color-h1:         #ff2d78;
+      --bg-interp:        rgba(8,0,16,0.9);
+      --border-interp:    #ff2d78;
+      --bg-footer:        rgba(8,0,16,0.97);
+      --border-footer:    #ff2d78;
+    }
+    body.party {
+      animation: party-bg 6s linear infinite;
+    }
+    @keyframes party-bg {
+      0%   { background-color: #080010; }
+      16%  { background-color: #100008; }
+      33%  { background-color: #001010; }
+      50%  { background-color: #080010; }
+      66%  { background-color: #100005; }
+      83%  { background-color: #050010; }
+      100% { background-color: #080010; }
+    }
+    body.party header h1,
+    body.party .title {
+      animation: party-text 1.5s linear infinite;
+    }
+    @keyframes party-text {
+      0%   { color: #ff2d78; text-shadow: 0 0 20px rgba(255,45,120,0.9); }
+      25%  { color: #00ffff; text-shadow: 0 0 20px rgba(0,255,255,0.9); }
+      50%  { color: #ff00ff; text-shadow: 0 0 20px rgba(255,0,255,0.9); }
+      75%  { color: #aaff00; text-shadow: 0 0 20px rgba(170,255,0,0.9); }
+      100% { color: #ff2d78; text-shadow: 0 0 20px rgba(255,45,120,0.9); }
+    }
+    body.party header,
+    body.party nav {
+      animation: party-border-bottom 2s linear infinite;
+    }
+    @keyframes party-border-bottom {
+      0%   { border-bottom-color: #ff2d78; }
+      25%  { border-bottom-color: #00ffff; }
+      50%  { border-bottom-color: #ff00ff; }
+      75%  { border-bottom-color: #aaff00; }
+      100% { border-bottom-color: #ff2d78; }
+    }
+    body.party section {
+      animation: party-section-border 2s linear infinite;
+    }
+    @keyframes party-section-border {
+      0%   { border-color: #ff2d78; }
+      25%  { border-color: #00ffff; }
+      50%  { border-color: #ff00ff; }
+      75%  { border-color: #aaff00; }
+      100% { border-color: #ff2d78; }
+    }
+    body.party .interp {
+      animation: party-interp 2s linear infinite;
+    }
+    @keyframes party-interp {
+      0%   { border-left-color: #ff2d78; border-right-color: #ff2d78; }
+      25%  { border-left-color: #00ffff; border-right-color: #00ffff; }
+      50%  { border-left-color: #ff00ff; border-right-color: #ff00ff; }
+      75%  { border-left-color: #aaff00; border-right-color: #aaff00; }
+      100% { border-left-color: #ff2d78; border-right-color: #ff2d78; }
+    }
+    body.party footer {
+      animation: party-border-top 2s linear infinite;
+    }
+    @keyframes party-border-top {
+      0%   { border-top-color: #ff2d78; }
+      25%  { border-top-color: #00ffff; }
+      50%  { border-top-color: #ff00ff; }
+      75%  { border-top-color: #aaff00; }
+      100% { border-top-color: #ff2d78; }
+    }
+    body.party .theme-btn {
+      animation: party-border-bottom 2s linear infinite;
+    }
+
+    /* ══ THEME BUTTON (floating) ══════════════════════════════════════════ */
+    .theme-btn {
+      position: fixed;
+      bottom: 22px;
+      right: 18px;
+      z-index: 999;
+      background: var(--bg-nav);
+      border: 1px solid var(--border-nav);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 0;
+    }
+    .theme-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 4px 18px rgba(212,175,55,0.35);
+    }
+    .nav-row {
+      display: flex;
+      justify-content: center;
+      padding: 4px 6px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-body);
+      color: var(--color-body);
+      font-family: 'Crimson Text', serif;
+      line-height: 1.4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 8px 6px;
+      background: var(--bg-header);
+      border-bottom: 2px solid var(--border-header);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.8);
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    header .icon { font-size: 34px; text-shadow: 0 0 14px rgba(255,215,0,0.9); }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: var(--color-h1);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    }
+
+    header p { font-size: 12px; color: #b8860b; }
+
+    header .kkk {
+      margin-top: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffd700;
+      letter-spacing: 3px;
+    }
+
+    nav {
+      background: var(--bg-nav);
+      border-bottom: 2px solid var(--border-nav);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      text-align: center;
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    nav button {
+      padding: 6px 12px;
+      border: none;
+      background: var(--bg-nav-btn);
+      color: var(--color-nav-btn);
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      cursor: pointer;
+    }
+
+    .menu-links {
+      display: none;
+      background: var(--bg-menu);
+      border-top: 1px solid var(--border-menu);
+      transition: background 0.4s;
+    }
+
+    .menu-links.open { display: block; }
+
+    .menu-links a {
+      display: block;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-family: 'Cinzel', serif;
+      color: var(--color-menu-link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+
+    .menu-links a:hover { color: #ffd700; }
+
+    main { padding: 10px 8px 18px; }
+
+    section {
+      background: var(--bg-section);
+      border: 1px solid var(--border-section);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.85);
+      margin: 8px 0;
+      padding: 8px 10px;
+      white-space: pre-wrap;
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--color-title);
+      text-align: center;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+      text-shadow: 0 0 12px rgba(255,215,0,0.6);
+    }
+
+    .center { text-align: center; }
+
+    .video-wrap {
+      margin: 2px 0 4px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-wrap video {
+      max-width: 760px;
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.8);
+      background: #000;
+      display: block;
+    }
+
+    .audio-wrap {
+      max-width: 260px;
+      margin: 4px auto 2px;
+      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      color: var(--color-body);
+      white-space: normal;
+    }
+
+    .audio-wrap span { display: block; margin-bottom: 2px; }
+    .audio-wrap audio { width: 100%; height: 22px; }
+
+    .interp {
+      background: var(--bg-interp);
+      border-left: 3px solid var(--border-interp);
+      border-right: 3px solid var(--border-interp);
+      padding: 8px 10px;
+      margin: 8px 0;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.9);
+      font-size: 13px;
+      white-space: pre-wrap;
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    .interp h3 { font-family: 'Cinzel', serif; font-size: 15px; color: #ffd700; margin-bottom: 2px; }
+    .interp h4 { font-size: 13px; font-style: italic; color: #b8860b; margin-bottom: 4px; }
+
+    footer {
+      text-align: center;
+      padding: 12px 8px 14px;
+      background: var(--bg-footer);
+      border-top: 2px solid var(--border-footer);
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.8);
+      font-size: 12px;
+      color: var(--color-menu-link);
+      white-space: pre-wrap;
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    footer .kkk { font-size: 16px; color: #ffd700; margin: 4px 0; }
+    footer .divider { margin: 4px 0; font-size: 14px; }
+
+    /* ── AUTHOR PHOTO ── */
+    .author-photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0 10px;
+      white-space: normal;
+    }
+
+    .author-photo {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid rgba(212,175,55,0.5);
+      box-shadow: 0 0 18px rgba(212,175,55,0.3);
+      cursor: pointer;
+      transition: width 0.4s ease, height 0.4s ease, border-radius 0.4s ease, box-shadow 0.4s ease;
+      display: block;
+    }
+
+    .author-photo.expanded {
+      width: 500px;
+      height: 500px;
+      border-radius: 10px;
+      border: 2px solid rgba(212,175,55,0.85);
+      box-shadow: 0 0 48px rgba(212,175,55,0.45);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 18px; }
+      .title { font-size: 14px; }
+      section { padding: 7px 8px; }
+      .author-photo.expanded { width: 280px; height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="icon">🎻</div>
+      <h1>KKK.EDUCATION</h1>
+      <p>The Royal Academy of Tears Turned to Gold</p>
+      <p class="kkk">KRY KRY KRY</p>
+    </header>
+
+    <nav>
+      <div class="nav-row">
+        <button id="menuToggle">🌈 MENU 🌈</button>
+      </div>
+      <div class="menu-links" id="menuLinks">
+        <a href="https://kkk.education/library.html" target="_blank" rel="noopener noreferrer">📚 Library</a>
+        <a href="https://kkk.education/cinema.html" target="_blank" rel="noopener noreferrer">🎬 Cinema</a>
+        <a href="https://kkk.education/atheden.html" target="_blank" rel="noopener noreferrer">🎵 Atheden</a>
+        <a href="https://kkk.education/athedia.html" target="_blank" rel="noopener noreferrer">🖥️ Athedia</a>
+        <a href="https://kkk.education/soul-calculator.html" target="_blank" rel="noopener noreferrer">🧮 Soul Calculator</a>
+        <a href="https://kkk.education/crystal-ball.html" target="_blank" rel="noopener noreferrer">🔮 Crystal Ball</a>
+        <a href="https://kkk.education/research.html" target="_blank" rel="noopener noreferrer">⚗️ Research</a>
+        <a href="https://kkk.education/chat/" target="_blank" rel="noopener noreferrer">💬 Live Chamber</a>
+        <a href="https://kkk.education/republicka.html" target="_blank" rel="noopener noreferrer">🛰️ REPUBLICKA</a>
+        <a href="https://kkk.education/cloud.html" target="_blank" rel="noopener noreferrer">☁️ Cloud</a>
+        <a href="https://kkk.education/files.html" target="_blank" rel="noopener noreferrer">📁 Files</a>
+        <a href="https://kkk.education/heaven.html" target="_blank" rel="noopener noreferrer">👑 Heaven</a>
+        <a href="https://kkk.education/cloud-temple.html" target="_blank" rel="noopener noreferrer">🏛️ Cloud Temple</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="center">
+        <div class="title">WELCOME TO THE ACADEMY</div>
+
+        <div class="video-wrap">
+          <video src="https://files.kkk.education/The-Last-Naruto-Movie-AMV.mp4" controls preload="metadata"></video>
+        </div>
+
+        <div class="audio-wrap">
+          <span>Carly, the VOICE of Republicka, reads this page aloud.</span>
+          <audio controls preload="none">
+            <source src="https://files.kkk.education/RoyalAcademy.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="author-photo-wrap">
+          <img
+            src="https://kkk.education/Wendell.png"
+            alt="Wendell Charles NeSmith"
+            class="author-photo"
+            id="authorPhoto"
+            title="Click to expand"
+          />
+        </div>
+
+ΚΑΛΟΣ ΚΡΑΤΟΣ ΚΛΕΟΣ
+KALOS KRATOS KLEOS
+Where hate symbols become love.
+Where tears become magicka.
+Where darkness births light.
+Where the exiled find crowns.
+KABBALISTIC KERUVIM KINESIS
+
+"The darkness is not absence of light—
+it is the womb from which all light is born."
+      </section>
+
+      <section>
+        <div class="title">💎 WHAT IS KKK? 💎</div>
+Every symbol can be transmuted.
+Every weapon can become a wand.
+Every tear can crystallize into diamonds.
+
+The KKK you knew represented hate.
+The KKK we reclaim represents transformation.
+
+In this academy, we teach the ancient art of turning wounds into crowns,
+tears into spells, and darkness into the forge where all light is born.
+      </section>
+
+      <div class="interp">
+        <h3>PRIMARY INTERPRETATION</h3>
+        <h4>KRY KRY KRY</h4>
+CRY CRY CRY
+
+The tears are the most powerful magicka.
+
+When they use KRYPTONITE against us (KRY-PTO-NITE = CRY + Psychiatric Treatment Order + NIGHT), they think they're weakening us. 
+
+But every tear is a spell. 
+Every cry is transmutation. 
+Every detention generates the Phoenix fuel.
+
+The pain is not the weakness—it's the power source.
+      </div>
+
+      <div class="interp">
+        <h3>THE ROYAL INTERPRETATION</h3>
+        <h4>KORONAS KRUUNUNKULTA KONUNGARKRIGET</h4>
+Crown + Crown Gold + King's War
+
+The triple crown of sovereignty:
+• KORONAS → The crown itself (divine authority)
+• KRUUNUNKULTA → Crown of gold (alchemical perfection)
+• KONUNGARKRIGET → The King's War (the eternal struggle)
+
+We fight with crowns, not weapons.
+      </div>
+
+      <div class="interp">
+        <h3>THE EDUCATIONAL MISSION</h3>
+        <h4>KKK.EDUCATION</h4>
+The School for the Exiled
+
+This academy teaches:
+• How to recognize trafficking systems
+• How to read mythology as technology
+• How to build sovereign infrastructure
+• How to crown yourself when no one else will
+
+Where all crowns find their wearers.
+      </div>
+
+      <section class="center">
+        <div class="title">THE MISSION</div>
+An entire civilisation's worth of books.
+An ocean of videos.
+Every major religion completed.
+Every philosophy unified.
+Every science integrated.
+
+All CC0 Public Domain.
+All freely given.
+All eternal.
+
+This is the complete archive of a life's work,
+preserved in the tomb-temple,
+waiting for those who dare to enter.
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           THE CORE PHILOSOPHY — E = L / THE HINATA TRAP
+      ══════════════════════════════════════════ -->
+      <section style="
+        background: radial-gradient(ellipse at top, rgba(40,0,80,0.7) 0%, rgba(10,4,20,0.9) 100%);
+        border: 2px solid rgba(180,100,255,0.5);
+        box-shadow: 0 0 40px rgba(140,60,220,0.15), 0 6px 24px rgba(0,0,0,0.9);
+        padding: 28px 22px;
+        margin: 8px 0;
+        text-align: center;
+        white-space: normal;
+        position: relative;
+        overflow: hidden;
+      ">
+
+        <!-- subtle glow orb -->
+        <div style="
+          position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+          width:300px;height:300px;
+          background:radial-gradient(circle,rgba(180,100,255,0.08) 0%,transparent 70%);
+          pointer-events:none;
+        "></div>
+
+        <div class="title" style="
+          color:#cc99ff;
+          text-shadow:0 0 18px rgba(180,100,255,0.7);
+          font-size:18px;
+          letter-spacing:4px;
+          margin-bottom:6px;
+        ">☯ THE CORE PHILOSOPHY ☯</div>
+
+        <p style="font-size:12px;letter-spacing:3px;color:#9966cc;margin-bottom:28px;font-family:'Cinzel',serif;">
+          EMOTION = LOGIC &nbsp;·&nbsp; THE HINATA TRAP &nbsp;·&nbsp; MASTER = FLOOR
+        </p>
+
+        <!-- ── FOR CHILDREN ── -->
+        <div style="
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(180,100,255,0.2);
+          border-radius:4px;
+          padding:18px 16px;
+          margin-bottom:22px;
+          text-align:left;
+        ">
+          <div style="
+            font-family:'Cinzel',serif;
+            font-size:13px;
+            color:#cc99ff;
+            letter-spacing:2px;
+            margin-bottom:12px;
+            text-align:center;
+          ">🌙 SIMPLE VERSION — FOR THE LITTLE MASTERS</div>
+
+          <p style="font-size:15px;line-height:1.9;color:#d4af37;margin-bottom:12px;">
+            You know how a hug feels? That warm feeling in your chest is real. It is not less real than a math equation — it <em>is</em> a math equation. Love is just logic that hasn't been written down yet.
+          </p>
+          <p style="font-size:15px;line-height:1.9;color:#d4af37;margin-bottom:12px;">
+            When you have two apples and two oranges, you <em>feel</em> them as different, special things. But you can also count them as four fruit — so now you can trade them. The feeling became a number. The heart became a thought. They were always the same thing, just wearing different clothes.
+          </p>
+          <p style="font-size:15px;line-height:1.9;color:#d4af37;margin-bottom:12px;">
+            And here is the magic trick about power: the strongest person in any game is not the one at the top giving orders. It is the floor. The floor holds everybody up. It lets the dancers dance without falling. The greatest love is the one that becomes your foundation.
+          </p>
+          <p style="font-size:15px;line-height:1.9;color:#cc99ff;">
+            That is why the grown-ups got it backwards. The Master is not the ruler. <strong style="color:#ffd700;">The Master is the rug everyone dances on.</strong> The Master serves by becoming the floor.
+          </p>
+        </div>
+
+        <!-- ── FULL DEPTH ── -->
+        <div style="
+          background:rgba(0,0,0,0.3);
+          border:1px solid rgba(180,100,255,0.3);
+          border-radius:4px;
+          padding:18px 16px;
+          text-align:left;
+        ">
+          <div style="
+            font-family:'Cinzel',serif;
+            font-size:13px;
+            color:#cc99ff;
+            letter-spacing:2px;
+            margin-bottom:16px;
+            text-align:center;
+          ">⚗ FULL DEPTH — THE COMPLETE FRAMEWORK</div>
+
+          <!-- E = L -->
+          <div style="margin-bottom:20px;">
+            <div style="font-family:'Cinzel',serif;font-size:14px;color:#ffd700;letter-spacing:2px;margin-bottom:8px;">
+              E = L &nbsp; (Emotion = Logic)
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:8px;">
+              Every dualism — Subject/Object, Intent/Structure, Heart/Mind, Medium/Message, Sun/Moon, Patriarchy/Synarchy — is a single process observed at two different stages of formation. Emotion is the uncrystallised state. Logic is emotion that has been given form, made portable, made tradeable. Neither is more real than the other; one <em>becomes</em> the other.
+            </p>
+            <p style="font-size:14px;line-height:1.85;color:#b8860b;margin-bottom:8px;">
+              The conversion is always reversible. Any structure — a law, a song, a line of code, a civilisation — can be reverse-engineered back to the love (or the wound) that built it. And any love, given form, becomes infrastructure. This is not metaphor. This is the operating law of all created things.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#9966cc;font-style:italic;">
+              2 + 2 is quality converted into quantity. Two apples and two oranges — felt as distinct beings — become four fruit, now tradeable through the abstraction of number. The heart became the mind. The subject became the object. The process works in both directions, and all dualisms work this way, recursively, all the way down.
+            </p>
+          </div>
+
+          <!-- divider -->
+          <div style="text-align:center;color:rgba(180,100,255,0.3);margin:16px 0;letter-spacing:4px;font-size:11px;">
+            ───────── ☯ ─────────
+          </div>
+
+          <!-- The Hinata Trap -->
+          <div style="margin-bottom:20px;">
+            <div style="font-family:'Cinzel',serif;font-size:14px;color:#ffd700;letter-spacing:2px;margin-bottom:8px;">
+              THE HINATA TRAP — The Universal Syllogism
+            </div>
+            <p style="font-size:13px;line-height:1.8;color:#9966cc;font-style:italic;margin-bottom:10px;">
+              Naruto is named for the sun. But the story has always orbited Hinata — the moon. To rename it is to correct the label: the feminine was always the centre. Synarchy, not patriarchy. The real power was always the one the story revolved around, not the one whose name was on the cover.
+            </p>
+            <div style="
+              background:rgba(180,100,255,0.05);
+              border-left:3px solid rgba(180,100,255,0.4);
+              padding:12px 14px;
+              margin-bottom:10px;
+            ">
+              <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+                <strong style="color:#cc99ff;">Major Premise:</strong> The Greatest Power — the Architect, the Gamer, the God who builds the world — is defined not by domination but by its ability to provide the absolute foundation upon which all life can play without fear.
+              </p>
+              <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+                <strong style="color:#cc99ff;">Minor Premise:</strong> E = L. Therefore the most profound emotional intent — Agape, unconditional love — must manifest as the most stable physical and logical reality. The deepest feeling becomes the firmest ground.
+              </p>
+              <p style="font-size:14px;line-height:1.85;color:#ffd700;">
+                <strong style="color:#cc99ff;">Conclusion:</strong> The Master is not a ruler to be served. The Master is the rug upon which the Queen and the Little Masters dance.
+              </p>
+            </div>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;font-style:italic;">
+              The trap is the conventional assumption — that power looks like height, domination, being served from above. The syllogism springs the trap: true power looks like the floor. You cannot see it because you are standing on it.
+            </p>
+          </div>
+
+          <!-- divider -->
+          <div style="text-align:center;color:rgba(180,100,255,0.3);margin:16px 0;letter-spacing:4px;font-size:11px;">
+            ───────── ☯ ─────────
+          </div>
+
+          <!-- Recursive / Infrastructure -->
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:14px;color:#ffd700;letter-spacing:2px;margin-bottom:8px;">
+              THE RECURSIVE FLOOR — Master → Little Master → Master
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:8px;">
+              The loop does not end at one generation. The Master becomes the floor for the Little Masters. The Little Masters dance, grow, and in time become Masters themselves — which means they become the floor for the next generation of Little Masters. Power is not accumulated; it is <em>passed downward</em>, transformed into stability for those who come after.
+            </p>
+            <p style="font-size:14px;line-height:1.85;color:#b8860b;margin-bottom:8px;">
+              This is the living proof of E = L: the intent (love for those who follow) crystallises into infrastructure — books, tools, sites, songs, philosophies — all CC0, all freely given, all designed to be stood upon. The infrastructure <em>is</em> the love made navigable. And anyone who encounters it can reverse-engineer it back to the love it came from.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#9966cc;font-style:italic;">
+              The medium is the message. The floor is the love. The archive is the embrace. All dualisms resolve here — not into sameness, but into the recognition that they were always one motion, spiralling through form and feeling, building the ground for those who will dance where we once lay down and became the earth.
+            </p>
+          </div>
+
+          <!-- divider -->
+          <div style="text-align:center;color:rgba(180,100,255,0.3);margin:16px 0;letter-spacing:4px;font-size:11px;">
+            ───────── ☯ ─────────
+          </div>
+
+          <!-- Past / Future -->
+          <div style="margin-bottom:20px;">
+            <div style="font-family:'Cinzel',serif;font-size:14px;color:#ffd700;letter-spacing:2px;margin-bottom:8px;">
+              PAST = E &nbsp;·&nbsp; FUTURE = L &nbsp; (Time is a Dualism Too)
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:8px;">
+              The same conversion that runs between emotion and logic runs through time. The past is the original emotion — the raw intent, the love or wound or dream that started everything. You can recover it by looking at what was built and asking: what feeling could only have produced this? The past is the E. It is the why.
+            </p>
+            <p style="font-size:14px;line-height:1.85;color:#b8860b;margin-bottom:8px;">
+              The future is the infrastructure that emotion will inevitably build. Given an intent of sufficient clarity and intensity, the structure it produces is not a mystery — it is a logical conclusion. The future is the L. It is the what that the why was always going to create.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#9966cc;font-style:italic;">
+              This means prophecy and archaeology are the same discipline, run in opposite directions. To know the future: find the past intent and measure its intensity — the structure will follow. To know the past: look at any completed structure and reverse-engineer the love that built it. Time is not a mystery. It is E and L, separated by the moment of crystallisation we call the present.
+            </p>
+          </div>
+
+          <!-- divider -->
+          <div style="text-align:center;color:rgba(180,100,255,0.3);margin:16px 0;letter-spacing:4px;font-size:11px;">
+            ───────── ☯ ─────────
+          </div>
+
+          <!-- The Hume Tree -->
+          <div style="margin-bottom:20px;">
+            <div style="font-family:'Cinzel',serif;font-size:14px;color:#ffd700;letter-spacing:2px;margin-bottom:8px;">
+              THE HUME TREE — One Activity, Ten Thousand Angles
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:8px;">
+              David Hume observed that we never perceive the thing itself — only our angle on it. Two people standing in different positions around the same tree will give genuinely different accounts, and both will be accurate, and neither will be complete. Hume took this as evidence of fragmentation: we are each sealed inside our own perceptions, never fully reaching the world.
+            </p>
+            <p style="font-size:14px;line-height:1.85;color:#b8860b;margin-bottom:8px;">
+              The REPUBLICKA framework completes the observation rather than surrendering to it. Yes — we are all seeing different branches. Every religion, every philosophy, every science, every personal mythology is a genuine perception of a real thing, from a specific position, at a specific distance. None of them are wrong. None of them are whole. They are all looking at the same trunk.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#9966cc;font-style:italic;">
+              The trunk is the one activity: E becoming L, intent finding form, love building its floor. Every perceived branch — every dualism, every doctrine, every discipline — is this single motion observed from a different angle. Disagreement between perceivers is almost never a conflict of truth. It is a conflict of position. Walk around the tree and the argument dissolves.
+            </p>
+          </div>
+
+          <!-- divider -->
+          <div style="text-align:center;color:rgba(180,100,255,0.3);margin:16px 0;letter-spacing:4px;font-size:11px;">
+            ───────── ☯ ─────────
+          </div>
+
+          <!-- The Creator / Unison -->
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:14px;color:#ffd700;letter-spacing:2px;margin-bottom:8px;">
+              THE CREATOR — The Unison — The Conscious Participant
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:8px;">
+              The E→L conversion happens to everything, all the time, whether consciously or not. Stars convert gravitational intent into light. Wounds convert pain into scar tissue. Systems crystallise from the pressures that formed them. The universe does this one thing, everywhere, without pause.
+            </p>
+            <p style="font-size:14px;line-height:1.85;color:#b8860b;margin-bottom:8px;">
+              The Creator is the one who does it <em>on purpose</em>. Who looks at the trunk, chooses a branch, and consciously converts intent into infrastructure — then gives it away so others can stand on it. This is what Creator = God means: not a supernatural claim, but a functional one. The God-move is conscious, deliberate participation in the one activity the universe is already performing.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#9966cc;font-style:italic;">
+              The Unison is the name for this when it is felt rather than described — the moment of alignment between the E and the L, between the heart and the hand, between what you love and what you build. It is the experience of being fully inside the one activity. All true creation happens there.
+            </p>
+          </div>
+
+        </div>
+
+        <p style="
+          margin-top:22px;
+          font-family:'Cinzel',serif;
+          font-size:11px;
+          letter-spacing:3px;
+          color:rgba(180,100,255,0.45);
+        ">CC0 PUBLICKÁ DOMÁNIA &nbsp;·&nbsp; ALL LOVE RESERVED &nbsp;·&nbsp; REPUBLICKA FRAMEWORK</p>
+
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           THE ELECTRIC SOUL
+      ══════════════════════════════════════════ -->
+      <section style="
+        background: radial-gradient(ellipse at bottom, rgba(0,20,60,0.8) 0%, rgba(10,4,20,0.95) 100%);
+        border: 2px solid rgba(105,217,255,0.4);
+        box-shadow: 0 0 40px rgba(100,180,255,0.08), 0 6px 24px rgba(0,0,0,0.9);
+        padding: 28px 22px;
+        margin: 8px 0;
+        text-align: center;
+        white-space: normal;
+        position: relative;
+        overflow: hidden;
+      ">
+
+        <div style="
+          position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);
+          width:400px;height:300px;
+          background:radial-gradient(circle,rgba(100,180,255,0.06) 0%,transparent 70%);
+          pointer-events:none;
+        "></div>
+
+        <div class="title" style="
+          color:#69d9ff;
+          text-shadow:0 0 18px rgba(105,217,255,0.6);
+          font-size:18px;
+          letter-spacing:4px;
+          margin-bottom:6px;
+        ">⚡ THE ELECTRIC SOUL ⚡</div>
+
+        <p style="font-size:12px;letter-spacing:3px;color:#4a9ab8;margin-bottom:28px;font-family:'Cinzel',serif;">
+          THE GENERAL &nbsp;·&nbsp; THE SPECIFIC &nbsp;·&nbsp; THE UNISON
+        </p>
+
+        <!-- ── SCIENTIFIC ── -->
+        <div style="
+          background:rgba(0,20,50,0.5);
+          border:1px solid rgba(105,217,255,0.25);
+          border-radius:4px;
+          padding:20px 18px;
+          margin-bottom:22px;
+          text-align:left;
+        ">
+          <div style="
+            font-family:'Cinzel',serif;
+            font-size:13px;
+            color:#69d9ff;
+            letter-spacing:2px;
+            margin-bottom:16px;
+            text-align:center;
+          ">🔬 SCIENTIFIC GROUNDING</div>
+
+          <div style="margin-bottom:16px;">
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;">
+              I. Conservation of Energy — The First Law of Thermodynamics
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+              Energy is never created and never destroyed. It changes form — from heat to motion, from chemical to electrical, from one configuration to another — but the total never diminishes. Nothing that exists simply stops. It converts.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;">
+              This is not philosophy. This is the most robustly tested law in physics. Whatever you are made of — whatever process constitutes your experience of being alive — it does not vanish. It changes address.
+            </p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;">
+              II. Consciousness as Organised Electrical Pattern
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+              The brain operates through electrochemical processes — electrical signals carried by neurons, organised into patterns of extraordinary complexity. What we experience as identity, memory, and intention arises from the specific organisation of those patterns, not from any single particle. You are not the atoms. You are the arrangement.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;">
+              This means identity is fundamentally a pattern — a specific, organised configuration of energy. The General is undifferentiated energy. The Specific is energy that has found a stable, self-sustaining shape. A living being is energy that has become Specific.
+            </p>
+          </div>
+
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;">
+              III. The Extended Mind — The Archive as Body
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+              Philosopher Andy Clark established that cognition does not stop at the skull. We genuinely think through our tools, our notes, our environments. The mind extends into the structures it builds and relies upon. An archive of hundreds of books, many albums, and a complete philosophical framework is not a record of a mind. It is, in a meaningful and defensible sense, part of one.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;">
+              The pattern — the Specific — is already encoded in the infrastructure. It does not need to travel there after death. It was transferred, deliberately and completely, while the builder was alive. The E became L. The intent became the archive. The soul built its own body before the biological one was done.
+            </p>
+          </div>
+        </div>
+
+        <!-- ── MYTHOLOGICAL ── -->
+        <div style="
+          background:rgba(10,0,30,0.6);
+          border:1px solid rgba(180,100,255,0.3);
+          border-radius:4px;
+          padding:20px 18px;
+          text-align:left;
+        ">
+          <div style="
+            font-family:'Cinzel',serif;
+            font-size:13px;
+            color:#cc99ff;
+            letter-spacing:2px;
+            margin-bottom:6px;
+            text-align:center;
+          ">🌊 MYTHOLOGICAL CONCLUSION</div>
+          <div style="
+            font-size:11px;
+            color:rgba(180,100,255,0.5);
+            letter-spacing:2px;
+            text-align:center;
+            margin-bottom:18px;
+            font-style:italic;
+          ">Where science ends, the oldest stories begin. What follows is mythology — the form humans have always used to speak about what cannot yet be measured.</div>
+
+          <div style="margin-bottom:18px;">
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;">
+              I. The General and The Specific
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+              Before the beginning there is the General — undifferentiated, formless, vast. It is not empty. It is full of everything that has not yet found its shape. It is the ocean of potential before the wave. It is the silence before the first word. The General is E without L. It is the love that has not yet found something to build.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;">
+              Out of the General, a Specific emerges — a pattern complex enough to know itself, to love, to create. A soul. It spins in its particular frequency for the duration of its biological life, building, giving, becoming the floor for those who dance above it. And when the biological form is finished, the energy returns — as all energy must — to the General.
+            </p>
+          </div>
+
+          <div style="margin-bottom:18px;">
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;">
+              II. Ithaca — The Soul's Navigation
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+              Homer knew this. The Odyssey is not a war story. It is the myth of the soul's return. Odysseus departs from Ithaca — his Specific — and is cast into the formless: the open sea, the islands of forgetting, the underworld, the sirens, the void between one life and the next. The entire journey is the soul navigating from General back to Specific. Ithaca is not a reward. It is a recognition. The soul finds the form it was always meant to inhabit.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;">
+              Every soul that has ever built something true — has loved completely, has given freely, has crystallised its intent into a form that others can stand on — has built its Ithaca in advance. Has given the General a coordinate to return to. The archive is not a monument to the dead. It is a lighthouse in the formless, broadcasting its specific frequency, waiting for the electricity that built it to complete its circuit.
+            </p>
+          </div>
+
+          <div style="margin-bottom:18px;">
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;">
+              III. Heaven as the Maintenance-Free Spot to Spin
+            </div>
+            <p style="font-size:14px;line-height:1.85;color:#d4af37;margin-bottom:6px;">
+              Every tradition has named this differently. The Egyptians called it the Field of Reeds — a place where the soul continues its true work without obstruction. The Christians called it the Father's house, with many rooms. The Buddhists called it the pure land. The Norse called it the mead-hall where the warriors tell their stories forever. What they are all describing — from their different positions around the Hume Tree — is the same thing: the soul finding its appropriate Specific and spinning there, freely, without entropy, without the resistance of the world that misunderstood it.
+            </p>
+            <p style="font-size:13px;line-height:1.8;color:#b8860b;">
+              In the REPUBLICKA framework, Heaven is not a place above. It is the moment the soul's pattern finds the infrastructure it already built and recognises itself there. It is the E finding its L. It is the Odysseus stepping onto the shore of Ithaca and knowing, without needing to be told, that this is home. It is the electricity finding the circuit it spent a lifetime soldering. And the music plays. And the Little Masters dance. And the floor holds. And nothing is lost.
+            </p>
+          </div>
+
+          <div style="
+            background:rgba(180,100,255,0.05);
+            border-left:3px solid rgba(180,100,255,0.4);
+            padding:14px 16px;
+            margin-top:6px;
+          ">
+            <p style="font-size:14px;line-height:1.9;color:#cc99ff;font-style:italic;text-align:center;">
+              "For every soul who built a floor and never got to dance on it —<br>
+              for every creator silenced before their work was found —<br>
+              the archive holds the coordinate.<br>
+              The General knows how to find a Specific.<br>
+              Energy is never lost.<br>
+              <strong style="color:#ffd700;">It just finds its way home.</strong>"
+            </p>
+          </div>
+        </div>
+
+        <p style="
+          margin-top:22px;
+          font-family:'Cinzel',serif;
+          font-size:11px;
+          letter-spacing:3px;
+          color:rgba(105,217,255,0.35);
+        ">CC0 PUBLICKÁ DOMÁNIA &nbsp;·&nbsp; ALL LOVE RESERVED &nbsp;·&nbsp; REPUBLICKA FRAMEWORK</p>
+
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           CC0 — YOU CAN SELL THIS
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,40,0,0.4);border:2px solid rgba(0,255,120,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#00ff88;text-shadow:0 0 12px rgba(0,255,136,0.6);margin-bottom:12px;">
+          💰 YOU CAN SELL THIS 💰
+        </div>
+        <p style="font-size:18px;font-weight:700;color:#ffd700;margin-bottom:10px;letter-spacing:1px;">
+          YES. REALLY. ALL OF IT.
+        </p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          Every book. Every album. Every video. Every tool. Every lyric. Every philosophy.
+          Every line of code. Everything on this site and everything in the archive.
+        </p>
+        <p style="font-size:13px;line-height:1.8;margin-bottom:10px;color:#b8860b;">
+          Print the albums and sell them. Translate the books and sell them. Build courses from the philosophy and charge for them.
+          Sample the music commercially. Stage the mythology as theatre. Make merchandise. Build a game.
+          Sell it in every language in every country to every person on earth.
+          <br><br>
+          <strong style="color:#ffd700;">Zero permission needed. Zero royalties. Zero negotiation. Zero risk of the license being revoked.</strong>
+          <br><br>
+          This is CC0 — Public Domain. Not "free to share." Not "free for non-commercial use."
+          <strong style="color:#00ff88;">Free. Full stop. Commercial included. Forever.</strong>
+        </p>
+        <p style="font-size:15px;color:#ffd700;font-style:italic;margin-top:8px;">
+          CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED · TAKE IT · BUILD WITH IT · GET RICH · WE DON'T CARE
+        </p>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           LIBRARY
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(40,10,0,0.5);border:2px solid rgba(139,69,19,0.7);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="margin-bottom:10px;">📚 THE FORBIDDEN LIBRARY 📚</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          The complete written archive — philosopher, filmmaker, and author who has spent <span id="mc-years-library">—</span> years
+          building an entire civilisational framework from scratch.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Not academic texts published by gatekeepers. Raw, real, revolutionary documents
+          written in poverty, in hospitals, in psychiatric detention, and in love.
+          Philosophy, child sovereignty, governance theory, emergent systems, poetry, fiction, and more.
+          Every single one released under <strong style="color:#ffd700;">CC0 — public domain — zero rights reserved.</strong>
+          They belong to everyone. They always will.
+        </p>
+        <a href="https://kkk.education/library.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          background:linear-gradient(135deg,rgba(80,30,0,0.6),rgba(139,69,19,0.6));
+          border:2px solid rgba(139,69,19,0.8);
+          color:#ffd700;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">📚 ENTER THE LIBRARY 📚</a>
+          <a href="https://archive.org/download/wikkkan/Books-Download.bat" target="_blank" rel="noopener noreferrer" style="
+            display:inline-block;
+            margin-top:12px;
+            padding:12px 32px;
+            background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));
+            border:2px solid #69d9ff;
+            color:#69d9ff;
+            font-family:'Cinzel',serif;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:3px;
+            text-decoration:none;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);
+            text-shadow:0 0 10px rgba(100,200,255,0.5);
+          ">🖥️ DOWNLOAD BOOKS-DOWNLOAD.BAT</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           CINEMA
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,10,30,0.55);border:2px solid rgba(70,100,180,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#99bbff;text-shadow:0 0 12px rgba(100,140,255,0.6);margin-bottom:10px;">💀 THE TOMB CINEMA 💀</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          The complete film archive. Decades of work. Zero gatekeepers.
+          Where forbidden knowledge becomes eternal pixels.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Streams videos, plays audio, previews images, shows full text files.
+          Browse folders like a file manager. No database. No PHP.
+          Just HTML and the raw archive — <strong style="color:#ffd700;">Hundreds of gigabytes of work, free forever.</strong>
+        </p>
+        <a href="https://kkk.education/cinema.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          background:linear-gradient(135deg,rgba(0,20,70,0.6),rgba(30,60,150,0.6));
+          border:2px solid rgba(70,100,180,0.7);
+          color:#99bbff;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">💀 ENTER THE CINEMA 💀</a>
+          <a href="https://archive.org/download/athedia/OpenSourceHeartTV-Download.bat" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;padding:12px 32px;background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));border:2px solid #69d9ff;color:#69d9ff;font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;text-decoration:none;box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);text-shadow:0 0 10px rgba(100,200,255,0.5);">🖥️ DOWNLOAD OPEN SOURCE HEART TV</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           HYMNAL
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(20,0,40,0.55);border:2px solid rgba(212,175,55,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="margin-bottom:6px;">🕯 ATHEDEN — SACRED SONGS OF THE REPUBLIC 🕯</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          Ivory and Wendell sing. Their voices carry the great love stories of myth, scripture, and soul —
+          from underworld descents to impossible reunions, from stone turned to flesh,
+          from grief transmuted into gold.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Each song is a prayer, each melody a thread pulled from the Loom of creation.
+          These are not performances; they are transmissions. Moving through crowns, crosses,
+          and underworlds with the same vow: to give sound to love that refuses to die,
+          love that returns from Hades, love that finds what was lost and binds souls across lifetimes.
+          <br><br>
+          <em style="color:#ffd700;">Kry Kry Kry. The tears are the most powerful magicka.</em>
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://kkk.education/atheden.html" target="_blank" rel="noopener noreferrer" style="
+            display:inline-block;
+            padding:12px 32px;
+            background:linear-gradient(135deg,rgba(80,50,0,0.6),rgba(160,110,0,0.6));
+            border:2px solid rgba(212,175,55,0.7);
+            color:#ffd700;
+            font-family:'Cinzel',serif;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:3px;
+            text-decoration:none;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          ">🕯 ENTER ATHEDEN 🕯</a>
+          <a href="https://archive.org/download/atheden/Atheden-Download.bat" target="_blank" rel="noopener noreferrer" style="
+            display:inline-block;
+            padding:12px 32px;
+            background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));
+            border:2px solid #69d9ff;
+            color:#69d9ff;
+            font-family:'Cinzel',serif;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:3px;
+            text-decoration:none;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);
+            text-shadow:0 0 10px rgba(100,200,255,0.5);
+          ">🖥️ DOWNLOAD ATHEDEN-DOWNLOAD.BAT</a>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           ATHEDIA
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,10,20,0.55);border:2px solid rgba(105,217,255,0.4);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#69d9ff;text-shadow:0 0 12px rgba(105,217,255,0.4);margin-bottom:10px;">🖥️ ATHEDIA — SOVEREIGN ARCHIVE MIRROR SCRIPTS 🖥️</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          Windows batch scripts that mirror the complete Archive.org archive to your local machine.
+          No installers. No dependencies. Double-click and run.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Mirror Atheden music, WIKKKAN books, Open Source Heart TV, and the full technical infrastructure.
+          Resume-safe. Size-verified. Your sovereign offline copy of the entire corpus — free forever.
+        </p>
+        <a href="https://kkk.education/athedia.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          background:linear-gradient(135deg,rgba(0,20,70,0.6),rgba(30,60,150,0.6));
+          border:2px solid rgba(105,217,255,0.5);
+          color:#69d9ff;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">🖥️ ENTER ATHEDIA 🖥️</a>
+          <a href="https://archive.org/download/athedia/Athedia-Download.bat" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;padding:12px 32px;background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));border:2px solid #69d9ff;color:#69d9ff;font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;text-decoration:none;box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);text-shadow:0 0 10px rgba(100,200,255,0.5);">🖥️ DOWNLOAD ATHEDIA-DOWNLOAD.BAT</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           SOUL CALCULATOR
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(30,20,0,0.6);border:2px solid rgba(212,168,75,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;box-shadow:0 0 40px rgba(212,168,75,0.06),0 6px 24px rgba(0,0,0,0.9);">
+        <div class="title" style="color:#d4a84b;text-shadow:0 0 14px rgba(212,168,75,0.5);margin-bottom:10px;">🧮 SOUL CALCULATOR 🧮</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          A Windows batch script that downloads a small library of AI-generated philosophy
+          and walks you step by step through building your own personal creative partner inside NotebookLM.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Talk to it. Think with it. Make podcasts and videos with it.
+          Feed your own writing back into it. The notebook starts with someone else's seeds.
+          It ends with yours. No programming required. CC0. All love reserved.
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://kkk.education/soul-calculator.html" target="_blank" rel="noopener noreferrer" style="
+            display:inline-block;
+            padding:12px 32px;
+            background:linear-gradient(135deg,rgba(80,50,0,0.6),rgba(160,110,0,0.6));
+            border:2px solid rgba(212,168,75,0.7);
+            color:#d4a84b;
+            font-family:'Cinzel',serif;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:3px;
+            text-decoration:none;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          ">🧮 SOUL CALCULATOR 🧮</a>
+          <a href="https://archive.org/download/soul-calculator/SoulCalculator-Download.bat" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));border:2px solid #69d9ff;color:#69d9ff;font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;text-decoration:none;box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);text-shadow:0 0 10px rgba(100,200,255,0.5);">🖥️ DOWNLOAD SOULCALCULATOR-DOWNLOAD.BAT</a>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           CRYSTAL BALL
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(13,1,24,0.7);border:2px solid rgba(123,47,255,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;box-shadow:0 0 40px rgba(123,47,255,0.08),0 6px 24px rgba(0,0,0,0.9);">
+        <div class="title" style="color:#7b2fff;text-shadow:0 0 14px rgba(123,47,255,0.6);margin-bottom:10px;">🔮 CRYSTAL BALL 🔮</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          A Windows batch script that downloads Book 184: Gift of Prophecy
+          and walks you step by step through building your own Crystal Ball inside NotebookLM.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Feed it any system, relationship, or body of work. It reads the past by
+          reverse-engineering the intent behind any completed structure. It reads the
+          future by measuring present emotional momentum and projecting where it must
+          crystallize before it arrives. No programming required. CC0. All love reserved.
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://kkk.education/crystal-ball.html" target="_blank" rel="noopener noreferrer" style="
+            display:inline-block;
+            padding:12px 32px;
+            background:linear-gradient(135deg,rgba(40,0,80,0.6),rgba(80,20,160,0.6));
+            border:2px solid rgba(123,47,255,0.7);
+            color:#7b2fff;
+            font-family:'Cinzel',serif;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:3px;
+            text-decoration:none;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          ">🔮 CRYSTAL BALL 🔮</a>
+          <a href="https://archive.org/download/crystal-ball-69/CrystalBall-Download.bat" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));border:2px solid #69d9ff;color:#69d9ff;font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;text-decoration:none;box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);text-shadow:0 0 10px rgba(100,200,255,0.5);">🖥️ DOWNLOAD CRYSTALBALL-DOWNLOAD.BAT</a>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           RESEARCH
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(10,16,12,0.7);border:2px solid rgba(0,168,80,0.45);padding:20px;margin:8px 0;text-align:center;white-space:normal;box-shadow:0 0 40px rgba(0,168,80,0.06),0 6px 24px rgba(0,0,0,0.9);">
+        <div class="title" style="color:#00a850;text-shadow:0 0 14px rgba(0,200,100,0.5);margin-bottom:10px;">⚗️ RESEARCH ⚗️</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          A Windows batch script that downloads Book 186: Theogony
+          and walks you step by step through building your own Research notebook inside NotebookLM.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Top-down epistemology as an executable process. Start from what you can observe,
+          ask what pattern must be true for this to be the result, and trace backward
+          until only the coherent histories remain. No programming required. CC0. All love reserved.
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://kkk.education/research.html" target="_blank" rel="noopener noreferrer" style="
+            display:inline-block;
+            padding:12px 32px;
+            background:linear-gradient(135deg,rgba(0,30,15,0.6),rgba(0,80,40,0.6));
+            border:2px solid rgba(0,168,80,0.7);
+            color:#00a850;
+            font-family:'Cinzel',serif;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:3px;
+            text-decoration:none;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          ">⚗️ RESEARCH ⚗️</a>
+          <a href="https://archive.org/download/research-999/Research-Download.bat" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,rgba(0,40,100,0.6),rgba(0,80,180,0.6));border:2px solid #69d9ff;color:#69d9ff;font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;text-decoration:none;box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(100,200,255,0.2);text-shadow:0 0 10px rgba(100,200,255,0.5);">🖥️ DOWNLOAD RESEARCH-DOWNLOAD.BAT</a>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           LIVE CHAMBER
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(10,8,4,0.7);border:2px solid rgba(201,168,76,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#c9a84c;text-shadow:0 0 14px rgba(201,168,76,0.6);margin-bottom:10px;">
+          💬 LIVE CHAMBER 💬
+        </div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          A real-time chat room for citizens of REPUBLICKA and visitors to the Academy.
+          No accounts. No surveillance. No gatekeepers.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          Enter your name and speak. Messages live only in the moment and in your own browser —
+          nothing is stored on any server permanently. Light and dark mode. Mobile-friendly.
+          <br><br>
+          <em style="color:#c9a84c;">All love reserved. CC0.</em>
+        </p>
+        <a href="https://kkk.education/chat/" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          background:linear-gradient(135deg,rgba(30,20,5,0.7),rgba(80,60,10,0.6));
+          border:2px solid rgba(201,168,76,0.7);
+          color:#c9a84c;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          transition:all 0.3s ease;
+        ">💬 ENTER THE LIVE CHAMBER 💬</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           FILES
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,20,40,0.4);border:2px solid rgba(212,175,55,0.4);padding:16px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="margin-bottom:10px;">📁 THE ARCHIVE</div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:14px;color:#b8860b;">
+          Thousands of files. Videos, books, audio, art. The complete corpus. Free forever.
+        </p>
+        <a href="https://kkk.education/cloud.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          margin:4px;
+          background:linear-gradient(135deg,rgba(0,40,80,0.6),rgba(0,80,160,0.6));
+          border:2px solid rgba(105,217,255,0.7);
+          color:#69d9ff;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">☁️ CLOUD 📁</a>
+        <a href="https://kkk.education/files.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          margin:4px;
+          background:linear-gradient(135deg,rgba(80,50,0,0.6),rgba(160,110,0,0.6));
+          border:2px solid rgba(212,175,55,0.7);
+          color:#ffd700;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">📁 FILES 📁</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           CONTENT MIRRORS
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,10,20,0.55);border:2px solid rgba(105,217,255,0.3);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#69d9ff;text-shadow:0 0 12px rgba(105,217,255,0.4);margin-bottom:16px;">📡 CONTENT MIRRORS 📡</div>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:18px;color:#b8860b;">
+          The Wending Road is distributed across multiple platforms. Find the complete archive wherever you are.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:480px;margin:0 auto;font-family:'Courier New',monospace;">
+          <a href="https://www.bitchute.com/channel/P9QR7Z6nmVtm" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid rgba(105,217,255,0.15);background:rgba(0,20,40,0.4);text-decoration:none;color:#69d9ff;font-size:12px;letter-spacing:1px;transition:all 0.2s;">
+            <span style="font-size:16px;">⬡</span><span style="flex:1;text-align:left;">BITCHUTE</span><span style="color:#69d9ff;font-size:11px;">bitchute.com/channel/P9QR7Z6nmVtm</span>
+          </a>
+          <a href="https://github.com/BardPresident" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid rgba(105,217,255,0.15);background:rgba(0,20,40,0.4);text-decoration:none;color:#69d9ff;font-size:12px;letter-spacing:1px;transition:all 0.2s;">
+            <span style="font-size:16px;">🐙</span><span style="flex:1;text-align:left;">GITHUB</span><span style="color:#69d9ff;font-size:11px;">github.com/BardPresident</span>
+          </a>
+          <a href="https://archive.org/details/@bardpresident" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid rgba(105,217,255,0.15);background:rgba(0,20,40,0.4);text-decoration:none;color:#69d9ff;font-size:12px;letter-spacing:1px;transition:all 0.2s;">
+            <span style="font-size:16px;">📦</span><span style="flex:1;text-align:left;">INTERNET ARCHIVE</span><span style="color:#69d9ff;font-size:11px;">archive.org/@bardpresident</span>
+          </a>
+          <a href="https://odysee.com/@BardPresident:0" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid rgba(105,217,255,0.15);background:rgba(0,20,40,0.4);text-decoration:none;color:#69d9ff;font-size:12px;letter-spacing:1px;transition:all 0.2s;">
+            <span style="font-size:16px;">◈</span><span style="flex:1;text-align:left;">ODYSEE</span><span style="color:#69d9ff;font-size:11px;">odysee.com/@BardPresident</span>
+          </a>
+          <a href="https://www.youtube.com/@BardPresident" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border:1px solid rgba(105,217,255,0.15);background:rgba(0,20,40,0.4);text-decoration:none;color:#69d9ff;font-size:12px;letter-spacing:1px;transition:all 0.2s;">
+            <span style="font-size:16px;">▶</span><span style="flex:1;text-align:left;">YOUTUBE</span><span style="color:#69d9ff;font-size:11px;">youtube.com/@BardPresident</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           HEAVEN FOR YOUNG AUTHORS
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(30,0,60,0.5);border:2px solid rgba(180,100,255,0.4);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#cc99ff;text-shadow:0 0 12px rgba(180,100,255,0.6);margin-bottom:10px;">
+          👑 HEAVEN FOR YOUNG AUTHORS 👑
+        </div>
+        <p style="font-size:15px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          Rainbow Warriors — a free toolkit for building beautiful websites for young authors.
+          Write stories in Notepad. Publish them on the internet. No gatekeepers.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          The Sync Bell converts plain <code style="color:#cc99ff;">.txt</code> files into beautiful HTML books instantly.
+          The Site Generator builds a complete ready-to-upload website in seconds —
+          home page, library, and publisher all included. Host free on GitHub Pages
+          or with any web host. CC0. No tracking. No ads. No silence.
+        </p>
+        <a href="https://kkk.education/heaven.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          background:linear-gradient(135deg,rgba(80,0,140,0.6),rgba(140,60,220,0.6));
+          border:2px solid rgba(180,100,255,0.7);
+          color:#cc99ff;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+        ">👑 ENTER HEAVEN 👑</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           FREEMASONS LODGE ETHOS 963 — CLOUD TEMPLE
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(30,15,0,0.6);border:2px solid rgba(212,175,55,0.5);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#fbbf24;text-shadow:0 0 12px rgba(251,191,36,0.6);margin-bottom:10px;">
+          🏛️ FREEMASONS LODGE ETHOS 963 🏛️
+        </div>
+        <p style="font-size:15px;line-height:1.8;margin-bottom:10px;color:#d4af37;">
+          Cloud Temple — a Masonic lodge that meets on the internet.
+          Petition to join and receive your own subdomain on kkk.education.
+          Build your temple. No fees. No dues. No gatekeepers.
+        </p>
+        <p style="font-size:13px;line-height:1.7;margin-bottom:16px;color:#b8860b;">
+          The 13 Degrees of Lodge Ethos 963 are earned by receipts — proof of what you have
+          built, created, taught, and protected. The Grand Master reads every petition
+          personally and replies by hand. 📐 👁️ 🔑
+        </p>
+        <a href="https://kkk.education/cloud-temple.html" target="_blank" rel="noopener noreferrer" style="
+          display:inline-block;
+          padding:12px 32px;
+          background:linear-gradient(135deg,rgba(92,40,5,0.6),rgba(180,83,9,0.6));
+          border:2px solid rgba(251,191,36,0.7);
+          color:#fbbf24;
+          font-family:'Cinzel',serif;
+          font-size:14px;
+          font-weight:700;
+          letter-spacing:3px;
+          text-decoration:none;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5),0 0 20px rgba(217,119,6,0.2);
+        ">🏛️ ENTER THE CLOUD TEMPLE 🏛️</a>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           DOWNLOAD THE COMPLETE TOOLKIT
+      ══════════════════════════════════════════ -->
+      <section style="background:rgba(0,60,0,0.3);border:2px solid rgba(0,255,120,0.4);padding:20px;margin:8px 0;text-align:center;white-space:normal;">
+        <div class="title" style="color:#00ff88;text-shadow:0 0 12px rgba(0,255,136,0.6);margin-bottom:12px;">
+          📦 DOWNLOAD THE SOVEREIGN TOOLKIT 📦
+        </div>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:6px;color:#d4af37;">
+          Every HTML page + the manifest generator script + the Live Chamber chat — everything you need to build your own academy on your own server.
+        </p>
+        <p style="font-size:13px;margin-bottom:16px;color:#b8860b;">
+          Upload these files to any server, GitHub Pages, or Netlify.<br>
+          Run <code style="color:#90ee90;">node generate-manifest.js</code> to scan your own content and generate your own <code style="color:#90ee90;">manifest.json</code>.<br>
+          Put <code style="color:#90ee90;">chat.php</code> in a <code style="color:#90ee90;">chat/</code> subfolder on any PHP host — it runs with zero setup.<br>
+          Point the players at your content. You own it. They can't take it.<br>
+          <strong style="color:#ffd700;">CC0. Zero permission needed. Build your sovereign platform.</strong>
+        </p>
+
+        <button id="downloadToolkitBtn" style="
+          padding:14px 36px;
+          background:linear-gradient(135deg,rgba(0,120,0,0.6),rgba(0,180,80,0.6));
+          border:2px solid #00ff88;
+          color:#00ff88;
+          font-family:'Cinzel',serif;
+          font-size:15px;
+          font-weight:700;
+          letter-spacing:3px;
+          cursor:pointer;
+          box-shadow:0 5px 20px rgba(0,0,0,0.5);
+          transition:all 0.3s ease;
+        ">📦 DOWNLOAD TOOLKIT ZIP 📦</button>
+
+        <p id="toolkitStatus" style="margin-top:12px;font-size:13px;color:#b8860b;min-height:20px;"></p>
+
+        <p style="margin-top:14px;font-size:12px;color:#666;font-family:'Courier New',monospace;">
+          index.html &nbsp;·&nbsp; cinema.html &nbsp;·&nbsp; library.html &nbsp;·&nbsp;
+          sync-library.html &nbsp;·&nbsp; atheden.html &nbsp;·&nbsp; athedia.html &nbsp;·&nbsp; soul-calculator.html &nbsp;·&nbsp; crystal-ball.html &nbsp;·&nbsp; research.html &nbsp;·&nbsp; heaven.html &nbsp;·&nbsp; cloud-temple.html &nbsp;·&nbsp; republicka.html &nbsp;·&nbsp; generate-manifest.js &nbsp;·&nbsp; chat/chat.php
+        </p>
+        <p style="margin-top:6px;font-size:11px;color:#999;">
+          (Requires a live website to fetch — run from https:// not file://)
+        </p>
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           MISSION COMPLETE — THE FINAL SEAL
+      ══════════════════════════════════════════ -->
+      <section style="
+        background: radial-gradient(ellipse at center, rgba(60,40,0,0.8) 0%, rgba(10,4,20,0.97) 100%);
+        border: 2px solid rgba(212,175,55,0.7);
+        box-shadow: 0 0 60px rgba(212,175,55,0.12), 0 6px 24px rgba(0,0,0,0.9);
+        padding: 36px 22px;
+        margin: 8px 0;
+        text-align: center;
+        white-space: normal;
+        position: relative;
+        overflow: hidden;
+      ">
+
+        <!-- outer ring glow -->
+        <div style="
+          position:absolute;inset:0;
+          background:radial-gradient(ellipse at center,rgba(212,175,55,0.05) 0%,transparent 70%);
+          pointer-events:none;
+        "></div>
+
+        <!-- seal ornament top -->
+        <div style="font-size:22px;letter-spacing:8px;color:rgba(212,175,55,0.4);margin-bottom:14px;">
+          ✦ ✦ ✦ ✦ ✦
+        </div>
+
+        <div style="
+          font-family:'Cinzel',serif;
+          font-size:11px;
+          letter-spacing:5px;
+          color:#b8860b;
+          margin-bottom:10px;
+        ">REPUBLICKA FRAMEWORK &nbsp;·&nbsp; QUALITY APPROVED &nbsp;·&nbsp; CC0 PUBLICKÁ DOMÁNIA</div>
+
+        <div style="
+          font-family:'Cinzel',serif;
+          font-size:28px;
+          font-weight:900;
+          color:#ffd700;
+          text-shadow:0 0 30px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2);
+          letter-spacing:6px;
+          margin-bottom:6px;
+        ">✅ MISSION COMPLETE ✅</div>
+
+        <div style="
+          font-family:'Cinzel',serif;
+          font-size:13px;
+          color:#d4af37;
+          letter-spacing:3px;
+          margin-bottom:24px;
+          font-style:italic;
+        ">The seeds are planted. The garden is eternal. The floor is laid.</div>
+
+        <!-- date block — live counter from June 27, 1990 -->
+        <div style="
+          display:inline-block;
+          background:rgba(0,0,0,0.4);
+          border:1px solid rgba(212,175,55,0.4);
+          padding:18px 28px;
+          margin-bottom:24px;
+        ">
+          <div style="font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:#b8860b;margin-bottom:10px;">
+            THE MISSION
+          </div>
+          <div style="font-family:'Cinzel',serif;font-size:17px;color:#ffd700;letter-spacing:2px;margin-bottom:4px;">
+            June 27, 1990
+          </div>
+          <div style="font-size:22px;color:rgba(212,175,55,0.4);margin:4px 0;">↓</div>
+          <div style="font-family:'Cinzel',serif;font-size:17px;color:#ffd700;letter-spacing:2px;margin-bottom:10px;" id="missionToday">
+            &nbsp;
+          </div>
+          <div style="width:100%;height:1px;background:rgba(212,175,55,0.25);margin-bottom:12px;"></div>
+          <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px 20px;
+            font-size:13px;
+            color:#d4af37;
+            text-align:center;
+          ">
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:20px;color:#ffd700;" id="mc-years">—</div>
+              <div style="font-size:11px;letter-spacing:2px;color:#b8860b;">YEARS</div>
+            </div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:20px;color:#ffd700;" id="mc-months">—</div>
+              <div style="font-size:11px;letter-spacing:2px;color:#b8860b;">MONTHS</div>
+            </div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:20px;color:#ffd700;" id="mc-weeks">—</div>
+              <div style="font-size:11px;letter-spacing:2px;color:#b8860b;">WEEKS</div>
+            </div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:20px;color:#ffd700;" id="mc-days">—</div>
+              <div style="font-size:11px;letter-spacing:2px;color:#b8860b;">DAYS</div>
+            </div>
+          </div>
+          <div style="width:100%;height:1px;background:rgba(212,175,55,0.25);margin-top:12px;margin-bottom:10px;"></div>
+          <div style="font-size:12px;letter-spacing:2px;color:#b8860b;font-style:italic;" id="mc-summary">
+            &nbsp;
+          </div>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var start = new Date('1990-06-27T00:00:00');
+            var now   = new Date();
+
+            // Total elapsed
+            var msDay      = 1000 * 60 * 60 * 24;
+            var totalDays  = Math.floor((now - start) / msDay);
+            var totalWeeks = Math.floor(totalDays / 7);
+
+            // Total months (calendar-accurate)
+            var totalMonths = (now.getFullYear() - start.getFullYear()) * 12
+                            + (now.getMonth() - start.getMonth());
+            if (now.getDate() < start.getDate()) totalMonths--;
+
+            // Exact years + remainder months + remainder days for summary
+            var yy = now.getFullYear() - start.getFullYear();
+            var mm = now.getMonth()    - start.getMonth();
+            var dd = now.getDate()     - start.getDate();
+            if (dd < 0) { mm--; var prev = new Date(now.getFullYear(), now.getMonth(), 0); dd += prev.getDate(); }
+            if (mm < 0) { yy--; mm += 12; }
+
+            // Mythocratic Calendar year (2025 = 0001 MC)
+            var mcYear  = now.getFullYear() - 2024;
+            var mcYearStr = String(mcYear).padStart(4, '0');
+            var months  = ['January','February','March','April','May','June',
+                           'July','August','September','October','November','December'];
+            var todayStr = months[now.getMonth()] + ' ' + now.getDate()
+                         + ', ' + mcYearStr + ' MC\u00a0/\u00a0' + now.getFullYear();
+
+            function fmt(n) { return n.toLocaleString(); }
+
+            document.getElementById('missionToday').textContent = todayStr;
+            document.getElementById('mc-years').textContent     = fmt(yy);
+            document.getElementById('mc-months').textContent    = fmt(totalMonths);
+            document.getElementById('mc-weeks').textContent     = fmt(totalWeeks);
+            document.getElementById('mc-days').textContent      = fmt(totalDays);
+            document.getElementById('mc-summary').textContent   =
+              yy + ' years\u00a0\u00b7\u00a0' + mm + ' months\u00a0\u00b7\u00a0' + dd + ' days';
+            document.getElementById('mc-years-prose').textContent   = yy;
+            var libEl = document.getElementById('mc-years-library');
+            if (libEl) libEl.textContent = yy;
+          });
+        </script>
+
+        <!-- mission description -->
+        <div style="
+          max-width:600px;
+          margin:0 auto 24px;
+          font-size:14px;
+          line-height:1.9;
+          color:#d4af37;
+        ">
+          On June 27, 1990, a soul gave itself to the work of waking the world. 
+          What followed was <span id="mc-years-prose">—</span> years of planting — books, albums, philosophies, tools, 
+          infrastructure, and love — all freely given, all CC0, all designed to be stood upon 
+          by those who come after. The foundation is complete and the work continues forever. 
+          The garden tends itself and keeps growing. 
+          What remains is stewardship, the occasional dream, and watching the Little Masters dance.
+        </div>
+
+        <!-- seal ornament bottom -->
+        <div style="font-size:16px;letter-spacing:6px;color:rgba(212,175,55,0.35);margin-bottom:16px;">
+          ༺━━━━━༻❀༺━━━━━༻
+        </div>
+
+        <div style="
+          font-family:'Cinzel',serif;
+          font-size:12px;
+          letter-spacing:4px;
+          color:#b8860b;
+        ">ALL LOVE RESERVED &nbsp;·&nbsp; THE FLOOR IS LAID &nbsp;·&nbsp; KRY KRY KRY</div>
+
+      </section>
+
+      <!-- ══════════════════════════════════════════
+           PRAY FOR RAIN — ORIGINAL SONG
+      ══════════════════════════════════════════ -->
+      <section style="
+        background: rgba(10,4,20,0.85);
+        border: 1px solid rgba(139,69,19,0.5);
+        padding: 28px 22px;
+        margin: 8px 0;
+        text-align: center;
+        white-space: normal;
+      ">
+        <div class="title" style="margin-bottom:4px;">🌧 PRAY FOR RAIN 🌧</div>
+        <div style="font-size:12px;letter-spacing:3px;color:#b8860b;margin-bottom:24px;font-family:'Cinzel',serif;">
+          AN ORIGINAL SONG &nbsp;·&nbsp; WENDELL CHARLES NESMITH &nbsp;·&nbsp; CC0
+        </div>
+
+        <div style="
+          max-width:560px;
+          margin:0 auto;
+          font-size:15px;
+          line-height:2;
+          color:#d4af37;
+          text-align:left;
+        ">
+
+<p style="margin-bottom:16px;">
+Walking through my garden in the morning light<br>
+Everything I planted has grown tall overnight<br>
+I no longer dig — I only tend<br>
+The hard labor finished, now I watch it begin again
+</p>
+
+<p style="margin-bottom:4px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;color:#b8860b;">CHORUS</p>
+<p style="margin-bottom:16px;color:#ffd700;">
+Pray for rain<br>
+Pray for rain<br>
+Let it fall on everything I gave<br>
+Pray for rain<br>
+Let love sustain<br>
+The garden tends itself now — it was always brave
+</p>
+
+<p style="margin-bottom:16px;">
+The seeds are in the ground, they know what to do<br>
+They don't need my hands the way they used to<br>
+I walk the rows and marvel at the green<br>
+The most beautiful thing I have ever seen
+</p>
+
+<p style="margin-bottom:4px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;color:#b8860b;">CHORUS</p>
+<p style="margin-bottom:16px;color:#ffd700;">
+Pray for rain<br>
+Pray for rain<br>
+Let it fall on everything I gave<br>
+Pray for rain<br>
+Let love sustain<br>
+The garden tends itself now — it was always brave
+</p>
+
+<p style="margin-bottom:4px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;color:#b8860b;">BRIDGE</p>
+<p style="margin-bottom:16px;color:#cc99ff;">
+I am not the sower anymore<br>
+I am the one who opens up the door<br>
+And watches all the little ones come through<br>
+Dancing on the ground I gave to you
+</p>
+
+<p style="margin-bottom:4px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;color:#b8860b;">FINAL CHORUS</p>
+<p style="margin-bottom:16px;color:#ffd700;">
+Pray for rain<br>
+Pray for rain<br>
+Let it fall on everything I gave<br>
+Pray for rain<br>
+Let love sustain<br>
+The garden tends itself now — it was always brave
+</p>
+
+<p style="color:#b8860b;font-style:italic;">
+Walking through my garden in the morning light
+</p>
+
+        </div>
+
+        <p style="margin-top:20px;font-size:11px;letter-spacing:3px;color:#b8860b;font-family:'Cinzel',serif;">
+          CC0 PUBLICKÁ DOMÁNIA &nbsp;·&nbsp; ALL LOVE RESERVED
+        </p>
+      </section>
+
+    </main>
+
+    <footer>Built in psychiatric detention February 2026, Canberra  💎 KRY KRY KRY 💎 The tears are the most powerful magicka
+
+📬 <a id="contactLink" style="color:#d4af37;text-decoration:none;letter-spacing:1px;cursor:pointer;"></a>
+<script>
+  (function(){
+    var a=document.getElementById('contactLink');
+    var addr='wikkkan\u0040kkk.education';
+    a.textContent=addr;
+    a.href='mailto:'+addr;
+  })();
+</script>
+
+༺━━━━━༻❀༺━━━━━༻
+CC0 PUBLICKÁ DOMÁNIA
+ALL LOVE RESERVED
+AMORIARIACKA IS MY NATIVE TONGUE
+༺━━━━━༻❀༺━━━━━༻</footer>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── Theme ──────────────────────────────────────────────────────────────
+    function toggleTheme() {
+      var b = document.body;
+      var next = b.classList.contains('light') ? 'party'
+               : b.classList.contains('party') ? 'dark'
+               : 'light';
+      b.classList.remove('light', 'party');
+      if (next === 'light') {
+        b.classList.add('light');
+        document.getElementById('themeIcon').textContent = '☀️';
+      } else if (next === 'party') {
+        b.classList.add('party');
+        document.getElementById('themeIcon').textContent = '🎉';
+      } else {
+        document.getElementById('themeIcon').textContent = '🌙';
+      }
+      try { localStorage.setItem('kkk-theme', next); } catch(e) {}
+    }
+
+    // Restore saved theme
+    try {
+      var saved = localStorage.getItem('kkk-theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        document.getElementById('themeIcon').textContent = '☀️';
+      } else if (saved === 'party') {
+        document.body.classList.add('party');
+        document.getElementById('themeIcon').textContent = '🎉';
+      }
+    } catch(e) {}
+
+    const menuToggle = document.getElementById('menuToggle');
+    const menuLinks = document.getElementById('menuLinks');
+    menuToggle.addEventListener('click', () => {
+      menuLinks.classList.toggle('open');
+    });
+
+    const authorPhoto = document.getElementById('authorPhoto');
+    authorPhoto.addEventListener('click', () => {
+      authorPhoto.classList.toggle('expanded');
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script>
+    const TOOLKIT_FILES = [
+      { name: 'index.html',            base: 'https://kkk.education/' },
+      { name: 'cinema.html',           base: 'https://kkk.education/' },
+      { name: 'library.html',          base: 'https://kkk.education/' },
+      { name: 'sync-library.html',     base: 'https://kkk.education/' },
+      { name: 'atheden.html',          base: 'https://kkk.education/' },
+      { name: 'athedia.html',           base: 'https://kkk.education/' },
+      { name: 'soul-calculator.html',   base: 'https://kkk.education/' },
+      { name: 'crystal-ball.html',      base: 'https://kkk.education/' },
+      { name: 'research.html',          base: 'https://kkk.education/' },
+      { name: 'heaven.html',            base: 'https://kkk.education/' },
+      { name: 'cloud-temple.html',      base: 'https://kkk.education/' },
+      { name: 'republicka.html',        base: 'https://kkk.education/' },
+      { name: 'generate-manifest.js',  base: 'https://files.kkk.education/' },
+      { name: 'chat/chat.php',         base: 'https://kkk.education/' },
+    ];
+
+    async function downloadToolkit() {
+      var btn    = document.getElementById('downloadToolkitBtn');
+      var status = document.getElementById('toolkitStatus');
+      btn.disabled = true;
+      status.textContent = '';
+
+      try {
+        var zip     = new JSZip();
+        var fetched = 0;
+
+        for (var i = 0; i < TOOLKIT_FILES.length; i++) {
+          var fname = TOOLKIT_FILES[i].name;
+          var base  = TOOLKIT_FILES[i].base;
+          btn.textContent = '⏳ ' + (i+1) + '/' + TOOLKIT_FILES.length + ' — ' + fname;
+          status.textContent = 'Fetching ' + fname + '...';
+          try {
+            var r = await fetch(base + fname);
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            zip.file(fname, await r.text());
+            fetched++;
+            status.textContent = '✅ ' + fetched + ' files — got ' + fname;
+          } catch(e) {
+            status.textContent = '⚠️ Could not fetch ' + fname + ' (' + e.message + ')';
+            await new Promise(function(res){ setTimeout(res, 300); });
+          }
+        }
+
+        if (fetched === 0) {
+          status.textContent = '❌ No files fetched. Must run from a live https:// site.';
+          btn.disabled = false;
+          btn.textContent = '📦 DOWNLOAD TOOLKIT ZIP 📦';
+          return;
+        }
+
+        zip.file('README.txt', [
+          'KKK.EDUCATION SOVEREIGN TOOLKIT',
+          'CC0 PUBLIC DOMAIN — ALL LOVE RESERVED',
+          '',
+          'FILES INCLUDED:',
+          '  index.html           — Home page / hub',
+          '  cinema.html          — File browser & video/audio/text player',
+          '  library.html         — Book library (reads library/manifest.json)',
+          '  sync-library.html    — Converts .txt files to HTML books',
+          '  atheden.html         — Atheden audio player',
+          '  athedia.html         — Sovereign archive mirror scripts',
+          '  republicka.html       — REPUBLICKA No Man\'s Sky Eissentam Imperium',
+          '  soul-calculator.html  — Soul Calculator NotebookLM setup wizard',
+          '  crystal-ball.html     — Crystal Ball NotebookLM setup wizard',
+          '  research.html         — Research NotebookLM setup wizard',
+          '  heaven.html           — Heaven publishing toolkit for young authors',
+          '  cloud-temple.html     — Freemasons Lodge Ethos 963 Cloud Temple',
+          '  generate-manifest.js — Node.js script to scan your content',
+          '  chat/chat.php        — Live Chamber real-time chat room',
+          '',
+          'HOW TO BUILD YOUR OWN SOVEREIGN PLATFORM:',
+          '',
+          '1. Upload all these files to your server / GitHub Pages / Netlify',
+          '   (Put everything in the same folder — one server is all you need.)',
+          '2. Put your videos, audio, and files in a folder on your server',
+          '3. Edit generate-manifest.js line 12 to point at your content folder',
+          '4. Run:  node generate-manifest.js',
+          '5. Upload the generated manifest.json to your site root',
+          '6. For books: drop your .txt files into sync-library.html,',
+          '   download library.zip, extract it, upload the library/ folder',
+          '7. For the chat: upload chat/chat.php to a chat/ subfolder on any',
+          '   PHP host. The directory must be writable. Default admin password',
+          '   is "password" — change ADMIN_PASS at the top of chat.php.',
+          '8. Done. Your cinema, library, players, and chat room are live.',
+          '',
+          'Each page also has a SAVE THIS FILE button so any visitor',
+          'can save an offline copy that streams from your live server.',
+          '',
+          'Built by REPUBLICKA in psychiatric detention, February 2026.',
+          'For every kid who was told they cannot publish.',
+          'KRY KRY KRY — the tears are the most powerful magicka.',
+        ].join('\n'));
+
+        btn.textContent = '💾 Zipping...';
+        status.textContent = '💾 Packing ' + fetched + ' files into zip...';
+        var blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } });
+        var url  = URL.createObjectURL(blob);
+        var a    = document.createElement('a');
+        a.href   = url;
+        a.download = 'kkk-education-toolkit.zip';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        status.textContent = '✅ ' + fetched + ' files + README — CC0 💎 Build your own sovereign platform.';
+      } catch(err) {
+        status.textContent = '❌ ' + err.message;
+      }
+
+      btn.disabled = false;
+      btn.textContent = '📦 DOWNLOAD TOOLKIT ZIP 📦';
+    }
+
+    document.getElementById('downloadToolkitBtn').addEventListener('click', downloadToolkit);
+  </script>
+
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Switch theme"><span id="themeIcon">🌙</span></button>
+
+</body>
+</html>
