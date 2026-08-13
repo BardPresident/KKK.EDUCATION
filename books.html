@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📜 BOOKS — KKK.EDUCATION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --gold:      #ffd700;
+            --gold2:     #d4af37;
+            --gold3:     #b8860b;
+            --bg:        #08030f;
+            --green:     #00ff88;
+            --surface:   rgba(255,255,255,0.018);
+            --border-row:rgba(139,69,19,0.4);
+            --input-bg:  rgba(0,0,0,0.5);
+            --input-border:rgba(212,175,55,0.25);
+            --stats-bg:  rgba(255,215,0,0.04);
+            --stats-border:rgba(212,175,55,0.15);
+            --reader-bg: rgba(0,0,0,0.96);
+            --reader-border:rgba(212,175,55,0.25);
+            --reader-text:rgba(212,175,55,0.88);
+            --reader-hdr: rgba(212,175,55,0.08);
+            --reader-hdr-border:rgba(212,175,55,0.3);
+            --footer-border:rgba(212,175,55,0.12);
+            --footer-color:rgba(212,175,55,0.3);
+            --breadcrumb-color:rgba(212,175,55,0.5);
+        }
+        [data-theme="light"] {
+            --gold:      #6b3f00;
+            --gold2:     #7a4f00;
+            --gold3:     #995e05;
+            --bg:        #fdf6e3;
+            --green:     #006633;
+            --surface:   rgba(120,80,0,0.04);
+            --border-row:rgba(120,80,0,0.35);
+            --input-bg:  rgba(255,255,255,0.85);
+            --input-border:rgba(120,80,0,0.3);
+            --stats-bg:  rgba(120,80,0,0.06);
+            --stats-border:rgba(120,80,0,0.2);
+            --reader-bg: rgba(253,246,227,0.99);
+            --reader-border:rgba(120,80,0,0.25);
+            --reader-text:rgba(90,50,0,0.9);
+            --reader-hdr: rgba(120,80,0,0.06);
+            --reader-hdr-border:rgba(120,80,0,0.25);
+            --footer-border:rgba(120,80,0,0.15);
+            --footer-color:rgba(120,80,0,0.4);
+            --breadcrumb-color:rgba(120,80,0,0.6);
+        }
+        body {
+            background: var(--bg);
+            color: var(--gold2);
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(80,0,140,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 70%, rgba(40,0,80,0.15) 0%, transparent 55%),
+                radial-gradient(ellipse 100% 80% at 50% 100%, rgba(20,0,40,0.4) 0%, transparent 60%);
+            transition: opacity 0.3s;
+        }
+        [data-theme="light"] body::before { opacity: 0; }
+        [data-theme="light"] body::after  { opacity: 0; }
+        body::after {
+            content: '';
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px);
+            opacity: 0.5;
+        }
+        .wrap { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+        /* ── HEADER ── */
+        header { text-align: center; padding: 56px 0 40px; border-bottom: 1px solid var(--reader-border); margin-bottom: 48px; }
+        .icon-stack { font-size: 56px; line-height: 1; margin-bottom: 20px; display: block; filter: drop-shadow(0 0 20px rgba(255,215,0,0.5)); animation: breathe 4s ease-in-out infinite; }
+        @keyframes breathe {
+            0%,100% { filter: drop-shadow(0 0 12px rgba(255,215,0,0.4)); }
+            50%      { filter: drop-shadow(0 0 28px rgba(255,215,0,0.8)) drop-shadow(0 0 60px rgba(255,140,0,0.3)); }
+        }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(22px,5vw,36px); font-weight: 900; letter-spacing: 8px; color: var(--gold); text-shadow: 0 0 30px rgba(255,215,0,0.4), 2px 2px 0 rgba(0,0,0,0.8); margin-bottom: 10px; }
+        .subtitle { font-size: 15px; font-style: italic; color: var(--gold3); letter-spacing: 2px; }
+        .breadcrumb { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--breadcrumb-color); letter-spacing: 1px; }
+        .breadcrumb a { color: rgba(212,175,55,0.6); text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb span { color: rgba(212,175,55,0.3); }
+
+        /* ── STATS BAR ── */
+        .stats-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 20px; background: var(--stats-bg); border: 1px solid var(--stats-border); margin-bottom: 28px; font-family: 'Share Tech Mono', monospace; font-size: 13px; color: var(--gold3); }
+        .stats-bar .count { color: var(--gold); font-size: 15px; }
+        #searchInput { background: var(--input-bg); border: 1px solid var(--input-border); color: var(--gold); font-family: 'Share Tech Mono', monospace; font-size: 13px; padding: 7px 14px; width: 220px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+        #searchInput::placeholder { color: rgba(212,175,55,0.3); }
+        #searchInput:focus { border-color: rgba(212,175,55,0.6); box-shadow: 0 0 12px rgba(255,215,0,0.15); }
+
+        /* ── FILE LIST ── */
+        #fileList { display: flex; flex-direction: column; gap: 4px; }
+
+        /* icon | num | name | [read] [copy] [dl] */
+        .file-row {
+            display: grid;
+            grid-template-columns: 52px 1fr auto auto auto;
+            align-items: center; gap: 0 10px;
+            padding: 11px 18px;
+            background: var(--surface);
+            border-left: 3px solid var(--border-row);
+            color: var(--gold2);
+            font-family: 'Crimson Text', serif; font-size: 17px;
+            transition: all 0.18s ease; position: relative; overflow: hidden;
+            cursor: pointer;
+        }
+        .file-row::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(212,175,55,0.06) 0%, transparent 60%); opacity: 0; transition: opacity 0.18s; }
+        .file-row:hover { background: rgba(139,69,19,0.18); border-left-color: var(--gold); color: var(--gold); transform: translateX(4px); }
+        .file-row:hover::before { opacity: 1; }
+
+        .file-num { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--gold3); text-align: right; opacity: 0.7; }
+        .file-row:hover .file-num { color: var(--gold); opacity: 1; }
+        .file-name { font-weight: 600; letter-spacing: 0.3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* action buttons */
+        .row-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: none; border: 1px solid transparent; border-radius: 3px;
+            cursor: pointer; font-size: 13px; padding: 4px 7px;
+            white-space: nowrap; color: rgba(212,175,55,0.45);
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.15s; flex-shrink: 0; position: relative; z-index: 2;
+        }
+        .row-btn:hover { color: var(--gold); border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.08); }
+        .row-btn.copied { color: var(--green); border-color: rgba(0,255,136,0.4); background: rgba(0,255,136,0.06); }
+        .row-btn.dl-btn:hover { color: var(--green); border-color: rgba(0,255,136,0.4); }
+
+        /* ── STATE ── */
+        .state-msg { text-align: center; padding: 60px 20px; font-size: 18px; font-style: italic; color: var(--gold3); }
+        .state-msg .big { font-size: 40px; display: block; margin-bottom: 14px; }
+        .state-msg code { font-family: 'Share Tech Mono', monospace; font-size: 13px; background: rgba(0,0,0,0.4); padding: 2px 8px; color: var(--green); }
+
+        /* ── READER MODAL ── */
+        #readerOverlay {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: var(--reader-bg);
+            flex-direction: column;
+        }
+        #readerOverlay.open { display: flex; }
+
+        .reader-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 28px; border-bottom: 1px solid var(--reader-border);
+            flex-shrink: 0; gap: 16px; flex-wrap: wrap;
+        }
+        .reader-title {
+            font-family: 'Cinzel', serif; font-size: clamp(14px,2.5vw,20px);
+            color: var(--gold); letter-spacing: 2px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+        }
+        .reader-actions { display: flex; gap: 8px; flex-shrink: 0; }
+        .reader-btn {
+            background: var(--reader-hdr); border: 1px solid var(--reader-hdr-border);
+            color: var(--gold3); font-family: 'Share Tech Mono', monospace; font-size: 12px;
+            letter-spacing: 1px; padding: 7px 14px; cursor: pointer; border-radius: 3px;
+            transition: all 0.18s; white-space: nowrap;
+        }
+        .reader-btn:hover { background: rgba(212,175,55,0.18); color: var(--gold); }
+        .reader-btn.close-btn:hover { background: rgba(180,30,30,0.2); border-color: rgba(200,60,60,0.5); color: #ff6666; }
+
+        .reader-body {
+            flex: 1; overflow-y: auto; padding: 40px clamp(20px, 6vw, 80px);
+        }
+        #readerText {
+            font-family: 'Crimson Text', serif; font-size: clamp(16px, 2.2vw, 20px);
+            line-height: 1.85; color: var(--reader-text);
+            white-space: pre-wrap; word-break: break-word;
+            max-width: 72ch; margin: 0 auto;
+        }
+        .reader-loading {
+            text-align: center; padding: 80px 20px;
+            font-family: 'Share Tech Mono', monospace; font-size: 14px;
+            color: var(--gold3); letter-spacing: 2px;
+        }
+        .reader-loading::after { content: '…'; animation: dots 1.2s infinite; }
+        @keyframes dots { 0%,33%{content:'.'} 66%{content:'..'} 100%{content:'...'} }
+
+        /* scrollbar inside reader */
+        .reader-body::-webkit-scrollbar { width: 8px; }
+        .reader-body::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+        .reader-body::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 4px; }
+        .reader-body::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.5); }
+
+        /* ── FOOTER ── */
+        footer { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--footer-border); font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--footer-color); letter-spacing: 2px; line-height: 2; }
+
+        /* ── THEME TOGGLE ── */
+        #themeToggle {
+            position: fixed; top: 14px; right: 16px; z-index: 9000;
+            padding: 7px 16px; background: rgba(212,175,55,0.12);
+            border: 1px solid rgba(212,175,55,0.35); color: var(--gold2);
+            font-family: 'Share Tech Mono', monospace; font-size: 12px;
+            letter-spacing: 1px; cursor: pointer; border-radius: 20px;
+            transition: all 0.25s; display: flex; align-items: center; gap: 6px;
+        }
+        #themeToggle:hover { background: rgba(212,175,55,0.22); color: var(--gold); }
+
+        @media (max-width: 600px) {
+            .file-row { grid-template-columns: 36px 1fr auto auto; }
+            .dl-btn { display: none; }
+            #searchInput { width: 150px; }
+            .reader-header { padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+<a href="https://kkk.education" style="position:fixed;top:14px;left:16px;z-index:9000;padding:7px 16px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.35);color:var(--gold2);font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1px;border-radius:20px;text-decoration:none;transition:all 0.25s;">← HOME</a>
+<button id="themeToggle" onclick="toggleTheme()">
+    <span id="themeIcon">☀</span><span id="themeLabel">LIGHT</span>
+</button>
+<div class="wrap">
+    <header>
+        <span class="icon-stack">📜</span>
+        <h1>BOOKS</h1>
+        <p class="subtitle">Raw source archive — all original texts</p>
+        <div class="breadcrumb">
+            <a href="https://kkk.education">kkk.education</a>
+            <span>/</span>
+            <a href="https://kkk.education/library.html">library</a>
+            <span>/</span>
+            <span style="color:var(--gold2)">Books</span>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <span>📁 <span class="count" id="countLabel">…</span> files</span>
+        <input type="text" id="searchInput" placeholder="filter files…" oninput="filterFiles()" />
+    </div>
+
+    <div id="fileList">
+        <div class="state-msg"><span class="big">⏳</span>Loading file list…</div>
+    </div>
+
+    <div style="text-align:center;margin-top:60px;padding:28px;border:1px solid var(--footer-border);border-radius:6px;background:var(--stats-bg);">
+        <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:4px;color:var(--gold);margin-bottom:10px;">📦 SAVE THIS PAGE</div>
+        <p style="font-size:12px;color:var(--breadcrumb-color);margin-bottom:18px;line-height:1.8;font-family:'Share Tech Mono',monospace;">Save for offline browsing — reader still fetches books live when online.</p>
+        <button onclick="window.open('https://kkk.education/Books/','_blank')" class="copy-btn" style="margin:4px;">🌐 OPEN LIVE VERSION</button>
+        <button onclick="saveThisPage()" class="copy-btn" style="margin:4px;">💾 SAVE THIS FILE</button>
+        <p id="saveStatus" style="margin-top:12px;font-size:12px;color:var(--breadcrumb-color);min-height:16px;font-family:'Share Tech Mono',monospace;"></p>
+    </div>
+
+    <footer>CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED · KKK.EDUCATION</footer>
+</div>
+
+<!-- ══ READER MODAL ══ -->
+<div id="readerOverlay">
+    <div class="reader-header">
+        <div class="reader-title" id="readerTitle">—</div>
+        <div class="reader-actions">
+            <button class="reader-btn" id="readerCopyBtn" onclick="copyReaderLink()">🔗 COPY LINK</button>
+            <button class="reader-btn" id="readerDlBtn" onclick="downloadCurrent()">⬇ DOWNLOAD</button>
+            <button class="reader-btn close-btn" onclick="closeReader()">✕ CLOSE</button>
+        </div>
+    </div>
+    <div class="reader-body">
+        <div id="readerText"></div>
+    </div>
+</div>
+
+<script>
+const BASE = 'https://files.kkk.education/Books/';
+let allFiles = [];
+let currentFile = null;
+
+/* ── Helpers ── */
+function humanTitle(filename) {
+    return filename.replace(/\.txt$/i, '').replace(/^\d+[-_]/, '').replace(/[-_]/g, ' ');
+}
+function fileNumber(filename) {
+    const m = filename.match(/^(\d+)/);
+    return m ? m[1].padStart(3, '0') : '—';
+}
+function escHtml(t) {
+    const d = document.createElement('div'); d.textContent = t; return d.innerHTML;
+}
+
+/* ── Render ── */
+function renderFiles(files) {
+    const list = document.getElementById('fileList');
+    if (!files.length) {
+        list.innerHTML = `<div class="state-msg"><span class="big">🔍</span>No files match that filter.</div>`;
+        return;
+    }
+    list.innerHTML = '';
+    files.forEach(name => {
+        const row = document.createElement('div');
+        row.className = 'file-row';
+        row.title = 'Click to read';
+
+        const numSpan = document.createElement('span');
+        numSpan.className = 'file-num';
+        numSpan.textContent = fileNumber(name);
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'file-name';
+        nameSpan.textContent = humanTitle(name);
+
+        // Read button
+        const readBtn = document.createElement('button');
+        readBtn.className = 'row-btn';
+        readBtn.title = 'Read online';
+        readBtn.textContent = '📖 READ';
+        readBtn.addEventListener('click', e => { e.stopPropagation(); openReader(name); });
+
+        // Copy link button
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'row-btn';
+        copyBtn.title = 'Copy link';
+        copyBtn.textContent = '🔗';
+        copyBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            const url = BASE + encodeURIComponent(name);
+            const flash = () => {
+                copyBtn.textContent = '✓'; copyBtn.classList.add('copied');
+                setTimeout(() => { copyBtn.textContent = '🔗'; copyBtn.classList.remove('copied'); }, 1800);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(flash).catch(() => fbCopy(url, flash));
+            } else { fbCopy(url, flash); }
+        });
+
+        // Download button
+        const dlBtn = document.createElement('button');
+        dlBtn.className = 'row-btn dl-btn';
+        dlBtn.title = 'Download';
+        dlBtn.textContent = '⬇';
+        dlBtn.addEventListener('click', function(e) { e.stopPropagation(); forceDownload(BASE + encodeURIComponent(name), name); });
+
+        row.appendChild(numSpan);
+        row.appendChild(nameSpan);
+        row.appendChild(readBtn);
+        row.appendChild(copyBtn);
+        row.appendChild(dlBtn);
+
+        // Clicking the row itself also opens reader
+        row.addEventListener('click', () => openReader(name));
+
+        list.appendChild(row);
+    });
+}
+
+function filterFiles() {
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    const filtered = q ? allFiles.filter(f => f.toLowerCase().includes(q)) : allFiles;
+    document.getElementById('countLabel').textContent = filtered.length + (q ? ` / ${allFiles.length}` : '');
+    renderFiles(filtered);
+}
+
+/* ── Load manifest ── */
+
+async function loadFiles() {
+    const list = document.getElementById('fileList');
+    try {
+        let data;
+        if (window.EMBEDDED_MANIFEST) {
+            data = window.EMBEDDED_MANIFEST;
+        } else {
+            const res = await fetch('https://files.kkk.education/manifest.json');
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            data = await res.json();
+        }
+
+        function flatten(items) {
+            let out = [];
+            for (const item of (items || [])) {
+                if (item.type === 'folder') out = out.concat(flatten(item.children));
+                else out.push(item);
+            }
+            return out;
+        }
+        const all = flatten(data.items || []);
+        allFiles = all
+            .filter(f => (f.path || '').toLowerCase().includes('/books/') && (f.name || '').toLowerCase().endsWith('.txt'))
+            .map(f => f.name)
+            .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+        document.getElementById('countLabel').textContent = allFiles.length;
+        renderFiles(allFiles);
+    } catch (err) {
+        list.innerHTML = `
+            <div class="state-msg">
+                <span class="big">💀</span>
+                Could not load file list.<br><br>
+                Make sure <code>manifest.json</code> exists at <code>https://files.kkk.education/manifest.json</code><br>
+                <small style="font-size:13px;color:rgba(212,175,55,0.4);margin-top:10px;display:block;">Error: ${err.message}</small>
+            </div>`;
+        document.getElementById('countLabel').textContent = '?';
+    }
+}
+
+/* ── Reader ── */
+async function openReader(name) {
+    currentFile = name;
+    const overlay = document.getElementById('readerOverlay');
+    const textEl  = document.getElementById('readerText');
+    const titleEl = document.getElementById('readerTitle');
+
+    titleEl.textContent = humanTitle(name);
+    textEl.innerHTML = '<div class="reader-loading">Loading</div>';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    try {
+        const res = await fetch(BASE + encodeURIComponent(name));
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        textEl.textContent = text;  // textContent auto-escapes, preserves whitespace via pre-wrap
+    } catch (err) {
+        textEl.innerHTML = `<div class="state-msg"><span class="big">💀</span>Could not load file.<br><small>${escHtml(err.message)}</small></div>`;
+    }
+}
+
+function closeReader() {
+    document.getElementById('readerOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    currentFile = null;
+}
+
+function copyReaderLink() {
+    if (!currentFile) return;
+    const url = BASE + encodeURIComponent(currentFile);
+    const btn = document.getElementById('readerCopyBtn');
+    const orig = btn.textContent;
+    const flash = () => {
+        btn.textContent = '✓ COPIED'; btn.style.color = 'var(--green)';
+        setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(flash).catch(() => fbCopy(url, flash));
+    } else { fbCopy(url, flash); }
+}
+
+function forceDownload(url, filename) {
+    fetch(url)
+        .then(function(r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.arrayBuffer();
+        })
+        .then(function(buf) {
+            var blob = new Blob([buf], { type: 'application/octet-stream' });
+            var blobUrl = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 2000);
+        })
+        .catch(function(e) { alert('Download failed: ' + e.message); });
+}
+
+function downloadCurrent() {
+    if (!currentFile) return;
+    forceDownload(BASE + encodeURIComponent(currentFile), currentFile);
+}
+
+function fbCopy(text, cb) {
+    const ta = Object.assign(document.createElement('textarea'), { value: text });
+    ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); cb(); } catch(e) {}
+    document.body.removeChild(ta);
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
+
+/* ── Theme ── */
+function toggleTheme() {
+    const html = document.documentElement;
+    const light = html.getAttribute('data-theme') !== 'light';
+    html.setAttribute('data-theme', light ? 'light' : 'dark');
+    document.getElementById('themeIcon').textContent  = light ? '🌙' : '☀';
+    document.getElementById('themeLabel').textContent = light ? 'DARK' : 'LIGHT';
+    try { localStorage.setItem('books-theme', light ? 'light' : 'dark'); } catch(e) {}
+}
+(function() {
+    try {
+        const t = localStorage.getItem('books-theme');
+        if (t === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.getElementById('themeIcon').textContent  = '🌙';
+            document.getElementById('themeLabel').textContent = 'DARK';
+        }
+    } catch(e) {}
+})();
+
+async function saveThisPage() {
+    const status = document.getElementById('saveStatus');
+    status.textContent = '⏳ Fetching manifest…';
+    try {
+        const manifestRes = await fetch('https://files.kkk.education/manifest.json');
+        if (!manifestRes.ok) throw new Error('manifest HTTP ' + manifestRes.status);
+        const manifestText = await manifestRes.text();
+        const injection = '<scr' + 'ipt>window.EMBEDDED_MANIFEST=' + manifestText + ';</scr' + 'ipt>';
+        const pageText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML.replace('</head>', injection + '</head>');
+        const a = Object.assign(document.createElement('a'), {
+            href: URL.createObjectURL(new Blob([pageText], {type:'text/html'})),
+            download: 'books-kkk-education.html'
+        });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        status.textContent = '✅ Saved!';
+    } catch(e) { status.textContent = '❌ ' + e.message; }
+}
+
+loadFiles();
+</script>
+</body>
+</html>

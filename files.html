@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📁 Files</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Share+Tech+Mono&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ══ THEME TOKENS ══ */
+        :root, [data-theme="dark"] {
+            --gold:         #ffd700;
+            --gold2:        #d4af37;
+            --gold3:        #b8860b;
+            --gold4:        #7a5c00;
+            --bg:           #07020e;
+            --surface:      rgba(255,215,0,0.03);
+            --surface-hover:rgba(139,69,19,0.14);
+            --surface-open: rgba(212,175,55,0.055);
+            --file-bg:      rgba(255,255,255,0.012);
+            --file-hover:   rgba(139,69,19,0.1);
+            --border:       rgba(212,175,55,0.18);
+            --border-dim:   rgba(80,40,0,0.25);
+            --border-dir:   rgba(139,69,19,0.3);
+            --grid-line:    rgba(212,175,55,0.018);
+            --input-bg:     rgba(0,0,0,0.6);
+            --btn-bg:       rgba(212,175,55,0.07);
+            --btn-hover:    rgba(212,175,55,0.15);
+            --copy-hover:   rgba(212,175,55,0.08);
+            --copy-border:  rgba(212,175,55,0.3);
+            --green:        #00ff88;
+            --green-bg:     rgba(0,255,136,0.06);
+            --green-border: rgba(0,255,136,0.4);
+            --hl-bg:        rgba(255,215,0,0.1);
+            --state-bg:     rgba(0,0,0,0.4);
+            --nebula1:      rgba(60,0,120,0.2);
+            --nebula2:      rgba(30,0,70,0.18);
+            --player-bg:    rgba(10,6,20,0.97);
+            --player-track: rgba(212,175,55,0.15);
+            --shadow-glow:  0 0 8px rgba(255,215,0,0.4);
+            --shadow-glow2: drop-shadow(0 0 22px rgba(255,215,0,0.9)) drop-shadow(0 0 50px rgba(255,140,0,0.3));
+            --text-shadow:  0 0 20px rgba(255,215,0,0.35), 1px 1px 0 rgba(0,0,0,0.9);
+            --focus-glow:   0 0 14px rgba(255,215,0,0.1);
+        }
+
+
+        [data-theme="party"] {
+            --bg:    #0a0010;
+            --bg2:   #110020;
+            --bg3:   #1a0030;
+            --text:  #fff;
+            --text2: #ffaaff;
+            --gold:  #ff88ff;
+            --gold2: #ff44cc;
+            --gold3: #cc00ff;
+            --border: rgba(255,0,255,0.4);
+            --btn-bg: rgba(180,0,255,0.2);
+            --btn-hover: rgba(255,0,255,0.3);
+        }
+        [data-theme="party"] body { background: #0a0010; }
+        [data-theme="party"] header {
+            background: linear-gradient(135deg, #0a0010, #200040, #0a0010);
+            border-bottom: 2px solid #ff00ff;
+            animation: party-header 2s linear infinite;
+        }
+        @keyframes party-header {
+            0%   { border-bottom-color: #ff00ff; box-shadow: 0 2px 20px #ff00ff88; }
+            16%  { border-bottom-color: #ff4400; box-shadow: 0 2px 20px #ff440088; }
+            33%  { border-bottom-color: #ffff00; box-shadow: 0 2px 20px #ffff0088; }
+            50%  { border-bottom-color: #00ff88; box-shadow: 0 2px 20px #00ff8888; }
+            66%  { border-bottom-color: #00aaff; box-shadow: 0 2px 20px #00aaff88; }
+            83%  { border-bottom-color: #aa00ff; box-shadow: 0 2px 20px #aa00ff88; }
+            100% { border-bottom-color: #ff00ff; box-shadow: 0 2px 20px #ff00ff88; }
+        }
+        [data-theme="party"] .site-name {
+            animation: party-text 1.5s linear infinite;
+        }
+        @keyframes party-text {
+            0%   { color: #ff00ff; text-shadow: 0 0 20px #ff00ff; }
+            16%  { color: #ff4400; text-shadow: 0 0 20px #ff4400; }
+            33%  { color: #ffff00; text-shadow: 0 0 20px #ffff00; }
+            50%  { color: #00ff88; text-shadow: 0 0 20px #00ff88; }
+            66%  { color: #00aaff; text-shadow: 0 0 20px #00aaff; }
+            83%  { color: #aa00ff; text-shadow: 0 0 20px #aa00ff; }
+            100% { color: #ff00ff; text-shadow: 0 0 20px #ff00ff; }
+        }
+        [data-theme="party"] .btn,
+        [data-theme="party"] .theme-btn {
+            animation: party-btn 2s linear infinite;
+        }
+        @keyframes party-btn {
+            0%   { border-color: #ff00ff; color: #ff00ff; }
+            25%  { border-color: #ffff00; color: #ffff00; }
+            50%  { border-color: #00ff88; color: #00ff88; }
+            75%  { border-color: #00aaff; color: #00aaff; }
+            100% { border-color: #ff00ff; color: #ff00ff; }
+        }
+        [data-theme="party"] .file-row:hover {
+            background: rgba(255,0,255,0.15);
+            border-left: 3px solid #ff00ff;
+        }
+        [data-theme="party"] .search-input {
+            background: rgba(100,0,200,0.2);
+            border-color: #aa00ff;
+            color: #ffaaff;
+        }
+        [data-theme="light"] {
+            --gold:         #6b3f00;
+            --gold2:        #7a4f00;
+            --gold3:        #995e05;
+            --gold4:        #b07830;
+            --bg:           #fdf6e3;
+            --surface:      rgba(120,80,0,0.04);
+            --surface-hover:rgba(120,80,0,0.1);
+            --surface-open: rgba(120,80,0,0.07);
+            --file-bg:      rgba(0,0,0,0.015);
+            --file-hover:   rgba(120,80,0,0.08);
+            --border:       rgba(120,80,0,0.2);
+            --border-dim:   rgba(120,80,0,0.15);
+            --border-dir:   rgba(120,80,0,0.2);
+            --grid-line:    rgba(120,80,0,0.04);
+            --input-bg:     rgba(255,255,255,0.85);
+            --btn-bg:       rgba(120,80,0,0.07);
+            --btn-hover:    rgba(120,80,0,0.14);
+            --copy-hover:   rgba(120,80,0,0.08);
+            --copy-border:  rgba(120,80,0,0.3);
+            --green:        #006633;
+            --green-bg:     rgba(0,102,51,0.06);
+            --green-border: rgba(0,102,51,0.35);
+            --hl-bg:        rgba(120,80,0,0.12);
+            --state-bg:     rgba(0,0,0,0.05);
+            --nebula1:      rgba(255,200,80,0.1);
+            --nebula2:      rgba(255,160,40,0.08);
+            --player-bg:    rgba(250,240,218,0.98);
+            --player-track: rgba(120,80,0,0.15);
+            --shadow-glow:  0 0 8px rgba(120,80,0,0.25);
+            --shadow-glow2: drop-shadow(0 0 14px rgba(120,80,0,0.5));
+            --text-shadow:  0 0 16px rgba(120,80,0,0.15), 1px 1px 0 rgba(255,255,255,0.8);
+            --focus-glow:   0 0 14px rgba(120,80,0,0.1);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--gold2);
+            font-family: 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background:
+                radial-gradient(ellipse 70% 40% at 15% 10%, var(--nebula1) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 60% at 85% 80%, var(--nebula2) 0%, transparent 55%);
+        }
+        body::after {
+            content: '';
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background-image:
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .page { position: relative; z-index: 10; max-width: 1100px; margin: 0 auto; padding: 0 28px 120px; }
+
+        /* ── HEADER ── */
+        header {
+            padding: 44px 0 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 36px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 20px;
+        }
+        .site-id { display: flex; align-items: center; gap: 16px; }
+        .logo { font-size: 36px; animation: pulse 5s ease-in-out infinite; }
+        @keyframes pulse {
+            0%,100% { filter: var(--shadow-glow); }
+            50%      { filter: var(--shadow-glow2); }
+        }
+        .site-name {
+            font-family: 'Cinzel', serif; font-size: clamp(16px,3vw,26px); font-weight: 900;
+            letter-spacing: 5px; color: var(--gold); text-shadow: var(--text-shadow); line-height: 1.1;
+        }
+        .site-tagline { font-size: 11px; color: var(--gold4); letter-spacing: 3px; margin-top: 4px; }
+
+        /* ── TOOLBAR ── */
+        .toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        #searchInput {
+            background: var(--input-bg); border: 1px solid var(--border);
+            color: var(--gold); font-family: 'Share Tech Mono', monospace;
+            font-size: 13px; padding: 8px 14px; width: 240px; outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        #searchInput::placeholder { color: var(--gold4); }
+        #searchInput:focus { border-color: var(--gold3); box-shadow: var(--focus-glow); }
+
+        .btn {
+            background: var(--btn-bg); border: 1px solid var(--border); color: var(--gold3);
+            font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px;
+            padding: 8px 16px; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+        }
+        .btn:hover { background: var(--btn-hover); border-color: var(--gold3); color: var(--gold); }
+
+        .theme-btn {
+            background: var(--btn-bg); border: 1px solid var(--border); color: var(--gold3);
+            font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px;
+            padding: 8px 14px; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .theme-btn:hover { background: var(--btn-hover); border-color: var(--gold3); color: var(--gold); }
+
+        /* ── STATS ── */
+        .stats { font-size: 12px; color: var(--gold4); padding: 10px 0 18px; letter-spacing: 1px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+        .stats strong { color: var(--gold3); }
+
+        /* ── TREE ── */
+        #explorer { display: flex; flex-direction: column; gap: 2px; }
+        .entry {
+            display: grid; align-items: center; padding: 9px 14px;
+            border-left: 2px solid transparent;
+            transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+        }
+        .entry.dir {
+            grid-template-columns: 20px 1fr auto; gap: 0 10px;
+            background: var(--surface); border-left-color: var(--border-dir);
+            color: var(--gold2); cursor: pointer;
+        }
+        .entry.dir:hover { background: var(--surface-hover); border-left-color: var(--gold3); color: var(--gold); }
+        .entry.dir.open  { background: var(--surface-open);  border-left-color: var(--gold3); color: var(--gold); }
+
+        /* file: icon | name | play | copy | meta */
+        .entry.file {
+            grid-template-columns: 20px 1fr auto auto auto; gap: 0 8px;
+            background: var(--file-bg); border-left-color: var(--border-dim);
+            color: var(--gold3); text-decoration: none; cursor: pointer;
+        }
+        .entry.file:hover { background: var(--file-hover); border-left-color: var(--gold2); color: var(--gold); transform: translateX(3px); }
+        .entry.file:hover .entry-meta { color: var(--green); }
+
+        .entry-icon { font-size: 13px; text-align: center; }
+        .entry-name { font-size: 13px; letter-spacing: 0.2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .entry-meta { font-size: 11px; color: var(--gold4); white-space: nowrap; text-align: right; transition: color 0.15s; }
+
+        /* ── ACTION BUTTONS (play + copy) ── */
+        .file-action-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 24px; height: 24px; background: none; border: 1px solid transparent;
+            border-radius: 3px; cursor: pointer; font-size: 12px; line-height: 1;
+            transition: all 0.15s; flex-shrink: 0; color: var(--gold4);
+        }
+        .file-action-btn:hover { color: var(--gold); border-color: var(--copy-border); background: var(--copy-hover); }
+        .file-action-btn.copied { color: var(--green); border-color: var(--green-border); background: var(--green-bg); }
+        .file-action-btn.play-btn-inline:hover { color: var(--gold); }
+
+        /* depth */
+        .entry[data-depth="1"] { padding-left: 30px; }
+        .entry[data-depth="2"] { padding-left: 48px; }
+        .entry[data-depth="3"] { padding-left: 66px; }
+        .entry[data-depth="4"] { padding-left: 84px; }
+        .entry[data-depth="5"] { padding-left: 102px; }
+        .entry[data-depth="6"] { padding-left: 120px; }
+
+        .chevron { display: inline-block; font-size: 9px; transition: transform 0.18s; color: var(--gold4); }
+        .entry.dir.open .chevron { transform: rotate(90deg); color: var(--gold3); }
+        .dir-children { overflow: hidden; transition: max-height 0.22s ease; }
+        .dir-children.collapsed { max-height: 0 !important; }
+
+        /* ── SEARCH RESULTS ── */
+        #searchResults { display: none; flex-direction: column; gap: 2px; }
+        #searchResults.active { display: flex; }
+        #explorer.hidden { display: none; }
+
+        .search-match {
+            display: grid; grid-template-columns: 20px 1fr auto auto auto; gap: 0 8px;
+            align-items: center; padding: 9px 14px;
+            background: var(--file-bg); border-left: 2px solid var(--border-dim);
+            color: var(--gold3); text-decoration: none; font-size: 13px; transition: all 0.15s; cursor: pointer;
+        }
+        .search-match:hover { background: var(--file-hover); border-left-color: var(--gold2); color: var(--gold); transform: translateX(3px); }
+        .search-match:hover .match-ext { color: var(--green); }
+        .match-path { font-size: 11px; color: var(--gold4); display: block; margin-top: 2px; }
+        .match-ext  { font-size: 11px; color: var(--gold4); white-space: nowrap; }
+        em.hl { font-style: normal; color: var(--gold); background: var(--hl-bg); padding: 0 2px; }
+
+        /* ── STATE ── */
+        .state-msg { text-align: center; padding: 70px 20px; font-size: 16px; color: var(--gold3); font-family: 'Crimson Text', serif; font-style: italic; }
+        .state-msg .big { font-size: 48px; display: block; margin-bottom: 16px; }
+        .state-msg code { font-family: 'Share Tech Mono', monospace; font-size: 13px; background: var(--state-bg); padding: 2px 8px; color: var(--green); font-style: normal; }
+
+        /* ── FOOTER ── */
+        footer { text-align: center; margin-top: 70px; padding-top: 28px; border-top: 1px solid var(--border); font-size: 11px; color: var(--gold3); letter-spacing: 3px; line-height: 2.4; }
+
+        /* ════════════════════════════════════════
+           MEDIA PLAYER
+        ════════════════════════════════════════ */
+        #mediaPlayer {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--player-bg);
+            border-top: 2px solid var(--gold3);
+            padding: 0;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 -4px 40px rgba(0,0,0,0.5);
+        }
+        #mediaPlayer.open { transform: translateY(0); }
+
+        /* video modal overlay */
+        #videoOverlay {
+            display: none; position: fixed; inset: 0; z-index: 999;
+            background: rgba(0,0,0,0.88); align-items: center; justify-content: center;
+        }
+        #videoOverlay.open { display: flex; }
+        #videoOverlay video {
+            max-width: 90vw; max-height: 80vh; border: 2px solid var(--gold3);
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+        }
+        .overlay-close {
+            position: absolute; top: 20px; right: 26px;
+            background: none; border: 1px solid var(--gold3);
+            color: var(--gold); font-size: 20px; width: 38px; height: 38px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .overlay-close:hover { background: rgba(212,175,55,0.15); }
+
+        /* image overlay */
+        #imageOverlay {
+            display: none; position: fixed; inset: 0; z-index: 999;
+            background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+            flex-direction: column; gap: 16px;
+        }
+        #imageOverlay.open { display: flex; }
+        #imageOverlay img {
+            max-width: 90vw; max-height: 82vh;
+            border: 2px solid var(--gold3);
+            box-shadow: 0 0 60px rgba(0,0,0,0.9);
+            object-fit: contain;
+        }
+        #imageOverlayName {
+            font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold3);
+            letter-spacing: 0.1em;
+        }
+
+        /* player bar */
+        .player-bar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0;
+            align-items: stretch;
+        }
+        .player-main { padding: 10px 20px 12px; display: flex; flex-direction: column; gap: 6px; }
+        .player-track-info {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .player-name {
+            font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold);
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+        }
+        .player-time { font-size: 11px; color: var(--gold4); white-space: nowrap; }
+
+        /* progress */
+        .player-progress-wrap {
+            position: relative; height: 14px; display: flex; align-items: center; cursor: pointer;
+        }
+        .player-progress-track {
+            width: 100%; height: 3px; background: var(--player-track); border-radius: 2px; pointer-events: none;
+        }
+        .player-progress-fill {
+            height: 100%; background: linear-gradient(to right, var(--gold3), var(--gold));
+            border-radius: 2px; width: 0%; transition: width 0.1s linear; position: relative;
+        }
+        .player-progress-fill::after {
+            content: ''; position: absolute; right: -6px; top: -5px;
+            width: 13px; height: 13px; background: var(--gold); border-radius: 50%;
+            box-shadow: 0 0 6px rgba(212,175,55,0.6);
+        }
+
+        /* controls row */
+        .player-controls {
+            display: flex; align-items: center; gap: 6px;
+        }
+        .pc-btn {
+            background: none; border: none; color: var(--gold4); cursor: pointer;
+            font-size: 16px; padding: 4px 6px; transition: color 0.15s; line-height: 1;
+        }
+        .pc-btn:hover { color: var(--gold); }
+        .pc-btn.play-pause { font-size: 20px; color: var(--gold3); }
+        .pc-btn.play-pause:hover { color: var(--gold); }
+        .vol-slider {
+            -webkit-appearance: none; width: 80px; height: 3px;
+            background: var(--player-track); border-radius: 2px; cursor: pointer; outline: none;
+        }
+        .vol-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+            background: var(--gold3); cursor: pointer;
+        }
+
+        .player-close-col {
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 18px;
+            border-left: 1px solid var(--border);
+        }
+        .player-close {
+            background: none; border: none; color: var(--gold4); cursor: pointer;
+            font-size: 18px; transition: color 0.15s; line-height: 1; padding: 6px;
+        }
+        .player-close:hover { color: var(--gold); }
+
+        /* highlight active file row */
+        .entry.file.now-playing { border-left-color: var(--gold) !important; background: var(--surface-open) !important; }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column; align-items: flex-start;
+                padding: 20px 0 16px; gap: 12px;
+            }
+            .site-id { gap: 10px; }
+            .logo { font-size: 24px; }
+            .site-name { font-size: 15px; letter-spacing: 2px; }
+            .site-tagline { font-size: 9px; letter-spacing: 1px; }
+            .toolbar { width: 100%; flex-direction: column; align-items: stretch; gap: 8px; }
+            #searchInput { width: 100%; }
+            .btn, .theme-btn { width: 100%; justify-content: center; text-align: center; }
+            .entry-meta { display: none; }
+            .vol-slider { width: 55px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="site-id">
+            <span class="logo">📁</span>
+            <div>
+                <div class="site-name">Files</div>
+                <div class="site-tagline">CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED</div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <input type="text" id="searchInput" placeholder="search files…" oninput="onSearch(this.value)" />
+            <button class="btn" onclick="expandAll()">EXPAND ALL</button>
+            <button class="btn" onclick="collapseAll()">COLLAPSE ALL</button>
+            <a href="https://kkk.education" class="btn" style="text-decoration:none;">← HOME</a>
+            <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
+                <span id="themeIcon">☀</span><span id="themeLabel">LIGHT</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="stats" id="stats">Loading…</div>
+    <div id="explorer"><div class="state-msg"><span class="big">⏳</span>Loading…</div></div>
+    <div id="searchResults"></div>
+
+    <div style="text-align:center;margin-top:60px;padding:28px;border:1px solid var(--border);border-radius:6px;background:var(--surface);">
+        <div style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:4px;color:var(--gold);margin-bottom:10px;">📦 SAVE THIS PAGE</div>
+        <p style="font-size:12px;color:var(--gold4);margin-bottom:18px;line-height:1.8;font-family:'Share Tech Mono',monospace;">Save for offline viewing — still streams live content when online.</p>
+        <button onclick="window.open('https://files.kkk.education/','_blank')" class="btn" style="margin:4px;">🌐 OPEN LIVE VERSION</button>
+        <button onclick="saveThisPage()" class="btn" style="margin:4px;">💾 SAVE THIS FILE</button>
+        <p id="saveStatus" style="margin-top:12px;font-size:12px;color:var(--gold4);min-height:16px;font-family:'Share Tech Mono',monospace;"></p>
+    </div>
+
+    <footer><a href="https://kkk.education" target="_blank" style="color:inherit;text-decoration:none;">KKK.EDUCATION</a> · CC0 · ALL LOVE RESERVED</footer>
+</div>
+
+<!-- IMAGE OVERLAY -->
+<div id="imageOverlay">
+    <button class="overlay-close" onclick="closeImage()">✕</button>
+    <img id="imageEl" src="" alt="">
+    <div id="imageOverlayName"></div>
+</div>
+
+<!-- VIDEO OVERLAY -->
+<div id="videoOverlay">
+    <button class="overlay-close" onclick="closeVideo()">✕</button>
+    <video id="videoEl" controls></video>
+</div>
+
+<!-- MEDIA PLAYER BAR -->
+<div id="mediaPlayer">
+    <div class="player-bar">
+        <div class="player-main">
+            <div class="player-track-info">
+                <div class="player-name" id="playerName">No file loaded</div>
+                <div class="player-time" id="playerTime">0:00 / 0:00</div>
+            </div>
+            <div class="player-progress-wrap" id="playerProgressWrap">
+                <div class="player-progress-track">
+                    <div class="player-progress-fill" id="playerFill"></div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <button class="pc-btn play-pause" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                <button class="pc-btn" onclick="skipBack()" title="−10s">«</button>
+                <button class="pc-btn" onclick="skipFwd()"  title="+10s">»</button>
+                <span style="font-size:11px;color:var(--gold4);margin-left:4px;">VOL</span>
+                <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="80" oninput="setVol(this.value)">
+            </div>
+        </div>
+        <div class="player-close-col">
+            <button class="player-close" onclick="closePlayer()" title="Close player">✕</button>
+        </div>
+    </div>
+</div>
+
+<script>
+'use strict';
+
+/* ════════════════════════════════════
+   THEME
+════════════════════════════════════ */
+function toggleTheme() {
+    const html  = document.documentElement;
+    const cur   = html.getAttribute('data-theme');
+    const next  = cur === 'dark' ? 'light' : cur === 'light' ? 'party' : 'dark';
+    html.setAttribute('data-theme', next);
+    const icons  = { dark: '🌙', light: '☀', party: '🌈' };
+    const labels = { dark: 'DARK', light: 'LIGHT', party: 'PARTY' };
+    document.getElementById('themeIcon').textContent  = icons[next];
+    document.getElementById('themeLabel').textContent = labels[next];
+    try { localStorage.setItem('files-theme', next); } catch(e) {}
+}
+(function restoreTheme() {
+    try {
+        const t = localStorage.getItem('files-theme');
+        if (t && t !== 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+            const icons  = { light: '☀', party: '🌈' };
+            const labels = { light: 'LIGHT', party: 'PARTY' };
+            document.getElementById('themeIcon').textContent  = icons[t] || '🌙';
+            document.getElementById('themeLabel').textContent = labels[t] || 'DARK';
+        }
+    } catch(e) {}
+})();
+
+/* ════════════════════════════════════
+   MEDIA PLAYER
+════════════════════════════════════ */
+const AUDIO_EXT = new Set(['mp3','wav','ogg','flac','m4a','aac','opus','mpga']);
+const IMAGE_EXT = new Set(['jpg','jpeg','png','gif','webp','svg','bmp','ico','avif']);
+const VIDEO_EXT = new Set(['mp4','webm','mov','mkv','avi']);
+
+const audioEl = new Audio();
+audioEl.volume = 0.8;
+let activeFileEl = null;
+
+function isMedia(ext) { return AUDIO_EXT.has(ext) || VIDEO_EXT.has(ext); }
+function isImage(ext) { return IMAGE_EXT.has(ext); }
+
+function previewImage(url, name, e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    document.getElementById('imageEl').src = url;
+    document.getElementById('imageEl').alt = name;
+    document.getElementById('imageOverlayName').textContent = name;
+    document.getElementById('imageOverlay').classList.add('open');
+}
+function closeImage() {
+    document.getElementById('imageEl').src = '';
+    document.getElementById('imageOverlay').classList.remove('open');
+}
+document.getElementById('imageOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeImage();
+});
+
+function playFile(url, name, ext, rowEl, e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+
+    // Unhighlight previous
+    if (activeFileEl) activeFileEl.classList.remove('now-playing');
+    activeFileEl = rowEl;
+    if (rowEl) rowEl.classList.add('now-playing');
+
+    if (VIDEO_EXT.has(ext)) {
+        // Open video overlay
+        audioEl.pause();
+        const vid = document.getElementById('videoEl');
+        vid.src = url;
+        vid.play().catch(()=>{});
+        document.getElementById('videoOverlay').classList.add('open');
+        // Also open audio player bar for time/controls sync via video element
+        openPlayerBar(name, vid);
+    } else {
+        // Audio
+        stopVideoOverlay();
+        audioEl.src = url;
+        audioEl.play().catch(()=>{});
+        openPlayerBar(name, audioEl);
+    }
+}
+
+let activeMediaEl = null;
+
+function openPlayerBar(name, mediaEl) {
+    activeMediaEl = mediaEl;
+    document.getElementById('playerName').textContent = cleanName(name);
+    document.getElementById('mediaPlayer').classList.add('open');
+    syncPlayBtn();
+    // Wire up events (remove old to avoid duplicates)
+    mediaEl.removeEventListener('timeupdate', onTimeUpdate);
+    mediaEl.removeEventListener('play',  syncPlayBtn);
+    mediaEl.removeEventListener('pause', syncPlayBtn);
+    mediaEl.removeEventListener('ended', onEnded);
+    mediaEl.addEventListener('timeupdate', onTimeUpdate);
+    mediaEl.addEventListener('play',  syncPlayBtn);
+    mediaEl.addEventListener('pause', syncPlayBtn);
+    mediaEl.addEventListener('ended', onEnded);
+}
+
+function onTimeUpdate() {
+    const m = activeMediaEl;
+    if (!m || !m.duration || !isFinite(m.duration)) return;
+    const pct = (m.currentTime / m.duration * 100).toFixed(2);
+    document.getElementById('playerFill').style.width = pct + '%';
+    document.getElementById('playerTime').textContent = fmt(m.currentTime) + ' / ' + fmt(m.duration);
+}
+
+function onEnded() { syncPlayBtn(); if (activeFileEl) activeFileEl.classList.remove('now-playing'); }
+function syncPlayBtn() {
+    const paused = !activeMediaEl || activeMediaEl.paused;
+    document.getElementById('playPauseBtn').textContent = paused ? '▶' : '⏸';
+}
+
+function togglePlayPause() {
+    if (!activeMediaEl) return;
+    if (activeMediaEl.paused) activeMediaEl.play().catch(()=>{});
+    else activeMediaEl.pause();
+}
+function skipBack() { if (activeMediaEl) activeMediaEl.currentTime = Math.max(0, activeMediaEl.currentTime - 10); }
+function skipFwd()  { if (activeMediaEl) activeMediaEl.currentTime = Math.min(activeMediaEl.duration||0, activeMediaEl.currentTime + 10); }
+function setVol(v)  { audioEl.volume = v/100; const vid = document.getElementById('videoEl'); vid.volume = v/100; }
+
+document.getElementById('playerProgressWrap').addEventListener('click', function(e) {
+    if (!activeMediaEl || !activeMediaEl.duration) return;
+    const r = this.getBoundingClientRect();
+    activeMediaEl.currentTime = ((e.clientX - r.left) / r.width) * activeMediaEl.duration;
+});
+
+function closePlayer() {
+    audioEl.pause();
+    stopVideoOverlay();
+    activeMediaEl = null;
+    document.getElementById('mediaPlayer').classList.remove('open');
+    if (activeFileEl) { activeFileEl.classList.remove('now-playing'); activeFileEl = null; }
+}
+
+function stopVideoOverlay() {
+    const vid = document.getElementById('videoEl');
+    vid.pause(); vid.src = '';
+    document.getElementById('videoOverlay').classList.remove('open');
+}
+
+function closeVideo() {
+    // User closed the video (X button or clicking outside) -- the file is done,
+    // so tear down the bottom player bar too instead of leaving it stuck open.
+    stopVideoOverlay();
+    closePlayer();
+}
+
+document.getElementById('videoOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeVideo();
+});
+
+/* ════════════════════════════════════
+   FILE BROWSER
+════════════════════════════════════ */
+const BASE_URL = 'https://files.kkk.education/';
+const LIST_URL = 'manifest.json';
+
+let flatFiles  = [], manifest_items_ref = [];
+let totalFiles = 0, totalDirs = 0;
+
+
+function forceDownload(url, filename) {
+    var fullUrl = url.startsWith('http') ? url : BASE_URL + url;
+    fetch(fullUrl)
+        .then(function(r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.arrayBuffer();
+        })
+        .then(function(buf) {
+            var blob = new Blob([buf], { type: 'application/octet-stream' });
+            var blobUrl = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 2000);
+        })
+        .catch(function(e) { alert('Download failed: ' + e.message); });
+}
+
+async function init() {
+    try {
+        let manifest;
+        if (window.EMBEDDED_MANIFEST) {
+            manifest = window.EMBEDDED_MANIFEST;
+        } else {
+            // Try local manifest first, then fall back to files.kkk.education
+            let res;
+            try {
+                res = await fetch('manifest.json');
+                if (!res.ok) throw new Error('local not found');
+            } catch(e) {
+                res = await fetch('https://files.kkk.education/manifest.json');
+            }
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            manifest = await res.json();
+        }
+        manifest_items_ref = manifest.items || [];
+        buildIndex(manifest);
+        document.getElementById('stats').innerHTML =
+            `<strong>${totalFiles}</strong> files &nbsp;·&nbsp; <strong>${totalDirs}</strong> directories`;
+        renderTree();
+    } catch(err) {
+        document.getElementById('stats').textContent = '';
+        document.getElementById('explorer').innerHTML = `
+            <div class="state-msg">
+                <span class="big">💀</span>
+                Could not load file list.<br><br>
+                Tried local <code>manifest.json</code> then <code>files.kkk.education/manifest.json</code>.<br>
+                <small style="font-size:13px;opacity:0.4;margin-top:14px;display:block;">${err.message}</small>
+            </div>`;
+    }
+}
+
+function buildIndex(manifest) {
+    flatFiles = []; totalFiles = 0; totalDirs = 0;
+    walkItems(manifest.items || []);
+}
+function isHidden(name) { return name.startsWith('.'); }
+function walkItems(items) {
+    items.forEach(item => {
+        if (isHidden(item.name)) return;
+        if (item.type === 'folder') { totalDirs++; walkItems(item.children || []); }
+        else {
+            const ext = extOf(item.name);
+            flatFiles.push({ path: item.path, name: item.name, ext, url: item.path, size: item.size });
+            totalFiles++;
+        }
+    });
+}
+
+function extOf(name) { return name.includes('.') ? name.split('.').pop().toLowerCase() : ''; }
+
+function iconFor(ext) {
+    const m = { txt:'📄',pdf:'📕',mp3:'🎵',mp4:'🎬',wav:'🎵',ogg:'🎵',flac:'🎵',
+                jpg:'🖼️',jpeg:'🖼️',png:'🖼️',gif:'🖼️',webp:'🖼️',svg:'🖼️',
+                zip:'📦',tar:'📦',gz:'📦',rar:'📦',
+                html:'🌐',htm:'🌐',php:'⚙️',js:'📜',css:'🎨',
+                json:'📋',xml:'📋',csv:'📊',md:'📝',
+                epub:'📗',doc:'📝',docx:'📝',rtf:'📝' };
+    return m[ext] || '📄';
+}
+function formatSize(b) {
+    if (!b) return '';
+    if (b < 1024)        return b + ' B';
+    if (b < 1048576)     return (b / 1024).toFixed(1) + ' KB';
+    if (b < 1073741824)  return (b / 1048576).toFixed(1) + ' MB';
+    return (b / 1073741824).toFixed(2) + ' GB';
+}
+function countItems(items) {
+    return items.reduce((c,i) => isHidden(i.name) ? c : c + (i.type==='file' ? 1 : countItems(i.children||[])), 0);
+}
+function cleanName(n) { return n.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' '); }
+function fmt(s) {
+    if (!s || !isFinite(s)) return '0:00';
+    return Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+}
+
+/* ── render tree ── */
+function renderTree() {
+    const el = document.getElementById('explorer');
+    if (!flatFiles.length) { el.innerHTML = '<div class="state-msg"><span class="big">📭</span>No files found.</div>'; return; }
+    el.innerHTML = '';
+    renderItems(manifest_items_ref, el, 0);
+}
+
+function renderItems(items, container, depth) {
+    const visible = items.filter(i => !isHidden(i.name));
+    const folders = visible.filter(i => i.type === 'folder');
+    const files   = visible.filter(i => i.type === 'file');
+
+    folders.forEach(item => {
+        const count = countItems(item.children || []);
+        const dirEl = document.createElement('div');
+        dirEl.className = 'entry dir';
+        dirEl.dataset.depth = Math.min(depth, 6);
+        dirEl.innerHTML = `<span class="entry-icon"><span class="chevron">▶</span></span>
+            <span class="entry-name">📂 ${item.name}</span>
+            <span class="entry-meta">${count} file${count!==1?'s':''}</span>`;
+        const childEl = document.createElement('div');
+        childEl.className = 'dir-children collapsed';
+        childEl.style.maxHeight = '0px';
+        dirEl.addEventListener('click', () => toggleDir(dirEl, childEl));
+        container.appendChild(dirEl);
+        container.appendChild(childEl);
+        renderItems(item.children || [], childEl, depth + 1);
+    });
+
+    files.forEach(item => {
+        const ext = extOf(item.name);
+        const fileEl = document.createElement('div');
+        fileEl.className = 'entry file';
+        fileEl.dataset.depth = Math.min(depth, 6);
+        fileEl.addEventListener('click', function() { forceDownload(item.path, item.name); });
+
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'entry-icon';
+        iconSpan.textContent = iconFor(ext);
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'entry-name';
+        nameSpan.textContent = item.name;
+
+        // Play/preview button
+        const playBtn = document.createElement('button');
+        playBtn.className = 'file-action-btn play-btn-inline';
+        if (isMedia(ext)) {
+            playBtn.textContent = '▶';
+            playBtn.title = 'Play';
+            playBtn.addEventListener('click', e => playFile(item.path, item.name, ext, fileEl, e));
+        } else if (isImage(ext)) {
+            playBtn.textContent = '🖼️';
+            playBtn.title = 'Preview';
+            playBtn.addEventListener('click', e => previewImage(item.path, item.name, e));
+        } else {
+            playBtn.style.visibility = 'hidden';
+            playBtn.setAttribute('aria-hidden', 'true');
+        }
+
+        // Copy button
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'file-action-btn';
+        copyBtn.title = 'Copy link';
+        copyBtn.textContent = '🔗';
+        copyBtn.addEventListener('click', e => copyLink(item.path, copyBtn, e));
+
+        const metaSpan = document.createElement('span');
+        metaSpan.className = 'entry-meta';
+        metaSpan.textContent = formatSize(item.size) || ('.' + (ext.toUpperCase() || 'FILE'));
+
+        fileEl.appendChild(iconSpan);
+        fileEl.appendChild(nameSpan);
+        fileEl.appendChild(playBtn);
+        fileEl.appendChild(copyBtn);
+        fileEl.appendChild(metaSpan);
+        container.appendChild(fileEl);
+    });
+}
+
+/* ── dir toggle ── */
+function toggleDir(dirEl, childEl) {
+    const isOpen = dirEl.classList.contains('open');
+    if (isOpen) {
+        childEl.style.maxHeight = childEl.scrollHeight + 'px';
+        requestAnimationFrame(() => requestAnimationFrame(() => { childEl.style.maxHeight = '0px'; }));
+        childEl.classList.add('collapsed');
+        dirEl.classList.remove('open');
+    } else {
+        childEl.classList.remove('collapsed');
+        requestAnimationFrame(() => { childEl.style.maxHeight = childEl.scrollHeight + 'px'; });
+        dirEl.classList.add('open');
+        childEl.addEventListener('transitionend', () => {
+            if (dirEl.classList.contains('open')) childEl.style.maxHeight = 'none';
+        }, { once: true });
+    }
+}
+
+function expandAll() {
+    document.querySelectorAll('.dir-children').forEach(el => { el.classList.remove('collapsed'); el.style.maxHeight = 'none'; });
+    document.querySelectorAll('.entry.dir').forEach(el => el.classList.add('open'));
+}
+function collapseAll() {
+    document.querySelectorAll('.dir-children').forEach(el => { el.style.maxHeight = '0px'; el.classList.add('collapsed'); });
+    document.querySelectorAll('.entry.dir').forEach(el => el.classList.remove('open'));
+}
+
+/* ── copy link ── */
+function copyLink(url, btn, e) {
+    e.preventDefault(); e.stopPropagation();
+    const fullUrl = url.startsWith('http') ? url : BASE_URL + url;
+    const flash = () => {
+        btn.textContent = '✓'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = '🔗'; btn.classList.remove('copied'); }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullUrl).then(flash).catch(() => fbCopy(fullUrl, flash));
+    } else { fbCopy(fullUrl, flash); }
+}
+function fbCopy(text, cb) {
+    const ta = Object.assign(document.createElement('textarea'), { value: text });
+    ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); cb(); } catch(e) {}
+    document.body.removeChild(ta);
+}
+
+/* ── search ── */
+function onSearch(q) {
+    const expEl = document.getElementById('explorer');
+    const resEl = document.getElementById('searchResults');
+    q = q.trim().toLowerCase();
+    if (!q) { resEl.classList.remove('active'); expEl.classList.remove('hidden'); resEl.innerHTML = ''; return; }
+    expEl.classList.add('hidden'); resEl.classList.add('active');
+    const hits = flatFiles.filter(f => f.path.toLowerCase().includes(q));
+    if (!hits.length) { resEl.innerHTML = `<div class="state-msg" style="padding:40px"><span class="big">🔍</span>No files match "${q}"</div>`; return; }
+
+    const esc = s => s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const hl  = (s,q) => esc(s).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'), m=>`<em class="hl">${m}</em>`);
+
+    resEl.innerHTML = '';
+    hits.forEach(f => {
+        const dir = f.path.includes('/') ? f.path.substring(0,f.path.lastIndexOf('/')) : '/';
+        const row = document.createElement('div');
+        row.className = 'search-match';
+        row.style.cursor = 'pointer';
+        row.addEventListener('click', function(e) { if (!e.target.closest('.file-action-btn')) forceDownload(f.url, f.name); });
+
+        const iSpan = document.createElement('span'); iSpan.textContent = iconFor(f.ext);
+        const nSpan = document.createElement('span');
+        nSpan.innerHTML = `<span>${hl(f.name,q)}</span><span class="match-path">${esc(dir)}</span>`;
+
+        const playBtn = document.createElement('button');
+        playBtn.className = 'file-action-btn play-btn-inline';
+        if (isMedia(f.ext)) {
+            playBtn.textContent = '▶'; playBtn.title = 'Play';
+            playBtn.addEventListener('click', e => playFile(f.url, f.name, f.ext, row, e));
+        } else if (isImage(f.ext)) {
+            playBtn.textContent = '🖼️'; playBtn.title = 'Preview';
+            playBtn.addEventListener('click', e => previewImage(f.url, f.name, e));
+        } else { playBtn.style.visibility = 'hidden'; }
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'file-action-btn'; copyBtn.title = 'Copy link'; copyBtn.textContent = '🔗';
+        copyBtn.addEventListener('click', e => copyLink(f.url, copyBtn, e));
+
+        const eSpan = document.createElement('span'); eSpan.className = 'match-ext'; eSpan.textContent = '.' + (f.ext.toUpperCase()||'FILE');
+
+
+        row.appendChild(iSpan); row.appendChild(nSpan); row.appendChild(playBtn); row.appendChild(copyBtn); row.appendChild(eSpan);
+        resEl.appendChild(row);
+    });
+}
+
+async function saveThisPage() {
+    const status = document.getElementById('saveStatus');
+    status.textContent = '⏳ Fetching manifest…';
+    try {
+        const manifestRes = await fetch('manifest.json');
+        if (!manifestRes.ok) throw new Error('manifest HTTP ' + manifestRes.status);
+        const manifestText = await manifestRes.text();
+        const injection = '<scr' + 'ipt>window.EMBEDDED_MANIFEST=' + manifestText + ';</scr' + 'ipt>';
+        const pageText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML.replace('</head>', injection + '</head>');
+        const a = Object.assign(document.createElement('a'), {
+            href: URL.createObjectURL(new Blob([pageText], {type:'text/html'})),
+            download: 'files-kkk-education.html'
+        });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        status.textContent = '✅ Saved!';
+    } catch(e) { status.textContent = '❌ ' + e.message; }
+}
+
+init();
+</script>
+</body>
+</html>

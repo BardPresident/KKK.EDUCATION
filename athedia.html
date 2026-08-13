@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHEDIA — Sovereign Archive Mirror Scripts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Cinzel:wght@700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ══ DARK MODE (default) ═══════════════════════════════════════════════ */
+    :root {
+      --bg:              #0a0a0a;
+      --color:           #c8c8c8;
+      --accent:          #69d9ff;
+      --accent-glow:     rgba(105,217,255,0.4);
+      --accent-border:   rgba(105,217,255,0.27);
+      --accent-hover-bg: rgba(105,217,255,0.07);
+      --gold:            #d4a84b;
+      --gold-border:     rgba(212,168,75,0.27);
+      --gold-hover-bg:   rgba(212,168,75,0.07);
+      --card-bg:         #0f0f0f;
+      --card-border:     #1e1e1e;
+      --card-hover:      rgba(105,217,255,0.27);
+      --gold-card-hover: rgba(212,168,75,0.27);
+      --section-border:  #2a2a2a;
+      --dim:             #888;
+      --dimmer:          #555;
+      --dimmest:         #444;
+      --tag-border:      #222;
+      --tag-color:       #555;
+      --mirror-border:   #1a1a1a;
+      --footer-color:    #888;
+      --footer-a:        #aaa;
+      --footer-divider:  #333;
+      --h2-color:        #888;
+      --sub-color:       #555;
+      --desc-color:      #888;
+    }
+
+    /* ══ LIGHT MODE ════════════════════════════════════════════════════════ */
+    body.light {
+      --bg:              #f0f4f8;
+      --color:           #1a2530;
+      --accent:          #0077aa;
+      --accent-glow:     rgba(0,119,170,0.2);
+      --accent-border:   rgba(0,119,170,0.35);
+      --accent-hover-bg: rgba(0,119,170,0.07);
+      --gold:            #7a5000;
+      --gold-border:     rgba(122,80,0,0.35);
+      --gold-hover-bg:   rgba(122,80,0,0.07);
+      --card-bg:         #ffffff;
+      --card-border:     #d8e0e8;
+      --card-hover:      rgba(0,119,170,0.25);
+      --gold-card-hover: rgba(122,80,0,0.25);
+      --section-border:  #c8d0d8;
+      --dim:             #445566;
+      --dimmer:          #667788;
+      --dimmest:         #889aaa;
+      --tag-border:      #c8d4dc;
+      --tag-color:       #667788;
+      --mirror-border:   #d0d8e0;
+      --footer-color:    #556677;
+      --footer-a:        #334455;
+      --footer-divider:  #c0ccd8;
+      --h2-color:        #556677;
+      --sub-color:       #778899;
+      --desc-color:      #556677;
+    }
+
+    /* ══ PARTY MODE ════════════════════════════════════════════════════════ */
+    body.party {
+      --bg:              #06000f;
+      --color:           #ffffff;
+      --accent:          #cc88ff;
+      --accent-glow:     rgba(204,136,255,0.5);
+      --accent-border:   rgba(204,136,255,0.35);
+      --accent-hover-bg: rgba(204,136,255,0.08);
+      --gold:            #ff2d78;
+      --gold-border:     rgba(255,45,120,0.35);
+      --gold-hover-bg:   rgba(255,45,120,0.08);
+      --card-bg:         #0d0020;
+      --card-border:     #1a0035;
+      --card-hover:      rgba(204,136,255,0.3);
+      --gold-card-hover: rgba(255,45,120,0.3);
+      --section-border:  #2a0050;
+      --dim:             #aa88cc;
+      --dimmer:          #886699;
+      --dimmest:         #664477;
+      --tag-border:      #2a0050;
+      --tag-color:       #886699;
+      --mirror-border:   #1a0035;
+      --footer-color:    #aa88cc;
+      --footer-a:        #cc88ff;
+      --footer-divider:  #2a0050;
+      --h2-color:        #aa88cc;
+      --sub-color:       #886699;
+      --desc-color:      #aa88cc;
+    }
+
+    body.party {
+      animation: party-bg 8s linear infinite;
+    }
+    @keyframes party-bg {
+      0%   { background-color: #06000f; }
+      20%  { background-color: #0a0006; }
+      40%  { background-color: #00060f; }
+      60%  { background-color: #06000f; }
+      80%  { background-color: #080004; }
+      100% { background-color: #06000f; }
+    }
+
+    body.party header h1 {
+      animation: party-text 2s linear infinite;
+    }
+    @keyframes party-text {
+      0%   { color: #cc88ff; text-shadow: 0 0 30px rgba(204,136,255,0.7); }
+      25%  { color: #ff2d78; text-shadow: 0 0 30px rgba(255,45,120,0.7); }
+      50%  { color: #00ffff; text-shadow: 0 0 30px rgba(0,255,255,0.7); }
+      75%  { color: #aaff00; text-shadow: 0 0 30px rgba(170,255,0,0.7); }
+      100% { color: #cc88ff; text-shadow: 0 0 30px rgba(204,136,255,0.7); }
+    }
+
+    body.party .script-card::before {
+      animation: party-bar 2s linear infinite;
+    }
+    @keyframes party-bar {
+      0%   { background: #cc88ff; }
+      25%  { background: #ff2d78; }
+      50%  { background: #00ffff; }
+      75%  { background: #aaff00; }
+      100% { background: #cc88ff; }
+    }
+
+    /* ══ THEME BUTTON (floating) ═══════════════════════════════════════════ */
+    .theme-btn {
+      position: fixed;
+      bottom: 22px;
+      right: 18px;
+      z-index: 999;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 0;
+    }
+    .theme-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    /* ══ BASE STYLES ═══════════════════════════════════════════════════════ */
+    body {
+      background: var(--bg);
+      color: var(--color);
+      font-family: 'Share Tech Mono', monospace;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .page { max-width: 720px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 48px; }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      letter-spacing: 8px;
+      color: var(--accent);
+      text-shadow: 0 0 30px var(--accent-glow);
+      margin-bottom: 8px;
+      transition: color 0.4s;
+    }
+
+    header .sub {
+      font-size: 12px;
+      color: var(--sub-color);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: color 0.4s;
+    }
+
+    header .divider {
+      margin: 20px auto;
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transition: background 0.4s;
+    }
+
+    header .desc {
+      font-size: 13px;
+      color: var(--desc-color);
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 0 auto;
+      transition: color 0.4s;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--h2-color);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--section-border);
+      transition: color 0.4s, border-color 0.4s;
+    }
+
+    .section { margin-bottom: 48px; }
+
+    .scripts { display: flex; flex-direction: column; gap: 16px; }
+
+    .script-card {
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      padding: 24px;
+      position: relative;
+      transition: border-color 0.2s, background 0.4s;
+    }
+
+    .script-card:hover { border-color: var(--card-hover); }
+
+    .script-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      opacity: 0.5;
+      transition: background 0.4s;
+    }
+
+    .script-card.gold-card::before {
+      background: var(--gold);
+    }
+
+    .script-card.gold-card:hover { border-color: var(--gold-card-hover); }
+
+    .script-name {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      transition: color 0.4s;
+    }
+
+    .script-card.gold-card .script-name {
+      color: var(--gold);
+    }
+
+    .script-file {
+      font-size: 11px;
+      color: var(--dimmest);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      transition: color 0.4s;
+    }
+
+    .script-desc {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      transition: color 0.4s;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border: 1px solid var(--tag-border);
+      color: var(--tag-color);
+      letter-spacing: 1px;
+      transition: border-color 0.4s, color 0.4s;
+    }
+
+    .tag.green { border-color: #1a3a1a; color: #4a8a4a; }
+    .tag.blue  { border-color: #1a2a3a; color: #4a6a8a; }
+    .tag.gold  { border-color: #3a2a0a; color: #8a6a2a; }
+    .tag.warm  { border-color: #3a1a0a; color: #9a5a2a; }
+
+    body.light .tag.green { border-color: #c0d8c0; color: #2a6a2a; }
+    body.light .tag.blue  { border-color: #b8ccdc; color: #2a4a7a; }
+    body.light .tag.gold  { border-color: #dcd0b0; color: #6a4a00; }
+    body.light .tag.warm  { border-color: #dcc8b0; color: #7a3a00; }
+
+    body.party .tag.green { border-color: #1a3a30; color: #44cc99; }
+    body.party .tag.blue  { border-color: #1a1a40; color: #6688ff; }
+    body.party .tag.gold  { border-color: #3a0a20; color: #ff6699; }
+    body.party .tag.warm  { border-color: #3a0a30; color: #cc44ff; }
+
+    .download-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      background: var(--accent-hover-bg);
+      border-color: var(--accent);
+    }
+
+    .download-btn.gold-btn {
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+
+    .download-btn.gold-btn:hover {
+      background: var(--gold-hover-bg);
+      border-color: var(--gold);
+    }
+
+    .mirrors { display: flex; flex-direction: column; gap: 10px; }
+
+    .mirror-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid var(--mirror-border);
+      background: var(--card-bg);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.4s;
+    }
+
+    .mirror-link:hover { border-color: var(--section-border); }
+
+    .mirror-icon {
+      font-size: 18px;
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .mirror-info { flex: 1; }
+
+    .mirror-name {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--dim);
+      margin-bottom: 2px;
+      transition: color 0.4s;
+    }
+
+    .mirror-url {
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      opacity: 0.7;
+      transition: color 0.4s;
+    }
+
+    .mirror-arrow { font-size: 11px; color: var(--dimmer); transition: color 0.4s; }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--footer-color);
+      letter-spacing: 2px;
+      line-height: 2;
+      transition: color 0.4s;
+    }
+
+    footer a { color: var(--footer-a); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+
+    .footer-divider {
+      margin: 16px auto;
+      width: 60px;
+      height: 1px;
+      background: var(--footer-divider);
+      transition: background 0.4s;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <h1>ATHEDIA</h1>
+      <p class="sub">Sovereign Archive Mirror Scripts</p>
+      <div class="divider"></div>
+      <p class="desc">
+        🖥️ Windows batch scripts that mirror Archive.org items to your local machine.
+        No installers. No dependencies. Double-click and run.
+        CC0 Public Domain. All Love Reserved. 💓
+      </p>
+    </header>
+
+    <!-- SCRIPTS -->
+    <div class="section">
+      <h2>Mirror Scripts</h2>
+      <div class="scripts">
+
+        <div class="script-card">
+          <div class="script-name">ATHEDIA</div>
+          <div class="script-file">Athedia-Download.bat</div>
+          <div class="script-desc">
+            Mirrors the Athedia infrastructure archive — the complete technical
+            framework, source files, and deployment configurations. Downloads ZIP
+            and BAT files. Resume-safe, preserving all historical versions locally
+            as natural version control.
+          </div>
+          <div class="tags">
+            <span class="tag green">RESUME-SAFE</span>
+            <span class="tag blue">ZIP · BAT</span>
+            <span class="tag gold">VERSION HISTORY PRESERVED</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/download/athedia/Athedia-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card">
+          <div class="script-name">WIKKKAN BOOKS</div>
+          <div class="script-file">Books-Download.bat</div>
+          <div class="script-desc">
+            Mirrors the complete WIKKKAN books archive — an ocean of books spanning
+            philosophy, spirituality, psychology, politics, and personal transformation
+            by Wendell Charles NeSmith. On run, choose your mode: wipe everything
+            and redownload fresh, or resume and skip files already local.
+            Once downloaded, upload all .txt files into NotebookLM as sources —
+            it becomes the ultimate oracle, answering anything from within a lifetime
+            of sovereign thought: E=L, the Hinata Trap, the Recursive Floor,
+            the Electric Soul, and the complete REPUBLICKA framework.
+          </div>
+          <div class="tags">
+            <span class="tag gold">WIPE OR RESUME</span>
+            <span class="tag warm">NOTEBOOKLM ORACLE</span>
+            <span class="tag blue">TXT · BAT</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/download/wikkkan/Books-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card">
+          <div class="script-name">WCN TV</div>
+          <div class="script-file">WCN-TV-Download.bat</div>
+          <div class="script-desc">
+            The complete master archive — everything Wendell Charles NeSmith
+            has released publicly, in one place: television series and
+            long-form video essays, written works and comics, and music,
+            podcasts, and audiobooks, spanning more than a decade. Every
+            volume is packaged as a clean numbered zip (01-, 02-...) instead
+            of scattered loose files. Fetches the live volume list from
+            archive.org and lets you choose exactly what to download.
+            Resume-safe with a live progress meter per file, and every
+            finished download is checked against archive.org's MD5 hash —
+            a mismatch is deleted and retried automatically. This is the
+            recommended way to get everything, all in one organized place.
+          </div>
+          <div class="tags">
+            <span class="tag gold">RECOMMENDED</span>
+            <span class="tag warm">COMPLETE ARCHIVE</span>
+            <span class="tag green">RESUME-SAFE</span>
+            <span class="tag blue">MD5 VERIFIED</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/download/wcn-tv/WCN-TV-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card">
+          <div class="script-name">ATHEDEN</div>
+          <div class="script-file">Atheden-Download.bat</div>
+          <div class="script-desc">
+            Mirrors the Atheden music archive — sacred songs by Ivory and Wendell.
+            Downloads MP3, PNG, TXT, and BAT files. Lyrics (TXT) are always refreshed
+            on every run. Album art matching an MP3 basename and spectrograms are
+            automatically excluded. Resume-safe for audio and images.
+          </div>
+          <div class="tags">
+            <span class="tag green">RESUME-SAFE</span>
+            <span class="tag gold">LYRICS ALWAYS FRESH</span>
+            <span class="tag blue">MP3 · PNG · TXT · BAT</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/download/atheden/Atheden-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card">
+          <div class="script-name">AUDIOBOOKS</div>
+          <div class="script-file">Audiobooks-Download.bat</div>
+          <div class="script-desc">
+            Mirrors the WCN Audiobooks archive — narrated chapters and
+            books as individual MP3 files. Fetches the live file list
+            from archive.org and lets you choose exactly which to
+            download. Resume-safe with a live progress meter per file,
+            and every finished download is checked against archive.org's
+            MD5 hash — a mismatch is deleted and retried automatically.
+          </div>
+          <div class="tags">
+            <span class="tag green">RESUME-SAFE</span>
+            <span class="tag gold">MD5 VERIFIED</span>
+            <span class="tag blue">MP3 · BAT</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/download/wcn-audiobooks/Audiobooks-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card">
+          <div class="script-name">REPUBLICKA COMIC</div>
+          <div class="script-file">Comic-Download.bat</div>
+          <div class="script-desc">
+            Mirrors the Wendell's Diary comic archive — 368 single-panel bard-core
+            comics chronicling the whimsical and philosophical life of Wendell,
+            his loyal dog Sophia, and a growing cast of plush advisors, rivals,
+            and guardians. On run, choose to download PNGs only (all 368 individual
+            panels) or PNGs plus the full ZIP bundle (all panels compressed into
+            one archive). This script is also self-mirroring — the BAT file itself
+            downloads alongside your chosen content.
+          </div>
+          <div class="tags">
+            <span class="tag green">RESUME-SAFE</span>
+            <span class="tag gold">PNG OR PNG + ZIP</span>
+            <span class="tag blue">PNG · ZIP · BAT</span>
+          </div>
+          <a class="download-btn" href="https://archive.org/download/wendells-diary-comic/Comic-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card gold-card">
+          <div class="script-name">SOUL CALCULATOR</div>
+          <div class="script-file">SoulCalculator-Download.bat</div>
+          <div class="script-desc">
+            An installer and setup wizard that downloads the Soul Calculator
+            source library — entirely AI-generated philosophy — and walks you
+            step by step through building your own personal Soul Calculator
+            inside NotebookLM. Asks for your name. Transfers creative ownership
+            to you. Generates your personal initiation prompt and a README guide
+            for the full creative loop. No programming knowledge required.
+          </div>
+          <div class="tags">
+            <span class="tag warm">SETUP WIZARD</span>
+            <span class="tag gold">AI-GENERATED SOURCES</span>
+            <span class="tag blue">TXT · BAT</span>
+          </div>
+          <a class="download-btn gold-btn" href="https://archive.org/download/soul-calculator/SoulCalculator-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card gold-card">
+          <div class="script-name">CRYSTAL BALL</div>
+          <div class="script-file">CrystalBall-Download.bat</div>
+          <div class="script-desc">
+            An installer and setup wizard that downloads Book 184: Gift of
+            Prophecy by Wendell Charles NeSmith and walks you step by step
+            through building your own Crystal Ball inside NotebookLM. Asks
+            for your name. Transfers ownership to you. Generates your
+            personal initiation prompt and a README guide to the two
+            calculations: forensic archaeology (reading the past intent
+            behind any completed system) and predictive prophecy (projecting
+            where any live situation is heading before it arrives).
+          </div>
+          <div class="tags">
+            <span class="tag warm">SETUP WIZARD</span>
+            <span class="tag gold">BOOK 184</span>
+            <span class="tag blue">TXT · BAT</span>
+          </div>
+          <a class="download-btn gold-btn" href="https://archive.org/download/crystal-ball-69/CrystalBall-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+        <div class="script-card gold-card">
+          <div class="script-name">RESEARCH</div>
+          <div class="script-file">Research-Download.bat</div>
+          <div class="script-desc">
+            An installer and setup wizard that downloads Book 186: Theogony
+            by Wendell Charles NeSmith and walks you step by step through
+            building your own Research notebook inside NotebookLM. Asks for
+            your name. Transfers ownership to you. Generates your personal
+            initiation prompt and a README guide to the top-down methodology:
+            start from the present observation, ask what pattern must be true
+            for this to be the result, and trace backward until only the
+            coherent histories remain.
+          </div>
+          <div class="tags">
+            <span class="tag warm">SETUP WIZARD</span>
+            <span class="tag gold">BOOK 186</span>
+            <span class="tag blue">TXT · BAT</span>
+          </div>
+          <a class="download-btn gold-btn" href="https://archive.org/download/research-999/Research-Download.bat" target="_blank" rel="noopener noreferrer">⬇ DOWNLOAD</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MIRRORS -->
+    <div class="section">
+      <h2>Content Mirrors</h2>
+      <div class="mirrors">
+
+        <a class="mirror-link" href="https://www.bitchute.com/channel/P9QR7Z6nmVtm" target="_blank" rel="noopener noreferrer">
+          <div class="mirror-icon">⬡</div>
+          <div class="mirror-info">
+            <div class="mirror-name">BITCHUTE</div>
+            <div class="mirror-url">bitchute.com/channel/P9QR7Z6nmVtm</div>
+          </div>
+          <div class="mirror-arrow">→</div>
+        </a>
+
+        <a class="mirror-link" href="https://github.com/BardPresident" target="_blank" rel="noopener noreferrer">
+          <div class="mirror-icon">🐙</div>
+          <div class="mirror-info">
+            <div class="mirror-name">GITHUB</div>
+            <div class="mirror-url">github.com/BardPresident</div>
+          </div>
+          <div class="mirror-arrow">→</div>
+        </a>
+
+        <a class="mirror-link" href="https://archive.org/details/@bardpresident" target="_blank" rel="noopener noreferrer">
+          <div class="mirror-icon">📦</div>
+          <div class="mirror-info">
+            <div class="mirror-name">INTERNET ARCHIVE</div>
+            <div class="mirror-url">archive.org/@bardpresident</div>
+          </div>
+          <div class="mirror-arrow">→</div>
+        </a>
+
+        <a class="mirror-link" href="https://odysee.com/@BardPresident:0" target="_blank" rel="noopener noreferrer">
+          <div class="mirror-icon">◈</div>
+          <div class="mirror-info">
+            <div class="mirror-name">ODYSEE</div>
+            <div class="mirror-url">odysee.com/@BardPresident</div>
+          </div>
+          <div class="mirror-arrow">→</div>
+        </a>
+
+        <a class="mirror-link" href="https://www.youtube.com/@BardPresident" target="_blank" rel="noopener noreferrer">
+          <div class="mirror-icon">▶</div>
+          <div class="mirror-info">
+            <div class="mirror-name">YOUTUBE</div>
+            <div class="mirror-url">youtube.com/@BardPresident</div>
+          </div>
+          <div class="mirror-arrow">→</div>
+        </a>
+
+      </div>
+    </div>
+
+    <footer>
+      <a href="https://kkk.education" target="_blank" rel="noopener noreferrer">KKK.EDUCATION</a>
+      &nbsp;·&nbsp;
+      <a href="https://archive.org/details/athedia" target="_blank" rel="noopener noreferrer">ARCHIVE.ORG/ATHEDIA</a>
+      <div class="footer-divider"></div>
+      CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED<br>
+      WENDELL CHARLES NESMITH · THE WENDING ROAD
+    </footer>
+
+  </div>
+
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Switch theme"><span id="themeIcon">🌙</span></button>
+
+  <script>
+    function toggleTheme() {
+      var b = document.body;
+      var next = b.classList.contains('light') ? 'party'
+               : b.classList.contains('party') ? 'dark'
+               : 'light';
+      b.classList.remove('light', 'party');
+      if (next === 'light') {
+        b.classList.add('light');
+        document.getElementById('themeIcon').textContent = '☀️';
+      } else if (next === 'party') {
+        b.classList.add('party');
+        document.getElementById('themeIcon').textContent = '🎉';
+      } else {
+        document.getElementById('themeIcon').textContent = '🌙';
+      }
+      try { localStorage.setItem('kkk-theme', next); } catch(e) {}
+    }
+
+    try {
+      var saved = localStorage.getItem('kkk-theme');
+      if (saved === 'light') {
+        document.body.classList.add('light');
+        document.getElementById('themeIcon').textContent = '☀️';
+      } else if (saved === 'party') {
+        document.body.classList.add('party');
+        document.getElementById('themeIcon').textContent = '🎉';
+      }
+    } catch(e) {}
+  </script>
+
+</body>
+</html>

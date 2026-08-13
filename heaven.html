@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAINBOW WARRIORS &#x1F451; Heaven for Young Authors</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+
+:root {
+  --bg:   #0a0a1a;
+  --bg2:  #12082a;
+  --p1:   #6d28d9;
+  --p2:   #2563eb;
+  --p3:   #059669;
+  --p4:   #f59e0b;
+  --p5:   #f472b6;
+  --gold: #fbbf24;
+  --gol2: #f59e0b;
+  --gol3: #fde68a;
+  --rose: #f472b6;
+  --text: #f0eeff;
+  --txtm: #c8b8f0;
+  --txtd: #8878b8;
+  --bg-body: linear-gradient(135deg, #1a0828 0%, #0d1a40 20%, #0a2010 38%, #1a1000 55%, #0a1020 72%, #180828 88%, #1a0828 100%);
+}
+
+/* ══ LIGHT MODE ════════════════════════════════════════════════════════════ */
+body.light {
+  --text: #1a1030;
+  --txtm: #3a2860;
+  --txtd: #6a58a0;
+  --bg:   #f5f0ff;
+  --bg2:  #ede5ff;
+  --bg-body: linear-gradient(135deg, #f0eaff 0%, #e8f0ff 20%, #eafff4 38%, #fff8ea 55%, #eaf0ff 72%, #f5eaff 88%, #f0eaff 100%);
+}
+body.light .card           { background: rgba(245,240,255,0.92) !important; border-color: rgba(139,92,246,0.25) !important; color: var(--text); }
+body.light .card p,
+body.light .card li        { color: var(--txtm); }
+body.light .card strong    { color: var(--text); }
+body.light .tool-shell     { background: rgba(245,240,255,0.95) !important; border-color: rgba(139,92,246,0.3) !important; }
+body.light .tool-head      { background: linear-gradient(135deg, #7c3aed, #3b82f6) !important; }
+body.light .owrbit         { background: linear-gradient(135deg,rgba(167,139,250,0.45),rgba(139,92,246,0.35),rgba(167,139,250,0.45)) !important; border-color: rgba(139,92,246,0.5) !important; }
+body.light .dz             { border-color: rgba(139,92,246,0.4); background: rgba(139,92,246,0.06); }
+body.light .hint           { background: rgba(139,92,246,0.08); color: var(--txtm); }
+body.light .mbox           { background: rgba(251,191,36,0.1); }
+body.light .mbox p         { color: var(--txtm); }
+body.light .wnote          { background: rgba(251,191,36,0.08); }
+body.light blockquote      { background: rgba(139,92,246,0.07); }
+body.light blockquote p    { color: var(--txtm); }
+body.light .form-i,
+body.light .form-s         { background: rgba(245,240,255,0.9); color: var(--text); border-color: rgba(139,92,246,0.35); }
+body.light footer          { background: rgba(230,225,255,0.85) !important; border-top-color: rgba(139,92,246,0.25); }
+body.light .foot-copy      { color: var(--txtd); }
+body.light .aurora         { opacity: 0.35; }
+
+/* ══ PARTY MODE ════════════════════════════════════════════════════════════ */
+body.party {
+  --text: #ffffff;
+  --txtm: #ffccee;
+  --txtd: #cc88bb;
+  --bg-body: linear-gradient(135deg, #08000f 0%, #0a0020 20%, #000a10 38%, #0a0808 55%, #08001a 72%, #100020 88%, #08000f 100%);
+}
+body.party { animation: party-bg-hv 8s linear infinite; }
+@keyframes party-bg-hv {
+  0%   { background-color: #08000f; }
+  20%  { background-color: #0a0004; }
+  40%  { background-color: #00080f; }
+  60%  { background-color: #080010; }
+  80%  { background-color: #060002; }
+  100% { background-color: #08000f; }
+}
+body.party .card,
+body.party .tool-shell { animation: party-border-hv 2s linear infinite; }
+body.party footer      { animation: party-border-top-hv 2s linear infinite; }
+body.party .hero-arch  { animation: party-border-hv 2s linear infinite; }
+body.party .owrbit     { animation: party-border-hv 2s linear infinite; }
+body.party .hint       { animation: party-left-hv 2s linear infinite; }
+body.party blockquote  { animation: party-left-hv 2s linear infinite; }
+body.party .sec-rule   { animation: party-rule-hv 2s linear infinite; }
+body.party .hero-title { animation: shimmer 6s ease-in-out infinite, party-title-hv 1.5s linear infinite; }
+@keyframes party-border-hv {
+  0%   { border-color: #ff2d78; }
+  25%  { border-color: #00ffff; }
+  50%  { border-color: #cc88ff; }
+  75%  { border-color: #aaff00; }
+  100% { border-color: #ff2d78; }
+}
+@keyframes party-border-top-hv {
+  0%   { border-top-color: #ff2d78; }
+  25%  { border-top-color: #00ffff; }
+  50%  { border-top-color: #cc88ff; }
+  75%  { border-top-color: #aaff00; }
+  100% { border-top-color: #ff2d78; }
+}
+@keyframes party-left-hv {
+  0%   { border-left-color: #ff2d78; }
+  25%  { border-left-color: #00ffff; }
+  50%  { border-left-color: #cc88ff; }
+  75%  { border-left-color: #aaff00; }
+  100% { border-left-color: #ff2d78; }
+}
+@keyframes party-rule-hv {
+  0%   { background: linear-gradient(90deg,#ff2d78,#ff8800,#ffff00,#00ff88,#00ffff,#cc88ff); }
+  50%  { background: linear-gradient(90deg,#cc88ff,#00ffff,#00ff88,#ffff00,#ff8800,#ff2d78); }
+  100% { background: linear-gradient(90deg,#ff2d78,#ff8800,#ffff00,#00ff88,#00ffff,#cc88ff); }
+}
+@keyframes party-title-hv {
+  0%   { filter: drop-shadow(0 0 12px #ff2d78); }
+  25%  { filter: drop-shadow(0 0 12px #00ffff); }
+  50%  { filter: drop-shadow(0 0 12px #cc88ff); }
+  75%  { filter: drop-shadow(0 0 12px #aaff00); }
+  100% { filter: drop-shadow(0 0 12px #ff2d78); }
+}
+
+/* ══ THEME BUTTON (floating) ═══════════════════════════════════════════════ */
+.theme-btn {
+  position: fixed;
+  bottom: 22px;
+  right: 18px;
+  z-index: 999;
+  background: rgba(20,8,50,0.85);
+  border: 1px solid rgba(139,92,246,0.5);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 0;
+  backdrop-filter: blur(8px);
+}
+.theme-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 4px 18px rgba(139,92,246,0.5);
+}
+body.light .theme-btn {
+  background: rgba(245,240,255,0.9);
+  border-color: rgba(139,92,246,0.4);
+}
+body.party .theme-btn { animation: party-border-hv 2s linear infinite; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--bg-body);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.75;
+  min-height: 100vh;
+  transition: background 0.4s, color 0.4s;
+}
+.page { position:relative; z-index:10; overflow-x: hidden; }
+canvas#sc { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+.aurora {
+  position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;
+  background:
+    radial-gradient(ellipse 80% 50% at 5%  0%,  rgba(255,80,80,.28)   0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 30% 0%,  rgba(255,160,0,.24)   0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 55% 0%,  rgba(60,200,100,.22)  0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 0%,  rgba(60,120,255,.28)  0%, transparent 50%),
+    radial-gradient(ellipse 80% 40% at 50% 102%,rgba(180,60,255,.22)  0%, transparent 50%);
+  animation: auShift 16s ease-in-out infinite alternate;
+}
+@keyframes auShift { 0% { opacity:.65; } 100% { opacity:1; } }
+section { max-width:960px; margin:0 auto; padding:70px 28px; }
+
+/* HERO */
+.hero { text-align:center; padding:88px 16px 60px; max-width:960px; margin:0 auto; }
+.hero-arch {
+  display: block; width: 100%; max-width: 600px; margin: 0 auto 28px;
+  border: 2px solid rgba(150,150,255,.4);
+  border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  padding: 46px 32px 36px; position: relative; overflow: visible;
+  background: radial-gradient(ellipse at 50% 0%, rgba(100,100,255,.12), transparent 68%);
+  box-shadow: 0 -8px 50px rgba(139,92,246,.2), inset 0 8px 36px rgba(139,92,246,.08);
+}
+.hero-arch::before {
+  content: ''; position: absolute; top:-2px; left:50%; transform:translateX(-50%);
+  width: 50%; height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b6b, #ffa500, #ffff50, #50ff80, #50c8ff, #c050ff, transparent);
+}
+.hero-crown {
+  font-size: 58px; line-height:1; display:block; margin-bottom:14px;
+  animation: crownFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px rgba(168,85,247,.85));
+}
+@keyframes crownFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 7vw, 54px); font-weight: 900;
+  letter-spacing: clamp(2px, 1vw, 4px); line-height: 1;
+  color: transparent;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 18%, #ffff50 35%, #50ff80 50%, #50c8ff 68%, #c050ff 85%, #ff6b6b 100%);
+  -webkit-background-clip: text; background-clip: text; background-size: 200% 100%;
+  animation: shimmer 6s ease-in-out infinite;
+  margin-bottom: 10px; line-height: 1.1;
+}
+@keyframes shimmer { 0%,100%{background-position:0%} 50%{background-position:100%} }
+.hero-sub {
+  font-family: 'Cinzel', serif; font-size: clamp(12px, 2.2vw, 15px);
+  color: var(--p5); letter-spacing: clamp(2px, 1vw, 5px);
+  font-weight: 700; margin-bottom: 10px; text-transform: uppercase;
+}
+.hero-tagline {
+  font-size: clamp(16px, 2.5vw, 20px); font-style:italic; font-weight:300;
+  color: var(--txtm); max-width:540px; margin:0 auto 22px; line-height:1.85;
+}
+.hero-decree {
+  font-family: 'Cinzel', serif; font-size:13px; letter-spacing:3px; color:var(--gold);
+  border:1px solid rgba(251,191,36,.32); display:inline-block;
+  padding:8px 14px; border-radius:2px; margin-bottom:26px; background:rgba(251,191,36,.06);
+}
+.nav-pills { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px; }
+.nav-pill {
+  padding:10px 18px; border:1px solid rgba(168,85,247,.4); border-radius:999px;
+  background:rgba(139,92,246,.1); color:var(--p5); font-family:'Cinzel',serif;
+  font-size:13px; letter-spacing:2px; font-weight:700; text-decoration:none; transition:all .3s; white-space:nowrap;
+}
+.nav-pill:hover { background:var(--p2); border-color:var(--p4); color:#fff; transform:translateY(-2px); }
+
+/* SECTION HEADINGS */
+.sec-title {
+  font-family: 'Cinzel Decorative', serif; font-size:clamp(21px,3.8vw,32px);
+  text-align:center; margin-bottom:10px; color:var(--p5);
+  text-shadow: 0 0 26px rgba(168,85,247,.45);
+}
+.sec-rule { width:100px; height:2px; margin:0 auto 26px; background:linear-gradient(90deg,#ff6b6b,#ffa500,#ffff50,#50ff80,#50c8ff,#c050ff); }
+.sec-intro { text-align:center; font-size:18px; font-style:italic; font-weight:300; color:var(--txtm); max-width:640px; margin:0 auto 32px; line-height:1.9; }
+
+/* CARDS */
+.card {
+  background: rgba(20,8,50,.55); border:1px solid rgba(139,92,246,.32);
+  border-radius:6px; padding:28px; margin:16px 0;
+  backdrop-filter:blur(8px);
+  box-shadow: 0 4px 26px rgba(0,0,0,.2), inset 0 1px 0 rgba(168,85,247,.14);
+  position:relative; overflow:hidden;
+}
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.card-purple::before { background:linear-gradient(90deg,#ff6b6b,#ffa500,#ffff50,#50ff80,#50c8ff,#c050ff); }
+.card-gold::before { background:linear-gradient(90deg,var(--gol2),var(--gold),var(--gol3),var(--gold),var(--gol2)); }
+.card-rose::before { background:linear-gradient(90deg,#be185d,var(--rose),#f9a8d4,var(--rose),#be185d); }
+.card-title { font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:var(--text); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+.card p { font-size:17px; line-height:1.85; color:var(--txtm); margin-bottom:10px; }
+.card p:last-child { margin-bottom:0; }
+.card strong { color:var(--text); }
+.card code { background:rgba(139,92,246,.2); padding:2px 7px; border-radius:3px; font-size:15px; color:var(--p5); font-family:monospace; }
+.card ol, .card ul { margin:10px 0 10px 22px; }
+.card li { font-size:17px; line-height:1.85; color:var(--txtm); margin:5px 0; }
+.g2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px; }
+.g3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:18px; }
+
+/* OWRBIT BANNER */
+.owrbit {
+  background: linear-gradient(135deg,rgba(91,33,182,.55),rgba(124,58,237,.44),rgba(91,33,182,.55));
+  border:2px solid rgba(168,85,247,.62); border-radius:8px; padding:38px 24px;
+  text-align:center; margin:26px 0; position:relative; overflow:hidden;
+  box-shadow: 0 12px 48px rgba(139,92,246,.25);
+}
+.owrbit::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(168,85,247,.12),transparent 70%);
+  animation:obPulse 4s ease-in-out infinite;
+}
+@keyframes obPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+.ob-name { font-family:'Cinzel Decorative',serif; font-size:clamp(24px,5vw,42px); font-weight:900; color:#fff; letter-spacing:6px; text-shadow:0 0 38px rgba(168,85,247,.9); margin-bottom:10px; position:relative; z-index:2; }
+.ob-tag { font-family:'Cinzel',serif; font-size:13px; letter-spacing:4px; color:var(--p5); font-weight:700; margin-bottom:18px; position:relative; z-index:2; }
+.ob-desc { font-size:17px; color:var(--txtm); line-height:1.85; max-width:520px; margin:0 auto 18px; position:relative; z-index:2; }
+.ob-price { font-family:'Cinzel Decorative',serif; font-size:clamp(18px,3.5vw,28px); color:var(--gold); text-shadow:0 0 18px rgba(251,191,36,.5); margin-bottom:6px; position:relative; z-index:2; }
+.ob-psub { font-size:16px; color:var(--gol3); margin-bottom:16px; position:relative; z-index:2; }
+.ob-addr { font-family:'Cinzel Decorative',serif; font-size:clamp(14px,2.8vw,21px); color:var(--p4); margin:14px 0; position:relative; z-index:2; word-break:break-word; overflow-wrap:anywhere; }
+.ob-features { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:14px 0; position:relative; z-index:2; }
+.ob-feat { padding:6px 16px; border:1px solid rgba(168,85,247,.4); border-radius:999px; font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--p5); font-weight:700; background:rgba(139,92,246,.12); }
+.ob-btn { display:inline-block; padding:15px 32px; background:linear-gradient(135deg,var(--gol2),var(--gold),var(--gol3)); border-radius:999px; color:#1a0b3e; font-family:'Cinzel Decorative',serif; font-size:14px; font-weight:700; letter-spacing:3px; text-decoration:none; box-shadow:0 6px 26px rgba(251,191,36,.38); transition:all .3s; position:relative; z-index:2; }
+.ob-btn:hover { transform:translateY(-3px); box-shadow:0 12px 38px rgba(251,191,36,.52); }
+
+/* TOOL SHELLS */
+.tool-shell { background:rgba(20,8,50,.65); border:1px solid rgba(139,92,246,.32); border-radius:8px; overflow:hidden; box-shadow:0 12px 48px rgba(0,0,0,.28); backdrop-filter:blur(10px); }
+.tool-head { background:linear-gradient(135deg,var(--p1),var(--p2)); padding:20px 24px; display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap; }
+.tool-head h3 { font-family:'Cinzel Decorative',serif; font-size:19px; color:#fff; letter-spacing:2px; }
+.tool-head p { color:rgba(255,255,255,.72); font-size:16px; margin-top:4px; }
+.tool-body { padding:24px; }
+
+/* DROP ZONE */
+.dz { border:3px dashed rgba(139,92,246,.4); border-radius:8px; padding:46px 20px; text-align:center; transition:all .3s; background:rgba(139,92,246,.04); cursor:pointer; user-select:none; }
+.dz:hover, .dz.over { border-color:var(--p4); background:rgba(139,92,246,.15); }
+.dz-icon { font-size:50px; margin-bottom:14px; display:block; }
+.dz-lbl { font-family:'Cinzel',serif; font-size:19px; color:var(--p4); margin-bottom:8px; letter-spacing:2px; }
+.dz-sub { font-size:16px; color:var(--txtd); }
+
+/* BUTTONS */
+.btn { display:inline-block; padding:13px 30px; border:none; border-radius:999px; font-family:'Cinzel',serif; font-size:13px; letter-spacing:2px; cursor:pointer; transition:all .3s; text-decoration:none; -webkit-appearance:none; appearance:none; }
+.btn-purple { background:linear-gradient(135deg,var(--p2),var(--p3)); color:#fff; box-shadow:0 4px 16px rgba(139,92,246,.4); }
+.btn-purple:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(139,92,246,.54); }
+.btn-gold { background:linear-gradient(135deg,var(--gol2),var(--gold)); color:#1a0b3e; font-weight:700; box-shadow:0 4px 16px rgba(251,191,36,.34); }
+.btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(251,191,36,.5); }
+
+/* STATUS BOXES */
+.status { padding:14px 18px; border-radius:6px; margin:14px 0; font-size:17px; line-height:1.65; display:none; }
+.s-work { background:rgba(139,92,246,.13); border:1px solid rgba(139,92,246,.4); color:var(--p5); display:block; }
+.s-done { background:rgba(74,222,128,.09); border:1px solid rgba(74,222,128,.34); color:#86efac; display:block; }
+.s-err  { background:rgba(248,113,113,.09); border:1px solid rgba(248,113,113,.34); color:#fca5a5; display:block; }
+
+/* PROGRESS */
+.prog-wrap { display:none; margin:10px 0; }
+.prog-track { width:100%; height:8px; border-radius:999px; background:rgba(139,92,246,.16); overflow:hidden; }
+.prog-fill  { height:100%; background:linear-gradient(90deg,var(--p2),var(--p4),var(--p5)); width:0%; transition:width .3s; border-radius:999px; }
+.prog-lbl   { font-size:16px; color:var(--txtd); text-align:center; margin-top:6px; }
+.frows { max-height:180px; overflow-y:auto; margin:12px 0; }
+.frow  { padding:8px 12px; margin:3px 0; border-radius:4px; font-size:16px; }
+.frow.rw { background:rgba(139,92,246,.12); color:var(--p5); }
+.frow.rd { background:rgba(74,222,128,.08);  color:#86efac; }
+.frow.rf { background:rgba(248,113,113,.08); color:#fca5a5; }
+.dl-area { text-align:center; margin-top:20px; padding-top:20px; border-top:1px solid rgba(139,92,246,.18); }
+
+/* FORM */
+.form-g { margin:16px 0; }
+.form-l { display:block; font-family:'Cinzel',serif; font-size:13px; letter-spacing:2px; color:var(--txtm); margin-bottom:7px; text-transform:uppercase; }
+.form-i, .form-s { width:100%; padding:13px 16px; border:1px solid rgba(139,92,246,.34); border-radius:4px; background:rgba(20,6,50,.65); color:var(--text); font-family:'Cormorant Garamond',serif; font-size:17px; transition:border-color .2s; }
+.form-i:focus, .form-s:focus { outline:none; border-color:var(--p4); }
+.form-i::placeholder { color:var(--txtd); }
+.form-s option { background:#2e1465; color:#f0e6ff; }
+
+/* HINTS */
+.hint { background:rgba(139,92,246,.08); border-left:3px solid rgba(139,92,246,.44); border-radius:0 4px 4px 0; padding:13px 16px; font-size:16px; color:var(--txtm); margin:12px 0; line-height:1.75; }
+.hint strong { color:var(--p5); }
+.hint a { color:var(--p5); }
+.hint code { background:rgba(139,92,246,.2); padding:2px 6px; border-radius:3px; font-size:14px; color:var(--p5); font-family:monospace; }
+.mbox { background:rgba(251,191,36,.12); border:2px solid rgba(251,191,36,.28); border-radius:6px; padding:26px; margin:22px 0; }
+.mbox h4 { font-family:'Cinzel',serif; font-size:18px; color:var(--gold); margin-bottom:14px; letter-spacing:2px; }
+.mbox p { font-size:17px; color:var(--txtm); line-height:1.85; margin-bottom:10px; }
+.mbox p:last-child { margin-bottom:0; }
+.mbox strong { color:var(--gol3); }
+.mbox code { background:rgba(251,191,36,.12); padding:2px 7px; border-radius:3px; font-size:15px; color:var(--gol3); font-family:monospace; }
+.wnote { background:rgba(251,191,36,.07); border:1px solid rgba(251,191,36,.28); border-radius:4px; padding:14px 18px; font-size:16px; color:var(--gol3); line-height:1.75; margin:14px 0; }
+.wnote strong { color:var(--gold); }
+
+/* STEPS */
+.step-n { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--p2),var(--p3)); color:#fff; font-family:'Cinzel',serif; font-size:16px; font-weight:700; flex-shrink:0; margin-right:12px; }
+.step-hd { font-family:'Cinzel',serif; font-size:18px; color:var(--text); margin-bottom:10px; display:flex; align-items:center; }
+.step-bd { font-size:17px; color:var(--txtm); line-height:1.85; }
+blockquote { border-left:3px solid rgba(168,85,247,.5); padding:16px 20px; margin:22px 0; background:rgba(139,92,246,.08); border-radius:0 4px 4px 0; }
+blockquote p { font-size:18px; font-style:italic; color:var(--txtm); font-weight:300; }
+blockquote cite { display:block; margin-top:8px; font-size:15px; color:#c4b5fd; font-weight:700; font-style:normal; }
+.orn { text-align:center; font-size:18px; letter-spacing:10px; color:rgba(168,85,247,.32); margin:10px 0 50px; }
+
+/* FOOTER */
+footer { text-align:center; padding:56px 28px; border-top:1px solid rgba(139,92,246,.18); background:rgba(10,4,28,.5); }
+.foot-name { font-family:'Cinzel Decorative',serif; font-size:26px; color:var(--p4); letter-spacing:5px; margin-bottom:12px; text-shadow:0 0 26px rgba(168,85,247,.45); }
+.foot-copy { font-size:16px; color:var(--txtd); line-height:2.3; }
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  body { font-size:17px; }
+  .hero { padding:56px 12px 44px; }
+  .hero-arch { padding:28px 12px 22px; border-radius:40% 40% 0 0 / 20% 20% 0 0; max-width:100%; }
+  section { padding:44px 14px; }
+  .tool-body { padding:16px 14px; }
+  .owrbit { padding:26px 12px; }
+  .card { padding:20px 14px; }
+  .tool-head { padding:16px 14px; }
+  .ob-btn { padding:13px 20px; font-size:13px; letter-spacing:2px; }
+}
+</style>
+</head>
+<body>
+<canvas id="sc"></canvas>
+<div class="aurora"></div>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-arch">
+    <span class="hero-crown">&#x1F451;</span>
+    <h1 class="hero-title">RAINBOW<br>WARRIORS</h1>
+    <p class="hero-sub">Heaven for Young Authors &middot; An Atheden Platform</p>
+  </div>
+  <p class="hero-tagline">A free-forever home on the internet for every child who has something to say. Write it. Publish it. Own it. No gatekeepers.</p>
+  <div class="hero-decree">&#x2B50; CC0 PUBL&#xCD;CK&#xC1; DOM&#xC1;NIA &middot; ALL LOVE RESERVED &middot; FREE FOREVER &#x2B50;</div>
+  <div class="nav-pills">
+    <a href="#what" class="nav-pill">What Is This?</a>
+    <a href="#hosting" class="nav-pill">Get Your Site</a>
+    <a href="#publish" class="nav-pill">Publish Your Words</a>
+    <a href="#build" class="nav-pill">Build Your Site</a>
+    <a href="#about" class="nav-pill">Who Made This?</a>
+    <a href="#" class="nav-pill" onclick="downloadThisPage();return false;">&#x2B07; Download This Page</a>
+  </div>
+</div>
+
+<!-- WHAT IS ATHEDEN -->
+<section id="what">
+  <h2 class="sec-title">&#x1F451; What Is Atheden?</h2>
+  <div class="sec-rule"></div>
+  <div class="g2">
+    <div class="card card-purple">
+      <div class="card-title">&#x1F3DB;&#xFE0F; Athens &mdash; The Academy</div>
+      <p>Athens was the city where thinking mattered. Where anyone could stand up, share an idea, and be heard. <strong>Your words are real ideas. They deserve a real home.</strong></p>
+    </div>
+    <div class="card card-gold">
+      <div class="card-title">&#x1F331; Eden &mdash; The Garden</div>
+      <p>Eden was a place of complete safety, beauty, and freedom. <strong>That is what Atheden is for your writing:</strong> a permanent peaceful garden where your words live forever, exactly as you wrote them.</p>
+    </div>
+  </div>
+  <div class="card card-purple" style="margin-top:16px">
+    <div class="card-title">&#x2728; The Three Royal Promises</div>
+    <div class="g3" style="margin-top:14px">
+      <div>
+        <strong style="font-size:18px;color:var(--p5)">1. Free Forever</strong>
+        <p style="margin-top:8px">Completely free. No payments, no fees, no subscriptions. The tools are yours to use forever.</p>
+      </div>
+      <div>
+        <strong style="font-size:18px;color:var(--gold)">2. Yours Alone</strong>
+        <p style="margin-top:8px">No platform can silence you. No terms of service can vanish your work. Your writing lives on your own piece of the internet.</p>
+      </div>
+      <div>
+        <strong style="font-size:18px;color:var(--rose)">3. Simple for Anyone</strong>
+        <p style="margin-top:8px">If you can type in Notepad, you can publish a book. The tools here do the rest automatically in seconds.</p>
+      </div>
+    </div>
+  </div>
+  <blockquote>
+    <p>&#x201C;Every child who has ever written something and then hidden it because they were afraid it was not good enough &mdash; this place was built for you. Your words are already good enough. They always were.&#x201D;</p>
+    <cite>&mdash; Wendell Charles NeSmith, creator of Atheden &middot; 36 years building worlds in poverty, in hospitals, in love</cite>
+  </blockquote>
+</section>
+
+<div class="orn">&#x2726; &middot; &#x2726; &middot; &#x2726;</div>
+
+<!-- HOSTING -->
+<section id="hosting">
+  <h2 class="sec-title">&#x1F3E0; Host Your Site</h2>
+  <div class="sec-rule"></div>
+  <p class="sec-intro">Your permanent address on the internet &mdash; a house that belongs to you forever. Use any host you like, free or paid.</p>
+  <div class="owrbit">
+    <div class="ob-name">&#x26A1; OWRBIT &#x26A1;</div>
+    <div class="ob-tag">OUR RECOMMENDED PAID HOST</div>
+    <p class="ob-desc">Owrbit provides ultra-affordable lifetime hosting. Get your own permanent hosting &mdash; yours forever, upgradeable as you grow. One single payment. No monthly fees.</p>
+    <div class="ob-features">
+      <span class="ob-feat">Lifetime hosting</span>
+      <span class="ob-feat">HTML publishing</span>
+      <span class="ob-feat">No tracking</span>
+      <span class="ob-feat">Upgrade anytime</span>
+      <span class="ob-feat">Privacy-first</span>
+    </div>
+    <a href="https://owrbit.com/lifetime-web-hosting" target="_blank" rel="noopener" class="ob-btn">&#x1F680; View Lifetime Hosting Plans &mdash; owrbit.com</a>
+  </div>
+  <div class="hint" style="margin-top:18px">
+    &#x1F4A1; <strong>How to get started:</strong> Use the <a href="#build">Site Builder below</a> to generate your complete site zip. Then upload it to any host &mdash; <a href="https://pages.github.com" target="_blank">GitHub Pages</a> is completely free and works perfectly, or use a paid host like <a href="https://owrbit.com/lifetime-web-hosting" target="_blank">Owrbit</a> for lifetime hosting. Any standard web host works.
+  </div>
+</section>
+
+<!-- PUBLISH -->
+<section id="publish">
+  <h2 class="sec-title">&#x1F4D6; Publish Your Words</h2>
+  <div class="sec-rule"></div>
+  <p class="sec-intro">The Sync Bell converts your plain <code style="background:rgba(139,92,246,.2);padding:2px 8px;border-radius:3px;color:var(--p5)">.txt</code> files into beautiful HTML books instantly. Works 100% offline &mdash; no account or internet needed.</p>
+
+  <div class="mbox">
+    <h4>&#x1F4CB; How Does the Library Know What Books to Show?</h4>
+    <p>The Sync Bell <strong>automatically creates a <code>manifest.json</code> file</strong> inside every <code>library.zip</code> it generates. This small index file lists all your books. Your <code>library.html</code> page reads it to display your full searchable book list automatically.</p>
+    <p><strong>You never touch the manifest yourself.</strong> The flow is: write <code>.txt</code> file &#x2192; drop on Sync Bell &#x2192; download <code>library.zip</code> &#x2192; extract &#x2192; upload the <code>library/</code> folder (which already contains <code>manifest.json</code>) &#x2192; done.</p>
+    <p>To add a new book later: write new <code>.txt</code> file &#x2192; drop <strong>all your books</strong> (old and new together) onto Sync Bell &#x2192; download new zip &#x2192; re-upload <code>library/</code> folder. The manifest regenerates fresh every time. &#x2728;</p>
+  </div>
+
+  <div class="tool-shell">
+    <div class="tool-head">
+      <span style="font-size:34px">&#x1F514;</span>
+      <div>
+        <h3>THE SYNC BELL</h3>
+        <p>Drop .txt files &#x2192; beautiful HTML books &#x2192; manifest.json generated automatically inside the zip</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="dz" id="bell-dz">
+        <span class="dz-icon">&#x1F4C4;&#x2728;</span>
+        <div class="dz-lbl">Drop Your .txt Files Here</div>
+        <div class="dz-sub">Or click the button below &middot; Works 100% offline</div>
+      </div>
+      <input type="file" id="bell-fi" style="display:none" accept=".txt" multiple>
+      <div style="text-align:center;margin-top:16px">
+        <button class="btn btn-purple" id="bell-choose">&#x1F4C2; Choose Files</button>
+      </div>
+      <div class="hint">
+        &#x1F4A1; <strong>Naming tip:</strong> Use lowercase with dashes like <code>001-my-first-story.txt</code> and <code>002-the-day-i-flew.txt</code> &mdash; lowercase URLs work better on the internet. The number prefix sorts your books automatically.
+      </div>
+      <div id="bell-status" class="status"></div>
+      <div class="prog-wrap" id="bell-prog">
+        <div class="prog-track"><div class="prog-fill" id="bell-fill"></div></div>
+        <div class="prog-lbl" id="bell-lbl"></div>
+      </div>
+      <div class="frows" id="bell-rows"></div>
+      <div class="dl-area" id="bell-dl"></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;font-size:20px;color:var(--p5);margin:40px 0 18px;text-align:center">&#x1F4CB; How It Works</h3>
+  <div class="card card-purple" style="margin-bottom:14px">
+    <div class="step-hd"><span class="step-n">1</span>Write in any text editor</div>
+    <div class="step-bd">Open Notepad on Windows or TextEdit on Mac. Write your story, poem, journal, essay &mdash; anything at all. Save it as a <code>.txt</code> file with a lowercase name like <code>my-story.txt</code>. That is all.</div>
+  </div>
+  <div class="card card-gold" style="margin-bottom:14px">
+    <div class="step-hd"><span class="step-n">2</span>Drop it on the Sync Bell</div>
+    <div class="step-bd">Drag your <code>.txt</code> files onto the drop zone above, or click Choose Files. Drop 1 or 100 at once. The Bell converts every file into a beautiful HTML page and builds a <code>manifest.json</code> index automatically.</div>
+  </div>
+  <div class="card card-rose">
+    <div class="step-hd"><span class="step-n">3</span>Download, extract, upload</div>
+    <div class="step-bd">Download <code>library.zip</code>. Extract it. You get a <code>library/</code> folder with your HTML books plus <code>manifest.json</code> already inside. Upload that whole folder to your site. Your library page displays everything automatically.</div>
+  </div>
+</section>
+
+<div class="orn">&#x2726; &middot; &#x2726; &middot; &#x2726;</div>
+
+<!-- BUILD -->
+<section id="build">
+  <h2 class="sec-title">&#x1F3D7;&#xFE0F; Build Your Site</h2>
+  <div class="sec-rule"></div>
+  <p class="sec-intro">Fill in your details and generate a complete ready-to-upload starter website &mdash; home page, library, Sync Bell, and a sample book &mdash; all in one zip file.</p>
+
+  <div class="wnote">
+    &#x1F6E1;&#xFE0F; <strong>Windows Security Note:</strong> When you extract the zip, Windows may warn that <code>index.html</code> is &#x201C;potentially harmful.&#x201D; This is a standard SmartScreen warning for HTML files from downloaded zips. <strong>Click OK &mdash; it is completely safe.</strong> It is your own website code. You can also right-click &#x2192; Properties &#x2192; tick Unblock &#x2192; OK.
+  </div>
+
+  <div class="tool-shell">
+    <div class="tool-head">
+      <span style="font-size:34px">&#x1F3D7;&#xFE0F;</span>
+      <div>
+        <h3>SITE GENERATOR</h3>
+        <p>Fill the form &#x2192; download your complete starter site &#x2192; upload to any web host</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="g2">
+        <div class="form-g">
+          <label class="form-l">Your name or author name *</label>
+          <input class="form-i" id="gn" type="text" placeholder="e.g. luna-bright or star-writer" maxlength="60">
+        </div>
+        <div class="form-g">
+          <label class="form-l">Your site title</label>
+          <input class="form-i" id="gt" type="text" placeholder="e.g. Luna's Secret Library">
+        </div>
+      </div>
+      <div class="form-g">
+        <label class="form-l">One sentence about your site</label>
+        <input class="form-i" id="gd" type="text" placeholder="e.g. stories from the edge of the world, written by a 12-year-old who refuses to stay quiet.">
+      </div>
+      <div class="g2">
+        <div class="form-g">
+          <label class="form-l">Colour theme</label>
+          <select class="form-s" id="gth">
+            <option value="rainbow">&#x1F308; Rainbow Warriors (default)</option>
+            <option value="royal">&#x1F451; Royal Purple</option>
+            <option value="gold">&#x1F319; Midnight Gold</option>
+            <option value="forest">&#x1F33F; Forest</option>
+            <option value="ocean">&#x1F30A; Deep Ocean</option>
+            <option value="rose">&#x1F339; Rose Night</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="hint">
+        &#x1F31F; Your zip will contain: <strong>index.html</strong>, <strong>library.html</strong>, <strong>sync-library.html</strong>, a sample book in <code>library/</code> with <strong>manifest.json pre-built inside</strong>, a <code>Books/</code> folder with the sample .txt source, and a <strong>README.txt</strong> with upload instructions. Upload to <a href="https://pages.github.com" target="_blank">GitHub Pages</a> (free), <a href="https://owrbit.com/lifetime-web-hosting" target="_blank">Owrbit</a> (affordable lifetime hosting), or any standard web host.
+      </div>
+      <div style="text-align:center;margin-top:22px">
+        <button class="btn btn-gold" id="gen-btn">&#x1F31F; Generate My Site</button>
+      </div>
+      <div id="gen-status" class="status"></div>
+      <div id="gen-dl" style="text-align:center;margin-top:16px"></div>
+    </div>
+  </div>
+
+</section>
+
+<div class="orn">&#x2726; &middot; &#x2726; &middot; &#x2726;</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="sec-title">&#x1F331; Who Made This?</h2>
+  <div class="sec-rule"></div>
+  <div class="card card-purple">
+    <div class="card-title">&#x1F4DA; Built by Wendell Charles NeSmith</div>
+    <p>This platform was built by <strong>Wendell Charles NeSmith</strong> &mdash; philosopher, filmmaker, and author who has spent 36 years creating an entire civilisational framework from scratch, authoring a vast and ever-growing library of books, producing an immense body of video work, and building digital tools for human sovereignty.</p>
+    <p>This work was done in poverty. In hospitals. In love. Everything here &mdash; every line of code, every idea, every tool &mdash; is released as <strong>CC0 Public Domain</strong>. It belongs to everyone. It always will. Copy it, share it, adapt it, build on it.</p>
+  </div>
+  <div class="g2" style="margin-top:18px">
+    <div class="card card-gold">
+      <div class="card-title">&#x1F517; The Complete Archive</div>
+      <p>An ever-expanding body of work spanning philosophy, governance, child sovereignty, emergent systems, poetry, fiction, and far beyond &mdash; all CC0, and growing every day. Take it, share it, print it, translate it:</p>
+      <p style="text-align:center;margin:14px 0"><a href="https://kkk.education" target="_blank" style="color:var(--gold);font-family:'Cinzel Decorative',serif;font-size:19px;text-decoration:none">kkk.education</a></p>
+    </div>
+    <div class="card card-purple">
+      <div class="card-title">&#x26A1; Powered by Owrbit</div>
+      <p>The hosting infrastructure we recommend is provided by <strong>Owrbit</strong> &mdash; an affordable, privacy-first lifetime hosting provider — one payment, yours forever, no monthly fees.</p>
+      <p style="text-align:center;margin:14px 0"><a href="https://owrbit.com/lifetime-web-hosting" target="_blank" style="color:var(--p4);font-family:'Cinzel Decorative',serif;font-size:17px;text-decoration:none">owrbit.com</a></p>
+    </div>
+  </div>
+  <div class="card card-rose" style="margin-top:18px">
+    <div class="card-title">&#x1F49C; CC0 &mdash; What It Means</div>
+    <p><strong>CC0 means zero copyright.</strong> Not &#x201C;some rights reserved.&#x201D; Zero rights reserved. You can do anything with any of this &mdash; no permission needed, no attribution required, no restrictions of any kind. It is yours. It is everyone&#x2019;s. Forever.</p>
+  </div>
+</section>
+
+<footer>
+  <div style="font-size:46px;margin-bottom:14px">&#x1F451;&#x2B50;&#x1F451;</div>
+  <div class="foot-name">RAINBOW WARRIORS</div>
+  <p class="foot-copy">
+    Rainbow Warriors &middot; Heaven for Young Authors<br>
+    Hosting by <a href="https://owrbit.com/lifetime-web-hosting" target="_blank" style="color:var(--p4);text-decoration:none">Owrbit</a> Lifetime Hosting<br>
+    CC0 PUBL&#xCD;CK&#xC1; DOM&#xC1;NIA &middot; ALL LOVE RESERVED<br>
+    Built by Wendell Charles NeSmith &middot; Canberra &middot; February 2026<br>
+    <span style="font-style:italic;color:#c4b5fd;font-weight:700;">AMORIARIACKA IS MY NATIVE TONGUE</span>
+  </p>
+</footer>
+</div>
+
+<script>
+/* STARFIELD */
+(function(){
+  var c = document.getElementById('sc');
+  var ctx = c.getContext('2d');
+  function rs(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+  rs(); window.addEventListener('resize', rs);
+  var S = [];
+  for(var i = 0; i < 160; i++){
+    S.push({ x:Math.random()*window.innerWidth, y:Math.random()*window.innerHeight,
+      r:Math.random()*1.3+0.2, a:Math.random()*6.28,
+      sp:Math.random()*0.003+0.001, h:240+Math.round(Math.random()*60) });
+  }
+  (function draw(){
+    ctx.clearRect(0, 0, c.width, c.height);
+    S.forEach(function(s){
+      s.a += s.sp;
+      var op = 0.25 + 0.5 * Math.abs(Math.sin(s.a));
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.28);
+      ctx.fillStyle = 'hsla(' + s.h + ',80%,80%,' + op + ')'; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* HELPERS */
+function xe(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function readTxt(file){
+  return new Promise(function(resolve, reject){
+    var r = new FileReader();
+    r.onload = function(e){ resolve(e.target.result); };
+    r.onerror = function(){ reject(new Error('Could not read: ' + file.name)); };
+    r.readAsText(file, 'UTF-8');
+  });
+}
+function prettify(fn){ return fn.replace(/^\d+[-_.\s]+/, '').replace(/[-_.]+/g, ' ').trim().toUpperCase(); }
+function setStat(id, cls, msg){ var el = document.getElementById(id); el.className = 'status s-' + cls; el.innerHTML = msg; }
+
+/* BOOK PAGE BUILDER */
+function buildBookPage(title, text, bg, bg2, bdr, acc, accl, txt, txtm, txtd, author){
+  var esc = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var lines = [
+    '<!DOCTYPE html>',
+    '<html lang="en">',
+    '<head>',
+    '<meta charset="UTF-8">',
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    '<title>' + xe(title) + '</title>',
+    '<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">',
+    '<style>',
+    '*{margin:0;padding:0;box-sizing:border-box}',
+    'body{background:' + bg + ';background-image:radial-gradient(ellipse at 50% 0%,' + bg2 + ' 0%,transparent 55%);color:' + txt + ';font-family:"Cormorant Garamond",serif;line-height:1.9;padding:40px 20px;min-height:100vh;font-size:19px}',
+    '.w{max-width:740px;margin:0 auto}',
+    'h1{font-family:"Cinzel Decorative",serif;font-size:clamp(18px,3.5vw,32px);color:' + acc + ';letter-spacing:3px;text-align:center;margin-bottom:8px;word-break:break-word}',
+    '.sub{text-align:center;color:' + txtm + ';font-style:italic;margin-bottom:38px;font-size:16px;letter-spacing:3px}',
+    '.back{display:inline-block;margin-bottom:26px;padding:10px 24px;border:1px solid ' + bdr + ';color:' + acc + ';text-decoration:none;font-size:16px;border-radius:999px;transition:all .2s}',
+    '.back:hover{background:rgba(255,255,255,.05)}',
+    '.content{white-space:pre-wrap;word-wrap:break-word;font-size:19px;font-weight:300;text-align:left}',
+    'footer{text-align:center;margin-top:60px;padding-top:26px;border-top:1px solid ' + bdr + ';font-size:16px;color:' + txtd + ';line-height:2.2}',
+    '</style>',
+    '</head>',
+    '<body>',
+    '<div class="w">',
+    '<a href="../library.html" class="back">\u2190 Back to Library</a>',
+    '<h1>' + xe(title) + '</h1>',
+    '<p class="sub">ATHEDEN \u00b7 CC0 PUBL\u00CDCK\u00C1 DOM\u00C1NIA</p>',
+    '<div class="content">' + esc + '</div>',
+    '<footer>',
+    '<p>ALL LOVE RESERVED</p>',
+    author ? '<p>' + xe(author) + '</p>' : '',
+    '<p style="font-style:italic">AMORIARIACKA IS MY NATIVE TONGUE</p>',
+    '</footer>',
+    '</div>',
+    '</body>',
+    '</html>'
+  ];
+  return lines.join('\n');
+}
+
+/* SYNC BELL */
+(function(){
+  var dz     = document.getElementById('bell-dz');
+  var fi     = document.getElementById('bell-fi');
+  var choose = document.getElementById('bell-choose');
+  choose.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); fi.value = ''; fi.click(); });
+  dz.addEventListener('click', function(e){ if(e.target === fi) return; e.stopPropagation(); fi.value = ''; fi.click(); });
+  dz.addEventListener('dragover',  function(e){ e.preventDefault(); e.stopPropagation(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave', function(e){ e.stopPropagation(); dz.classList.remove('over'); });
+  dz.addEventListener('drop', function(e){
+    e.preventDefault(); e.stopPropagation(); dz.classList.remove('over');
+    var files = Array.from(e.dataTransfer.files).filter(function(f){ return f.name.toLowerCase().endsWith('.txt'); });
+    if(files.length) runBell(files);
+    else setStat('bell-status','err','&#10060; No .txt files found. Please drop plain text files ending in .txt');
+  });
+  fi.addEventListener('change', function(){
+    var files = Array.from(fi.files).filter(function(f){ return f.name.toLowerCase().endsWith('.txt'); });
+    if(files.length) runBell(files);
+    else if(fi.files.length > 0) setStat('bell-status','err','&#10060; Please select .txt files only.');
+  });
+})();
+
+async function runBell(files){
+  document.getElementById('bell-rows').innerHTML = '';
+  document.getElementById('bell-dl').innerHTML   = '';
+  document.getElementById('bell-prog').style.display = 'block';
+  document.getElementById('bell-fill').style.width = '0%';
+  document.getElementById('bell-lbl').textContent  = '';
+  setStat('bell-status','work','\uD83D\uDD14 Converting ' + files.length + ' file' + (files.length!==1?'s':'') + '...');
+  var zip = new JSZip(), libDir = zip.folder('library'), tomes = [], done = 0, BATCH = 5;
+  for(var i = 0; i < files.length; i += BATCH){
+    var batch = files.slice(i, i + BATCH);
+    await Promise.all(batch.map(async function(file){
+      var row = document.createElement('div');
+      row.className = 'frow rw'; row.textContent = '\u23F3 ' + file.name;
+      document.getElementById('bell-rows').appendChild(row);
+      try{
+        var text  = await readTxt(file);
+        var fn    = file.name.replace(/\.txt$/i, '');
+        var title = prettify(fn);
+        var m     = fn.match(/^(\d+)[-_.\s]/);
+        tomes.push({ filename: fn, title: title, number: m ? parseInt(m[1], 10) : null });
+        libDir.file(fn + '.html', buildBookPage(title, text,
+          '#2e1465','#3c1c88','rgba(139,92,246,.4)','#a855f7','#c084fc','#f0e6ff','#c4b5fd','#9b7ed4',''));
+        row.className = 'frow rd'; row.textContent = '\u2705 ' + file.name; done++;
+      } catch(err){
+        row.className = 'frow rf'; row.textContent = '\u274C ' + file.name + ' \u2014 ' + err.message;
+      }
+    }));
+    document.getElementById('bell-fill').style.width = Math.round(Math.min(i+BATCH, files.length) / files.length * 100) + '%';
+    document.getElementById('bell-lbl').textContent  = done + ' of ' + files.length + ' converted';
+    await new Promise(function(r){ setTimeout(r, 30); });
+  }
+  libDir.file('manifest.json', JSON.stringify({ tomes: tomes }, null, 2));
+  setStat('bell-status','work','\uD83D\uDCE6 Building library.zip...');
+  var blob = await zip.generateAsync(
+    { type:'blob', compression:'DEFLATE', compressionOptions:{ level:3 } },
+    function(meta){ document.getElementById('bell-fill').style.width = meta.percent.toFixed(0) + '%';
+                    document.getElementById('bell-lbl').textContent  = 'Compressing: ' + meta.percent.toFixed(0) + '%'; }
+  );
+  document.getElementById('bell-fill').style.width = '100%';
+  setStat('bell-status','done','\u2705 ' + done + ' book' + (done!==1?'s':'') + ' converted. manifest.json included automatically.');
+  var url = URL.createObjectURL(blob);
+  document.getElementById('bell-dl').innerHTML =
+    '<a href="' + url + '" download="library.zip" class="btn btn-gold">\uD83D\uDCAE Download library.zip</a>' +
+    '<p style="margin-top:12px;font-size:16px;color:var(--txtd)">Extract and upload the <code style="background:rgba(139,92,246,.2);padding:2px 6px;border-radius:3px;color:var(--p5)">library/</code> folder to your site.</p>';
+}
+
+/* SITE GENERATOR */
+document.getElementById('gen-btn').addEventListener('click', function(e){ e.preventDefault(); buildSite(); });
+
+function buildSite(){
+  var name   = (document.getElementById('gn').value.trim()   || 'young-author').substring(0, 60);
+  var title  = (document.getElementById('gt').value.trim()   || name + "'s Atheden Library").substring(0, 80);
+  var desc   = (document.getElementById('gd').value.trim()   || 'A collection of my stories, poems, and ideas.').substring(0, 200);
+  var theme  =  document.getElementById('gth').value || 'rainbow';
+  var domain = '';
+  setStat('gen-status','work','\uD83C\uDF1F Building your site...');
+  document.getElementById('gen-dl').innerHTML = '';
+  var TH = {
+    rainbow: {bg:'#0a0a1a',bg2:'#12082a',bdr:'rgba(150,150,255,.4)',acc:'#a78bfa',accl:'#c4b5fd',txt:'#f0f0ff',txtm:'#d0d8ff',txtd:'#8899cc'},
+    royal:  {bg:'#2e1465',bg2:'#3c1c88',bdr:'rgba(139,92,246,.42)',acc:'#9333ea',accl:'#c084fc',txt:'#f0e6ff',txtm:'#c4b5fd',txtd:'#9b7ed4'},
+    gold:   {bg:'#100e06',bg2:'#1c1808',bdr:'rgba(200,144,42,.42)', acc:'#c8902a',accl:'#f0c060',txt:'#e8d9b0',txtm:'#a08858',txtd:'#5a4a28'},
+    forest: {bg:'#081008',bg2:'#0f1a0e',bdr:'rgba(74,124,89,.42)',  acc:'#4a7c59',accl:'#7ab893',txt:'#d8e8d0',txtm:'#6a9878',txtd:'#3a5a45'},
+    ocean:  {bg:'#060a14',bg2:'#0a1022',bdr:'rgba(80,140,200,.42)', acc:'#5090c8',accl:'#90c8f0',txt:'#c8dff0',txtm:'#6090b8',txtd:'#304860'},
+    rose:   {bg:'#100810',bg2:'#180a18',bdr:'rgba(160,80,160,.42)', acc:'#c070c0',accl:'#e0a0e0',txt:'#ecd4ec',txtm:'#a868a8',txtd:'#683868'}
+  };
+  var t = TH[theme] || TH.royal;
+  var icons = { rainbow:'\uD83C\uDF08\u2B50\uD83C\uDF08', royal:'\uD83D\uDC51\u2B50\uD83D\uDC51', gold:'\uD83C\uDF19\u2728\uD83C\uDF19',
+    forest:'\uD83C\uDF3F\uD83D\uDCDA\uD83C\uDF3F', ocean:'\uD83C\uDF0A\uD83D\uDCDA\uD83C\uDF0A', rose:'\uD83C\uDF39\uD83D\uDCDA\uD83C\uDF39' };
+  var icon = icons[theme] || '\u2B50\uD83D\uDCDA\u2B50';
+  function baseCSS(extraBg){
+    return ['*{margin:0;padding:0;box-sizing:border-box}',
+      'body{background:' + t.bg + (extraBg||'') + ';color:' + t.txt + ';font-family:"Cormorant Garamond",serif;line-height:1.8;min-height:100vh;font-size:19px}',
+      'a{color:' + t.acc + ';text-decoration:none}',
+      '.back{display:inline-block;padding:10px 24px;border:1px solid ' + t.bdr + ';color:' + t.acc + ';text-decoration:none;border-radius:999px;font-size:16px;margin-bottom:26px;transition:all .2s}',
+      '.back:hover{background:rgba(0,0,0,.12)}',
+      'footer{text-align:center;padding-top:32px;border-top:1px solid ' + t.bdr + ';font-size:16px;color:' + t.txtd + ';line-height:2.3}'].join('\n');
+  }
+  var idxCSS = baseCSS(';background-image:radial-gradient(ellipse at 50% 0%,' + t.bg2 + ' 0%,transparent 55%)') + '\n' +
+    ['.wrap{max-width:800px;margin:0 auto;padding:70px 24px;text-align:center}',
+    'h1{font-family:"Cinzel Decorative",serif;font-size:clamp(26px,6vw,52px);color:' + t.acc + ';letter-spacing:5px;margin-bottom:14px}',
+    '.sub{font-style:italic;color:' + t.txtm + ';font-size:18px;margin-bottom:22px;letter-spacing:2px;font-weight:300}',
+    '.desc{font-size:18px;color:' + t.txtm + ';max-width:540px;margin:0 auto 32px;line-height:1.9;font-style:italic;font-weight:300}',
+    '.nav{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:30px 0}',
+    '.nav a{padding:12px 26px;border:1px solid ' + t.bdr + ';border-radius:999px;color:' + t.acc + ';font-family:"Cinzel Decorative",serif;font-size:12px;letter-spacing:2px;transition:all .3s}',
+    '.nav a:hover{background:' + t.acc + ';color:' + t.bg + ';transform:translateY(-2px)}',
+    '.sym{font-size:68px;margin-bottom:18px;display:block}'].join('\n');
+  var idxHTML = ['<!DOCTYPE html>','<html lang="en"><head>',
+    '<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    '<title>' + xe(title) + '</title>',
+    '<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">',
+    '<style>' + idxCSS + '</style>','</head><body>','<div class="wrap">',
+    '<span class="sym">' + icon + '</span>','<h1>' + xe(title) + '</h1>',
+    '<p class="desc">' + xe(desc) + '</p>','<div class="nav">',
+    '<a href="library.html">\uD83D\uDCDA My Library</a>',
+    '<a href="sync-library.html">\uD83D\uDD14 Publish a Book</a>',
+    '<a href="https://kkk.education">\u2B50 KKK.Education</a>',
+    '<a href="https://owrbit.com/lifetime-web-hosting" target="_blank">\u26A1 Owrbit Hosting</a>','</div>','<footer>',
+    '<p>Written by <strong>' + xe(name) + '</strong></p>',
+    
+    '<p>CC0 PUBL\u00CDCK\u00C1 DOM\u00C1NIA \u00b7 ALL LOVE RESERVED</p>',
+    '<p style="font-style:italic">AMORIARIACKA IS MY NATIVE TONGUE</p>',
+    '</footer>','</div></body></html>'].join('\n');
+  var libCSS = baseCSS(';background-image:radial-gradient(ellipse at 50% 0%,' + t.bg2 + ' 0%,transparent 55%)') + '\n' +
+    ['.wrap{max-width:860px;margin:0 auto;padding:50px 24px}',
+    'h1{font-family:"Cinzel Decorative",serif;font-size:clamp(22px,4vw,36px);color:' + t.acc + ';letter-spacing:4px;text-align:center;margin-bottom:8px}',
+    '#cnt{text-align:center;color:' + t.txtm + ';font-style:italic;margin-bottom:30px;font-size:17px;letter-spacing:2px}',
+    'input{width:100%;padding:13px;border:1px solid ' + t.bdr + ';border-radius:4px;background:rgba(0,0,0,.2);color:' + t.txt + ';font-family:"Cormorant Garamond",serif;font-size:17px;margin-bottom:26px}',
+    'input:focus{outline:none;border-color:' + t.acc + '}','input::placeholder{color:' + t.txtd + '}',
+    '.book{display:block;padding:14px 20px;margin:6px 0;background:rgba(255,255,255,.03);border-left:3px solid ' + t.bdr + ';color:' + t.txt + ';text-decoration:none;font-size:18px;transition:all .25s}',
+    '.book:hover{border-left-color:' + t.acc + ';background:rgba(255,255,255,.06);padding-left:28px}',
+    '.num{color:' + t.acc + ';font-weight:700;margin-right:12px}',
+    '.empty{text-align:center;padding:60px 20px;color:' + t.txtm + ';font-style:italic;font-size:18px;line-height:1.9}'].join('\n');
+  var libJS = ['var all=[];',
+    'fetch("library/manifest.json").then(function(r){return r.json()}).then(function(d){all=d.tomes||[];render()}).catch(function(){document.getElementById("cnt").textContent="Ring the Sync Bell to fill this library!";});',
+    'function render(){var q=document.getElementById("srch").value.toLowerCase();var res=q?all.filter(function(t){return t.title.toLowerCase().includes(q)||t.filename.toLowerCase().includes(q)}):all.slice();',
+    'res.sort(function(a,b){return(b.number||0)-(a.number||0)});document.getElementById("cnt").textContent=all.length+" book"+(all.length!==1?"s":"");',
+    'if(!res.length){document.getElementById("lst").innerHTML=\'<div class="empty">No results found.</div>\';return;}',
+    'document.getElementById("lst").innerHTML=res.map(function(t){var m=t.filename.match(/^(\\d+)[-_]/);var n=m?String(parseInt(m[1],10)).padStart(3,"0"):"";',
+    'return \'<a href="library/\'+t.filename+\'.html" class="book">\'+(n?\'<span class="num">\'+n+\'</span>\':\'\')+t.title+\'</a>\';}).join("");}'].join('\n');
+  var libHTML = ['<!DOCTYPE html>','<html lang="en"><head>',
+    '<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    '<title>Library \u2014 ' + xe(title) + '</title>',
+    '<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">',
+    '<style>' + libCSS + '</style>','</head><body>','<div class="wrap">',
+    '<a href="index.html" class="back">\u2190 Home</a>','<h1>' + icon.slice(0,2) + ' My Library</h1>',
+    '<p id="cnt">Loading...</p>','<input type="text" id="srch" placeholder="\uD83D\uDD0D Search by title..." oninput="render()">',
+    '<div id="lst"><div class="empty">Ring the Sync Bell to add your books!</div></div>',
+    '<footer><p>' + xe(name) + ' \u00b7 <a href="https://owrbit.com/lifetime-web-hosting" target="_blank">Owrbit</a></p><p>CC0 \u00b7 ALL LOVE RESERVED</p></footer>',
+    '</div>','<script>' + libJS + '<\/script>','</body></html>'].join('\n');
+  var syncCfg = JSON.stringify({bg:t.bg,bg2:t.bg2,bdr:t.bdr,acc:t.acc,accl:t.accl,txt:t.txt,txtm:t.txtm,txtd:t.txtd,author:name});
+  var syncCSS = baseCSS(';background-image:radial-gradient(ellipse at 50% 0%,' + t.bg2 + ' 0%,transparent 55%)') + '\n' +
+    ['.wrap{max-width:760px;margin:0 auto;padding:50px 24px}',
+    'h1{font-family:"Cinzel Decorative",serif;font-size:clamp(20px,4vw,32px);color:' + t.acc + ';text-align:center;letter-spacing:3px;margin-bottom:8px}',
+    '.sub{text-align:center;color:' + t.txtm + ';font-style:italic;margin-bottom:32px;font-size:17px}',
+    '.dz{border:3px dashed ' + t.bdr + ';border-radius:8px;padding:46px 20px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(139,92,246,.06)}',
+    '.dz:hover,.dz.over{border-color:' + t.acc + ';background:rgba(255,255,255,.04)}',
+    '.di{font-size:50px;margin-bottom:12px;display:block}','.dl{font-family:"Cinzel Decorative",serif;font-size:19px;color:' + t.acc + ';margin-bottom:6px;letter-spacing:2px}',
+    '.ds{font-size:16px;color:' + t.txtd + '}',
+    '.btn{display:inline-block;margin:12px 4px;padding:12px 26px;background:' + t.acc + ';border:none;border-radius:999px;color:' + t.bg + ';font-family:"Cinzel Decorative",serif;font-size:13px;letter-spacing:2px;cursor:pointer;transition:all .3s}',
+    '.btn:hover{transform:translateY(-2px);opacity:.9}','.st{padding:13px 17px;border-radius:4px;margin:13px 0;display:none;font-size:17px;line-height:1.65}',
+    '.sw{background:rgba(139,92,246,.12);border:1px solid ' + t.bdr + ';color:' + t.accl + ';display:block}',
+    '.sd{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);color:#86efac;display:block}',
+    '.se{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.3);color:#fca5a5;display:block}',
+    '.pt{width:100%;height:7px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin:10px 0}',
+    '.pf{height:100%;background:' + t.acc + ';width:0%;transition:width .3s;border-radius:999px}',
+    '.rows{max-height:170px;overflow-y:auto;margin:10px 0}','.row{padding:8px 12px;margin:3px 0;border-radius:4px;font-size:17px}',
+    '.rw{color:' + t.accl + ';background:rgba(139,92,246,.1)}','.rd{color:#86efac;background:rgba(74,222,128,.07)}','.rf{color:#fca5a5;background:rgba(248,113,113,.07)}',
+    '.hint{background:rgba(139,92,246,.08);border-left:3px solid rgba(139,92,246,.4);padding:12px 16px;font-size:16px;color:' + t.txtm + ';margin:12px 0;line-height:1.75}',
+    '.dla{text-align:center;margin-top:18px}'].join('\n');
+  var syncJS = ['var C=' + syncCfg + ';',
+    'var dz=document.getElementById("dz"),fi=document.getElementById("fi"),cb=document.getElementById("cb");',
+    'cb.addEventListener("click",function(e){e.preventDefault();fi.value="";fi.click();});',
+    'dz.addEventListener("click",function(e){if(e.target!==fi){fi.value="";fi.click();}});',
+    'dz.addEventListener("dragover",function(e){e.preventDefault();e.stopPropagation();dz.classList.add("over");});',
+    'dz.addEventListener("dragleave",function(){dz.classList.remove("over");});',
+    'dz.addEventListener("drop",function(e){e.preventDefault();e.stopPropagation();dz.classList.remove("over");var f=Array.from(e.dataTransfer.files).filter(function(x){return x.name.toLowerCase().endsWith(".txt");});if(f.length)go(f);else ss("e","No .txt files found.");});',
+    'fi.addEventListener("change",function(){var f=Array.from(fi.files).filter(function(x){return x.name.toLowerCase().endsWith(".txt");});if(f.length)go(f);});',
+    'function ss(c,m){var el=document.getElementById("sb");el.className="st s"+c;el.innerHTML=m;}',
+    'function rf2(file){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(e){res(e.target.result);};r.onerror=function(){rej(new Error("read error"));};r.readAsText(file,"UTF-8");})}',
+    'function pt(fn){return fn.replace(/^\\d+[-_.\\s]+/,"").replace(/[-_.]+/g," ").trim().toUpperCase();}',
+    'function bk(title,text){var esc=text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");',
+    'return ["<!DOCTYPE html>","<html lang=\'en\'><head>",',
+    '"<meta charset=\'UTF-8\'><meta name=\'viewport\' content=\'width=device-width,initial-scale=1\'>",',
+    '"<title>"+title+"<\\/title>",',
+    '"<link href=\'https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap\' rel=\'stylesheet\'>",',
+    '"<style>","*{margin:0;padding:0;box-sizing:border-box}",',
+    '"body{background:"+C.bg+";background-image:radial-gradient(ellipse at 50% 0%,"+C.bg2+" 0%,transparent 55%);color:"+C.txt+";font-family:\'Cormorant Garamond\',serif;line-height:1.9;padding:40px 20px;min-height:100vh;font-size:19px}",',
+    '".w{max-width:740px;margin:0 auto}",',
+    '"h1{font-family:\'Cinzel Decorative\',serif;font-size:clamp(18px,3.5vw,32px);color:"+C.acc+";letter-spacing:3px;text-align:center;margin-bottom:8px;word-break:break-word}",',
+    '".sub{text-align:center;color:"+C.txtm+";font-style:italic;margin-bottom:38px;font-size:16px;letter-spacing:3px}",',
+    '".back{display:inline-block;margin-bottom:26px;padding:10px 24px;border:1px solid "+C.bdr+";color:"+C.acc+";text-decoration:none;font-size:16px;border-radius:999px}",',
+    '".content{white-space:pre-wrap;word-wrap:break-word;font-size:19px;font-weight:300;text-align:left}",',
+    '"footer{text-align:center;margin-top:60px;padding-top:26px;border-top:1px solid "+C.bdr+";font-size:16px;color:"+C.txtd+";line-height:2.2}",',
+    '"<\\/style><\\/head><body>","<div class=\'w\'>",',
+    '"<a href=\'../library.html\' class=\'back\'>\u2190 Library<\\/a>",',
+    '"<h1>"+title+"<\\/h1>","<p class=\'sub\'>CC0 \u00b7 ALL LOVE RESERVED<\\/p>",',
+    '"<div class=\'content\'>"+esc+"<\\/div>",',
+    '"<footer><p>"+C.author+"<\\/p><p style=\'font-style:italic\'>AMORIARIACKA IS MY NATIVE TONGUE<\\/p><\\/footer>",',
+    '"<\\/div><\\/body><\\/html>"].join("\\n");}',
+    'async function go(files){document.getElementById("rows").innerHTML="";document.getElementById("dla").innerHTML="";',
+    'document.getElementById("pw").style.display="block";document.getElementById("pf").style.width="0%";',
+    'ss("w","Converting "+files.length+" file"+(files.length!==1?"s":"")+"...");',
+    'var zip=new JSZip(),lib=zip.folder("library"),tomes=[],done=0;',
+    'for(var i=0;i<files.length;i+=5){var batch=files.slice(i,i+5);',
+    'await Promise.all(batch.map(async function(file){var el=document.createElement("div");el.className="row rw";el.textContent="\u23F3 "+file.name;document.getElementById("rows").appendChild(el);',
+    'try{var text=await rf2(file);var fn=file.name.replace(/\\.txt$/i,"");var title2=pt(fn);var m=fn.match(/^(\\d+)[-_.]/);',
+    'tomes.push({filename:fn,title:title2,number:m?parseInt(m[1],10):null});lib.file(fn+".html",bk(title2,text));',
+    'el.className="row rd";el.textContent="\u2705 "+file.name;done++;}catch(e){el.className="row rf";el.textContent="\u274C "+file.name;}}));',
+    'document.getElementById("pf").style.width=Math.round(Math.min(i+5,files.length)/files.length*100)+"%";',
+    'await new Promise(function(r){setTimeout(r,30);});}',
+    'lib.file("manifest.json",JSON.stringify({tomes:tomes},null,2));ss("w","Packing zip...");',
+    'var blob=await zip.generateAsync({type:"blob",compression:"DEFLATE",compressionOptions:{level:3}},function(m){document.getElementById("pf").style.width=m.percent.toFixed(0)+"%";});',
+    'document.getElementById("pf").style.width="100%";ss("d","Done! "+done+" book"+(done!==1?"s":"")+" converted.");',
+    'document.getElementById("dla").innerHTML=\'<a href="\'+URL.createObjectURL(blob)+\'" download="library.zip" class="btn">Download library.zip<\\/a>\';}'
+  ].join('\n');
+  var syncHTML = ['<!DOCTYPE html>','<html lang="en"><head>',
+    '<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    '<title>Sync Bell \u2014 ' + xe(title) + '</title>',
+    '<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">',
+    '<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"><\/script>',
+    '<style>' + syncCSS + '</style>','</head><body>','<div class="wrap">',
+    '<a href="index.html" class="back">\u2190 Home</a>','<h1>\uD83D\uDD14 The Sync Bell</h1>',
+    '<p class="sub">Drop your .txt files \u2192 beautiful HTML books \u2192 manifest.json built automatically</p>',
+    '<div class="dz" id="dz"><span class="di">\uD83D\uDCC4\u2728</span><div class="dl">Drop Your .txt Files Here</div><div class="ds">Works 100% offline</div></div>',
+    '<input type="file" id="fi" style="display:none" accept=".txt" multiple>',
+    '<div style="text-align:center"><button class="btn" id="cb">Choose Files</button></div>',
+    '<div class="hint">\uD83D\uDCA1 Use lowercase names like <code style="background:rgba(0,0,0,.2);padding:1px 5px;border-radius:3px">001-my-story.txt</code></div>',
+    '<div id="sb" class="st"></div>','<div id="pw" style="display:none"><div class="pt"><div class="pf" id="pf"></div></div></div>',
+    '<div class="rows" id="rows"></div>','<div class="dla" id="dla"></div>',
+    '<footer><p>' + xe(name) + ' \u00b7 <a href="https://owrbit.com/lifetime-web-hosting" target="_blank">Owrbit</a></p><p>CC0 \u00b7 ALL LOVE RESERVED</p></footer>',
+    '</div>','<script>' + syncJS + '<\/script>','</body></html>'].join('\n');
+  var sampleTxt = ['this is my first book.','','hello world! my name is ' + name + ' and this is the first thing',
+    'i have ever published on the internet.','','if you are reading this, it worked.',
+    '','i wrote this in a plain text file.','i used the sync bell to convert it.',
+    'it only took about 30 seconds.','','this .txt file is now a real book on the internet.',
+    'that means:','','   - you did it.','   - you are a published author.','   - no one can take that away from you.',
+    '','write more. publish more.','the world needs your words.','','-- ' + name].join('\n');
+  var sampleBook = buildBookPage('MY FIRST BOOK', sampleTxt, t.bg, t.bg2, t.bdr, t.acc, t.accl, t.txt, t.txtm, t.txtd, name);
+  var manifest   = JSON.stringify({tomes:[{filename:'001-my-first-book',title:'MY FIRST BOOK',number:1}]}, null, 2);
+  var readme = ['ATHEDEN SITE -- QUICK START','Generated for: ' + name,'================================================','',
+    'FILES IN THIS ZIP:','  index.html           Home page','  library.html         Your book list',
+    '  sync-library.html    Sync Bell publisher tool','  library/','    001-my-first-book.html   Sample book',
+    '    manifest.json            Book index (auto-generated by Sync Bell)','  Books/','    001-my-first-book.txt    Sample book source text','',
+    'HOW TO PUBLISH A NEW BOOK:','  1. Write story in Notepad, save as e.g. 002-my-second-story.txt',
+    '  2. Open sync-library.html in browser','  3. Drop ALL .txt books (old + new) onto drop zone',
+    '  4. Download library.zip','  5. Extract and upload library/ folder to site','  7. New book appears automatically.','',
+    'HOSTING OPTIONS:','  Free: GitHub Pages -- pages.github.com',
+    '  Paid: Owrbit Lifetime Hosting -- owrbit.com/lifetime-web-hosting','',
+    'BUILT BY WENDELL CHARLES NESMITH','CC0 PUBLICKA DOMANIA -- ALL LOVE RESERVED'].join('\n');
+  var zip = new JSZip();
+  var safe = name.replace(/[^a-zA-Z0-9]/g,'-').toLowerCase().replace(/-+/g,'-').replace(/^-|-$/g,'') || 'my';
+  var root = zip.folder(safe + '-atheden-site');
+  root.file('index.html', idxHTML); root.file('library.html', libHTML);
+  root.file('sync-library.html', syncHTML); root.file('README.txt', readme);
+  var lf = root.folder('library');
+  lf.file('001-my-first-book.html', sampleBook); lf.file('manifest.json', manifest);
+  root.folder('Books').file('001-my-first-book.txt', sampleTxt);
+  zip.generateAsync({type:'blob', compression:'DEFLATE', compressionOptions:{level:6}})
+    .then(function(blob){
+      setStat('gen-status','done','\u2705 Your site is ready! manifest.json is pre-built inside the library/ folder.');
+      var url = URL.createObjectURL(blob);
+      document.getElementById('gen-dl').innerHTML =
+        '<a href="' + url + '" download="' + safe + '-atheden-site.zip" class="btn btn-gold">\uD83C\uDF1F Download My Site</a>' +
+        '<p style="margin-top:12px;font-size:16px;color:var(--txtd)">Extract the zip and read README.txt to get started.</p>';
+    }).catch(function(err){ setStat('gen-status','err','\u274C Error: ' + err.message); });
+}
+function downloadThisPage(){
+  var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'heaven.html';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 5000);
+}
+</script>
+
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Switch theme"><span id="themeIcon">🌙</span></button>
+
+<script>
+function toggleTheme() {
+  var b = document.body;
+  var next = b.classList.contains('light') ? 'party'
+           : b.classList.contains('party') ? 'dark'
+           : 'light';
+  b.classList.remove('light', 'party');
+  if (next === 'light') {
+    b.classList.add('light');
+    document.getElementById('themeIcon').textContent = '☀️';
+  } else if (next === 'party') {
+    b.classList.add('party');
+    document.getElementById('themeIcon').textContent = '🎉';
+  } else {
+    document.getElementById('themeIcon').textContent = '🌙';
+  }
+  try { localStorage.setItem('kkk-theme', next); } catch(e) {}
+}
+try {
+  var saved = localStorage.getItem('kkk-theme');
+  if (saved === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('themeIcon').textContent = '☀️';
+  } else if (saved === 'party') {
+    document.body.classList.add('party');
+    document.getElementById('themeIcon').textContent = '🎉';
+  }
+} catch(e) {}
+</script>
+</body>
+</html>

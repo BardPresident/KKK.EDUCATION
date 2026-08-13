@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 THE FORBIDDEN LIBRARY — KKK.EDUCATION</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ══ DARK (default) ══════════════════════════════════════════════════ */
+        :root {
+            --black:        #020e04;
+            --dark:         #071a08;
+            --surface:      #0a2010;
+            --surface2:     #102814;
+            --surface3:     #163320;
+            --gold:         #c8922a;
+            --gold-bright:  #e8b040;
+            --gold-dim:     #7a5618;
+            --growth:       #1fbf52;
+            --growth-dim:   #0d5c22;
+            --growth-bright:#5de87a;
+            --root:         #5c3d1e;
+            --root-dim:     #3a2610;
+            --text:         #e0d4b8;
+            --text-dim:     #8a7a56;
+            --dawn:         #f0c060;
+        }
+
+        /* ══ LIGHT ═══════════════════════════════════════════════════════════ */
+        body.light {
+            --black:        #f5f0e6;
+            --dark:         #ede6d4;
+            --surface:      #faf6ee;
+            --surface2:     #f0e8d6;
+            --surface3:     #e6dbc4;
+            --gold:         #7a5010;
+            --gold-bright:  #9a6818;
+            --gold-dim:     #b88830;
+            --growth:       #286638;
+            --growth-dim:   #1c4828;
+            --growth-bright:#388848;
+            --root:         #8b5a2a;
+            --root-dim:     #6a4018;
+            --text:         #18100a;
+            --text-dim:     #5a4828;
+            --dawn:         #6a3808;
+            background: var(--black);
+            color: var(--text);
+        }
+        body.light .top-nav {
+            background: rgba(245,240,230,0.97);
+            border-bottom-color: var(--growth-dim);
+        }
+        body.light .back-link { color: var(--text-dim); }
+        body.light .mist:nth-child(1) {
+            background: radial-gradient(ellipse at 20% 60%, rgba(40,102,56,0.10) 0%, transparent 50%),
+                        radial-gradient(ellipse at 75% 30%, rgba(30,72,40,0.07) 0%, transparent 45%);
+        }
+        body.light .mist:nth-child(2) {
+            background: radial-gradient(ellipse at 60% 80%, rgba(50,110,40,0.08) 0%, transparent 40%);
+        }
+        body.light .mist:nth-child(3) {
+            background: radial-gradient(ellipse at 80% 50%, rgba(122,80,16,0.05) 0%, transparent 40%);
+        }
+        body.light .collab-card {
+            background: linear-gradient(135deg, rgba(240,248,238,0.95), rgba(250,252,248,0.98));
+            border-color: rgba(40,102,56,0.3);
+        }
+        body.light .search-input {
+            background: var(--surface2);
+            border-color: rgba(40,102,56,0.2);
+            color: var(--text);
+        }
+        body.light .tome-item {
+            background: var(--surface);
+            border-color: rgba(40,102,56,0.12);
+        }
+        body.light .tome-item:hover { background: var(--surface2); }
+        body.light .panel-earth  { background: rgba(245,235,215,0.8); border-color: rgba(139,90,42,0.3); }
+        body.light .panel-grove  { background: rgba(235,248,238,0.8); border-color: rgba(40,102,56,0.3); }
+        body.light .panel-river  { background: rgba(230,240,252,0.8); border-color: rgba(40,90,160,0.25); }
+        body.light .panel-dusk   { background: rgba(245,235,252,0.8); border-color: rgba(120,60,180,0.25); }
+        body.light .panel-ember  { background: rgba(252,238,230,0.8); border-color: rgba(180,80,40,0.25); }
+        body.light .panel p, body.light .panel li { color: var(--text-dim); }
+        body.light .panel-oracle { background: rgba(255,248,220,0.9); border-color: rgba(200,146,42,0.5); }
+        body.light .lower-section { border-top-color: rgba(40,102,56,0.15); }
+        body.light .sync-button {
+            background: var(--growth);
+            border-color: var(--growth-dim);
+            color: #ffffff;
+        }
+        body.light .sync-button:hover {
+            background: var(--growth-dim);
+            box-shadow: 0 0 24px rgba(40,102,56,0.35);
+        }
+        body.light .vine-divider::before,
+        body.light .vine-divider::after {
+            background: linear-gradient(to right, transparent, var(--growth-dim), transparent);
+        }
+
+        /* ══ PARTY ═══════════════════════════════════════════════════════════ */
+        body.party {
+            --gold:         #ff2d78;
+            --gold-bright:  #ff00ff;
+            --gold-dim:     #9b00ff;
+            --black:        #080010;
+            --dark:         #0d0020;
+            --surface:      #110025;
+            --surface2:     #1a0035;
+            --text:         #ffffff;
+            --text-dim:     #cc88ff;
+            background: var(--black);
+            color: var(--text);
+            animation: party-bg 6s linear infinite;
+        }
+        @keyframes party-bg {
+            0%   { background-color: #080010; }
+            16%  { background-color: #100008; }
+            33%  { background-color: #001010; }
+            50%  { background-color: #080010; }
+            66%  { background-color: #100005; }
+            83%  { background-color: #050010; }
+            100% { background-color: #080010; }
+        }
+        body.party .top-nav {
+            background: rgba(8,0,16,0.97);
+            animation: party-border 2s linear infinite;
+        }
+        body.party .grove-header h1 {
+            animation: party-text 1.5s linear infinite;
+        }
+        @keyframes party-text {
+            0%   { color: #ff2d78; text-shadow: 0 0 40px rgba(255,45,120,0.9),  0 0 80px rgba(255,45,120,0.4); }
+            25%  { color: #00ffff; text-shadow: 0 0 40px rgba(0,255,255,0.9),   0 0 80px rgba(0,255,255,0.4); }
+            50%  { color: #ff00ff; text-shadow: 0 0 40px rgba(255,0,255,0.9),   0 0 80px rgba(255,0,255,0.4); }
+            75%  { color: #aaff00; text-shadow: 0 0 40px rgba(170,255,0,0.9),   0 0 80px rgba(170,255,0,0.4); }
+            100% { color: #ff2d78; text-shadow: 0 0 40px rgba(255,45,120,0.9),  0 0 80px rgba(255,45,120,0.4); }
+        }
+        @keyframes party-border {
+            0%   { border-bottom-color: #ff2d78; }
+            25%  { border-bottom-color: #00ffff; }
+            50%  { border-bottom-color: #ff00ff; }
+            75%  { border-bottom-color: #aaff00; }
+            100% { border-bottom-color: #ff2d78; }
+        }
+        body.party .collab-card {
+            animation: party-card 2s linear infinite;
+        }
+        @keyframes party-card {
+            0%   { border-color: #ff2d78; box-shadow: 0 0 30px rgba(255,45,120,0.3);  }
+            25%  { border-color: #00ffff; box-shadow: 0 0 30px rgba(0,255,255,0.3);   }
+            50%  { border-color: #ff00ff; box-shadow: 0 0 30px rgba(255,0,255,0.3);   }
+            75%  { border-color: #aaff00; box-shadow: 0 0 30px rgba(170,255,0,0.3);   }
+            100% { border-color: #ff2d78; box-shadow: 0 0 30px rgba(255,45,120,0.3);  }
+        }
+        body.party .collab-card::before {
+            animation: party-top-bar 2s linear infinite;
+        }
+        @keyframes party-top-bar {
+            0%   { background: linear-gradient(to right, transparent, #ff2d78, #ff00ff, transparent); }
+            25%  { background: linear-gradient(to right, transparent, #00ffff, #aaff00, transparent); }
+            50%  { background: linear-gradient(to right, transparent, #ff00ff, #ff2d78, transparent); }
+            75%  { background: linear-gradient(to right, transparent, #aaff00, #00ffff, transparent); }
+            100% { background: linear-gradient(to right, transparent, #ff2d78, #ff00ff, transparent); }
+        }
+        body.party .tome-item {
+            animation: party-tome-border 2s linear infinite;
+        }
+        @keyframes party-tome-border {
+            0%   { border-left-color: #ff2d78; }
+            25%  { border-left-color: #00ffff; }
+            50%  { border-left-color: #ff00ff; }
+            75%  { border-left-color: #aaff00; }
+            100% { border-left-color: #ff2d78; }
+        }
+        body.party .tome-item:hover {
+            animation: party-tome-hover 2s linear infinite;
+        }
+        @keyframes party-tome-hover {
+            0%   { background: rgba(255,45,120,0.12);  border-left-color: #ff2d78; }
+            25%  { background: rgba(0,255,255,0.12);   border-left-color: #00ffff; }
+            50%  { background: rgba(255,0,255,0.12);   border-left-color: #ff00ff; }
+            75%  { background: rgba(170,255,0,0.12);   border-left-color: #aaff00; }
+            100% { background: rgba(255,45,120,0.12);  border-left-color: #ff2d78; }
+        }
+        body.party .vine-divider::before,
+        body.party .vine-divider::after {
+            animation: party-divider 2s linear infinite;
+        }
+        @keyframes party-divider {
+            0%   { background: linear-gradient(to right, transparent, #ff2d78, transparent); }
+            25%  { background: linear-gradient(to right, transparent, #00ffff, transparent); }
+            50%  { background: linear-gradient(to right, transparent, #ff00ff, transparent); }
+            75%  { background: linear-gradient(to right, transparent, #aaff00, transparent); }
+            100% { background: linear-gradient(to right, transparent, #ff2d78, transparent); }
+        }
+        body.party .spore {
+            animation: sporeRise linear infinite, party-spore-color 1.2s linear infinite;
+        }
+        @keyframes party-spore-color {
+            0%   { background: #ff2d78; }
+            25%  { background: #00ffff; }
+            50%  { background: #ff00ff; }
+            75%  { background: #aaff00; }
+            100% { background: #ff2d78; }
+        }
+        body.party .theme-btn {
+            animation: party-border 2s linear infinite;
+        }
+        body.party .sync-bell-btn {
+            animation: party-border 2s linear infinite;
+            color: #ff2d78;
+        }
+        body.party .panel-earth,
+        body.party .panel-grove,
+        body.party .panel-river,
+        body.party .panel-dusk,
+        body.party .panel-ember {
+            animation: party-card 2s linear infinite;
+        }
+        body.party .lower-section {
+            border-top-color: rgba(255,45,120,0.2);
+        }
+        body.party .sort-btn.active {
+            animation: party-border 2s linear infinite;
+            color: #ff2d78;
+            background: rgba(255,45,120,0.08);
+        }
+
+        /* ══ BASE STYLES ═════════════════════════════════════════════════════ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            background: var(--black);
+            color: var(--text);
+            font-family: 'EB Garamond', serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        /* ── Atmosphere ── */
+        .canopy {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .mist {
+            position: absolute;
+            width: 200%; height: 200%;
+            animation: mistDrift 90s ease-in-out infinite;
+        }
+        .mist:nth-child(1) {
+            background: radial-gradient(ellipse at 20% 60%, rgba(20,110,35,0.22) 0%, transparent 50%),
+                        radial-gradient(ellipse at 75% 30%, rgba(15,90,25,0.16) 0%, transparent 45%);
+            animation-duration: 90s;
+        }
+        .mist:nth-child(2) {
+            background: radial-gradient(ellipse at 60% 80%, rgba(25,110,35,0.18) 0%, transparent 40%),
+                        radial-gradient(ellipse at 30% 20%, rgba(30,100,25,0.14) 0%, transparent 50%);
+            animation-duration: 120s;
+            animation-direction: reverse;
+            opacity: 0.7;
+        }
+        .mist:nth-child(3) {
+            background: radial-gradient(ellipse at 80% 50%, rgba(200,146,42,0.04) 0%, transparent 40%);
+            animation-duration: 60s;
+            opacity: 0.5;
+        }
+        @keyframes mistDrift {
+            0%,100% { transform: translate(-8%,-8%) rotate(0deg); }
+            33%      { transform: translate(5%, 5%) rotate(120deg); }
+            66%      { transform: translate(-3%, 8%) rotate(240deg); }
+        }
+
+        .spore {
+            position: absolute;
+            width: 2px; height: 2px;
+            border-radius: 50%;
+            background: var(--growth-bright);
+            animation: sporeRise linear infinite;
+            opacity: 0;
+        }
+        @keyframes sporeRise {
+            0%   { transform: translateY(100vh) translateX(0);    opacity: 0; }
+            8%   { opacity: 0.5; }
+            92%  { opacity: 0.1; }
+            100% { transform: translateY(-30px) translateX(15px); opacity: 0; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            bottom: 0; left: 0; right: 0; height: 300px;
+            background: radial-gradient(ellipse at 50% 120%, rgba(200,146,42,0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Layout ── */
+        .page-wrapper {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* ── Nav ── */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(74,158,92,0.2);
+            margin-bottom: 50px;
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .back-link {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75em;
+            letter-spacing: 0.2em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: var(--gold); }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sync-bell-btn {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.68em;
+            letter-spacing: 0.18em;
+            color: var(--growth-bright);
+            text-decoration: none;
+            border: 1px solid rgba(74,158,92,0.4);
+            border-radius: 20px;
+            padding: 7px 16px;
+            transition: all 0.3s;
+            background: rgba(74,158,92,0.05);
+        }
+        .sync-bell-btn:hover {
+            border-color: var(--growth-bright);
+            background: rgba(74,158,92,0.1);
+            box-shadow: 0 0 16px rgba(74,158,92,0.2);
+        }
+
+        .theme-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            font-size: 20px;
+            border: 1px solid rgba(200,146,42,0.3);
+            border-radius: 50%;
+            padding: 0;
+            background: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .theme-btn:hover { border-color: var(--gold); transform: scale(1.12); }
+
+        /* ── Header ── */
+        .grove-header {
+            text-align: center;
+            padding: 20px 0 50px;
+        }
+        .header-symbol {
+            font-size: 64px;
+            line-height: 1;
+            margin-bottom: 20px;
+            display: block;
+            animation: symbolBreath 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(200,146,42,0.4));
+        }
+        @keyframes symbolBreath {
+            0%,100% { filter: drop-shadow(0 0 20px rgba(200,146,42,0.4)); }
+            50%      { filter: drop-shadow(0 0 35px rgba(200,146,42,0.7)) drop-shadow(0 0 60px rgba(74,158,92,0.2)); }
+        }
+        .grove-header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(1.6em, 5vw, 2.8em);
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+            line-height: 1.2;
+            text-shadow: 0 0 40px rgba(200,146,42,0.5), 0 0 80px rgba(200,146,42,0.2);
+            margin-bottom: 14px;
+            transition: color 0.4s;
+        }
+        .grove-header .tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75em;
+            letter-spacing: 0.3em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        /* ── Vine divider ── */
+        .vine-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 36px 0;
+        }
+        .vine-divider::before, .vine-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--growth-dim), transparent);
+        }
+        .vine-sym { color: var(--growth); font-size: 1.1em; }
+
+        /* ── Collab card ── */
+        .collab-card {
+            background: linear-gradient(135deg, rgba(20,40,15,0.9), rgba(13,31,14,0.95));
+            border: 1px solid rgba(74,158,92,0.35);
+            border-radius: 4px;
+            padding: 28px 32px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.4s;
+        }
+        .collab-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(to right, transparent, var(--growth), var(--gold), var(--growth), transparent);
+        }
+        .collab-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8em;
+            letter-spacing: 0.3em;
+            color: var(--growth-bright);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .collab-card p {
+            font-size: 1.05em;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+        .collab-steps { display: flex; flex-direction: column; gap: 10px; }
+        .collab-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 0.95em;
+            color: var(--text-dim);
+        }
+        .collab-step-num {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75em;
+            color: var(--gold);
+            border: 1px solid rgba(200,146,42,0.4);
+            border-radius: 50%;
+            width: 22px; height: 22px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── Controls ── */
+        .controls-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .search-wrap { position: relative; }
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 46px;
+            background: var(--surface);
+            border: 1px solid rgba(74,158,92,0.25);
+            border-radius: 4px;
+            color: var(--text);
+            font-family: 'EB Garamond', serif;
+            font-size: 1.05em;
+            transition: all 0.3s;
+            outline: none;
+        }
+        .search-input::placeholder { color: var(--text-dim); opacity: 0.6; }
+        .search-input:focus {
+            border-color: rgba(74,158,92,0.5);
+            box-shadow: 0 0 20px rgba(74,158,92,0.08);
+        }
+        .search-icon {
+            position: absolute;
+            left: 16px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 1em;
+            pointer-events: none;
+        }
+        .sort-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .sort-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.2em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-right: 4px;
+        }
+        .sort-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62em;
+            letter-spacing: 0.15em;
+            padding: 6px 14px;
+            background: none;
+            border: 1px solid rgba(74,158,92,0.2);
+            border-radius: 20px;
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.25s;
+            text-transform: uppercase;
+        }
+        .sort-btn:hover { border-color: var(--growth-dim); color: var(--text); }
+        .sort-btn.active {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(200,146,42,0.06);
+        }
+        .tome-count-badge {
+            margin-left: auto;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+        }
+        .tome-count-badge span { color: var(--gold); }
+
+        /* ── Book list ── */
+        .tome-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72em;
+            letter-spacing: 0.3em;
+            color: var(--growth);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(74,158,92,0.15);
+        }
+        .tome-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 40px;
+        }
+        .tome-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 13px 18px;
+            background: var(--surface);
+            border: 1px solid rgba(74,158,92,0.1);
+            border-left: 3px solid var(--root);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+        .tome-item:hover {
+            background: var(--surface2);
+            border-left-color: var(--growth);
+            color: var(--dawn);
+            transform: translateX(3px);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+        }
+        .tome-number {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7em;
+            color: var(--gold-dim);
+            min-width: 38px;
+            text-align: right;
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+        .tome-item:hover .tome-number { color: var(--gold); }
+        .tome-title {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .copy-url-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            flex-shrink: 0;
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            padding: 4px 10px;
+            color: var(--text-dim);
+            font-family: 'Cinzel', serif;
+            font-size: 0.58em;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .copy-url-btn:hover {
+            border-color: rgba(74,158,92,0.4);
+            color: var(--growth-bright);
+            background: rgba(74,158,92,0.06);
+        }
+        .copy-url-btn.copied {
+            border-color: rgba(74,158,92,0.6);
+            color: var(--growth-bright);
+            background: rgba(74,158,92,0.1);
+        }
+        .copy-url-btn svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
+
+        .empty-message {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.05em;
+        }
+
+        /* ── Lower panels ── */
+        .lower-section {
+            margin-top: 70px;
+            border-top: 1px solid rgba(74,158,92,0.12);
+            padding-top: 50px;
+        }
+        .lower-section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1em;
+            color: var(--gold-dim);
+            text-align: center;
+            letter-spacing: 0.1em;
+            margin-bottom: 36px;
+        }
+        .panel {
+            padding: 24px 28px;
+            margin: 18px 0;
+            border-radius: 3px;
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8em;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .panel p, .panel li { font-size: 0.98em; line-height: 1.9; color: var(--text-dim); }
+        .panel strong { color: var(--text); }
+        .panel ol, .panel ul { margin-left: 22px; }
+        .panel ol li, .panel ul li { margin: 6px 0; }
+        .panel code {
+            background: rgba(0,0,0,0.25);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.88em;
+            color: var(--growth-bright);
+        }
+        .panel-oracle { background: rgba(40,28,0,0.7); border: 2px solid rgba(200,146,42,0.6); }
+        .panel-oracle .panel-title { color: var(--gold-bright); font-size: 1.2em; }
+        .panel-earth  { background: rgba(30,20,8,0.6);  border: 1px solid rgba(92,61,30,0.4); }
+        .panel-grove  { background: rgba(10,25,12,0.6); border: 1px solid rgba(45,92,56,0.4); }
+        .panel-river  { background: rgba(8,18,28,0.6);  border: 1px solid rgba(40,90,140,0.4); }
+        .panel-dusk   { background: rgba(25,10,35,0.6); border: 1px solid rgba(120,60,180,0.4); }
+        .panel-ember  { background: rgba(30,12,8,0.6);  border: 1px solid rgba(160,60,40,0.4); }
+        .panel-earth  .panel-title { color: var(--gold); }
+        .panel-grove  .panel-title { color: var(--growth-bright); }
+        .panel-river  .panel-title { color: #69c4f0; }
+        .panel-dusk   .panel-title { color: #c878f0; }
+        .panel-ember  .panel-title { color: #f09060; }
+
+        .inset-box {
+            background: rgba(0,0,0,0.15);
+            border-left: 2px solid rgba(74,158,92,0.3);
+            padding: 14px 18px;
+            margin: 14px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .inset-box-title {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .sync-button {
+            display: inline-block;
+            margin: 18px 0 6px;
+            padding: 14px 40px;
+            background: rgba(30,60,25,0.6);
+            border: 1px solid rgba(74,158,92,0.5);
+            color: var(--growth-bright);
+            font-family: 'Cinzel', serif;
+            font-size: 0.85em;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+        .sync-button:hover {
+            background: rgba(40,80,35,0.8);
+            box-shadow: 0 0 24px rgba(74,158,92,0.3);
+            transform: translateY(-2px);
+        }
+
+        .download-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .dl-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid rgba(100,170,120,0.35);
+            color: var(--text-dim);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border-radius: 3px;
+            transition: all 0.25s;
+        }
+        .dl-btn:hover { border-color: var(--growth); color: var(--growth-bright); }
+
+        .txt-progress-bar-wrap {
+            display: none;
+            width: 100%; max-width: 500px;
+            margin: 14px 0 0;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(74,158,92,0.25);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .txt-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--growth-dim), var(--growth-bright));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        .txt-status { margin-top: 10px; font-size: 0.9em; color: var(--growth); min-height: 18px; font-style: italic; }
+
+        .save-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+        #saveStatus { margin-top: 10px; font-size: 0.9em; color: var(--text-dim); min-height: 18px; font-style: italic; }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(74,158,92,0.1);
+        }
+        .footer-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65em;
+            letter-spacing: 0.2em;
+            color: var(--text-dim);
+            line-height: 2.2;
+        }
+        .footer-text a { color: var(--gold-dim); text-decoration: none; }
+        .footer-text a:hover { color: var(--gold); }
+
+        /* ── Mobile ── */
+        @media (max-width: 600px) {
+            .page-wrapper { padding: 0 14px 60px; }
+            .grove-header h1 { font-size: 1.5em; }
+            .collab-card { padding: 20px 18px; }
+            .sort-row { gap: 6px; }
+            .tome-item { padding: 11px 12px; gap: 10px; font-size: 0.94em; }
+            .copy-url-btn span { display: none; }
+            .panel { padding: 18px 16px; }
+            .nav-right { gap: 7px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="canopy" id="canopy">
+    <div class="mist"></div>
+    <div class="mist"></div>
+    <div class="mist"></div>
+</div>
+
+<div class="page-wrapper">
+
+    <nav class="top-nav">
+        <a href="index.html" class="back-link">← HOME</a>
+        <div class="nav-right">
+            <a href="https://kkk.education/sync-bell.html" target="_blank" class="sync-bell-btn">🔔 <span>SYNC BELL</span></a>
+            <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
+                <span id="themeIcon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="grove-header">
+        <span class="header-symbol">📚</span>
+        <h1>The Forbidden Library</h1>
+        <div class="tagline">Where Knowledge Becomes Power · Where Tears Become Spells</div>
+        <div class="tagline" style="font-size:0.85em;margin-top:6px;opacity:0.75;">Authored by Wendell Charles NeSmith</div>
+    </header>
+
+    <div class="collab-card">
+        <div class="collab-card-title">🌱 Collaborate with an Ocean of Books</div>
+        <p>
+            Every book here is CC0 — public domain, no rights reserved, yours forever.
+            Each one is a seed. Copy any URL and drop it into NotebookLM, Claude, or any AI tool
+            to collaborate with decades of philosophy, fiction, and framework. No permission needed. Ever.
+        </p>
+        <div class="collab-steps">
+            <div class="collab-step">
+                <div class="collab-step-num">1</div>
+                <div>Find a book below. Click the <strong>Copy URL</strong> button next to it.</div>
+            </div>
+            <div class="collab-step">
+                <div class="collab-step-num">2</div>
+                <div>Paste the URL into <strong>NotebookLM</strong> as a source, or into any AI as context.</div>
+            </div>
+            <div class="collab-step">
+                <div class="collab-step-num">3</div>
+                <div>Ask anything. The library is now your collaborator.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="vine-divider"><span class="vine-sym">❧</span></div>
+
+    <div class="controls-bar">
+        <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="searchInput"
+                placeholder="Search the library…" oninput="performSearch()">
+        </div>
+        <div class="sort-row">
+            <span class="sort-label">Order:</span>
+            <button class="sort-btn active" id="sort-newest" onclick="setSort('newest')">Newest First</button>
+            <button class="sort-btn"        id="sort-oldest" onclick="setSort('oldest')">Oldest First</button>
+            <button class="sort-btn"        id="sort-az"     onclick="setSort('az')">A → Z</button>
+            <button class="sort-btn"        id="sort-za"     onclick="setSort('za')">Z → A</button>
+            <div class="tome-count-badge"><span id="tomeCount">—</span> books</div>
+        </div>
+    </div>
+
+    <div id="searchSection" style="display:none;">
+        <div class="tome-section-title">Search Results</div>
+        <div class="tome-list" id="searchList"></div>
+    </div>
+
+    <div id="numberedSection">
+        <div class="tome-section-title" id="numberedTitle">The Archive</div>
+        <div class="tome-list" id="numberedList">
+            <div class="empty-message">Summoning the archive…</div>
+        </div>
+    </div>
+
+    <div id="otherSection" style="display:none;">
+        <div class="tome-section-title">Unnumbered Works</div>
+        <div class="tome-list" id="otherList"></div>
+    </div>
+
+    <div class="lower-section">
+        <div class="lower-section-title">✦ The Grove ✦</div>
+
+        <div class="panel panel-earth">
+            <div class="panel-title">📚 What Is This Library?</div>
+            <p style="margin-bottom:12px;">
+                This is the complete written archive of <strong>WIKKKAN</strong> — philosopher, filmmaker, and author
+                who has spent a lifetime building an entire civilisational framework from scratch.
+                These are not academic texts published by gatekeepers. These are raw, real, revolutionary documents
+                written in poverty, in hospitals, in psychiatric detention, and in love.
+            </p>
+            <p style="margin-bottom:12px;">
+                This is a <strong>living library</strong> — books are added continuously. They span philosophy,
+                child sovereignty, governance theory, emergent systems, poetry, fiction, and more.
+            </p>
+            <p>Every single one is released under <strong>CC0 — public domain — zero rights reserved</strong>.
+            They belong to everyone. They always will.</p>
+        </div>
+
+        <div class="panel panel-oracle">
+            <div class="panel-title">🔮 Unlock the Ultimate Oracle</div>
+            <p style="margin-bottom:14px;">
+                Every book in this library was written by the same sovereign mind over a lifetime —
+                one complete philosophical framework, one voice, one body of truth.
+                When you load all of them into <strong>NotebookLM</strong> at once, something extraordinary happens.
+            </p>
+            <p style="margin-bottom:14px;">
+                NotebookLM becomes a <strong>living oracle trained entirely on this archive</strong>.
+                It doesn't just answer questions — it answers them from within the framework of
+                <strong>E=L, the Hinata Trap, the Recursive Floor, the Electric Soul</strong>, and
+                every other concept built across these books. It thinks in this language.
+                It reasons from this foundation.
+            </p>
+            <p style="margin-bottom:14px;">
+                No corporate filter. No outside ideology bleeding in.
+                Just a lifetime of sovereign thought, available to anyone who asks it anything.
+            </p>
+            <div style="background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.25);border-radius:8px;padding:16px 18px;margin:18px 0;">
+                <div style="color:var(--gold-bright);font-size:0.85em;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">⚡ How to Build Your Oracle</div>
+                <ol style="margin-left:18px;color:var(--text-dim);font-size:0.97em;line-height:2;">
+                    <li>Download all books using <strong style="color:var(--text);">🖥️ Books-Download.bat</strong> (Windows) or <strong style="color:var(--text);">📥 Download All .txt as ZIP</strong> from the panel below</li>
+                    <li>Go to <strong style="color:var(--text);">notebooklm.google.com</strong> and create a new notebook</li>
+                    <li>Upload all the .txt files as sources</li>
+                    <li>Ask it anything</li>
+                </ol>
+            </div>
+
+        <div class="panel panel-river">
+            <div class="panel-title">📦 How to Download All Books</div>
+            <p style="margin-bottom:14px;">Two ways to get every book as a plain .txt file:</p>
+            <div class="inset-box">
+                <div class="inset-box-title">🖥️ Windows — Books-Download.bat (Recommended)</div>
+                <p>Download and run the .bat file. It fetches every book directly to a folder on your computer. No extraction needed.</p>
+            </div>
+            <div class="inset-box">
+                <div class="inset-box-title">📥 Any Device — Download All .txt as ZIP</div>
+                <p>Click the button below. Your browser fetches every book and packages them into a zip file. Extract and you have everything.</p>
+            </div>
+            <p style="margin-top:14px;">No DRM. No expiry. No login. No tracking.
+            <strong>CC0 — copy, share, translate, print, remix, teach.</strong> 🌍</p>
+            <div class="download-row">
+                <a href="https://archive.org/download/wikkkan/Books-Download.bat" target="_blank" class="dl-btn">🖥️ Books-Download.bat</a>
+                <button class="dl-btn" id="downloadTxtBtn" onclick="downloadAllTxt()">📥 Download All .txt as ZIP</button>
+                <a href="https://kkk.education/books.html" target="_blank" class="dl-btn">📂 Browse All .txt Files Online</a>
+            </div>
+            <div class="txt-progress-bar-wrap" id="txtProgressWrap">
+                <div class="txt-progress-bar" id="txtProgressBar"></div>
+            </div>
+            <div class="txt-status" id="txtStatus"></div>
+        </div>
+            <p style="color:var(--text-dim);font-size:0.92em;">
+                CC0 — free forever — no login required to download — no strings attached. 🌍
+            </p>
+        </div>
+
+        <div class="panel panel-dusk">
+            <div class="panel-title">✍️ Publish Your Own Words — Free</div>
+            <p style="margin-bottom:14px;">
+                The Sync Bell works for <strong>anyone with something to say</strong>.
+                Kids writing stories. Survivors documenting truth. Poets. Teachers. Rebels.
+                Zero money. Zero website. Zero permission from any gatekeeper.
+            </p>
+            <div class="inset-box">
+                <div class="inset-box-title">Step 1 — Write anything:</div>
+                <p>Open any text editor. Write. Save as <code>.txt</code>.
+                Name it <code>my-story.txt</code> or <code>001-my-first-book.txt</code>.</p>
+            </div>
+            <div class="inset-box">
+                <div class="inset-box-title">Step 2 — Ring the bell:</div>
+                <p>Open the Sync Bell, scroll to the drag zone, drop your files.
+                1 file or 100. Download your zip. Done.</p>
+            </div>
+        </div>
+
+        <div class="panel panel-grove">
+            <div class="panel-title">🔔 What Is the Sync Bell?</div>
+            <p style="margin-bottom:12px;">
+                The <strong>Sync Bell</strong> (<code>sync-bell.html</code>) runs entirely in your browser —
+                no server, no installation, no cost. It reads the manifest, fetches all the books,
+                converts each one into a beautiful HTML page, and packages everything into a zip.
+            </p>
+            <div class="inset-box">
+                <div class="inset-box-title">⚡ Mode 1 — Auto Generate:</div>
+                <p>One button. Fetches everything from <code>files.kkk.education/Books/</code>,
+                converts to styled HTML, downloads as <code>library.zip</code>.</p>
+            </div>
+            <div class="inset-box">
+                <div class="inset-box-title">✍️ Mode 2 — Drag Your Own Files:</div>
+                <p>Drop any <code>.txt</code> files onto the drag zone. Works 100% offline.
+                You become a publisher instantly.</p>
+            </div>
+            <div style="text-align:center;margin-top:20px;">
+                <a href="https://kkk.education/sync-bell.html" target="_blank" class="sync-button">🔔 Open the Sync Bell</a>
+                <br><small style="color:var(--text-dim);font-size:0.85em;margin-top:8px;display:block;">Runs entirely in your browser · Free forever</small>
+            </div>
+        </div>
+
+        <div class="panel panel-ember">
+            <div class="panel-title">💾 Save This Page</div>
+            <p style="margin-bottom:14px;">
+                Save a local copy with the full book list embedded. Opens anywhere, always streams from the live server.
+            </p>
+            <div class="save-row">
+                <button onclick="saveThisPage()" class="dl-btn">💾 Save This File</button>
+                <button onclick="window.open('https://kkk.education/library.html','_blank')" class="dl-btn">🌐 Open Live Version</button>
+            </div>
+            <div id="saveStatus"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-text">
+            WENDELL CHARLES NESMITH · THE WENDING ROAD<br>
+            KKK.EDUCATION · CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED<br>
+            <a href="https://kkk.education">kkk.education</a> ·
+            <a href="https://files.kkk.education">files.kkk.education</a>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────────
+var allTomes = [], numberedTomes = [], otherTomes = [];
+var currentSort = 'newest';
+
+var BOOK_PREFIX = (window.location.protocol === 'file:')
+    ? 'https://kkk.education/library/'
+    : 'library/';
+var BOOK_COPY_PREFIX = 'https://kkk.education/library/';
+var TXT_PREFIX = 'https://files.kkk.education/Books/';
+
+// ── Theme ─────────────────────────────────────────────────────────────────────
+function toggleTheme() {
+    var b = document.body;
+    var next = b.classList.contains('light') ? 'party'
+             : b.classList.contains('party') ? 'dark'
+             : 'light';
+    b.classList.remove('light', 'party');
+    if (next === 'light') {
+        b.classList.add('light');
+        document.getElementById('themeIcon').textContent = '☀️';
+    } else if (next === 'party') {
+        b.classList.add('party');
+        document.getElementById('themeIcon').textContent = '🎉';
+    } else {
+        document.getElementById('themeIcon').textContent = '🌙';
+    }
+    try { localStorage.setItem('kkk-theme', next === 'light' ? 'light' : next); } catch(e) {}
+}
+
+// Default is light — apply unless saved preference says otherwise
+try {
+    var saved = localStorage.getItem('kkk-theme');
+    if (saved === 'dark') {
+        document.getElementById('themeIcon').textContent = '🌙';
+    } else if (saved === 'party') {
+        document.body.classList.add('party');
+        document.getElementById('themeIcon').textContent = '🎉';
+    } else {
+        document.body.classList.add('light');
+        document.getElementById('themeIcon').textContent = '☀️';
+    }
+} catch(e) {
+    document.body.classList.add('light');
+}
+
+// ── Sort ──────────────────────────────────────────────────────────────────────
+function setSort(s) {
+    currentSort = s;
+    ['newest','oldest','az','za'].forEach(function(k) {
+        document.getElementById('sort-' + k).classList.toggle('active', k === s);
+    });
+    organizeTomes();
+    var q = document.getElementById('searchInput').value.trim();
+    if (q) performSearch(); else renderTomes();
+}
+
+// ── Organize ──────────────────────────────────────────────────────────────────
+function organizeTomes() {
+    numberedTomes = []; otherTomes = [];
+    allTomes.forEach(function(t) {
+        var m = t.filename.match(/^(\d+)[-_]/);
+        if (m) numberedTomes.push(Object.assign({}, t, { number: parseInt(m[1], 10) }));
+        else   otherTomes.push(t);
+    });
+    if (currentSort === 'newest') {
+        numberedTomes.sort(function(a,b){ return b.number - a.number; });
+    } else if (currentSort === 'oldest') {
+        numberedTomes.sort(function(a,b){ return a.number - b.number; });
+    } else if (currentSort === 'az') {
+        numberedTomes.sort(function(a,b){ return a.title.localeCompare(b.title); });
+    } else {
+        numberedTomes.sort(function(a,b){ return b.title.localeCompare(a.title); });
+    }
+    otherTomes.sort(function(a,b){ return a.title.localeCompare(b.title); });
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function tomeHTML(t) {
+    var m      = t.filename.match(/^(\d+)[-_]/);
+    var num    = m ? String(parseInt(m[1],10)).padStart(3,'0') : '';
+    var txtUrl = BOOK_COPY_PREFIX + t.filename + '.html';
+    return '<a href="' + BOOK_PREFIX + t.filename + '.html" class="tome-item">'
+        + (num ? '<span class="tome-number">' + num + '</span>' : '')
+        + '<span class="tome-title">' + escHtml(t.title) + '</span>'
+        + '<button class="copy-url-btn" onclick="copyTxtUrl(event,\'' + escAttr(txtUrl) + '\')">'
+        + '<svg viewBox="0 0 24 24"><path d="M16 1H4C3 1 2 2 2 3v14h2V3h12V1zm3 4H8C7 4 6 5 6 6v14c0 1 1 2 2 2h11c1 0 2-1 2-2V6c0-1-1-2-2-2zm0 16H8V6h11v15z"/></svg>'
+        + '<span>Copy URL</span>'
+        + '</button>'
+        + '</a>';
+}
+
+function renderTomes() {
+    var nl = document.getElementById('numberedList');
+    var ol = document.getElementById('otherList');
+    var os = document.getElementById('otherSection');
+    var tc = document.getElementById('tomeCount');
+    if (tc) tc.textContent = allTomes.length;
+    var si = document.getElementById('searchInput');
+    if (si) si.placeholder = 'Search ' + allTomes.length + ' books…';
+
+    nl.innerHTML = numberedTomes.length
+        ? numberedTomes.map(tomeHTML).join('')
+        : '<div class="empty-message">No books found.</div>';
+
+    if (otherTomes.length) {
+        os.style.display = 'block';
+        ol.innerHTML = otherTomes.map(tomeHTML).join('');
+    }
+}
+
+// ── Search ────────────────────────────────────────────────────────────────────
+function performSearch() {
+    var q  = document.getElementById('searchInput').value.trim().toLowerCase();
+    var ss = document.getElementById('searchSection');
+    var sl = document.getElementById('searchList');
+    var ns = document.getElementById('numberedSection');
+    var os = document.getElementById('otherSection');
+    if (!q) {
+        ss.style.display = 'none';
+        ns.style.display = 'block';
+        if (otherTomes.length) os.style.display = 'block';
+        return;
+    }
+    var results = allTomes.filter(function(t) {
+        return t.title.toLowerCase().includes(q) || t.filename.toLowerCase().includes(q);
+    });
+    ns.style.display = 'none';
+    os.style.display = 'none';
+    ss.style.display  = 'block';
+    sl.innerHTML = results.length
+        ? results.map(tomeHTML).join('')
+        : '<div class="empty-message">No books matched "' + escHtml(q) + '"</div>';
+}
+
+// ── Copy URL ──────────────────────────────────────────────────────────────────
+function copyTxtUrl(e, url) {
+    e.preventDefault(); e.stopPropagation();
+    var btn = e.currentTarget;
+    var doFeedback = function() {
+        btn.classList.add('copied');
+        btn.querySelector('span').textContent = 'Copied!';
+        setTimeout(function() {
+            btn.classList.remove('copied');
+            btn.querySelector('span').textContent = 'Copy URL';
+        }, 2000);
+    };
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(doFeedback).catch(function() {
+            fallbackCopy(url); doFeedback();
+        });
+    } else {
+        fallbackCopy(url); doFeedback();
+    }
+}
+function fallbackCopy(url) {
+    var ta = document.createElement('textarea');
+    ta.value = url; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+}
+
+// ── Load Library ──────────────────────────────────────────────────────────────
+function loadLibrary() {
+    if (window.EMBEDDED_LIBRARY_MANIFEST) {
+        allTomes = window.EMBEDDED_LIBRARY_MANIFEST.tomes || [];
+        if (!allTomes.length) { showError('Embedded manifest has no books. Ring the Sync Bell! 📚'); return; }
+        organizeTomes(); renderTomes(); return;
+    }
+    fetch('library/manifest.json')
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function(data) {
+            allTomes = data.tomes || [];
+            if (!allTomes.length) { showError('Manifest loaded but no books found. Ring the Sync Bell!'); return; }
+            organizeTomes(); renderTomes();
+        })
+        .catch(function() {
+            // Local manifest not found — try kkk.education
+            fetch('https://kkk.education/library/manifest.json')
+                .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+                .then(function(data) {
+                    allTomes = data.tomes || [];
+                    if (!allTomes.length) { showError('Manifest loaded but no books found. Ring the Sync Bell!'); return; }
+                    organizeTomes(); renderTomes();
+                })
+                .catch(function(err) {
+                    showError('<strong>📚 No library found yet — the shelves need filling!</strong><br><br>'
+                        + 'Click <strong>🔔 Sync Bell</strong> in the top nav, then click <strong>Ring Da Bell — Auto Generate</strong>.<br><br>'
+                        + '<small style="color:var(--text-dim)">Detail: ' + err.message + '</small>');
+                });
+        });
+}
+
+function showError(html) {
+    document.getElementById('numberedList').innerHTML =
+        '<div class="empty-message" style="text-align:left;font-size:0.95em;line-height:1.9;">' + html + '</div>';
+}
+
+// ── Download All TXT ──────────────────────────────────────────────────────────
+async function downloadAllTxt() {
+    var btn      = document.getElementById('downloadTxtBtn');
+    var progWrap = document.getElementById('txtProgressWrap');
+    var progBar  = document.getElementById('txtProgressBar');
+    var status   = document.getElementById('txtStatus');
+    if (!allTomes.length) { status.textContent = '⚠️ Library not loaded yet.'; return; }
+    btn.disabled = true; btn.textContent = '⏳ Fetching…';
+    progWrap.style.display = 'block'; progBar.style.width = '0%';
+    var txtFiles = allTomes.filter(function(t) { return t.filename; });
+    var zip = new JSZip();
+    var done = 0;
+    for (var i = 0; i < txtFiles.length; i++) {
+        try {
+            var r = await fetch(TXT_PREFIX + txtFiles[i].filename + '.txt');
+            if (r.ok) zip.file(txtFiles[i].filename + '.txt', await r.text());
+        } catch(e) {}
+        done++;
+        progBar.style.width = Math.round((done / txtFiles.length) * 100) + '%';
+        status.textContent = 'Fetching ' + done + ' / ' + txtFiles.length + '…';
+    }
+    var blob = await zip.generateAsync({ type: 'blob' });
+    var a = Object.assign(document.createElement('a'), {
+        href: URL.createObjectURL(blob), download: 'WIKKKAN-TXT-ARCHIVE.zip'
+    });
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+    progBar.style.width = '100%';
+    status.textContent = '✅ Done! ' + txtFiles.length + ' books downloaded.';
+    btn.textContent = '✅ Downloaded — Click Again to Re-download';
+    btn.disabled = false;
+}
+
+// ── Save This Page ────────────────────────────────────────────────────────────
+async function saveThisPage() {
+    var status = document.getElementById('saveStatus');
+    status.textContent = '⏳ Fetching page and manifest…';
+    try {
+        var [pageRes, manifestRes] = await Promise.all([
+            fetch('https://kkk.education/library.html'),
+            fetch('https://kkk.education/library/manifest.json')
+        ]);
+        var pageText     = await pageRes.text();
+        var manifestText = await manifestRes.text();
+        pageText = pageText.replace('</head>',
+            '<scr' + 'ipt>window.EMBEDDED_LIBRARY_MANIFEST=' + manifestText + ';</scr' + 'ipt></head>');
+        var a = Object.assign(document.createElement('a'), {
+            href: URL.createObjectURL(new Blob([pageText],{type:'text/html'})),
+            download: 'library.html'
+        });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        status.textContent = '✅ Saved! Open library.html anywhere.';
+    } catch(e) { status.textContent = '❌ ' + e.message; }
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escAttr(s) { return s.replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// ── Spores ────────────────────────────────────────────────────────────────────
+function buildSpores() {
+    var c = document.getElementById('canopy');
+    for (var i = 0; i < 30; i++) {
+        var s = document.createElement('div');
+        s.className = 'spore';
+        s.style.left               = Math.random() * 100 + '%';
+        s.style.animationDuration  = (Math.random() * 12 + 8) + 's';
+        s.style.animationDelay     = (Math.random() * 15) + 's';
+        s.style.width = s.style.height = (Math.random() * 2 + 1) + 'px';
+        s.style.background = Math.random() > 0.6 ? '#c8922a' : '#4a9e5c';
+        c.appendChild(s);
+    }
+}
+
+buildSpores();
+window.addEventListener('DOMContentLoaded', loadLibrary);
+</script>
+</body>
+</html>
