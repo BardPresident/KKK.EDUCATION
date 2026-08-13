@@ -235,8 +235,8 @@
     <div class="main-content">
 
         <div class="top-nav">
-            <a href="https://kkk.education" class="back-home">← HOME</a>
-            <a href="https://files.kkk.education" class="back-home" target="_blank" rel="noopener">📁 FILES</a>
+            <a href="index.html" class="back-home">← HOME</a>
+            <a href="files.html" class="back-home" target="_blank" rel="noopener">📁 FILES</a>
         </div>
 
         <div class="header">
@@ -332,7 +332,7 @@ node generate-manifest.js</code></pre>
         <div style="text-align:center;margin-top:50px;padding:30px;border:2px solid rgba(212,175,55,0.4);border-radius:10px;background:rgba(212,175,55,0.05);box-shadow:0 0 30px rgba(212,175,55,0.1);">
             <div style="font-family:'Courier New',monospace;font-size:1em;letter-spacing:0.2em;color:#ffd700;margin-bottom:12px;">📦 SAVE THIS CINEMA</div>
             <p style="font-size:0.95em;color:#b8860b;margin-bottom:18px;line-height:1.7;">Save this page and open it anywhere.<br>It will always stream content from the live server — works online or offline.</p>
-            <button onclick="window.open('https://kkk.education/cinema.html','_blank')" style="padding:10px 24px;background:rgba(212,175,55,0.1);border:2px solid #d4af37;color:#d4af37;font-family:'Courier New',monospace;font-size:0.85em;cursor:pointer;margin:5px;border-radius:6px;">🌐 OPEN LIVE VERSION</button>
+            <button onclick="window.open('cinema.html','_blank')" style="padding:10px 24px;background:rgba(212,175,55,0.1);border:2px solid #d4af37;color:#d4af37;font-family:'Courier New',monospace;font-size:0.85em;cursor:pointer;margin:5px;border-radius:6px;">🌐 OPEN LIVE VERSION</button>
             <button onclick="saveThisPage()" style="padding:10px 24px;background:rgba(212,175,55,0.1);border:2px solid #d4af37;color:#d4af37;font-family:'Courier New',monospace;font-size:0.85em;cursor:pointer;margin:5px;border-radius:6px;">💾 SAVE THIS FILE</button>
             <p id="saveStatus" style="margin-top:14px;font-size:0.85em;color:#b8860b;min-height:18px;"></p>
         </div>
@@ -607,7 +607,7 @@ node generate-manifest.js</code></pre>
             status.textContent = '⏳ Fetching page and manifest...';
             try {
                 const [pageRes, manifestRes] = await Promise.all([
-                    fetch('https://kkk.education/cinema.html'),
+                    fetch('cinema.html'),
                     fetch('https://files.kkk.education/manifest.json')
                 ]);
                 var pageText     = await pageRes.text();
