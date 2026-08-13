@@ -820,7 +820,7 @@
     <nav class="top-nav">
         <a href="index.html" class="back-link">← HOME</a>
         <div class="nav-right">
-            <a href="https://kkk.education/sync-bell.html" target="_blank" class="sync-bell-btn">🔔 <span>SYNC BELL</span></a>
+            <a href="sync-bell.html" target="_blank" class="sync-bell-btn">🔔 <span>SYNC BELL</span></a>
             <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
                 <span id="themeIcon">☀️</span>
             </button>
@@ -955,7 +955,7 @@
             <div class="download-row">
                 <a href="https://archive.org/download/wikkkan/Books-Download.bat" target="_blank" class="dl-btn">🖥️ Books-Download.bat</a>
                 <button class="dl-btn" id="downloadTxtBtn" onclick="downloadAllTxt()">📥 Download All .txt as ZIP</button>
-                <a href="https://kkk.education/books.html" target="_blank" class="dl-btn">📂 Browse All .txt Files Online</a>
+                <a href="books.html" target="_blank" class="dl-btn">📂 Browse All .txt Files Online</a>
             </div>
             <div class="txt-progress-bar-wrap" id="txtProgressWrap">
                 <div class="txt-progress-bar" id="txtProgressBar"></div>
@@ -1004,7 +1004,7 @@
                 You become a publisher instantly.</p>
             </div>
             <div style="text-align:center;margin-top:20px;">
-                <a href="https://kkk.education/sync-bell.html" target="_blank" class="sync-button">🔔 Open the Sync Bell</a>
+                <a href="sync-bell.html" target="_blank" class="sync-button">🔔 Open the Sync Bell</a>
                 <br><small style="color:var(--text-dim);font-size:0.85em;margin-top:8px;display:block;">Runs entirely in your browser · Free forever</small>
             </div>
         </div>
@@ -1016,7 +1016,7 @@
             </p>
             <div class="save-row">
                 <button onclick="saveThisPage()" class="dl-btn">💾 Save This File</button>
-                <button onclick="window.open('https://kkk.education/library.html','_blank')" class="dl-btn">🌐 Open Live Version</button>
+                <button onclick="window.open('library.html','_blank')" class="dl-btn">🌐 Open Live Version</button>
             </div>
             <div id="saveStatus"></div>
         </div>
@@ -1026,8 +1026,8 @@
         <div class="footer-text">
             WENDELL CHARLES NESMITH · THE WENDING ROAD<br>
             KKK.EDUCATION · CC0 PUBLICKÁ DOMÁNIA · ALL LOVE RESERVED<br>
-            <a href="https://kkk.education">kkk.education</a> ·
-            <a href="https://files.kkk.education">files.kkk.education</a>
+            <a href="index.html">kkk.education</a> ·
+            <a href="files.html">Files</a>
         </div>
     </footer>
 
@@ -1039,10 +1039,10 @@ var allTomes = [], numberedTomes = [], otherTomes = [];
 var currentSort = 'newest';
 
 var BOOK_PREFIX = (window.location.protocol === 'file:')
-    ? 'https://kkk.education/library/'
+    ? 'library/'
     : 'library/';
-var BOOK_COPY_PREFIX = 'https://kkk.education/library/';
-var TXT_PREFIX = 'https://files.kkk.education/Books/';
+var BOOK_COPY_PREFIX = 'library/';
+var TXT_PREFIX = 'books.html';
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 function toggleTheme() {
@@ -1211,7 +1211,7 @@ function loadLibrary() {
         })
         .catch(function() {
             // Local manifest not found — try kkk.education
-            fetch('https://kkk.education/library/manifest.json')
+            fetch('library/manifest.json')
                 .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
                 .then(function(data) {
                     allTomes = data.tomes || [];
@@ -1270,8 +1270,8 @@ async function saveThisPage() {
     status.textContent = '⏳ Fetching page and manifest…';
     try {
         var [pageRes, manifestRes] = await Promise.all([
-            fetch('https://kkk.education/library.html'),
-            fetch('https://kkk.education/library/manifest.json')
+            fetch('library.html'),
+            fetch('library/manifest.json')
         ]);
         var pageText     = await pageRes.text();
         var manifestText = await manifestRes.text();
