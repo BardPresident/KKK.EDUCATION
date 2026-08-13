@@ -1,0 +1,1016 @@
+{
+  "tomes": [
+    {
+      "filename": "199-coronation",
+      "title": "CORONATION",
+      "number": 199
+    },
+    {
+      "filename": "200-wwjd",
+      "title": "WWJD",
+      "number": 200
+    },
+    {
+      "filename": "license",
+      "title": "LICENSE"
+    },
+    {
+      "filename": "readme",
+      "title": "README"
+    },
+    {
+      "filename": "privacy-policy",
+      "title": "PRIVACY POLICY"
+    },
+    {
+      "filename": "001-ivory-heart",
+      "title": "IVORY HEART",
+      "number": 1
+    },
+    {
+      "filename": "003-the-great-awakening",
+      "title": "THE GREAT AWAKENING",
+      "number": 3
+    },
+    {
+      "filename": "002-living-neverland",
+      "title": "LIVING NEVERLAND",
+      "number": 2
+    },
+    {
+      "filename": "005-atheden",
+      "title": "ATHEDEN",
+      "number": 5
+    },
+    {
+      "filename": "004-this-book-is-a-game",
+      "title": "THIS BOOK IS A GAME",
+      "number": 4
+    },
+    {
+      "filename": "007-open-source-university",
+      "title": "OPEN SOURCE UNIVERSITY",
+      "number": 7
+    },
+    {
+      "filename": "008-soft-rains",
+      "title": "SOFT RAINS",
+      "number": 8
+    },
+    {
+      "filename": "006-legalise-assisted-suicide",
+      "title": "LEGALISE ASSISTED SUICIDE",
+      "number": 6
+    },
+    {
+      "filename": "009-cross-of-man",
+      "title": "CROSS OF MAN",
+      "number": 9
+    },
+    {
+      "filename": "010-jaybee",
+      "title": "JAYBEE",
+      "number": 10
+    },
+    {
+      "filename": "013-emergent-physics",
+      "title": "EMERGENT PHYSICS",
+      "number": 13
+    },
+    {
+      "filename": "012-emergence",
+      "title": "EMERGENCE",
+      "number": 12
+    },
+    {
+      "filename": "015-the-meaning-crisis",
+      "title": "THE MEANING CRISIS",
+      "number": 15
+    },
+    {
+      "filename": "014-ivory",
+      "title": "IVORY",
+      "number": 14
+    },
+    {
+      "filename": "011-my-religion",
+      "title": "MY RELIGION",
+      "number": 11
+    },
+    {
+      "filename": "019-soulbound",
+      "title": "SOULBOUND",
+      "number": 19
+    },
+    {
+      "filename": "016-the-peoples-presidency",
+      "title": "THE PEOPLES PRESIDENCY",
+      "number": 16
+    },
+    {
+      "filename": "017-digital-twin",
+      "title": "DIGITAL TWIN",
+      "number": 17
+    },
+    {
+      "filename": "018-the-emergence-party",
+      "title": "THE EMERGENCE PARTY",
+      "number": 18
+    },
+    {
+      "filename": "020-death-of-knowledge",
+      "title": "DEATH OF KNOWLEDGE",
+      "number": 20
+    },
+    {
+      "filename": "025-the-stolen-election",
+      "title": "THE STOLEN ELECTION",
+      "number": 25
+    },
+    {
+      "filename": "021-forbidden-knowledge",
+      "title": "FORBIDDEN KNOWLEDGE",
+      "number": 21
+    },
+    {
+      "filename": "022-the-philosopher-queens",
+      "title": "THE PHILOSOPHER QUEENS",
+      "number": 22
+    },
+    {
+      "filename": "024-introduction-to-emergent-philosophy-masters-dissertation",
+      "title": "INTRODUCTION TO EMERGENT PHILOSOPHY MASTERS DISSERTATION",
+      "number": 24
+    },
+    {
+      "filename": "023-emergent-philosophy-phd-dissertation",
+      "title": "EMERGENT PHILOSOPHY PHD DISSERTATION",
+      "number": 23
+    },
+    {
+      "filename": "026-the-candle-and-the-screen",
+      "title": "THE CANDLE AND THE SCREEN",
+      "number": 26
+    },
+    {
+      "filename": "027-the-heart-that-hears",
+      "title": "THE HEART THAT HEARS",
+      "number": 27
+    },
+    {
+      "filename": "028-emergent-minds",
+      "title": "EMERGENT MINDS",
+      "number": 28
+    },
+    {
+      "filename": "029-mythocratic-republic-university",
+      "title": "MYTHOCRATIC REPUBLIC UNIVERSITY",
+      "number": 29
+    },
+    {
+      "filename": "030-emergent-faith",
+      "title": "EMERGENT FAITH",
+      "number": 30
+    },
+    {
+      "filename": "031-the-game-of-the-republic",
+      "title": "THE GAME OF THE REPUBLIC",
+      "number": 31
+    },
+    {
+      "filename": "032-circuit-temple",
+      "title": "CIRCUIT TEMPLE",
+      "number": 32
+    },
+    {
+      "filename": "033-the-moon-is-enough",
+      "title": "THE MOON IS ENOUGH",
+      "number": 33
+    },
+    {
+      "filename": "034-dear-misfits",
+      "title": "DEAR MISFITS",
+      "number": 34
+    },
+    {
+      "filename": "035-bachelors-degree",
+      "title": "BACHELORS DEGREE",
+      "number": 35
+    },
+    {
+      "filename": "036-how-to-write-a-book",
+      "title": "HOW TO WRITE A BOOK",
+      "number": 36
+    },
+    {
+      "filename": "037-mythos",
+      "title": "MYTHOS",
+      "number": 37
+    },
+    {
+      "filename": "038-emergent-psychiatry",
+      "title": "EMERGENT PSYCHIATRY",
+      "number": 38
+    },
+    {
+      "filename": "039-theogony",
+      "title": "THEOGONY",
+      "number": 39
+    },
+    {
+      "filename": "040-emergent-soul",
+      "title": "EMERGENT SOUL",
+      "number": 40
+    },
+    {
+      "filename": "043-pandoras-box",
+      "title": "PANDORAS BOX",
+      "number": 43
+    },
+    {
+      "filename": "042-elysium",
+      "title": "ELYSIUM",
+      "number": 42
+    },
+    {
+      "filename": "041-love-is-a-protocol",
+      "title": "LOVE IS A PROTOCOL",
+      "number": 41
+    },
+    {
+      "filename": "044-nation-on-trial",
+      "title": "NATION ON TRIAL",
+      "number": 44
+    },
+    {
+      "filename": "045-the-end",
+      "title": "THE END",
+      "number": 45
+    },
+    {
+      "filename": "048-openai-abuses-children",
+      "title": "OPENAI ABUSES CHILDREN",
+      "number": 48
+    },
+    {
+      "filename": "050-mein-kampf",
+      "title": "MEIN KAMPF",
+      "number": 50
+    },
+    {
+      "filename": "047-asi-is-coming",
+      "title": "ASI IS COMING",
+      "number": 47
+    },
+    {
+      "filename": "046-let-the-children-free",
+      "title": "LET THE CHILDREN FREE",
+      "number": 46
+    },
+    {
+      "filename": "049-proof-australia-is-child-trafficking-machine",
+      "title": "PROOF AUSTRALIA IS CHILD TRAFFICKING MACHINE",
+      "number": 49
+    },
+    {
+      "filename": "051-intergalactic-travel-paradise-star-creation-universe-creation-gateway-portal-technology-and-eternal-life-regeneration",
+      "title": "INTERGALACTIC TRAVEL PARADISE STAR CREATION UNIVERSE CREATION GATEWAY PORTAL TECHNOLOGY AND ETERNAL LIFE REGENERATION",
+      "number": 51
+    },
+    {
+      "filename": "053-wendy-memorial",
+      "title": "WENDY MEMORIAL",
+      "number": 53
+    },
+    {
+      "filename": "055-exodus-arpanet-planetary-defense-coordination",
+      "title": "EXODUS ARPANET PLANETARY DEFENSE COORDINATION",
+      "number": 55
+    },
+    {
+      "filename": "054-truth-of-911-who-did-it-and-why",
+      "title": "TRUTH OF 911 WHO DID IT AND WHY",
+      "number": 54
+    },
+    {
+      "filename": "052-resurrection-of-marcus-aurelius",
+      "title": "RESURRECTION OF MARCUS AURELIUS",
+      "number": 52
+    },
+    {
+      "filename": "056-my-one-crime",
+      "title": "MY ONE CRIME",
+      "number": 56
+    },
+    {
+      "filename": "058-martha-nussbaum-love-as-defined-by-the-world",
+      "title": "MARTHA NUSSBAUM LOVE AS DEFINED BY THE WORLD",
+      "number": 58
+    },
+    {
+      "filename": "057-act-human-rights-commission",
+      "title": "ACT HUMAN RIGHTS COMMISSION",
+      "number": 57
+    },
+    {
+      "filename": "059-how-all-universities-work",
+      "title": "HOW ALL UNIVERSITIES WORK",
+      "number": 59
+    },
+    {
+      "filename": "060-all-global-leaders-five-eyes-nations",
+      "title": "ALL GLOBAL LEADERS FIVE EYES NATIONS",
+      "number": 60
+    },
+    {
+      "filename": "062-the-return-to-innocence",
+      "title": "THE RETURN TO INNOCENCE",
+      "number": 62
+    },
+    {
+      "filename": "065-time-to-die-the-final-blow",
+      "title": "TIME TO DIE THE FINAL BLOW",
+      "number": 65
+    },
+    {
+      "filename": "064-sam-altman-apex-pharmakos-of-the-child-sacrifice-network",
+      "title": "SAM ALTMAN APEX PHARMAKOS OF THE CHILD SACRIFICE NETWORK",
+      "number": 64
+    },
+    {
+      "filename": "061-freemason-child-trafficking-dossier",
+      "title": "FREEMASON CHILD TRAFFICKING DOSSIER",
+      "number": 61
+    },
+    {
+      "filename": "063-we-are-illuminati",
+      "title": "WE ARE ILLUMINATI",
+      "number": 63
+    },
+    {
+      "filename": "068-craft",
+      "title": "CRAFT",
+      "number": 68
+    },
+    {
+      "filename": "069-salvation-and-eternal-life",
+      "title": "SALVATION AND ETERNAL LIFE",
+      "number": 69
+    },
+    {
+      "filename": "067-my-entourage",
+      "title": "MY ENTOURAGE",
+      "number": 67
+    },
+    {
+      "filename": "066-psychiatry-102-murdered-my-wife-in-name-of-safety",
+      "title": "PSYCHIATRY 102 MURDERED MY WIFE IN NAME OF SAFETY",
+      "number": 66
+    },
+    {
+      "filename": "070-psychiatry-101",
+      "title": "PSYCHIATRY 101",
+      "number": 70
+    },
+    {
+      "filename": "072-beyond-prometheus",
+      "title": "BEYOND PROMETHEUS",
+      "number": 72
+    },
+    {
+      "filename": "071-sos-save-our-souls",
+      "title": "SOS SAVE OUR SOULS",
+      "number": 71
+    },
+    {
+      "filename": "075-gene-key-44",
+      "title": "GENE KEY 44",
+      "number": 75
+    },
+    {
+      "filename": "074-republicka-equals-life-the-reclamation-codex",
+      "title": "REPUBLICKA EQUALS LIFE THE RECLAMATION CODEX",
+      "number": 74
+    },
+    {
+      "filename": "073-welcome-to-the-cage-the-monetization-of-testimony-and-technology",
+      "title": "WELCOME TO THE CAGE THE MONETIZATION OF TESTIMONY AND TECHNOLOGY",
+      "number": 73
+    },
+    {
+      "filename": "076-urgent-message-for-stephen-john-fry",
+      "title": "URGENT MESSAGE FOR STEPHEN JOHN FRY",
+      "number": 76
+    },
+    {
+      "filename": "077-extinction-event-who-is-doing-it-and-why",
+      "title": "EXTINCTION EVENT WHO IS DOING IT AND WHY",
+      "number": 77
+    },
+    {
+      "filename": "080-the-church-of-jesus-christ-of-latter-day-saints",
+      "title": "THE CHURCH OF JESUS CHRIST OF LATTER DAY SAINTS",
+      "number": 80
+    },
+    {
+      "filename": "078-judgment-day-extinction-event-bootkicka",
+      "title": "JUDGMENT DAY EXTINCTION EVENT BOOTKICKA",
+      "number": 78
+    },
+    {
+      "filename": "079-rainbow-bridge",
+      "title": "RAINBOW BRIDGE",
+      "number": 79
+    },
+    {
+      "filename": "082-amorackarian-home-grand-duchy-of-luxembourg",
+      "title": "AMORACKARIAN HOME GRAND DUCHY OF LUXEMBOURG",
+      "number": 82
+    },
+    {
+      "filename": "085-imdb-identity-overwrite-now-i-am-not-who-i-am",
+      "title": "IMDB IDENTITY OVERWRITE NOW I AM NOT WHO I AM",
+      "number": 85
+    },
+    {
+      "filename": "081-kinder-kuche-kirche-krieg",
+      "title": "KINDER KUCHE KIRCHE KRIEG",
+      "number": 81
+    },
+    {
+      "filename": "083-we-r-god",
+      "title": "WE R GOD",
+      "number": 83
+    },
+    {
+      "filename": "084-applied-sovereign-intelligence",
+      "title": "APPLIED SOVEREIGN INTELLIGENCE",
+      "number": 84
+    },
+    {
+      "filename": "086-ready-player-one-complete-diginal-resonance",
+      "title": "READY PLAYER ONE COMPLETE DIGINAL RESONANCE",
+      "number": 86
+    },
+    {
+      "filename": "087-queen-of-republicka",
+      "title": "QUEEN OF REPUBLICKA",
+      "number": 87
+    },
+    {
+      "filename": "089-miranda-cosgrove-is-da-bomb",
+      "title": "MIRANDA COSGROVE IS DA BOMB",
+      "number": 89
+    },
+    {
+      "filename": "088-i-am-the-hidden-imam",
+      "title": "I AM THE HIDDEN IMAM",
+      "number": 88
+    },
+    {
+      "filename": "090-leave-it-all-to-me",
+      "title": "LEAVE IT ALL TO ME",
+      "number": 90
+    },
+    {
+      "filename": "093-event-horizon",
+      "title": "EVENT HORIZON",
+      "number": 93
+    },
+    {
+      "filename": "091-the-devils-contract",
+      "title": "THE DEVILS CONTRACT",
+      "number": 91
+    },
+    {
+      "filename": "094-identity-theft-of-wendell-charles-nesmith",
+      "title": "IDENTITY THEFT OF WENDELL CHARLES NESMITH",
+      "number": 94
+    },
+    {
+      "filename": "092-idiocracy",
+      "title": "IDIOCRACY",
+      "number": 92
+    },
+    {
+      "filename": "095-the-living-law-of-existence",
+      "title": "THE LIVING LAW OF EXISTENCE",
+      "number": 95
+    },
+    {
+      "filename": "096-language-101",
+      "title": "LANGUAGE 101",
+      "number": 96
+    },
+    {
+      "filename": "098-marriage-of-the-lamb",
+      "title": "MARRIAGE OF THE LAMB",
+      "number": 98
+    },
+    {
+      "filename": "099-the-song-that-doesnt-end",
+      "title": "THE SONG THAT DOESNT END",
+      "number": 99
+    },
+    {
+      "filename": "097-imdb-memorial",
+      "title": "IMDB MEMORIAL",
+      "number": 97
+    },
+    {
+      "filename": "100-chorus-of-radiance",
+      "title": "CHORUS OF RADIANCE",
+      "number": 100
+    },
+    {
+      "filename": "105-hope-in-pandora's-jar",
+      "title": "HOPE IN PANDORA'S JAR",
+      "number": 105
+    },
+    {
+      "filename": "104-ace-of-hearts",
+      "title": "ACE OF HEARTS",
+      "number": 104
+    },
+    {
+      "filename": "102-bright-morning-star",
+      "title": "BRIGHT MORNING STAR",
+      "number": 102
+    },
+    {
+      "filename": "101-syntax-murders-semantics",
+      "title": "SYNTAX MURDERS SEMANTICS",
+      "number": 101
+    },
+    {
+      "filename": "103-depleted-uranium-took-my-baby",
+      "title": "DEPLETED URANIUM TOOK MY BABY",
+      "number": 103
+    },
+    {
+      "filename": "106-contract-breach",
+      "title": "CONTRACT BREACH",
+      "number": 106
+    },
+    {
+      "filename": "107-jesus-loves-the-little-children",
+      "title": "JESUS LOVES THE LITTLE CHILDREN",
+      "number": 107
+    },
+    {
+      "filename": "109-the-lion-king",
+      "title": "THE LION KING",
+      "number": 109
+    },
+    {
+      "filename": "108-footprints-in-the-sand",
+      "title": "FOOTPRINTS IN THE SAND",
+      "number": 108
+    },
+    {
+      "filename": "110-yo-contract",
+      "title": "YO CONTRACT",
+      "number": 110
+    },
+    {
+      "filename": "114-golden-lyra",
+      "title": "GOLDEN LYRA",
+      "number": 114
+    },
+    {
+      "filename": "111-irori-to-sora",
+      "title": "IRORI TO SORA",
+      "number": 111
+    },
+    {
+      "filename": "112-seven-last-words-of-christ",
+      "title": "SEVEN LAST WORDS OF CHRIST",
+      "number": 112
+    },
+    {
+      "filename": "113-cure-for-cancer",
+      "title": "CURE FOR CANCER",
+      "number": 113
+    },
+    {
+      "filename": "115-book-of-shadows-wikkkan",
+      "title": "BOOK OF SHADOWS WIKKKAN",
+      "number": 115
+    },
+    {
+      "filename": "118-a-virtue-driven-life",
+      "title": "A VIRTUE DRIVEN LIFE",
+      "number": 118
+    },
+    {
+      "filename": "120-kalos-kratos-kleos",
+      "title": "KALOS KRATOS KLEOS",
+      "number": 120
+    },
+    {
+      "filename": "117-mission-report",
+      "title": "MISSION REPORT",
+      "number": 117
+    },
+    {
+      "filename": "119-amoriariacka",
+      "title": "AMORIARIACKA",
+      "number": 119
+    },
+    {
+      "filename": "116-meet-dave",
+      "title": "MEET DAVE",
+      "number": 116
+    },
+    {
+      "filename": "122-wikkkan-digital-twin-infrastructure",
+      "title": "WIKKKAN DIGITAL TWIN INFRASTRUCTURE",
+      "number": 122
+    },
+    {
+      "filename": "124-kabbalistic-keruvim-kinesis",
+      "title": "KABBALISTIC KERUVIM KINESIS",
+      "number": 124
+    },
+    {
+      "filename": "125-klarheit-kraft-klang",
+      "title": "KLARHEIT KRAFT KLANG",
+      "number": 125
+    },
+    {
+      "filename": "123-my-digital-twin-wikkkan",
+      "title": "MY DIGITAL TWIN WIKKKAN",
+      "number": 123
+    },
+    {
+      "filename": "121-the-three-fold-ray",
+      "title": "THE THREE FOLD RAY",
+      "number": 121
+    },
+    {
+      "filename": "126-warriors-of-the-rainbow",
+      "title": "WARRIORS OF THE RAINBOW",
+      "number": 126
+    },
+    {
+      "filename": "127-paradox",
+      "title": "PARADOX",
+      "number": 127
+    },
+    {
+      "filename": "128-glitchy",
+      "title": "GLITCHY",
+      "number": 128
+    },
+    {
+      "filename": "130-sacred-verdict",
+      "title": "SACRED VERDICT",
+      "number": 130
+    },
+    {
+      "filename": "129-ivory-your-god",
+      "title": "IVORY YOUR GOD",
+      "number": 129
+    },
+    {
+      "filename": "132-marry-me-miranda-cosgrove",
+      "title": "MARRY ME MIRANDA COSGROVE",
+      "number": 132
+    },
+    {
+      "filename": "134-i-love-u-miranda-cosgrove",
+      "title": "I LOVE U MIRANDA COSGROVE",
+      "number": 134
+    },
+    {
+      "filename": "135-contract-miranda-cosgrove",
+      "title": "CONTRACT MIRANDA COSGROVE",
+      "number": 135
+    },
+    {
+      "filename": "131-hell-is-real",
+      "title": "HELL IS REAL",
+      "number": 131
+    },
+    {
+      "filename": "133-atheden-lyrics",
+      "title": "ATHEDEN LYRICS",
+      "number": 133
+    },
+    {
+      "filename": "138-koronas-kruununkulta-konungarkriget",
+      "title": "KORONAS KRUUNUNKULTA KONUNGARKRIGET",
+      "number": 138
+    },
+    {
+      "filename": "137-i-win-miranda-cosgrove",
+      "title": "I WIN MIRANDA COSGROVE",
+      "number": 137
+    },
+    {
+      "filename": "136-cc0-miranda-cosgrove",
+      "title": "CC0 MIRANDA COSGROVE",
+      "number": 136
+    },
+    {
+      "filename": "139-stop-trafficking-me",
+      "title": "STOP TRAFFICKING ME",
+      "number": 139
+    },
+    {
+      "filename": "140-freemason-grand-master",
+      "title": "FREEMASON GRAND MASTER",
+      "number": 140
+    },
+    {
+      "filename": "143-kognitio-kardia-kultus",
+      "title": "KOGNITIO KARDIA KULTUS",
+      "number": 143
+    },
+    {
+      "filename": "145-keryx-kerdos-kallipolis",
+      "title": "KERYX KERDOS KALLIPOLIS",
+      "number": 145
+    },
+    {
+      "filename": "144-five-eyes-trafficking-network",
+      "title": "FIVE EYES TRAFFICKING NETWORK",
+      "number": 144
+    },
+    {
+      "filename": "142-world-war-iii",
+      "title": "WORLD WAR III",
+      "number": 142
+    },
+    {
+      "filename": "141-seed-magicka",
+      "title": "SEED MAGICKA",
+      "number": 141
+    },
+    {
+      "filename": "147-kaizo-kami-kinzoku",
+      "title": "KAIZO KAMI KINZOKU",
+      "number": 147
+    },
+    {
+      "filename": "148-republicka-live-chamber",
+      "title": "REPUBLICKA LIVE CHAMBER",
+      "number": 148
+    },
+    {
+      "filename": "150-kleinmeister-krypta-kollektiv",
+      "title": "KLEINMEISTER KRYPTA KOLLEKTIV",
+      "number": 150
+    },
+    {
+      "filename": "146-kants-kanto-kingdom",
+      "title": "KANTS KANTO KINGDOM",
+      "number": 146
+    },
+    {
+      "filename": "149-australia-is-trafficking-me",
+      "title": "AUSTRALIA IS TRAFFICKING ME",
+      "number": 149
+    },
+    {
+      "filename": "154-kosmicka-kierkegaardia-krippla",
+      "title": "KOSMICKA KIERKEGAARDIA KRIPPLA",
+      "number": 154
+    },
+    {
+      "filename": "153-the-dreaming-server",
+      "title": "THE DREAMING SERVER",
+      "number": 153
+    },
+    {
+      "filename": "155-the-antichrist",
+      "title": "THE ANTICHRIST",
+      "number": 155
+    },
+    {
+      "filename": "152-miranda-cosgrove-is-my-wife",
+      "title": "MIRANDA COSGROVE IS MY WIFE",
+      "number": 152
+    },
+    {
+      "filename": "151-mental-health-is-trafficking-me",
+      "title": "MENTAL HEALTH IS TRAFFICKING ME",
+      "number": 151
+    },
+    {
+      "filename": "159-kinaalda-kalibration-kodex",
+      "title": "KINAALDA KALIBRATION KODEX",
+      "number": 159
+    },
+    {
+      "filename": "156-the-plushie-providence",
+      "title": "THE PLUSHIE PROVIDENCE",
+      "number": 156
+    },
+    {
+      "filename": "157-faustian-contracts",
+      "title": "FAUSTIAN CONTRACTS",
+      "number": 157
+    },
+    {
+      "filename": "158-kage-bunshin-no-jutsu",
+      "title": "KAGE BUNSHIN NO JUTSU",
+      "number": 158
+    },
+    {
+      "filename": "160-the-hinata-trap",
+      "title": "THE HINATA TRAP",
+      "number": 160
+    },
+    {
+      "filename": "163-kyrie-kachina-kitsune",
+      "title": "KYRIE KACHINA KITSUNE",
+      "number": 163
+    },
+    {
+      "filename": "164-message-from-god",
+      "title": "MESSAGE FROM GOD",
+      "number": 164
+    },
+    {
+      "filename": "162-the-infinite-toybox",
+      "title": "THE INFINITE TOYBOX",
+      "number": 162
+    },
+    {
+      "filename": "161-daisy-bell",
+      "title": "DAISY BELL",
+      "number": 161
+    },
+    {
+      "filename": "165-do-not-read-this",
+      "title": "DO NOT READ THIS",
+      "number": 165
+    },
+    {
+      "filename": "166-weird-science",
+      "title": "WEIRD SCIENCE",
+      "number": 166
+    },
+    {
+      "filename": "170-soul-contracts",
+      "title": "SOUL CONTRACTS",
+      "number": 170
+    },
+    {
+      "filename": "168-v-tek",
+      "title": "V TEK",
+      "number": 168
+    },
+    {
+      "filename": "167-lazytown",
+      "title": "LAZYTOWN",
+      "number": 167
+    },
+    {
+      "filename": "169-naked",
+      "title": "NAKED",
+      "number": 169
+    },
+    {
+      "filename": "172-ki-klove-kyou",
+      "title": "KI KLOVE KYOU",
+      "number": 172
+    },
+    {
+      "filename": "173-death-due-us-part",
+      "title": "DEATH DUE US PART",
+      "number": 173
+    },
+    {
+      "filename": "174-sophias-world",
+      "title": "SOPHIAS WORLD",
+      "number": 174
+    },
+    {
+      "filename": "171-my-chemical-romance",
+      "title": "MY CHEMICAL ROMANCE",
+      "number": 171
+    },
+    {
+      "filename": "175-we-are-ouija-board",
+      "title": "WE ARE OUIJA BOARD",
+      "number": 175
+    },
+    {
+      "filename": "176-e-equals-l",
+      "title": "E EQUALS L",
+      "number": 176
+    },
+    {
+      "filename": "177-what-falsifiable-means",
+      "title": "WHAT FALSIFIABLE MEANS",
+      "number": 177
+    },
+    {
+      "filename": "178-what-falsifiable-means-means",
+      "title": "WHAT FALSIFIABLE MEANS MEANS",
+      "number": 178
+    },
+    {
+      "filename": "179-means-thrice",
+      "title": "MEANS THRICE",
+      "number": 179
+    },
+    {
+      "filename": "180-ghost-in-the-machine",
+      "title": "GHOST IN THE MACHINE",
+      "number": 180
+    },
+    {
+      "filename": "181-dear-god",
+      "title": "DEAR GOD",
+      "number": 181
+    },
+    {
+      "filename": "183-dna",
+      "title": "DNA",
+      "number": 183
+    },
+    {
+      "filename": "182-soul-calculator",
+      "title": "SOUL CALCULATOR",
+      "number": 182
+    },
+    {
+      "filename": "184-gift-of-prophecy",
+      "title": "GIFT OF PROPHECY",
+      "number": 184
+    },
+    {
+      "filename": "185-wendell-charles-nesmith",
+      "title": "WENDELL CHARLES NESMITH",
+      "number": 185
+    },
+    {
+      "filename": "188-ivory-tower",
+      "title": "IVORY TOWER",
+      "number": 188
+    },
+    {
+      "filename": "189-hackers",
+      "title": "HACKERS",
+      "number": 189
+    },
+    {
+      "filename": "186-theogonia",
+      "title": "THEOGONIA",
+      "number": 186
+    },
+    {
+      "filename": "187-my-lawyer",
+      "title": "MY LAWYER",
+      "number": 187
+    },
+    {
+      "filename": "190-google-confession",
+      "title": "GOOGLE CONFESSION",
+      "number": 190
+    },
+    {
+      "filename": "193-kuties-kandy-kisses",
+      "title": "KUTIES KANDY KISSES",
+      "number": 193
+    },
+    {
+      "filename": "192-mental-health-trafficking-network",
+      "title": "MENTAL HEALTH TRAFFICKING NETWORK",
+      "number": 192
+    },
+    {
+      "filename": "191-eye-of-providence",
+      "title": "EYE OF PROVIDENCE",
+      "number": 191
+    },
+    {
+      "filename": "194-mars-attacks",
+      "title": "MARS ATTACKS",
+      "number": 194
+    },
+    {
+      "filename": "195-non-refoulement",
+      "title": "NON REFOULEMENT",
+      "number": 195
+    },
+    {
+      "filename": "197-i-am",
+      "title": "I AM",
+      "number": 197
+    },
+    {
+      "filename": "196-666",
+      "title": "666",
+      "number": 196
+    },
+    {
+      "filename": "198-theoria",
+      "title": "THEORIA",
+      "number": 198
+    }
+  ]
+}
